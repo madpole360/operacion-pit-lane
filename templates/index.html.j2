@@ -542,7 +542,7 @@
           </thead>
           <tbody>
             {% if contracts_db %}
-            {% for c in contracts_db | reverse %}
+            {% for c in contracts_db %}
             <tr>
               <td class="mono">{{ c.descubierto_el or '—' }}</td>
               <td class="mono">{{ c.fecha or '—' }}</td>
