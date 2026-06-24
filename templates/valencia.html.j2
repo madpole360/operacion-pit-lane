@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madrid vs Valencia — Comparativa de Riesgos | Operación Pit-Lane</title>
+  <meta name="description" content="Comparativa del coste del GP de F1 de Madrid con el caso Valencia. ¿Se repetirá la historia?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:      #0C0C0F;
+      --card:     #15151A;
+      --surface:  #1E1E26;
+      --edge:     #2C2C3A;
+      --red:      #E10600;
+      --red-dim:  rgba(225,6,0,.12);
+      --amber:    #F59E0B;
+      --amber-dim:rgba(245,158,11,.12);
+      --blue:     #60A5FA;
+      --blue-dim: rgba(96,165,250,.12);
+      --green:    #34D399;
+      --green-dim:rgba(52,211,153,.12);
+      --txt:      #EBEBF0;
+      --muted:    #6B7280;
+      --dim:      #3A3A4A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--txt);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ─── Header ─────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--ink);
+      border-bottom: 1px solid var(--edge);
+      padding: .75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .site-header .flag {
+      width: 32px; height: 32px;
+      background: repeating-conic-gradient(#fff 0% 25%, #000 0% 50%) 0 0 / 8px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .site-header .brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .site-header .brand span { color: var(--amber); }
+    .site-header .tagline {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .05rem;
+    }
+    .site-header .badge-auto {
+      margin-left: auto;
+      background: var(--green-dim);
+      border: 1px solid rgba(52,211,153,.3);
+      color: var(--green);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .2rem .55rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .site-header .nav-links {
+      display: flex; gap: 1rem; margin-left: 1.5rem;
+    }
+    .site-header .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); transition: color .15s;
+    }
+    .site-header .nav-links a:hover, .site-header .nav-links a.active { color: var(--amber); text-decoration: none; }
+
+    /* ─── Hero ───────────────────────────────────────────────────────── */
+    .hero {
+      padding: 3rem 1.25rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(245,158,11,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .eyebrow {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+      letter-spacing: -.01em;
+      line-height: 1.1;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--amber); }
+
+    /* ─── Gauge ──────────────────────────────────────────────────────── */
+    .gauge-wrap {
+      display: inline-block;
+      text-align: center;
+      position: relative;
+    }
+    .gauge-circle {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      position: relative;
+      background: conic-gradient(
+        var(--green) 0deg,
+        var(--amber) 72deg,
+        var(--red) 144deg,
+        #1A1A22 144deg,
+        #1A1A22 360deg
+      );
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto;
+    }
+    .gauge-inner {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .gauge-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .gauge-label {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
+    .gauge-justify {
+      max-width: 520px;
+      margin: 1rem auto 0;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Ticker ─────────────────────────────────────────────────────── */
+    .ticker {
+      display: flex;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--edge);
+      border-bottom: 1px solid var(--edge);
+      background: var(--card);
+    }
+    .ticker-item {
+      flex: 1;
+      min-width: 140px;
+      padding: .65rem 1.25rem;
+      border-right: 1px solid var(--edge);
+      text-align: center;
+    }
+    .ticker-item:last-child { border-right: none; }
+    .ticker-item .t-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .2rem;
+    }
+    .ticker-item .t-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--txt);
+    }
+    .ticker-item .t-value.red   { color: var(--red); }
+    .ticker-item .t-value.amber { color: var(--amber); }
+    .ticker-item .t-value.green { color: var(--green); }
+
+    /* ─── Sections ───────────────────────────────────────────────────── */
+    .section { padding: 2rem 0; border-bottom: 1px solid var(--edge); }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--edge);
+      margin-left: .25rem;
+    }
+
+    /* ─── Comparison table ───────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--edge); }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    thead tr { background: var(--surface); }
+    th {
+      padding: .65rem .85rem;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--edge);
+      white-space: nowrap;
+    }
+    th.madrid-col { color: var(--red); }
+    th.valencia-col { color: var(--amber); }
+    td {
+      padding: .7rem .85rem;
+      border-bottom: 1px solid var(--edge);
+      vertical-align: top;
+      color: #C8C8D2;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(255,255,255,.025); }
+    td.madrid-col { color: #F0A0A0; font-weight: 500; }
+    td.valencia-col { color: #F0C080; font-weight: 500; }
+    td.label-col { font-weight: 600; color: var(--txt); }
+
+    /* ─── Risk factors ───────────────────────────────────────────────── */
+    .risk-factors-grid { display: grid; gap: .55rem; }
+    .risk-factor {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+    }
+    .risk-factor .rf-icon { font-size: 1rem; min-width: 1.25rem; text-align: center; flex-shrink: 0; }
+    .risk-factor .rf-text { flex: 1; font-size: .84rem; color: #C8C8D2; line-height: 1.5; }
+    .rf-badge {
+      padding: .2rem .5rem; border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .rf-badge.high   { background: var(--red-dim); color: var(--red); border: 1px solid rgba(225,6,0,.25); }
+    .rf-badge.medium { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,158,11,.25); }
+    .rf-badge.low    { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,211,153,.25); }
+
+    /* ─── Evolution chart ────────────────────────────────────────────── */
+    .evo-list { display: grid; gap: .35rem; }
+    .evo-row {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .4rem 0;
+    }
+    .evo-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; color: var(--muted); min-width: 5.5rem;
+    }
+    .evo-bar-wrap { flex: 1; height: 7px; background: var(--surface); border-radius: 4px; overflow: hidden; }
+    .evo-bar {
+      height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, var(--green), var(--amber), var(--red));
+      transition: width .4s;
+    }
+    .evo-pct {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; font-weight: 700;
+      color: var(--amber); min-width: 2.4rem; text-align: right;
+    }
+
+    /* ─── Cards ──────────────────────────────────────────────────────── */
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .info-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+      color: var(--amber);
+    }
+    .info-card p, .info-card li {
+      font-size: .86rem; line-height: 1.65; color: #C0C0CA;
+    }
+    .info-card ul { padding-left: 1.2rem; }
+    .info-card li { margin-bottom: .35rem; }
+    .info-card li::marker { color: var(--amber); }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ─── Disclaimer ─────────────────────────────────────────────────── */
+    .disclaimer {
+      background: rgba(245,158,11,.05);
+      border: 1px solid rgba(245,158,11,.15);
+      border-radius: 8px;
+      padding: .85rem 1.15rem;
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .72rem;
+      border-top: 1px solid var(--edge);
+      line-height: 1.8;
+    }
+    .site-footer a { color: var(--muted); }
+    .site-footer a:hover { color: var(--txt); }
+
+    @media (max-width: 600px) {
+      .ticker-item { min-width: 45%; }
+      .site-header { flex-wrap: wrap; }
+      .site-header .nav-links { width: 100%; justify-content: center; margin-left: 0; margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HEADER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <header class="site-header">
+    <div class="flag" aria-hidden="true"></div>
+    <div>
+      <div class="brand">Madrid vs <span>Valencia</span></div>
+      <div class="tagline">Comparativa de riesgos · ¿Se repetirá la historia?</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Informe</a>
+      <a href="valencia.html" class="active">Valencia</a>
+      <a href="https://github.com/madpole360/operacion-pit-lane" target="_blank">Repositorio</a>
+    </nav>
+    <div class="badge-auto">● Live</div>
+  </header>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HERO                                            ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="hero">
+    <p class="eyebrow">Análisis comparativo · Madrid 2026–2035 vs Valencia 2008–2012</p>
+    <h1>¿Se repetirá<br>la <em>historia de Valencia</em>?</h1>
+
+    {% set cv = data.comparativa_valencia or {} %}
+    {% set pct = (cv.porcentaje_similitud_riesgo | int) if cv.porcentaje_similitud_riesgo else 0 %}
+    {% set pct_color = '#F87171' if pct > 70 else ('#F59E0B' if pct > 40 else '#34D399') %}
+
+    <div class="gauge-wrap">
+      <div class="gauge-circle">
+        <div class="gauge-inner">
+          <div class="gauge-value" style="color:{{ pct_color }}">{{ pct }}%</div>
+          <div class="gauge-label">Similitud de riesgo</div>
+        </div>
+      </div>
+    </div>
+    <p class="gauge-justify">{{ cv.justificacion or 'Análisis pendiente de la primera investigación automatizada.' }}</p>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  TICKER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="ticker">
+    <div class="ticker-item">
+      <div class="t-label">Coste Madrid</div>
+      <div class="t-value red">{{ cv.coste_acumulado_madrid_texto or 'Pendiente' }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Coste Valencia</div>
+      <div class="t-value amber">{{ cv.coste_total_valencia_texto or '~350M €' }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Factores comunes</div>
+      <div class="t-value amber">{{ cv.factores_riesgo_compartidos | length if cv.factores_riesgo_compartidos else 0 }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">% Riesgo repetición</div>
+      <div class="t-value{% if pct > 70 %} red{% elif pct > 40 %} amber{% else %} green{% endif %}">{{ pct }}%</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- ── Tabla comparativa ──────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">💰 Comparativa de costes</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th class="madrid-col">🏎️ Madrid (Madring)</th>
+              <th class="valencia-col">🏁 Valencia (2008-2012)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="label-col">Coste total estimado</td>
+              <td class="madrid-col"><strong>{{ cv.coste_acumulado_madrid_texto or 'Pendiente de determinar' }}</strong></td>
+              <td class="valencia-col">{{ cv.coste_total_valencia_texto or '~350 millones €' }}</td>
+            </tr>
+            <tr>
+              <td class="label-col">Canon anual a FOM</td>
+              <td class="madrid-col">Estimado ~48M €/año (sin confirmación oficial)</td>
+              <td class="valencia-col">~26 millones €/año</td>
+            </tr>
+            <tr>
+              <td class="label-col">Tipo de circuito</td>
+              <td class="madrid-col">Semiurbano (IFEMA + viales públicos)</td>
+              <td class="valencia-col">Urbano (puerto + calles de la ciudad)</td>
+            </tr>
+            <tr>
+              <td class="label-col">Duración del contrato</td>
+              <td class="madrid-col">10 años (2026-2035)</td>
+              <td class="valencia-col">7 años (2008-2014, cancelado en 2012)</td>
+            </tr>
+            <tr>
+              <td class="label-col">Promotor principal</td>
+              <td class="madrid-col">IFEMA (100% público: Ayto + CAM)</td>
+              <td class="valencia-col">Generalitat Valenciana + Ayto. Valencia</td>
+            </tr>
+            <tr>
+              <td class="label-col">Financiación</td>
+              <td class="madrid-col">Pública (vía IFEMA) + patrocinios privados</td>
+              <td class="valencia-col">Mayoritariamente pública</td>
+            </tr>
+            <tr>
+              <td class="label-col">Asistencia prevista</td>
+              <td class="madrid-col">~110.000 espectadores/día</td>
+              <td class="valencia-col">~75.000 espectadores/día</td>
+            </tr>
+            <tr>
+              <td class="label-col">Impacto económico estimado</td>
+              <td class="madrid-col">450M €/año (según IFEMA, sin auditoría independiente)</td>
+              <td class="valencia-col">500M €/año (según Generalitat, nunca se materializó)</td>
+            </tr>
+            <tr>
+              <td class="label-col">Estado actual</td>
+              <td class="madrid-col">En construcción. Circuito completado, edificios en obra.</td>
+              <td class="valencia-col">Abandonado / infrautilizado. Pérdidas millonarias asumidas por el erario público.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Factores de riesgo ─────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🔍 Factores de riesgo compartidos</h2>
+      <div class="risk-factors-grid">
+        {% set factores = cv.factores_riesgo_compartidos or [] %}
+        {% if factores %}
+        {% for f in factores %}
+        {% set idx = loop.index %}
+        <div class="risk-factor">
+          <span class="rf-icon">⚠️</span>
+          <span class="rf-text">{{ f }}</span>
+          <span class="rf-badge{% if idx <= 2 %} high{% elif idx <= 5 %} medium{% else %} low{% endif %}">
+            {% if idx <= 2 %}Alto{% elif idx <= 5 %}Medio{% else %}Bajo{% endif %}
+          </span>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="risk-factor">
+          <span class="rf-icon">⏳</span>
+          <span class="rf-text">Factores de riesgo pendientes de análisis tras la primera investigación.</span>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- ── Evolución del riesgo ───────────────────────────── -->
+    {% if timeline and timeline | selectattr('porcentaje_riesgo_valencia') | list | length > 1 %}
+    <section class="section">
+      <h2 class="section-title">📈 Evolución del % de riesgo</h2>
+      <div class="evo-list">
+        {% for entry in timeline %}
+        {% if entry.porcentaje_riesgo_valencia is not none %}
+        <div class="evo-row">
+          <span class="evo-date">{{ entry.fecha }}</span>
+          <div class="evo-bar-wrap">
+            <div class="evo-bar" style="width:{{ entry.porcentaje_riesgo_valencia }}%"></div>
+          </div>
+          <span class="evo-pct">{{ entry.porcentaje_riesgo_valencia }}%</span>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── Historia Valencia + Diferencias ──────────────── -->
+    <div class="two-col">
+      <div class="info-card">
+        <h3>📚 ¿Qué pasó en Valencia?</h3>
+        <p style="margin-bottom:.6rem;">
+          El Gran Premio de Europa se celebró en el circuito urbano de Valencia entre 2008 y 2012.
+          Impulsado por la Generalitat Valenciana, el proyecto multiplicó su coste inicial hasta
+          alcanzar aproximadamente <strong style="color:var(--amber);">1.100 millones de euros</strong>
+          de dinero público contando canon, construcción, sobrecostes y déficit de explotación.
+        </p>
+        <ul>
+          <li>Canon anual a FOM (Bernie Ecclestone) de ~26M€, muy por encima de los ingresos.</li>
+          <li>Infraestructuras infrautilizadas tras la cancelación en 2012.</li>
+          <li>El retorno económico prometido (500M€/año) nunca se materializó.</li>
+          <li>Falta de transparencia: el coste real tardó años en conocerse.</li>
+          <li>La Generalitat asumió pérdidas que agravaron su crisis financiera.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>✅ Lo que juega a favor de Madrid</h3>
+        <ul>
+          <li><strong>IFEMA como gestor:</strong> entidad con décadas de experiencia organizando grandes ferias y congresos.</li>
+          <li><strong>Circuito semipermanente:</strong> aprovecha infraestructuras existentes, menos obra nueva que Valencia.</li>
+          <li><strong>Tejido empresarial:</strong> Madrid concentra mayor masa de patrocinadores potenciales.</li>
+          <li><strong>Contrato a 10 años:</strong> más margen para amortizar inversiones que los 7 de Valencia.</li>
+          <li><strong>90% entradas vendidas:</strong> a 3 meses de la carrera, indica alta demanda.</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="disclaimer">
+        ⚠️ <strong>Aviso metodológico:</strong> El porcentaje de similitud de riesgo es una estimación basada en
+        datos públicos y patrones históricos. No es una predicción financiera, sino una herramienta
+        de análisis para identificar factores de riesgo comunes entre ambos proyectos. Se actualiza
+        diariamente conforme el agente descubre nuevos datos de contratación.
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Generado automáticamente por <strong>GitHub Actions</strong> + <strong>Claude API</strong> · Actualización diaria a las 21:00h Madrid</p>
+    <p style="margin-top:.3rem">
+      <a href="https://github.com/madpole360/operacion-pit-lane" target="_blank">Ver repositorio →</a>
+      &nbsp;·&nbsp;
+      <a href="index.html">← Volver al informe</a>
+    </p>
+  </footer>
+
+</body>
+</html>

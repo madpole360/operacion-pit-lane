@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Madrid — Coste Real del Gran Premio | Operación Pit-Lane</title>
+  <meta name="description" content="Investigación automatizada y diaria del coste real del circuito de Fórmula 1 de Madrid. Datos de fuentes oficiales.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --ink:      #0C0C0F;
+      --card:     #15151A;
+      --surface:  #1E1E26;
+      --edge:     #2C2C3A;
+      --red:      #E10600;
+      --red-dim:  rgba(225,6,0,.12);
+      --amber:    #F59E0B;
+      --amber-dim:rgba(245,158,11,.12);
+      --blue:     #60A5FA;
+      --blue-dim: rgba(96,165,250,.12);
+      --green:    #34D399;
+      --green-dim:rgba(52,211,153,.12);
+      --txt:      #EBEBF0;
+      --muted:    #6B7280;
+      --dim:      #3A3A4A;
+    }
+
+    /* ─── Reset ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--txt);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Layout ─────────────────────────────────────────────────────── */
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ─── Header ─────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--ink);
+      border-bottom: 1px solid var(--edge);
+      padding: .75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .site-header .flag {
+      width: 32px; height: 32px;
+      background: repeating-conic-gradient(#fff 0% 25%, #000 0% 50%) 0 0 / 8px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .site-header .brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .site-header .brand span { color: var(--red); }
+    .site-header .tagline {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .05rem;
+    }
+    .site-header .badge-auto {
+      margin-left: auto;
+      background: var(--green-dim);
+      border: 1px solid rgba(52,211,153,.3);
+      color: var(--green);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .2rem .55rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .site-header .nav-links {
+      display: flex; gap: 1rem; margin-left: 1.5rem;
+    }
+    .site-header .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); transition: color .15s;
+    }
+    .site-header .nav-links a:hover, .site-header .nav-links a.active { color: var(--amber); text-decoration: none; }
+
+    /* ─── Hero ───────────────────────────────────────────────────────── */
+    .hero {
+      padding: 3.5rem 1.25rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(225,6,0,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .eyebrow {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      letter-spacing: -.01em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+
+    /* ─── Cost counter ───────────────────────────────────────────────── */
+    .cost-block {
+      display: inline-block;
+      border: 1px solid rgba(225,6,0,.4);
+      border-radius: 10px;
+      padding: 1.25rem 2.5rem;
+      position: relative;
+      background: linear-gradient(160deg, rgba(225,6,0,.06) 0%, transparent 60%);
+    }
+    .cost-block .cost-label {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .35rem;
+    }
+    .cost-block .cost-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 1;
+      color: var(--red);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.02em;
+    }
+    .cost-block .cost-sub {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .4rem;
+    }
+    .cost-block .cost-sub strong { color: var(--amber); }
+
+    /* ─── Ticker bar ─────────────────────────────────────────────────── */
+    .ticker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid var(--edge);
+      border-bottom: 1px solid var(--edge);
+      background: var(--card);
+    }
+    .ticker-item {
+      flex: 1;
+      min-width: 140px;
+      padding: .65rem 1.25rem;
+      border-right: 1px solid var(--edge);
+      text-align: center;
+    }
+    .ticker-item:last-child { border-right: none; }
+    .ticker-item .t-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .2rem;
+    }
+    .ticker-item .t-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--txt);
+    }
+    .ticker-item .t-value.red   { color: var(--red); }
+    .ticker-item .t-value.amber { color: var(--amber); }
+    .ticker-item .t-value.green { color: var(--green); }
+
+    /* ─── Sections ───────────────────────────────────────────────────── */
+    .section { padding: 2rem 0; border-bottom: 1px solid var(--edge); }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--edge);
+      margin-left: .25rem;
+    }
+
+    /* ─── Executive summary card ─────────────────────────────────────── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-left: 3px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      font-size: .9rem;
+      line-height: 1.75;
+      color: #D0D0DA;
+    }
+
+    /* ─── Findings ───────────────────────────────────────────────────── */
+    .findings-grid {
+      display: grid;
+      gap: .65rem;
+    }
+    .finding-item {
+      display: flex;
+      gap: .75rem;
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: .85rem 1rem;
+      align-items: flex-start;
+    }
+    .finding-item .fi-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-top: .45rem;
+      flex-shrink: 0;
+    }
+    .finding-item p { font-size: .88rem; color: #C8C8D2; line-height: 1.55; }
+
+    /* ─── Contracts table ────────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--edge); }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    thead tr { background: var(--surface); }
+    th {
+      padding: .65rem .85rem;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--edge);
+      white-space: nowrap;
+    }
+    td {
+      padding: .7rem .85rem;
+      border-bottom: 1px solid var(--edge);
+      vertical-align: top;
+      color: #C8C8D2;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(255,255,255,.025); }
+    td.mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    td.amount {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--txt);
+      white-space: nowrap;
+    }
+
+    /* ─── Status badges ──────────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: .18rem .55rem;
+      border-radius: 4px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge-licitado     { background: var(--amber-dim); color: var(--amber);  border: 1px solid rgba(245,158,11,.25); }
+    .badge-adjudicado   { background: var(--blue-dim);  color: var(--blue);   border: 1px solid rgba(96,165,250,.25); }
+    .badge-en_ejecucion { background: rgba(168,85,247,.12); color: #C084FC; border: 1px solid rgba(168,85,247,.25); }
+    .badge-ejecutado    { background: var(--green-dim); color: var(--green);  border: 1px solid rgba(52,211,153,.25); }
+    .badge-pendiente_confirmar, .badge-sin_confirmar { background: var(--red-dim); color: #F87171; border: 1px solid rgba(248,113,113,.25); }
+
+    /* ─── Two-col grid ───────────────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    .risk-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+    }
+    .risk-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .risk-card h3.red   { color: var(--red); }
+    .risk-card h3.amber { color: var(--amber); }
+    .risk-list { list-style: none; display: grid; gap: .45rem; }
+    .risk-list li {
+      font-size: .83rem;
+      color: #ABABBB;
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .risk-list li::before { content: attr(data-icon); position: absolute; left: 0; }
+
+    /* ─── Sources ────────────────────────────────────────────────────── */
+    .sources-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .source-pill {
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: .3rem .75rem;
+      font-size: .75rem;
+      color: var(--blue);
+      transition: border-color .15s;
+    }
+    .source-pill:hover { border-color: var(--blue); text-decoration: none; }
+
+    /* ─── Increment note ─────────────────────────────────────────────── */
+    .increment-note {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--amber-dim);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 6px;
+      padding: .35rem .75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--amber);
+      margin-top: .75rem;
+    }
+
+    /* ─── Valencia link card ─────────────────────────────────────────── */
+    .valencia-cta {
+      background: var(--card);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .valencia-cta .vc-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .valencia-cta .vc-text { flex: 1; }
+    .valencia-cta .vc-text strong { color: var(--amber); }
+    .valencia-cta .vc-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      background: var(--amber-dim); border: 1px solid rgba(245,158,11,.3);
+      color: var(--amber); padding: .5rem 1rem; border-radius: 6px;
+      font-size: .8rem; white-space: nowrap; transition: all .15s;
+    }
+    .valencia-cta .vc-link:hover { background: rgba(245,158,11,.2); text-decoration: none; }
+
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .72rem;
+      border-top: 1px solid var(--edge);
+      line-height: 1.8;
+    }
+    .site-footer a { color: var(--muted); }
+    .site-footer a:hover { color: var(--txt); }
+
+    /* ─── Counter animation ──────────────────────────────────────────── */
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .cost-number { animation: countUp .6s ease both .2s; }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .ticker-item { min-width: 45%; }
+      .cost-block { padding: 1rem 1.25rem; }
+      .site-header { flex-wrap: wrap; }
+      .site-header .nav-links { width: 100%; justify-content: center; margin-left: 0; margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HEADER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <header class="site-header">
+    <div class="flag" aria-hidden="true"></div>
+    <div>
+      <div class="brand">F1 Madrid · <span>Coste Real</span></div>
+      <div class="tagline">Investigación automatizada · Fuentes oficiales · Actualización diaria</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Informe</a>
+      <a href="valencia.html">Valencia</a>
+      <a href="https://github.com/madpole360/operacion-pit-lane" target="_blank">Repositorio</a>
+    </nav>
+    <div class="badge-auto">● Live</div>
+  </header>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HERO                                            ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="hero">
+    <p class="eyebrow">Gran Premio de España · Madrid · Circuito Madring</p>
+    <h1>¿Cuánto cuesta<br>el <em>F1 de Madrid</em>?</h1>
+    <div class="cost-block">
+      <div class="cost-label">Coste acumulado confirmado</div>
+      
+      <div class="cost-number" id="costCounter" data-target="85890374">85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.</div>
+      <div class="cost-sub">
+        Informe del <strong id="reportDate">2026-06-24 12:00</strong>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  TICKER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="ticker">
+    <div class="ticker-item">
+      <div class="t-label">Contratos detectados</div>
+      <div class="t-value red">27</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Pendientes confirmar</div>
+      <div class="t-value amber">9</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Riesgos detectados</div>
+      <div class="t-value amber">8</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Última actualización</div>
+      <div class="t-value">2026-06-24</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Próxima actualización</div>
+      <div class="t-value green">21:00h Madrid</div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  MAIN CONTENT                                    ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <main class="wrap">
+
+    <!-- ── Resumen ejecutivo ──────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📋 Resumen ejecutivo</h2>
+      <div class="summary-card">
+        INFORME INICIAL (Datos semilla). El coste confirmado asciende a 85,89 millones de euros, correspondientes a la obra principal del circuito (83,2M€ adjudicados a la UTE Acciona-Eiffage) y la asistencia tecnica de supervision (2,69M€ a la UTE CONURMA-ACTIINFRA). Existen 22 expedientes adicionales de IFEMA en distintas fases de licitacion que elevan el coste comprometido a aproximadamente 101,58 millones de euros. El Pit Building (68,1M€ adjudicado a Eiffage) esta pendiente de localizar el expediente IFEMA completo. El canon a FOM permanece sin confirmacion oficial (estimado en ~48M€/ano, 480M€ a 10 anos). El coste potencial total del proyecto podria alcanzar los 581 millones de euros, aunque esta cifra debe tratarse como estimacion. El nivel de riesgo respecto al caso Valencia se situa en MEDIO: IFEMA como promotor y el uso de infraestructuras existentes diferencian este proyecto, pero el elevado canon potencial, la dependencia de ingresos futuros y el crecimiento continuo de contratos auxiliares son factores de riesgo compartidos.
+      </div>
+      
+    </section>
+
+    <!-- ── Nuevos hallazgos ───────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🆕 Nuevos hallazgos</h2>
+      <div class="findings-grid">
+        
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Carga inicial de datos: 25 contratos/expedientes documentados desde enero 2024 hasta junio 2026.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Coste confirmado: 85.890.374,86 € (obra principal 83,2M€ + asistencia tecnica 2,69M€).</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Coste comprometido incluyendo licitaciones activas: ~101,58 millones de euros.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Pit Building adjudicado a Eiffage por 68,1M€ (pendiente verificacion del expediente IFEMA).</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Detectadas 11 pasarelas peatonales modulares por 10,2M€ (PBL) - segunda mayor partida tras la obra principal.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Canon FOM estimado en ~48M€/ano (480M€ a 10 anos). NO existe documento oficial que lo acredite.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Patrocinadores confirmados: Santander (Founding Partner) + American Express, Atletico de Madrid, Ford, Aqualy, El Corte Ingles, Heineken (Local Event Supporters). Importes NO publicados.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Litigio Dromo vs Tilke en Tribunal de Colonia (Alemania) por derechos de autor del diseno del circuito. Reclamacion: 6M€.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Vereda de los Leneros: publicada en BOCM (23/06/2026) la modificacion de trazado y desafectacion de 21.330 m². Riesgo de retrasos o recursos.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Mas del 90% de entradas vendidas a 3 meses del evento (16/06/2026).</p>
+        </div>
+        
+        
+      </div>
+    </section>
+
+    <!-- ── Contratos detectados ──────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📄 Contratos detectados (27 en histórico)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Descubierto</th>
+              <th>Fecha</th>
+              <th>Organismo</th>
+              <th>Expediente</th>
+              <th>Concepto</th>
+              <th>Importe</th>
+              <th>Estado</th>
+              <th>Fuente</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>Comunidad de Madrid</td>
+              <td class="mono">SHOW-RUN-2026</td>
+              <td>Madrid F1 Show Run.</td>
+              <td class="amount">200.000,00 €</td>
+              <td><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td><a href="https://www.comunidad.madrid" target="_blank">🔗 www.comunidad.madrid</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>Comunidad de Madrid</td>
+              <td class="mono">FANZONE-SOL-2026</td>
+              <td>Fan Zone Puerta del Sol.</td>
+              <td class="amount">121.000,00 €</td>
+              <td><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td><a href="https://www.comunidad.madrid" target="_blank">🔗 www.comunidad.madrid</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>MADRING / Comunidad Madrid</td>
+              <td class="mono">MARKETING-ANNIE-BONNIE</td>
+              <td>Comunicacion digital MADRING. Adjudicatario: Annie Bonnie.</td>
+              <td class="amount">237.620,00 € (importe potencial: 1.078.500,00 €)</td>
+              <td><span class="badge badge-adjudicado">adjudicado</span></td>
+              <td><a href="https://www.reasonwhy.es" target="_blank">🔗 www.reasonwhy.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-09-30</td>
+              <td>IFEMA Madrid / Eiffage</td>
+              <td class="mono">PIT-BUILDING-2025</td>
+              <td>Pit Building: ampliacion pabellones 1 y 2 IFEMA (boxes, oficinas tecnicas, logistica, Paddock Club, areas VIP). Pendiente localizar expediente IFEMA completo.</td>
+              <td class="amount">68.100.000,00 € (segun Eiffage y medios economicos)</td>
+              <td><span class="badge badge-pendiente_confirmar">pendiente confirmar</span></td>
+              <td><a href="https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html" target="_blank">🔗 cincodias.elpais.com</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/010</td>
+              <td>Personal temporal mediante ETT (segundo expediente).</td>
+              <td class="amount">191.156,45 € (PBL) / 1.051.211,65 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/087</td>
+              <td>Carpas y naves prefabricadas.</td>
+              <td class="amount">820.426,18 € (PBL) / 2.051.065,45 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/113</td>
+              <td>Lonas publicitarias en cubiertas IFEMA.</td>
+              <td class="amount">572.500,00 € (PBL) / 858.750,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/057</td>
+              <td>Servicio de medicina de emergencia.</td>
+              <td class="amount">296.200,00 € (PBL) / 1.036.700,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/078</td>
+              <td>Personal temporal mediante ETT.</td>
+              <td class="amount">799.457,80 € (PBL) / 4.394.484,50 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/064</td>
+              <td>Instalacion de cesped artificial. Oferta Gardenstore S.L.: 121.500 €.</td>
+              <td class="amount">121.500,00 € (oferta detectada) / 164.700,00 € (PBL)</td>
+              <td><span class="badge badge-pendiente_confirmar">pendiente confirmar</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/052</td>
+              <td>Seguros (RC, terrorismo, active assailant).</td>
+              <td class="amount">352.200,00 € (PBL) / 528.300,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/024</td>
+              <td>11 pasarelas peatonales modulares (2026-2028). Una de las mayores partidas fuera de la obra principal. Oferta NUSSLI IBERIA: 9.731.922,17 €.</td>
+              <td class="amount">10.214.611,89 € (PBL) / 22.300.484,12 € (VEC). Oferta: 9.731.922,17 €</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/023</td>
+              <td>Extintores y medios de extincion.</td>
+              <td class="amount">25.000,00 € (PBL) / 37.500,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/012</td>
+              <td>Servicio de bomberos para el evento.</td>
+              <td class="amount">185.040,00 € (PBL) / 647.640,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2026-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">26/005</td>
+              <td>Suministro de cesped artificial (41.000 m²).</td>
+              <td class="amount">225.500,00 € (PBL) / 338.250,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">6200014361</td>
+              <td>Analisis economico y financiero de Fever Group para explotacion de entradas. Contrato menor.</td>
+              <td class="amount">14.900,00 €</td>
+              <td><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">6200014240</td>
+              <td>Estudio internacional de branding F1 (UK + USA). Contrato menor.</td>
+              <td class="amount">13.850,00 €</td>
+              <td><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/229</td>
+              <td>Diseno y fabricacion del trofeo oficial.</td>
+              <td class="amount">34.500,00 € (importe maximo detectado)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/212</td>
+              <td>Vigilancia ambiental del GP.</td>
+              <td class="amount">100.000,00 € (PBL) / 260.000,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/187</td>
+              <td>Gestion de prensa, acreditaciones, protocolo, hospitality y VIP.</td>
+              <td class="amount">424.000,00 € (PBL) / 2.332.000,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/166</td>
+              <td>Experiencia de marca MADRING.</td>
+              <td class="amount">305.381,00 € (PBL) / 1.791.794,40 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/152</td>
+              <td>Produccion audiovisual integral del GP (TV, web, redes, sponsors, pantallas, drones, animaciones 3D).</td>
+              <td class="amount">236.000,00 € (PBL) / ~1.200.000,00 € (VEC estimado)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/140</td>
+              <td>Asistencia tecnica, economica y juridica para preparar licitaciones de Formula 1.</td>
+              <td class="amount">390.600,00 € (PBL) / 976.500,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/071</td>
+              <td>Estudios cuantitativos y cualitativos sobre el evento.</td>
+              <td class="amount">135.000,00 € (PBL) / 742.500,00 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">25/043</td>
+              <td>Control de calidad de contraste de las obras del circuito y Pit Building.</td>
+              <td class="amount">709.718,46 € (PBL) / 887.148,08 € (VEC)</td>
+              <td><span class="badge badge-licitado">licitado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-01-01</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">24/148 - 4000005040</td>
+              <td>Asistencia tecnica y Project Management: supervision de proyectos, obras, control tecnico, urbanizacion y Pit Building. UTE CONURMA - ACTIINFRA MADRID.</td>
+              <td class="amount">2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion) = 2.690.374,86 €</td>
+              <td><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            <tr>
+              <td class="mono">2026-06-24</td>
+              <td class="mono">2025-04-15</td>
+              <td>IFEMA Madrid</td>
+              <td class="mono">24/226</td>
+              <td>Construccion del circuito MADRING y reposicion de infraestructuras. UTE Acciona (60%) - Eiffage (40%).</td>
+              <td class="amount">83.206.500,00 € (adjudicacion) + 2.304.868,93 € (modificacion prevista)</td>
+              <td><span class="badge badge-adjudicado">adjudicado</span></td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗 licitaciones2.ifema.es</a></td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Riesgos y pendientes ───────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">⚠️ Análisis de riesgos</h2>
+      <div class="two-col">
+
+        <div class="risk-card">
+          <h3 class="red">Riesgos detectados</h3>
+          <ul class="risk-list">
+            
+            
+            <li data-icon="🔴">El canon a FOM podria superar ampliamente el coste de construccion del circuito (480M€ estimado vs 83M€ obra).</li>
+            
+            <li data-icon="🔴">Aparicion continua de contratos satelite que incrementan el coste total de forma silenciosa.</li>
+            
+            <li data-icon="🔴">Posibles costes publicos indirectos no contabilizados: seguridad, movilidad, transporte publico, limpieza, emergencias.</li>
+            
+            <li data-icon="🔴">Falta de transparencia: IFEMA es 100% publica (Ayuntamiento + Comunidad de Madrid) pero el discurso oficial niega el uso de dinero publico.</li>
+            
+            <li data-icon="🔴">Vereda de los Leneros: la desafectacion publicada en BOCM podria generar retrasos, recursos judiciales o modificaciones del trazado.</li>
+            
+            <li data-icon="🔴">Dependencia de patrocinadores privados (con importes no publicados) para cubrir el canon anual de ~48M€.</li>
+            
+            <li data-icon="🔴">Riesgo de sobrecostes en las licitaciones pendientes de adjudicacion (VEC total muy superior a PBL).</li>
+            
+            <li data-icon="🔴">Paralelismo con Valencia: mismo discurso de inversion privada, elevado canon, crecimiento de contratos auxiliares.</li>
+            
+            
+          </ul>
+        </div>
+
+        <div class="risk-card">
+          <h3 class="amber">Partidas pendientes de confirmar</h3>
+          <ul class="risk-list">
+            
+            
+            <li data-icon="❓">Canon anual a FOM: estimado en 48M€/ano, 480M€ a 10 anos. Sin documento oficial.</li>
+            
+            <li data-icon="❓">Pit Building (68,1M€): localizar expediente IFEMA completo antes de incorporarlo al coste confirmado.</li>
+            
+            <li data-icon="❓">Costes de seguridad y movilidad del Ayuntamiento de Madrid para el evento.</li>
+            
+            <li data-icon="❓">Costes operativos del fin de semana de carrera (personal, logistica, montaje).</li>
+            
+            <li data-icon="❓">Coste de la bandera gigante (estimado 128.000-500.000 €). NO localizado.</li>
+            
+            <li data-icon="❓">Coste del acto de presentacion oficial (16/06/2026) (estimado 250.000-400.000 €). NO localizado.</li>
+            
+            <li data-icon="❓">Coste del litigio Dromo (indemnizacion reclamada: 6M€).</li>
+            
+            <li data-icon="❓">Detalle del convenio FOM: reparto de riesgos economicos, avales, aportaciones publicas, ayudas indirectas.</li>
+            
+            <li data-icon="❓">Importes reales de los contratos de patrocinio.</li>
+            
+            
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Valencia CTA ────────────────────────────────────── -->
+    
+    <section class="section">
+      <h2 class="section-title">⚠️ Comparativa con el caso Valencia</h2>
+      
+      
+      <div class="valencia-cta">
+        <div class="vc-icon">⚠️</div>
+        <div class="vc-text">
+          <strong>55% de similitud de riesgo</strong> con el caso del circuito urbano de Valencia (2008-2012).<br>
+          <span style="font-size:.82rem;color:var(--muted);">Se asigna un 55% (nivel MEDIO) de similitud de riesgo. Diferencias clave con Valencia: (1) IFEMA es un operador con experiencia en grandes eventos frente a la gestion puramente politica de Valencia; (2) el circuito aprovecha infraestructuras existentes de IFEMA, reduciendo obra nueva; (3) Madrid tiene mayor tejido empresarial y capacidad hotelera. Sin embargo, comparte riesgos significativos: el canon a FOM es el doble que el de Valencia (~48M€ vs ~26M€), la falta de transparencia documental es similar, y el crecimiento de contratos auxiliares sigue el mismo patron. El riesgo es real pero menor que en Valencia.</span>
+        </div>
+        <a href="valencia.html" class="vc-link">Ver comparativa completa →</a>
+      </div>
+    </section>
+    
+
+    <!-- ── Fuentes ─────────────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🔗 Fuentes consultadas hoy</h2>
+      <div class="sources-list">
+        
+        
+        <a class="source-pill" href="https://licitaciones2.ifema.es" target="_blank">licitaciones2.ifema.es</a>
+        
+        <a class="source-pill" href="https://contrataciondelestado.es" target="_blank">contrataciondelestado.es</a>
+        
+        <a class="source-pill" href="https://www.madring.com" target="_blank">www.madring.com</a>
+        
+        <a class="source-pill" href="https://www.madring.com/circuito/construccion" target="_blank">www.madring.com</a>
+        
+        <a class="source-pill" href="https://www.madring.com/en/sponsors" target="_blank">www.madring.com</a>
+        
+        <a class="source-pill" href="https://corp.formula1.com/madrid-to-join-formula-1-calendar-from-2026-in-new-long-term-deal/" target="_blank">corp.formula1.com</a>
+        
+        <a class="source-pill" href="https://www.reuters.com/sports/formula1/acciona-eiffage-win-contract-build-madrids-new-formula-1-circuit-2025-04-16/" target="_blank">www.reuters.com</a>
+        
+        <a class="source-pill" href="https://as.com/motor/formula_1/ifema-acciona-y-eiffage-firman-el-contrato-para-construir-el-circuito-de-f1-de-madrid-n/" target="_blank">as.com</a>
+        
+        <a class="source-pill" href="https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html" target="_blank">cincodias.elpais.com</a>
+        
+        <a class="source-pill" href="https://www.santander.com/en/press-room/press-releases/2025/12/santander-will-be-a-founding-partner-of-the-formula-1-tag-heuer-spanish-grand-prix-2026" target="_blank">www.santander.com</a>
+        
+        <a class="source-pill" href="https://www.reasonwhy.es" target="_blank">www.reasonwhy.es</a>
+        
+        <a class="source-pill" href="https://www.comunidad.madrid/transparencia" target="_blank">www.comunidad.madrid</a>
+        
+        <a class="source-pill" href="https://transparencia.madrid.es" target="_blank">transparencia.madrid.es</a>
+        
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  FOOTER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <footer class="site-footer">
+    <p>Generado automáticamente por <strong>GitHub Actions</strong> + <strong>Claude API</strong> · Actualización diaria a las 21:00h Madrid</p>
+    <p style="margin-top:.3rem">
+      <a href="https://github.com/madpole360/operacion-pit-lane" target="_blank">Ver repositorio →</a>
+      &nbsp;·&nbsp;
+      <a href="archive/" target="_blank">Histórico de informes →</a>
+      &nbsp;·&nbsp;
+      <a href="valencia.html">Comparativa Valencia →</a>
+      &nbsp;·&nbsp; Todos los datos proceden de fuentes oficiales públicas
+    </p>
+  </footer>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  SCRIPTS                                         ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <script>
+    /* Animación del contador de coste al cargar la página */
+    (function() {
+      const el = document.getElementById('costCounter');
+      if (!el) return;
+
+      const raw = el.dataset.target;
+      const target = parseFloat(raw);
+      if (isNaN(target) || target === 0) return;
+
+      const duration = 1800;
+      const start = performance.now();
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function formatEUR(n) {
+        return new Intl.NumberFormat('es-ES', {
+          style: 'currency',
+          currency: 'EUR',
+          maximumFractionDigits: 0
+        }).format(Math.round(n));
+      }
+
+      function frame(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = target * easeOut(progress);
+        el.textContent = formatEUR(value);
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    })();
+  </script>
+
+</body>
+</html>

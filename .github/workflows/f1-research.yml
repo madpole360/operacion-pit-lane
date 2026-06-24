@@ -1,0 +1,44 @@
+name: 🏎️ F1 Madrid — Investigación Diaria
+
+on:
+  schedule:
+    # 21:00 Madrid en horario de verano (CEST = UTC+2 → 19:00 UTC)
+    # En invierno (CET = UTC+1) cambiar a: 0 20 * * *
+    - cron: '0 19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  investigate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: 🔍 Ejecutar agente investigador
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/research_agent.py
+
+      - name: 📤 Publicar informe en GitHub Pages
+        run: |
+          git config --local user.email "pit-lane-bot@github-actions"
+          git config --local user.name "🏎️ Pit Lane Bot"
+          git add docs/
+          git add data/ 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "📊 Informe diario $(date +'%Y-%m-%d')"
+          git push

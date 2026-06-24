@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Madrid — Coste Real del Gran Premio | Operación Pit-Lane</title>
+  <meta name="description" content="Investigación automatizada y diaria del coste real del circuito de Fórmula 1 de Madrid. Datos de fuentes oficiales.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --ink:      #0C0C0F;
+      --card:     #15151A;
+      --surface:  #1E1E26;
+      --edge:     #2C2C3A;
+      --red:      #E10600;
+      --red-dim:  rgba(225,6,0,.12);
+      --amber:    #F59E0B;
+      --amber-dim:rgba(245,158,11,.12);
+      --blue:     #60A5FA;
+      --blue-dim: rgba(96,165,250,.12);
+      --green:    #34D399;
+      --green-dim:rgba(52,211,153,.12);
+      --txt:      #EBEBF0;
+      --muted:    #6B7280;
+      --dim:      #3A3A4A;
+    }
+
+    /* ─── Reset ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--txt);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Layout ─────────────────────────────────────────────────────── */
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ─── Header ─────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--ink);
+      border-bottom: 1px solid var(--edge);
+      padding: .75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .site-header .flag {
+      width: 32px; height: 32px;
+      background: repeating-conic-gradient(#fff 0% 25%, #000 0% 50%) 0 0 / 8px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .site-header .brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .site-header .brand span { color: var(--red); }
+    .site-header .tagline {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .05rem;
+    }
+    .site-header .badge-auto {
+      margin-left: auto;
+      background: var(--green-dim);
+      border: 1px solid rgba(52,211,153,.3);
+      color: var(--green);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .2rem .55rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .site-header .nav-links {
+      display: flex; gap: 1rem; margin-left: 1.5rem;
+    }
+    .site-header .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); transition: color .15s;
+    }
+    .site-header .nav-links a:hover, .site-header .nav-links a.active { color: var(--amber); text-decoration: none; }
+
+    /* ─── Hero ───────────────────────────────────────────────────────── */
+    .hero {
+      padding: 3.5rem 1.25rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(225,6,0,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .eyebrow {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      letter-spacing: -.01em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+
+    /* ─── Cost counter ───────────────────────────────────────────────── */
+    .cost-block {
+      display: inline-block;
+      border: 1px solid rgba(225,6,0,.4);
+      border-radius: 10px;
+      padding: 1.25rem 2.5rem;
+      position: relative;
+      background: linear-gradient(160deg, rgba(225,6,0,.06) 0%, transparent 60%);
+    }
+    .cost-block .cost-label {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .35rem;
+    }
+    .cost-block .cost-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 1;
+      color: var(--red);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.02em;
+    }
+    .cost-block .cost-sub {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .4rem;
+    }
+    .cost-block .cost-sub strong { color: var(--amber); }
+
+    /* ─── Ticker bar ─────────────────────────────────────────────────── */
+    .ticker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid var(--edge);
+      border-bottom: 1px solid var(--edge);
+      background: var(--card);
+    }
+    .ticker-item {
+      flex: 1;
+      min-width: 140px;
+      padding: .65rem 1.25rem;
+      border-right: 1px solid var(--edge);
+      text-align: center;
+    }
+    .ticker-item:last-child { border-right: none; }
+    .ticker-item .t-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .2rem;
+    }
+    .ticker-item .t-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--txt);
+    }
+    .ticker-item .t-value.red   { color: var(--red); }
+    .ticker-item .t-value.amber { color: var(--amber); }
+    .ticker-item .t-value.green { color: var(--green); }
+
+    /* ─── Sections ───────────────────────────────────────────────────── */
+    .section { padding: 2rem 0; border-bottom: 1px solid var(--edge); }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--edge);
+      margin-left: .25rem;
+    }
+
+    /* ─── Executive summary card ─────────────────────────────────────── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-left: 3px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      font-size: .9rem;
+      line-height: 1.75;
+      color: #D0D0DA;
+    }
+
+    /* ─── Findings ───────────────────────────────────────────────────── */
+    .findings-grid {
+      display: grid;
+      gap: .65rem;
+    }
+    .finding-item {
+      display: flex;
+      gap: .75rem;
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: .85rem 1rem;
+      align-items: flex-start;
+    }
+    .finding-item .fi-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-top: .45rem;
+      flex-shrink: 0;
+    }
+    .finding-item p { font-size: .88rem; color: #C8C8D2; line-height: 1.55; }
+
+    /* ─── Contracts table ────────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--edge); }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    thead tr { background: var(--surface); }
+    th {
+      padding: .65rem .85rem;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--edge);
+      white-space: nowrap;
+    }
+    td {
+      padding: .7rem .85rem;
+      border-bottom: 1px solid var(--edge);
+      vertical-align: top;
+      color: #C8C8D2;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(255,255,255,.025); }
+    td.mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    td.amount {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--txt);
+      white-space: nowrap;
+    }
+
+    /* ─── Status badges ──────────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: .18rem .55rem;
+      border-radius: 4px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge-licitado     { background: var(--amber-dim); color: var(--amber);  border: 1px solid rgba(245,158,11,.25); }
+    .badge-adjudicado   { background: var(--blue-dim);  color: var(--blue);   border: 1px solid rgba(96,165,250,.25); }
+    .badge-en_ejecucion { background: rgba(168,85,247,.12); color: #C084FC; border: 1px solid rgba(168,85,247,.25); }
+    .badge-ejecutado    { background: var(--green-dim); color: var(--green);  border: 1px solid rgba(52,211,153,.25); }
+    .badge-pendiente_confirmar, .badge-sin_confirmar { background: var(--red-dim); color: #F87171; border: 1px solid rgba(248,113,113,.25); }
+
+    /* ─── Two-col grid ───────────────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    .risk-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+    }
+    .risk-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .risk-card h3.red   { color: var(--red); }
+    .risk-card h3.amber { color: var(--amber); }
+    .risk-list { list-style: none; display: grid; gap: .45rem; }
+    .risk-list li {
+      font-size: .83rem;
+      color: #ABABBB;
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .risk-list li::before { content: attr(data-icon); position: absolute; left: 0; }
+
+    /* ─── Sources ────────────────────────────────────────────────────── */
+    .sources-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .source-pill {
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: .3rem .75rem;
+      font-size: .75rem;
+      color: var(--blue);
+      transition: border-color .15s;
+    }
+    .source-pill:hover { border-color: var(--blue); text-decoration: none; }
+
+    /* ─── Increment note ─────────────────────────────────────────────── */
+    .increment-note {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--amber-dim);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 6px;
+      padding: .35rem .75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--amber);
+      margin-top: .75rem;
+    }
+
+    /* ─── Valencia link card ─────────────────────────────────────────── */
+    .valencia-cta {
+      background: var(--card);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .valencia-cta .vc-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .valencia-cta .vc-text { flex: 1; }
+    .valencia-cta .vc-text strong { color: var(--amber); }
+    .valencia-cta .vc-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      background: var(--amber-dim); border: 1px solid rgba(245,158,11,.3);
+      color: var(--amber); padding: .5rem 1rem; border-radius: 6px;
+      font-size: .8rem; white-space: nowrap; transition: all .15s;
+    }
+    .valencia-cta .vc-link:hover { background: rgba(245,158,11,.2); text-decoration: none; }
+
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .72rem;
+      border-top: 1px solid var(--edge);
+      line-height: 1.8;
+    }
+    .site-footer a { color: var(--muted); }
+    .site-footer a:hover { color: var(--txt); }
+
+    /* ─── Counter animation ──────────────────────────────────────────── */
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .cost-number { animation: countUp .6s ease both .2s; }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .ticker-item { min-width: 45%; }
+      .cost-block { padding: 1rem 1.25rem; }
+      .site-header { flex-wrap: wrap; }
+      .site-header .nav-links { width: 100%; justify-content: center; margin-left: 0; margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HEADER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <header class="site-header">
+    <div class="flag" aria-hidden="true"></div>
+    <div>
+      <div class="brand">F1 Madrid · <span>Coste Real</span></div>
+      <div class="tagline">Investigación automatizada · Fuentes oficiales · Actualización diaria</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Informe</a>
+      <a href="valencia.html">Valencia</a>
+      <a href="https://github.com/madpole360/operacion-pit-lane" target="_blank">Repositorio</a>
+    </nav>
+    <div class="badge-auto">● Live</div>
+  </header>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  HERO                                            ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="hero">
+    <p class="eyebrow">Gran Premio de España · Madrid · Circuito Madring</p>
+    <h1>¿Cuánto cuesta<br>el <em>F1 de Madrid</em>?</h1>
+    <div class="cost-block">
+      <div class="cost-label">Coste acumulado confirmado</div>
+      {% set coste_raw = data.coste_acumulado_confirmado | float | default(0) %}
+      <div class="cost-number" id="costCounter" data-target="{{ coste_raw | int }}">{{ data.coste_acumulado_texto or 'Investigando...' }}</div>
+      <div class="cost-sub">
+        Informe del <strong id="reportDate">{{ data.fecha_madrid or data.fecha }}</strong>
+        {% if data.incremento_respecto_anterior and data.incremento_respecto_anterior > 0 %}
+        · Incremento respecto al anterior: <strong>+{{ "{:,.0f}".format(data.incremento_respecto_anterior) }} €</strong>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  TICKER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="ticker">
+    <div class="ticker-item">
+      <div class="t-label">Contratos detectados</div>
+      <div class="t-value red">{{ contracts_db | length }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Pendientes confirmar</div>
+      <div class="t-value amber">{{ data.partidas_pendientes_confirmar | length if data.partidas_pendientes_confirmar else 0 }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Riesgos detectados</div>
+      <div class="t-value amber">{{ data.riesgos_detectados | length if data.riesgos_detectados else 0 }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Última actualización</div>
+      <div class="t-value">{{ data.fecha or today }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Próxima actualización</div>
+      <div class="t-value green">21:00h Madrid</div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  MAIN CONTENT                                    ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <main class="wrap">
+
+    <!-- ── Resumen ejecutivo ──────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📋 Resumen ejecutivo</h2>
+      <div class="summary-card">
+        {{ data.resumen_ejecutivo or 'Pendiente de la primera investigación programada.' }}
+      </div>
+      {% if data.incremento_respecto_anterior and data.incremento_respecto_anterior > 0 %}
+      <div class="increment-note">
+        ▲ +{{ "{:,.0f}".format(data.incremento_respecto_anterior) }} € respecto al informe anterior
+      </div>
+      {% endif %}
+    </section>
+
+    <!-- ── Nuevos hallazgos ───────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🆕 Nuevos hallazgos</h2>
+      <div class="findings-grid">
+        {% if data.nuevos_hallazgos %}
+        {% for h in data.nuevos_hallazgos %}
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>{{ h }}</p>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>No se han detectado nuevos hallazgos en la investigación de hoy.</p>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- ── Contratos detectados ──────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📄 Contratos detectados ({{ contracts_db | length }} en histórico)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Descubierto</th>
+              <th>Fecha</th>
+              <th>Organismo</th>
+              <th>Expediente</th>
+              <th>Concepto</th>
+              <th>Importe</th>
+              <th>Estado</th>
+              <th>Fuente</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if contracts_db %}
+            {% for c in contracts_db | reverse %}
+            <tr>
+              <td class="mono">{{ c.descubierto_el or '—' }}</td>
+              <td class="mono">{{ c.fecha or '—' }}</td>
+              <td>{{ c.organismo or '—' }}</td>
+              <td class="mono">{{ c.expediente or '—' }}</td>
+              <td>{{ c.concepto or '—' }}</td>
+              <td class="amount">{{ c.importe_texto or '—' }}</td>
+              <td><span class="badge badge-{{ c.estado or 'sin_confirmar' }}">{{ (c.estado or 'sin confirmar').replace('_', ' ') }}</span></td>
+              <td>{% if c.fuente %}<a href="{{ c.fuente }}" target="_blank">🔗 {{ c.fuente.split('/')[2] if c.fuente.startswith('http') else 'Enlace' }}</a>{% else %}—{% endif %}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td class="mono">—</td><td class="mono">—</td><td>—</td><td class="mono">—</td>
+              <td>Aún no se ha detectado ningún contrato</td><td class="amount">—</td>
+              <td><span class="badge badge-sin_confirmar">Sin datos</span></td><td>—</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Riesgos y pendientes ───────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">⚠️ Análisis de riesgos</h2>
+      <div class="two-col">
+
+        <div class="risk-card">
+          <h3 class="red">Riesgos detectados</h3>
+          <ul class="risk-list">
+            {% if data.riesgos_detectados %}
+            {% for r in data.riesgos_detectados %}
+            <li data-icon="🔴">{{ r }}</li>
+            {% endfor %}
+            {% else %}
+            <li data-icon="🟡">Sin riesgos identificados en la investigación de hoy.</li>
+            {% endif %}
+          </ul>
+        </div>
+
+        <div class="risk-card">
+          <h3 class="amber">Partidas pendientes de confirmar</h3>
+          <ul class="risk-list">
+            {% if data.partidas_pendientes_confirmar %}
+            {% for p in data.partidas_pendientes_confirmar %}
+            <li data-icon="❓">{{ p }}</li>
+            {% endfor %}
+            {% else %}
+            <li data-icon="❓">Sin partidas pendientes registradas.</li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Valencia CTA ────────────────────────────────────── -->
+    {% if data.comparativa_valencia %}
+    <section class="section">
+      <h2 class="section-title">⚠️ Comparativa con el caso Valencia</h2>
+      {% set cv = data.comparativa_valencia %}
+      {% set pct = cv.porcentaje_similitud_riesgo | int if cv.porcentaje_similitud_riesgo else 0 %}
+      <div class="valencia-cta">
+        <div class="vc-icon">⚠️</div>
+        <div class="vc-text">
+          <strong>{{ pct }}% de similitud de riesgo</strong> con el caso del circuito urbano de Valencia (2008-2012).<br>
+          <span style="font-size:.82rem;color:var(--muted);">{{ cv.justificacion or '' }}</span>
+        </div>
+        <a href="valencia.html" class="vc-link">Ver comparativa completa →</a>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── Fuentes ─────────────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🔗 Fuentes consultadas hoy</h2>
+      <div class="sources-list">
+        {% if data.fuentes_consultadas %}
+        {% for f in data.fuentes_consultadas %}
+        <a class="source-pill" href="{{ f }}" target="_blank">{{ f.split('/')[2] if f.startswith('http') else f }}</a>
+        {% endfor %}
+        {% else %}
+        <span class="source-pill" style="color:var(--muted);">Sin fuentes registradas hoy</span>
+        {% endif %}
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  FOOTER                                          ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <footer class="site-footer">
+    <p>Generado automáticamente por <strong>GitHub Actions</strong> + <strong>Claude API</strong> · Actualización diaria a las 21:00h Madrid</p>
+    <p style="margin-top:.3rem">
+      <a href="https://github.com/madpole360/operacion-pit-lane" target="_blank">Ver repositorio →</a>
+      &nbsp;·&nbsp;
+      <a href="archive/" target="_blank">Histórico de informes →</a>
+      &nbsp;·&nbsp;
+      <a href="valencia.html">Comparativa Valencia →</a>
+      &nbsp;·&nbsp; Todos los datos proceden de fuentes oficiales públicas
+    </p>
+  </footer>
+
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  SCRIPTS                                         ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <script>
+    /* Animación del contador de coste al cargar la página */
+    (function() {
+      const el = document.getElementById('costCounter');
+      if (!el) return;
+
+      const raw = el.dataset.target;
+      const target = parseFloat(raw);
+      if (isNaN(target) || target === 0) return;
+
+      const duration = 1800;
+      const start = performance.now();
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function formatEUR(n) {
+        return new Intl.NumberFormat('es-ES', {
+          style: 'currency',
+          currency: 'EUR',
+          maximumFractionDigits: 0
+        }).format(Math.round(n));
+      }
+
+      function frame(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = target * easeOut(progress);
+        el.textContent = formatEUR(value);
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    })();
+  </script>
+
+</body>
+</html>
