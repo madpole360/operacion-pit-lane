@@ -381,6 +381,51 @@ def build_seed_data():
             "balance_neto_texto": "+566 millones de euros (positivo para IFEMA/organizadores)",
             "nota": "Todas las cifras de esta proyeccion son ESTIMACIONES basadas en datos publicos disponibles y declaraciones de los organizadores. El canon FOM no esta confirmado oficialmente. Los ingresos por patrocinio no tienen importes publicados. Esta proyeccion debe revisarse conforme se conozcan datos reales."
         },
+        "costes_indirectos": [
+            {
+                "organismo": "Ayuntamiento de Madrid",
+                "concepto": "Policia Municipal: despliegue de seguridad durante el evento (3 dias)",
+                "estimacion": "1.500.000 - 3.000.000 €",
+                "nota": "Estimacion basada en eventos comparables. Sin expediente especifico publicado."
+            },
+            {
+                "organismo": "Ayuntamiento de Madrid",
+                "concepto": "SAMUR / Proteccion Civil: servicios sanitarios y emergencias",
+                "estimacion": "800.000 - 1.200.000 €",
+                "nota": "Coste del personal sanitario adicional y ambulancias."
+            },
+            {
+                "organismo": "Ayuntamiento de Madrid",
+                "concepto": "Movilidad y trafico: cortes de calles, desvios, señalizacion especial",
+                "estimacion": "500.000 - 1.000.000 €",
+                "nota": "Incluye plan de movilidad, agentes de movilidad, vallas y conos."
+            },
+            {
+                "organismo": "EMT Madrid",
+                "concepto": "Refuerzo de lineas de autobus + vinilado de vehiculos con imagen F1",
+                "estimacion": "300.000 - 600.000 €",
+                "nota": "Autobuses vinilados avistados en Madrid. Coste no publicado."
+            },
+            {
+                "organismo": "Ayuntamiento de Madrid",
+                "concepto": "Limpieza viaria post-evento: refuerzo de barrido y recogida de residuos",
+                "estimacion": "400.000 - 800.000 €",
+                "nota": "Estimacion para evento de 110.000 asistentes/dia."
+            },
+            {
+                "organismo": "Ayuntamiento de Madrid",
+                "concepto": "Adecuacion de zonas verdes y espacio publico colindante al circuito",
+                "estimacion": "200.000 - 500.000 €",
+                "nota": "Posible partida de urbanizacion no incluida en contratos IFEMA."
+            },
+            {
+                "organismo": "Comunidad de Madrid",
+                "concepto": "Promocion turistica institucional asociada al GP",
+                "estimacion": "500.000 - 1.500.000 €",
+                "nota": "Campanas institucionales de Turismo de Madrid. Sin desglose F1 especifico."
+            }
+        ],
+        "costes_indirectos_total_estimado": "4.200.000 - 8.600.000 € por edicion",
         "partidas_pendientes_confirmar": [
             "Canon anual a FOM: estimado en 48M€/ano, 480M€ a 10 anos. Sin documento oficial.",
             "Pit Building (68,1M€): localizar expediente IFEMA completo antes de incorporarlo al coste confirmado.",
