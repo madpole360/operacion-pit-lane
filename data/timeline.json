@@ -5,5 +5,12 @@
     "coste_texto": "85,89 millones €",
     "num_contratos": 27,
     "porcentaje_riesgo_valencia": 55
+  },
+  {
+    "fecha": "2026-06-24",
+    "coste_acumulado": 0,
+    "coste_texto": "No disponible (error en investigación)",
+    "num_contratos": 0,
+    "porcentaje_riesgo_valencia": null
   }
 ]
