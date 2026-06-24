@@ -315,7 +315,28 @@
   ],
   "coste_acumulado_confirmado": 85890374.86,
   "coste_acumulado_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+  "coste_comprometido": 101580000.0,
+  "coste_comprometido_texto": "101,58 millones de euros (costes confirmados + PBL de licitaciones en curso).",
   "incremento_respecto_anterior": 0,
+  "proyeccion_10_anios": {
+    "gastos_estimados": 934000000,
+    "gastos_estimados_texto": "~934 millones de euros",
+    "gastos_desglose": [
+      "Infraestructura inicial (obra + Pit Building + supervision): ~154M€",
+      "Canon anual FOM: ~48M€/ano × 10 anos = ~480M€",
+      "Costes operativos anuales (personal, montaje, servicios): ~30M€/ano × 10 = ~300M€"
+    ],
+    "ingresos_estimados": 1500000000,
+    "ingresos_estimados_texto": "~1.500 millones de euros",
+    "ingresos_desglose": [
+      "Venta de entradas (~110.000 espectadores/dia × 3 dias): ~100M€/ano × 10 = ~1.000M€",
+      "Patrocinios y derechos comerciales: ~40M€/ano × 10 = ~400M€",
+      "Hospitality y experiencias VIP: ~10M€/ano × 10 = ~100M€"
+    ],
+    "balance_neto": 566000000,
+    "balance_neto_texto": "+566 millones de euros (positivo para IFEMA/organizadores)",
+    "nota": "Todas las cifras de esta proyeccion son ESTIMACIONES basadas en datos publicos disponibles y declaraciones de los organizadores. El canon FOM no esta confirmado oficialmente. Los ingresos por patrocinio no tienen importes publicados. Esta proyeccion debe revisarse conforme se conozcan datos reales."
+  },
   "partidas_pendientes_confirmar": [
     "Canon anual a FOM: estimado en 48M€/ano, 480M€ a 10 anos. Sin documento oficial.",
     "Pit Building (68,1M€): localizar expediente IFEMA completo antes de incorporarlo al coste confirmado.",

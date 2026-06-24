@@ -448,11 +448,19 @@
   <div class="hero">
     <p class="eyebrow">Gran Premio de España · Madrid · Circuito Madring</p>
     <h1>¿Cuánto cuesta<br>la <em>F1 de Madrid</em>?</h1>
-    <div class="cost-block">
-      <div class="cost-label">Coste acumulado confirmado</div>
-      
-      <div class="cost-number" id="costCounter" data-target="85890374">85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.</div>
-      <div class="cost-sub">
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+      <div class="cost-block">
+        <div class="cost-label">Coste acumulado confirmado</div>
+        
+        <div class="cost-number" id="costCounter" data-target="85890374">85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.</div>
+      </div>
+      <div class="cost-block" style="border-color:rgba(245,158,11,.4);background:linear-gradient(160deg,rgba(245,158,11,.06) 0%,transparent 60%);">
+        <div class="cost-label">Coste comprometido (+ licitaciones)</div>
+        
+        <div class="cost-number" id="costCompro" data-target="101580000" style="color:var(--amber);">101,58 millones de euros (costes confirmados + PBL de licitaciones en curso).</div>
+      </div>
+    </div>
+    <div class="cost-sub" style="margin-top:.75rem;">
         Informe del <strong id="reportDate">2026-06-24 12:00</strong>
         
       </div>
@@ -942,6 +950,57 @@
       </div>
     </section>
 
+    <!-- ── Proyeccion 10 anos ────────────────────────────────── -->
+    
+    <section class="section">
+      <h2 class="section-title">📈 Proyección a 10 años (2026–2035)</h2>
+      
+      <div class="ticker" style="margin-bottom:1.25rem;">
+        <div class="ticker-item">
+          <div class="t-label">Gastos estimados</div>
+          <div class="t-value red">~934 millones de euros</div>
+        </div>
+        <div class="ticker-item">
+          <div class="t-label">Ingresos estimados</div>
+          <div class="t-value green">~1.500 millones de euros</div>
+        </div>
+        <div class="ticker-item">
+          <div class="t-label">Balance neto</div>
+          <div class="t-value green">+566 millones de euros (positivo para IFEMA/organizadores)</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="risk-card">
+          <h3 class="red">Gastos estimados</h3>
+          <ul class="risk-list">
+            
+            <li data-icon="💸">Infraestructura inicial (obra + Pit Building + supervision): ~154M€</li>
+            
+            <li data-icon="💸">Canon anual FOM: ~48M€/ano × 10 anos = ~480M€</li>
+            
+            <li data-icon="💸">Costes operativos anuales (personal, montaje, servicios): ~30M€/ano × 10 = ~300M€</li>
+            
+          </ul>
+        </div>
+        <div class="risk-card">
+          <h3 class="green" style="color:var(--green) !important;">Ingresos estimados</h3>
+          <ul class="risk-list">
+            
+            <li data-icon="💰">Venta de entradas (~110.000 espectadores/dia × 3 dias): ~100M€/ano × 10 = ~1.000M€</li>
+            
+            <li data-icon="💰">Patrocinios y derechos comerciales: ~40M€/ano × 10 = ~400M€</li>
+            
+            <li data-icon="💰">Hospitality y experiencias VIP: ~10M€/ano × 10 = ~100M€</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <p class="disclaimer" style="margin-top:1rem;background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);border-radius:8px;padding:.85rem 1.15rem;font-size:.78rem;color:var(--muted);line-height:1.65;">⚠️ Todas las cifras de esta proyeccion son ESTIMACIONES basadas en datos publicos disponibles y declaraciones de los organizadores. El canon FOM no esta confirmado oficialmente. Los ingresos por patrocinio no tienen importes publicados. Esta proyeccion debe revisarse conforme se conozcan datos reales.</p>
+      
+    </section>
+    
+
     <!-- ── Valencia CTA ────────────────────────────────────── -->
     
     <section class="section">
@@ -1014,37 +1073,28 @@
   <!-- ║  SCRIPTS                                         ║ -->
   <!-- ╚══════════════════════════════════════════════════╝ -->
   <script>
-    /* Animación del contador de coste al cargar la página */
+    /* Animación de los contadores de coste al cargar la página */
     (function() {
-      const el = document.getElementById('costCounter');
-      if (!el) return;
-
-      const raw = el.dataset.target;
-      const target = parseFloat(raw);
-      if (isNaN(target) || target === 0) return;
-
-      const duration = 1800;
-      const start = performance.now();
-
-      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
-      function formatEUR(n) {
-        return new Intl.NumberFormat('es-ES', {
-          style: 'currency',
-          currency: 'EUR',
-          maximumFractionDigits: 0
-        }).format(Math.round(n));
+      function animateCounter(elId, duration) {
+        const el = document.getElementById(elId);
+        if (!el) return;
+        const target = parseFloat(el.dataset.target);
+        if (isNaN(target) || target === 0) return;
+        const start = performance.now();
+        function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+        function formatEUR(n) {
+          return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.round(n));
+        }
+        function frame(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          el.textContent = formatEUR(target * easeOut(progress));
+          if (progress < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
       }
-
-      function frame(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const value = target * easeOut(progress);
-        el.textContent = formatEUR(value);
-        if (progress < 1) requestAnimationFrame(frame);
-      }
-
-      requestAnimationFrame(frame);
+      animateCounter('costCounter', 1800);
+      animateCounter('costCompro', 2200);
     })();
   </script>
 
