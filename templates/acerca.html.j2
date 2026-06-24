@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script data-goatcounter="https://madpole360.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <title>Acerca de — Operación Pit-Lane</title>
+  <meta name="description" content="Cómo funciona Operación Pit-Lane: investigación automatizada sobre el coste real del GP de F1 de Madrid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:      #0C0C0F;
+      --card:     #15151A;
+      --surface:  #1E1E26;
+      --edge:     #2C2C3A;
+      --red:      #E10600;
+      --red-dim:  rgba(225,6,0,.12);
+      --amber:    #F59E0B;
+      --amber-dim:rgba(245,158,11,.12);
+      --blue:     #60A5FA;
+      --blue-dim: rgba(96,165,250,.12);
+      --green:    #34D399;
+      --green-dim:rgba(52,211,153,.12);
+      --txt:      #EBEBF0;
+      --muted:    #6B7280;
+      --dim:      #3A3A4A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--txt);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 1.25rem; }
+
+    .site-header {
+      background: var(--ink);
+      border-bottom: 1px solid var(--edge);
+      padding: .75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .site-header .flag {
+      width: 32px; height: 32px;
+      background: repeating-conic-gradient(#fff 0% 25%, #000 0% 50%) 0 0 / 8px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .site-header .brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .site-header .brand span { color: var(--red); }
+    .site-header .tagline {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .05rem;
+    }
+    .site-header .badge-auto {
+      margin-left: auto;
+      background: var(--green-dim);
+      border: 1px solid rgba(52,211,153,.3);
+      color: var(--green);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .2rem .55rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .site-header .nav-links {
+      display: flex; gap: 1rem; margin-left: 1.5rem;
+    }
+    .site-header .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); transition: color .15s;
+    }
+    .site-header .nav-links a:hover, .site-header .nav-links a.active { color: var(--amber); text-decoration: none; }
+
+    .section { padding: 2rem 0; border-bottom: 1px solid var(--edge); }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--edge);
+      margin-left: .25rem;
+    }
+
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      font-size: .9rem;
+      line-height: 1.75;
+      color: #D0D0DA;
+    }
+    .summary-card p { margin-bottom: .85rem; }
+    .summary-card p:last-child { margin-bottom: 0; }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: .75rem;
+    }
+    .tech-card {
+      background: var(--card);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+    }
+    .tech-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+      color: var(--txt);
+    }
+    .tech-card p, .tech-card li {
+      font-size: .82rem;
+      color: #C0C0CA;
+      line-height: 1.55;
+    }
+    .tech-card ul { padding-left: 1.2rem; }
+    .tech-card li { margin-bottom: .25rem; }
+    .tech-card code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      background: var(--surface);
+      padding: .1rem .35rem;
+      border-radius: 3px;
+      color: var(--blue);
+    }
+
+    .principles-list { list-style: none; display: grid; gap: .5rem; }
+    .principles-list li {
+      font-size: .85rem;
+      color: #C0C0CA;
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.55;
+    }
+    .principles-list li::before {
+      content: attr(data-icon);
+      position: absolute;
+      left: 0;
+    }
+
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .82rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--edge);
+    }
+    .cost-table th {
+      padding: .55rem .85rem;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+      border-bottom: 1px solid var(--edge);
+    }
+    .cost-table td {
+      padding: .55rem .85rem;
+      border-bottom: 1px solid var(--edge);
+      color: #C0C0CA;
+    }
+    .cost-table tr:last-child td { border-bottom: none; }
+    .cost-table .amm {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .72rem;
+      border-top: 1px solid var(--edge);
+      line-height: 1.8;
+    }
+    .site-footer a { color: var(--muted); }
+    .site-footer a:hover { color: var(--txt); }
+
+    @media (max-width: 600px) {
+      .site-header { flex-wrap: wrap; }
+      .site-header .nav-links { width: 100%; justify-content: center; margin-left: 0; margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="flag" aria-hidden="true"></div>
+    <div>
+      <div class="brand">F1 Madrid · <span>Coste Real</span></div>
+      <div class="tagline">Investigación automatizada · Fuentes oficiales · Actualización diaria</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Informe</a>
+      <a href="valencia.html">Valencia</a>
+      <a href="acerca.html" class="active">Acerca de</a>
+    </nav>
+    <div class="badge-auto">● Live</div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ── Qué es ───────────────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🔍 Qué es Operación Pit-Lane</h2>
+      <div class="summary-card">
+        <p>Operación Pit-Lane es un <strong>proyecto independiente de periodismo de datos</strong> que investiga el coste real del Gran Premio de Fórmula 1 de Madrid. No tiene afiliación política, institucional ni mediática. No recibe financiación de ningún organismo público ni privado.</p>
+        <p>El proyecto nace de una constatación: el discurso oficial dice que "no hay dinero público", pero los expedientes de contratación cuentan otra historia. La opacidad en torno al canon de la FOM, la dispersión de contratos entre IFEMA, Comunidad y Ayuntamiento, y la experiencia del circuito de Valencia hacen necesario un seguimiento continuo y verificable.</p>
+        <p>Todos los datos publicados proceden de <strong>fuentes oficiales</strong>: la Plataforma de Contratación del Sector Público, el portal de licitaciones de IFEMA, el BOE, el BOCM, y los portales de transparencia de las administraciones implicadas. Las estimaciones y proyecciones están siempre identificadas como tales.</p>
+      </div>
+    </section>
+
+    <!-- ── Principios ────────────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📐 Principios</h2>
+      <ul class="principles-list">
+        <li data-icon="1."><strong>Verificabilidad:</strong> cada cifra confirmada tiene al menos una fuente oficial enlazada. Si una cifra no puede verificarse, se indica expresamente.</li>
+        <li data-icon="2."><strong>Diferenciación:</strong> nunca se mezclan conceptos. Se distingue entre presupuesto base, licitación, adjudicación, modificación y gasto ejecutado.</li>
+        <li data-icon="3."><strong>Transparencia:</strong> todo el código que genera esta página es público y auditable.</li>
+        <li data-icon="4."><strong>Independencia:</strong> el proyecto no acepta patrocinios ni publicidad. Se financia exclusivamente con donaciones voluntarias a través de Ko-fi.</li>
+        <li data-icon="5."><strong>Actualización diaria:</strong> el agente se ejecuta automáticamente cada noche a las 21:00h (hora Madrid) para incorporar nuevas publicaciones oficiales.</li>
+      </ul>
+    </section>
+
+    <!-- ─── Cómo funciona ────────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">⚙️ Cómo funciona técnicamente</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3>🏗️ GitHub Actions</h3>
+          <p>Un workflow programado se ejecuta cada día a las 21:00h (hora Madrid). Es gratuito para repositorios públicos y no requiere ningún servidor.</p>
+        </div>
+        <div class="tech-card">
+          <h3>🤖 Claude API + Web Search</h3>
+          <p>El agente utiliza <code>claude-sonnet-4-6</code> con búsqueda web nativa para consultar fuentes oficiales y medios contrastados. Genera un informe estructurado en JSON.</p>
+        </div>
+        <div class="tech-card">
+          <h3>🐍 Python + Jinja2</h3>
+          <p>Un script en Python procesa la respuesta del modelo, valida los datos, actualiza la base de contratos histórica, y genera las páginas HTML usando plantillas Jinja2.</p>
+        </div>
+        <div class="tech-card">
+          <h3>🌐 GitHub Pages</h3>
+          <p>El sitio se sirve desde GitHub Pages, sin coste de alojamiento. Las páginas se regeneran automáticamente tras cada investigación nocturna.</p>
+        </div>
+        <div class="tech-card">
+          <h3>📊 GoatCounter</h3>
+          <p>Analítica web anónima, sin cookies, sin recogida de datos personales y sin necesidad de banner de consentimiento.</p>
+        </div>
+        <div class="tech-card">
+          <h3>☕ Ko-fi</h3>
+          <p>El proyecto se financia mediante donaciones voluntarias. Sin publicidad, sin patrocinadores, sin suscripciones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Costes del proyecto ──────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">💰 Costes de mantenimiento</h2>
+      <table class="cost-table">
+        <thead><tr>
+          <th>Concepto</th>
+          <th>Coste mensual</th>
+          <th>Proveedor</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>API Claude (Sonnet 4.6) — ~30 ejecuciones/mes</td>
+            <td class="amm">~3–5 €</td>
+            <td>Anthropic</td>
+          </tr>
+          <tr>
+            <td>GitHub Actions — 2.000 min/mes gratuitos</td>
+            <td class="amm">0 €</td>
+            <td>GitHub</td>
+          </tr>
+          <tr>
+            <td>GitHub Pages — alojamiento estático</td>
+            <td class="amm">0 €</td>
+            <td>GitHub</td>
+          </tr>
+          <tr>
+            <td>GoatCounter — analítica</td>
+            <td class="amm">0 €</td>
+            <td>GoatCounter</td>
+          </tr>
+          <tr style="background:var(--surface);">
+            <td><strong>Total mensual</strong></td>
+            <td class="amm" style="color:var(--amber);"><strong>~3–5 €</strong></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─── Limitaciones ─────────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">⚠️ Limitaciones</h2>
+      <div class="two-col">
+        <div class="tech-card">
+          <h3>Lo que este proyecto NO es</h3>
+          <ul>
+            <li>Una fuente de asesoramiento financiero o legal.</li>
+            <li>Una plataforma de denuncia o activismo.</li>
+            <li>Un medio de comunicación con redacción humana.</li>
+            <li>Un proyecto afiliado a ningún partido político.</li>
+          </ul>
+        </div>
+        <div class="tech-card">
+          <h3>Lo que este proyecto SÍ es</h3>
+          <ul>
+            <li>Un registro cronológico de contratos públicos.</li>
+            <li>Una herramienta de consulta para periodistas e investigadores.</li>
+            <li>Un experimento de periodismo automatizado con IA.</li>
+            <li>Un proyecto transparente con código abierto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Generado automáticamente por <strong>GitHub Actions</strong> + <strong>Claude API</strong> · Actualización diaria a las 21:00h Madrid</p>
+    <p style="margin-top:.3rem">
+      <a href="index.html">← Volver al informe</a>
+      &nbsp;·&nbsp;
+      ☕ <a href="https://ko-fi.com/operacionpitlane" target="_blank" style="color:var(--amber);">Apoyar en Ko-fi</a>
+    </p>
+  </footer>
+
+</body>
+</html>

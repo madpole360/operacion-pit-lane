@@ -64,7 +64,17 @@ def build_site(latest_data: dict):
     (DOCS_DIR / "index.html").write_text(html, encoding="utf-8")
     print("✅ index.html generado")
 
-    # ── Página Valencia ──
+    # ── Pagina Valencia ──
+    template_v = env.get_template("valencia.html.j2")
+    html_v = template_v.render(**ctx)
+    (DOCS_DIR / "valencia.html").write_text(html_v, encoding="utf-8")
+    print("✅ valencia.html generado")
+
+    # ── Pagina Acerca de ──
+    template_a = env.get_template("acerca.html.j2")
+    html_a = template_a.render(**ctx)
+    (DOCS_DIR / "acerca.html").write_text(html_a, encoding="utf-8")
+    print("✅ acerca.html generado")
     template_v = env.get_template("valencia.html.j2")
     html_v = template_v.render(**ctx)
     (DOCS_DIR / "valencia.html").write_text(html_v, encoding="utf-8")
