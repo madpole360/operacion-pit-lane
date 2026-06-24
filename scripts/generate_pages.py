@@ -75,6 +75,47 @@ def build_site(latest_data: dict):
     html_a = template_a.render(**ctx)
     (DOCS_DIR / "acerca.html").write_text(html_a, encoding="utf-8")
     print("✅ acerca.html generado")
+
+    # ── Indice del archivo ──
+    _generate_archive_index(archive_files)
+
+
+def _generate_archive_index(files: list):
+    """Genera docs/archive/index.html con listado de informes historicos."""
+    rows = ""
+    for f in files:
+        date_str = f.replace(".json", "")
+        rows += f'<tr><td style="font-family:monospace;">{date_str}</td><td><a href="{f}">JSON</a></td></tr>\n'
+
+    html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historico de informes — Operacion Pit-Lane</title>
+  <style>
+    body {{ background:#0C0C0F; color:#EBEBF0; font-family:Inter,system-ui,sans-serif; max-width:600px; margin:2rem auto; padding:1rem; }}
+    h1 {{ font-size:1.2rem; color:#F59E0B; }}
+    table {{ width:100%; border-collapse:collapse; margin-top:1rem; }}
+    th, td {{ padding:.5rem .75rem; text-align:left; border-bottom:1px solid #2C2C3A; }}
+    th {{ color:#6B7280; font-size:.7rem; text-transform:uppercase; }}
+    a {{ color:#60A5FA; }}
+    .back {{ font-size:.8rem; margin-bottom:1rem; }}
+  </style>
+</head>
+<body>
+  <p class="back"><a href="../index.html">← Volver al informe</a></p>
+  <h1>Historico de informes diarios</h1>
+  <p style="color:#6B7280;font-size:.8rem;">{len(files)} informes almacenados</p>
+  <table>
+    <thead><tr><th>Fecha</th><th>Archivo</th></tr></thead>
+    <tbody>{rows if rows else '<tr><td colspan="2">Sin informes todavia</td></tr>'}</tbody>
+  </table>
+  <p style="color:#3A3A4A;font-size:.7rem;margin-top:1.5rem;">Operacion Pit-Lane · Datos de fuentes oficiales publicas</p>
+</body>
+</html>"""
+    (ARCHIVE_DIR / "index.html").write_text(html, encoding="utf-8")
+    print("✅ archive/index.html generado")
     template_v = env.get_template("valencia.html.j2")
     html_v = template_v.render(**ctx)
     (DOCS_DIR / "valencia.html").write_text(html_v, encoding="utf-8")
