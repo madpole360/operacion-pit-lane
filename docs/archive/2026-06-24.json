@@ -1,8 +1,8 @@
 {
   "fecha": "2026-06-24",
-  "fecha_madrid": "2026-06-24 12:08",
-  "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CcMuEoywtH2v1VpMUiVbS'}",
-  "resumen_ejecutivo": "⚠️ El agente no pudo completar la investigación hoy: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CcMuEoywtH2v1VpMUiVbS'}",
+  "fecha_madrid": "2026-06-24 12:12",
+  "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CcMuXjzZpGa69FWaPUGwd'}",
+  "resumen_ejecutivo": "⚠️ El agente no pudo completar la investigación hoy: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CcMuXjzZpGa69FWaPUGwd'}",
   "nuevos_hallazgos": [],
   "contratos": [],
   "coste_acumulado_confirmado": 0,
@@ -10,7 +10,7 @@
   "incremento_respecto_anterior": 0,
   "partidas_pendientes_confirmar": [],
   "riesgos_detectados": [
-    "Error técnico: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CcMuEoywtH2v1VpMUiVbS'}"
+    "Error técnico: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CcMuXjzZpGa69FWaPUGwd'}"
   ],
   "comparativa_valencia": {},
   "fuentes_consultadas": []
