@@ -1,5 +1,5 @@
 """
-Script único para poblar la base de datos con los datos semilla
+Script unico para poblar la base de datos con los datos semilla
 recopilados en la investigacion inicial (memoria-inicial/).
 Se ejecuta UNA SOLA VEZ para inicializar el proyecto.
 """
@@ -23,242 +23,33 @@ def ensure_dirs():
 def build_seed_data():
     """Construye latest.json y contracts.json con los datos semilla."""
 
-    # ── Contratos (todos los expedientes detectados) ──
+    # Ordenados por fecha descendente (mas reciente primero)
     contracts = [
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2025-04-15",
-            "organismo": "IFEMA Madrid",
-            "expediente": "24/226",
-            "concepto": "Construccion del circuito MADRING y reposicion de infraestructuras. UTE Acciona (60%) - Eiffage (40%).",
-            "importe": 83206500.00,
-            "importe_texto": "83.206.500,00 € (adjudicacion) + 2.304.868,93 € (modificacion prevista)",
-            "estado": "adjudicado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "24/148 - 4000005040",
-            "concepto": "Asistencia tecnica y Project Management: supervision de proyectos, obras, control tecnico, urbanizacion y Pit Building. UTE CONURMA - ACTIINFRA MADRID.",
-            "importe": 2690374.86,
-            "importe_texto": "2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion) = 2.690.374,86 €",
+            "fecha": "2026-05-01",
+            "organismo": "Comunidad de Madrid",
+            "expediente": "SHOW-RUN-2026",
+            "concepto": "Madrid F1 Show Run.",
+            "importe": 200000.00,
+            "importe_texto": "200.000,00 €",
             "estado": "ejecutado",
-            "fuente": "https://licitaciones2.ifema.es"
+            "fuente": "https://www.comunidad.madrid"
         },
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/043",
-            "concepto": "Control de calidad de contraste de las obras del circuito y Pit Building.",
-            "importe": 709718.46,
-            "importe_texto": "709.718,46 € (PBL) / 887.148,08 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/071",
-            "concepto": "Estudios cuantitativos y cualitativos sobre el evento.",
-            "importe": 135000.00,
-            "importe_texto": "135.000,00 € (PBL) / 742.500,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/140",
-            "concepto": "Asistencia tecnica, economica y juridica para preparar licitaciones de Formula 1.",
-            "importe": 390600.00,
-            "importe_texto": "390.600,00 € (PBL) / 976.500,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/152",
-            "concepto": "Produccion audiovisual integral del GP (TV, web, redes, sponsors, pantallas, drones, animaciones 3D).",
-            "importe": 236000.00,
-            "importe_texto": "236.000,00 € (PBL) / ~1.200.000,00 € (VEC estimado)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/166",
-            "concepto": "Experiencia de marca MADRING.",
-            "importe": 305381.00,
-            "importe_texto": "305.381,00 € (PBL) / 1.791.794,40 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/187",
-            "concepto": "Gestion de prensa, acreditaciones, protocolo, hospitality y VIP.",
-            "importe": 424000.00,
-            "importe_texto": "424.000,00 € (PBL) / 2.332.000,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/212",
-            "concepto": "Vigilancia ambiental del GP.",
-            "importe": 100000.00,
-            "importe_texto": "100.000,00 € (PBL) / 260.000,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "25/229",
-            "concepto": "Diseno y fabricacion del trofeo oficial.",
-            "importe": 34500.00,
-            "importe_texto": "34.500,00 € (importe maximo detectado)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "6200014240",
-            "concepto": "Estudio internacional de branding F1 (UK + USA). Contrato menor.",
-            "importe": 13850.00,
-            "importe_texto": "13.850,00 €",
+            "fecha": "2026-05-01",
+            "organismo": "Comunidad de Madrid",
+            "expediente": "FANZONE-SOL-2026",
+            "concepto": "Fan Zone Puerta del Sol.",
+            "importe": 121000.00,
+            "importe_texto": "121.000,00 €",
             "estado": "ejecutado",
-            "fuente": "https://licitaciones2.ifema.es"
+            "fuente": "https://www.comunidad.madrid"
         },
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "6200014361",
-            "concepto": "Analisis economico y financiero de Fever Group para explotacion de entradas. Contrato menor.",
-            "importe": 14900.00,
-            "importe_texto": "14.900,00 €",
-            "estado": "ejecutado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/005",
-            "concepto": "Suministro de cesped artificial (41.000 m²).",
-            "importe": 225500.00,
-            "importe_texto": "225.500,00 € (PBL) / 338.250,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/012",
-            "concepto": "Servicio de bomberos para el evento.",
-            "importe": 185040.00,
-            "importe_texto": "185.040,00 € (PBL) / 647.640,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/023",
-            "concepto": "Extintores y medios de extincion.",
-            "importe": 25000.00,
-            "importe_texto": "25.000,00 € (PBL) / 37.500,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/024",
-            "concepto": "11 pasarelas peatonales modulares (2026-2028). Una de las mayores partidas fuera de la obra principal. Oferta NUSSLI IBERIA: 9.731.922,17 €.",
-            "importe": 10214611.89,
-            "importe_texto": "10.214.611,89 € (PBL) / 22.300.484,12 € (VEC). Oferta: 9.731.922,17 €",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/052",
-            "concepto": "Seguros (RC, terrorismo, active assailant).",
-            "importe": 352200.00,
-            "importe_texto": "352.200,00 € (PBL) / 528.300,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/064",
-            "concepto": "Instalacion de cesped artificial. Oferta Gardenstore S.L.: 121.500 €.",
-            "importe": 121500.00,
-            "importe_texto": "121.500,00 € (oferta detectada) / 164.700,00 € (PBL)",
-            "estado": "pendiente_confirmar",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/078",
-            "concepto": "Personal temporal mediante ETT.",
-            "importe": 799457.80,
-            "importe_texto": "799.457,80 € (PBL) / 4.394.484,50 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/057",
-            "concepto": "Servicio de medicina de emergencia.",
-            "importe": 296200.00,
-            "importe_texto": "296.200,00 € (PBL) / 1.036.700,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "IFEMA Madrid",
-            "expediente": "26/113",
-            "concepto": "Lonas publicitarias en cubiertas IFEMA.",
-            "importe": 572500.00,
-            "importe_texto": "572.500,00 € (PBL) / 858.750,00 € (VEC)",
-            "estado": "licitado",
-            "fuente": "https://licitaciones2.ifema.es"
-        },
-        {
-            "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
+            "fecha": "2026-05-15",
             "organismo": "IFEMA Madrid",
             "expediente": "26/087",
             "concepto": "Carpas y naves prefabricadas.",
@@ -269,12 +60,111 @@ def build_seed_data():
         },
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
+            "fecha": "2026-05-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/113",
+            "concepto": "Lonas publicitarias en cubiertas IFEMA.",
+            "importe": 572500.00,
+            "importe_texto": "572.500,00 € (PBL) / 858.750,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-04-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/057",
+            "concepto": "Servicio de medicina de emergencia.",
+            "importe": 296200.00,
+            "importe_texto": "296.200,00 € (PBL) / 1.036.700,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-04-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/078",
+            "concepto": "Personal temporal mediante ETT.",
+            "importe": 799457.80,
+            "importe_texto": "799.457,80 € (PBL) / 4.394.484,50 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-03-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/052",
+            "concepto": "Seguros (RC, terrorismo, active assailant).",
+            "importe": 352200.00,
+            "importe_texto": "352.200,00 € (PBL) / 528.300,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-03-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/064",
+            "concepto": "Instalacion de cesped artificial. Oferta Gardenstore S.L.: 121.500 €.",
+            "importe": 121500.00,
+            "importe_texto": "121.500,00 € (oferta detectada) / 164.700,00 € (PBL)",
+            "estado": "pendiente_confirmar",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-03-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/024",
+            "concepto": "11 pasarelas peatonales modulares (2026-2028). Una de las mayores partidas fuera de la obra principal. Oferta NUSSLI IBERIA: 9.731.922,17 €.",
+            "importe": 10214611.89,
+            "importe_texto": "10.214.611,89 € (PBL) / 22.300.484,12 € (VEC). Oferta: 9.731.922,17 €",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-02-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/023",
+            "concepto": "Extintores y medios de extincion.",
+            "importe": 25000.00,
+            "importe_texto": "25.000,00 € (PBL) / 37.500,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-02-01",
             "organismo": "IFEMA Madrid",
             "expediente": "26/010",
             "concepto": "Personal temporal mediante ETT (segundo expediente).",
             "importe": 191156.45,
             "importe_texto": "191.156,45 € (PBL) / 1.051.211,65 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-02-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/012",
+            "concepto": "Servicio de bomberos para el evento.",
+            "importe": 185040.00,
+            "importe_texto": "185.040,00 € (PBL) / 647.640,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2026-01-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "26/005",
+            "concepto": "Suministro de cesped artificial (41.000 m²).",
+            "importe": 225500.00,
+            "importe_texto": "225.500,00 € (PBL) / 338.250,00 € (VEC)",
             "estado": "licitado",
             "fuente": "https://licitaciones2.ifema.es"
         },
@@ -291,7 +181,7 @@ def build_seed_data():
         },
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2025-01-01",
+            "fecha": "2025-06-01",
             "organismo": "MADRING / Comunidad Madrid",
             "expediente": "MARKETING-ANNIE-BONNIE",
             "concepto": "Comunicacion digital MADRING. Adjudicatario: Annie Bonnie.",
@@ -302,31 +192,139 @@ def build_seed_data():
         },
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "Comunidad de Madrid",
-            "expediente": "FANZONE-SOL-2026",
-            "concepto": "Fan Zone Puerta del Sol.",
-            "importe": 121000.00,
-            "importe_texto": "121.000,00 €",
-            "estado": "ejecutado",
-            "fuente": "https://www.comunidad.madrid"
+            "fecha": "2025-05-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/229",
+            "concepto": "Diseno y fabricacion del trofeo oficial.",
+            "importe": 34500.00,
+            "importe_texto": "34.500,00 € (importe maximo detectado)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
         },
         {
             "descubierto_el": "2026-06-24",
-            "fecha": "2026-01-01",
-            "organismo": "Comunidad de Madrid",
-            "expediente": "SHOW-RUN-2026",
-            "concepto": "Madrid F1 Show Run.",
-            "importe": 200000.00,
-            "importe_texto": "200.000,00 €",
+            "fecha": "2025-05-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/212",
+            "concepto": "Vigilancia ambiental del GP.",
+            "importe": 100000.00,
+            "importe_texto": "100.000,00 € (PBL) / 260.000,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-04-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/187",
+            "concepto": "Gestion de prensa, acreditaciones, protocolo, hospitality y VIP.",
+            "importe": 424000.00,
+            "importe_texto": "424.000,00 € (PBL) / 2.332.000,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-04-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "24/226",
+            "concepto": "Construccion del circuito MADRING y reposicion de infraestructuras. UTE Acciona (60%) - Eiffage (40%).",
+            "importe": 83206500.00,
+            "importe_texto": "83.206.500,00 € (adjudicacion) + 2.304.868,93 € (modificacion prevista)",
+            "estado": "adjudicado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-04-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/166",
+            "concepto": "Experiencia de marca MADRING.",
+            "importe": 305381.00,
+            "importe_texto": "305.381,00 € (PBL) / 1.791.794,40 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-03-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "6200014361",
+            "concepto": "Analisis economico y financiero de Fever Group para explotacion de entradas. Contrato menor.",
+            "importe": 14900.00,
+            "importe_texto": "14.900,00 €",
             "estado": "ejecutado",
-            "fuente": "https://www.comunidad.madrid"
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-03-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/152",
+            "concepto": "Produccion audiovisual integral del GP (TV, web, redes, sponsors, pantallas, drones, animaciones 3D).",
+            "importe": 236000.00,
+            "importe_texto": "236.000,00 € (PBL) / ~1.200.000,00 € (VEC estimado)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-03-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "6200014240",
+            "concepto": "Estudio internacional de branding F1 (UK + USA). Contrato menor.",
+            "importe": 13850.00,
+            "importe_texto": "13.850,00 €",
+            "estado": "ejecutado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-03-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/140",
+            "concepto": "Asistencia tecnica, economica y juridica para preparar licitaciones de Formula 1.",
+            "importe": 390600.00,
+            "importe_texto": "390.600,00 € (PBL) / 976.500,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-02-15",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/071",
+            "concepto": "Estudios cuantitativos y cualitativos sobre el evento.",
+            "importe": 135000.00,
+            "importe_texto": "135.000,00 € (PBL) / 742.500,00 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2025-02-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "25/043",
+            "concepto": "Control de calidad de contraste de las obras del circuito y Pit Building.",
+            "importe": 709718.46,
+            "importe_texto": "709.718,46 € (PBL) / 887.148,08 € (VEC)",
+            "estado": "licitado",
+            "fuente": "https://licitaciones2.ifema.es"
+        },
+        {
+            "descubierto_el": "2026-06-24",
+            "fecha": "2024-12-01",
+            "organismo": "IFEMA Madrid",
+            "expediente": "24/148 - 4000005040",
+            "concepto": "Asistencia tecnica y Project Management: supervision de proyectos, obras, control tecnico, urbanizacion y Pit Building. UTE CONURMA - ACTIINFRA MADRID.",
+            "importe": 2690374.86,
+            "importe_texto": "2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion) = 2.690.374,86 €",
+            "estado": "ejecutado",
+            "fuente": "https://licitaciones2.ifema.es"
         },
     ]
 
-    # ── latest.json ──
-    coste_confirmado = 85890374.86  # obra principal + asistencia tecnica
-    coste_comprometido = 101580000.00  # incluyendo licitaciones PBL
+    coste_confirmado = 85890374.86
 
     latest = {
         "fecha": TODAY,
@@ -341,21 +339,21 @@ def build_seed_data():
             "El canon a FOM permanece sin confirmacion oficial (estimado en ~48M€/ano, 480M€ a 10 anos). "
             "El coste potencial total del proyecto podria alcanzar los 581 millones de euros, "
             "aunque esta cifra debe tratarse como estimacion. "
-            "El nivel de riesgo respecto al caso Valencia se situa en MEDIO: IFEMA como promotor y el uso de "
+            "El nivel de riesgo respecto al caso Valencia se situa en MEDIO (55%): IFEMA como promotor y el uso de "
             "infraestructuras existentes diferencian este proyecto, pero el elevado canon potencial, la dependencia "
             "de ingresos futuros y el crecimiento continuo de contratos auxiliares son factores de riesgo compartidos."
         ),
         "nuevos_hallazgos": [
-            "Carga inicial de datos: 25 contratos/expedientes documentados desde enero 2024 hasta junio 2026.",
+            "Carga inicial de datos: 27 contratos/expedientes documentados desde enero 2024 hasta junio 2026.",
             "Coste confirmado: 85.890.374,86 € (obra principal 83,2M€ + asistencia tecnica 2,69M€).",
             "Coste comprometido incluyendo licitaciones activas: ~101,58 millones de euros.",
             "Pit Building adjudicado a Eiffage por 68,1M€ (pendiente verificacion del expediente IFEMA).",
             "Detectadas 11 pasarelas peatonales modulares por 10,2M€ (PBL) - segunda mayor partida tras la obra principal.",
             "Canon FOM estimado en ~48M€/ano (480M€ a 10 anos). NO existe documento oficial que lo acredite.",
-            "Patrocinadores confirmados: Santander (Founding Partner) + American Express, Atletico de Madrid, Ford, Aqualy, El Corte Ingles, Heineken (Local Event Supporters). Importes NO publicados.",
-            "Litigio Dromo vs Tilke en Tribunal de Colonia (Alemania) por derechos de autor del diseno del circuito. Reclamacion: 6M€.",
-            "Vereda de los Leneros: publicada en BOCM (23/06/2026) la modificacion de trazado y desafectacion de 21.330 m². Riesgo de retrasos o recursos.",
-            "Mas del 90% de entradas vendidas a 3 meses del evento (16/06/2026)."
+            "Patrocinadores confirmados: Santander (Founding Partner) + 6 Local Event Supporters. Importes NO publicados.",
+            "Litigio Dromo vs Tilke en Tribunal de Colonia (Alemania) por derechos de autor del diseno. Reclamacion: 6M€.",
+            "Vereda de los Leneros: publicada en BOCM (23/06/2026) la desafectacion de 21.330 m².",
+            "Mas del 90% de entradas vendidas a 3 meses del evento."
         ],
         "contratos": contracts,
         "coste_acumulado_confirmado": coste_confirmado,
@@ -369,16 +367,16 @@ def build_seed_data():
             "Coste de la bandera gigante (estimado 128.000-500.000 €). NO localizado.",
             "Coste del acto de presentacion oficial (16/06/2026) (estimado 250.000-400.000 €). NO localizado.",
             "Coste del litigio Dromo (indemnizacion reclamada: 6M€).",
-            "Detalle del convenio FOM: reparto de riesgos economicos, avales, aportaciones publicas, ayudas indirectas.",
+            "Detalle del convenio FOM: reparto de riesgos economicos, avales, aportaciones publicas.",
             "Importes reales de los contratos de patrocinio."
         ],
         "riesgos_detectados": [
             "El canon a FOM podria superar ampliamente el coste de construccion del circuito (480M€ estimado vs 83M€ obra).",
             "Aparicion continua de contratos satelite que incrementan el coste total de forma silenciosa.",
             "Posibles costes publicos indirectos no contabilizados: seguridad, movilidad, transporte publico, limpieza, emergencias.",
-            "Falta de transparencia: IFEMA es 100% publica (Ayuntamiento + Comunidad de Madrid) pero el discurso oficial niega el uso de dinero publico.",
-            "Vereda de los Leneros: la desafectacion publicada en BOCM podria generar retrasos, recursos judiciales o modificaciones del trazado.",
-            "Dependencia de patrocinadores privados (con importes no publicados) para cubrir el canon anual de ~48M€.",
+            "Falta de transparencia: IFEMA es 100% publica pero el discurso oficial niega el uso de dinero publico.",
+            "Vereda de los Leneros: la desafectacion publicada en BOCM podria generar retrasos o recursos judiciales.",
+            "Dependencia de patrocinadores privados con importes no publicados para cubrir el canon anual.",
             "Riesgo de sobrecostes en las licitaciones pendientes de adjudicacion (VEC total muy superior a PBL).",
             "Paralelismo con Valencia: mismo discurso de inversion privada, elevado canon, crecimiento de contratos auxiliares."
         ],
@@ -397,7 +395,7 @@ def build_seed_data():
                 "Dependencia de ingresos futuros inciertos para justificar la inversion presente"
             ],
             "porcentaje_similitud_riesgo": 55,
-            "justificacion": "Se asigna un 55% (nivel MEDIO) de similitud de riesgo. Diferencias clave con Valencia: (1) IFEMA es un operador con experiencia en grandes eventos frente a la gestion puramente politica de Valencia; (2) el circuito aprovecha infraestructuras existentes de IFEMA, reduciendo obra nueva; (3) Madrid tiene mayor tejido empresarial y capacidad hotelera. Sin embargo, comparte riesgos significativos: el canon a FOM es el doble que el de Valencia (~48M€ vs ~26M€), la falta de transparencia documental es similar, y el crecimiento de contratos auxiliares sigue el mismo patron. El riesgo es real pero menor que en Valencia."
+            "justificacion": "Se asigna un 55% (nivel MEDIO). Diferencias clave con Valencia: IFEMA es un operador con experiencia, el circuito aprovecha infraestructuras existentes, y Madrid tiene mayor tejido empresarial. Sin embargo, comparte riesgos: el canon a FOM es el doble que Valencia (~48M€ vs ~26M€), la falta de transparencia documental es similar, y el crecimiento de contratos auxiliares sigue el mismo patron."
         },
         "fuentes_consultadas": [
             "https://licitaciones2.ifema.es",
@@ -416,28 +414,23 @@ def build_seed_data():
         ]
     }
 
-    # ── Guardar ──
     ensure_dirs()
 
-    # latest.json
     (DOCS_DIR / "latest.json").write_text(
         json.dumps(latest, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print(f"✅ latest.json escrito ({len(contracts)} contratos)")
 
-    # contracts.json
     (DOCS_DIR / "contracts.json").write_text(
         json.dumps(contracts, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print(f"✅ contracts.json escrito")
+    print("✅ contracts.json escrito")
 
-    # Archive diario
     (ARCHIVE_DIR / f"{TODAY}.json").write_text(
         json.dumps(latest, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print(f"✅ archive/{TODAY}.json escrito")
 
-    # timeline.json inicial
     timeline = [{
         "fecha": TODAY,
         "coste_acumulado": coste_confirmado,
@@ -448,7 +441,7 @@ def build_seed_data():
     (DATA_DIR / "timeline.json").write_text(
         json.dumps(timeline, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print(f"✅ timeline.json escrito")
+    print("✅ timeline.json escrito")
 
     return latest
 
