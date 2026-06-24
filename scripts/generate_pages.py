@@ -40,8 +40,9 @@ def build_site(latest_data: dict):
 
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)))
 
-    # Datos comunes
+    # Datos comunes — ordenar contratos por descubierto DESC, luego fecha DESC
     contracts_db = load_json(CONTRACTS_FILE, [])
+    contracts_db.sort(key=lambda c: (c.get("descubierto_el") or "", c.get("fecha") or ""), reverse=True)
     timeline = load_json(TIMELINE_FILE, [])
     archive_files = sorted(
         [f.name for f in ARCHIVE_DIR.glob("*.json")],
