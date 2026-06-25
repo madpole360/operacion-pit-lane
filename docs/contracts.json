@@ -515,5 +515,16 @@
     "estado": "pendiente_confirmar",
     "fuente": "https://www.motortime.es/2025/12/la-formula-1-que-prometia-no-costar-ni-un-euro-madrid-revive-el-precedente-de-valencia/",
     "descubierto_el": "2026-06-25"
+  },
+  {
+    "descubierto_el": "2026-06-25",
+    "fecha": "2026-06-15",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/027",
+    "concepto": "Suministro de medicamentos y material fungible sanitario para el servicio de medicina de emergencias del GP F1 y servicio medico laboral de IFEMA. Cierre: 07/07/2026.",
+    "importe": 32280.68,
+    "importe_texto": "32.280,68 € (PBL sin impuestos)",
+    "estado": "licitado",
+    "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/027"
   }
 ]

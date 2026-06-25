@@ -2,6 +2,12 @@
   "fecha": "2026-06-25",
   "resumen_ejecutivo": "A 80 días del Gran Premio de España (11-13 septiembre), Madring ha completado el 100% del asfaltado (hito confirmado el 01/06/2026) y ha superado la inspección oficial de FIA/FOM. El 16/06/2026 se celebró el acto de presentación mundial con izado de la bandera más grande de España (mástil 54 m, bandera 16,66×25 m) y recorrido institucional en autobuses EMT. Las gradas comenzaron su instalación en junio. El pit building y el paddock club están en construcción (inicio noviembre 2025). El litigio Dromo-Tilke escala: un perito independiente del Tribunal de Colonia confirmó documentación confidencial de Dromo en archivos de Tilke, y el tribunal dictó medidas cautelares parciales que prohíben a Tilke reproducir ciertos materiales; el caso pasará al Tribunal Regional Superior alemán. No se han detectado nuevas licitaciones o adjudicaciones en la plataforma IFEMA en los últimos 7 días con importes publicados. El coste confirmado por documentación oficial permanece en 85,89 M€, pero múltiples fuentes sitúan el gasto ya asumido por IFEMA en más de 130 M€. El total Valencia (308 M€ en 5 ediciones) sigue siendo el principal referente de riesgo.",
   "nuevos_hallazgos": [
+    "Detectados 3 nuevos expedientes activos en el portal IFEMA: 26/113, 26/057, 26/027.",
+    "Exp. 26/113 (lonas publicitarias F1 2026-2027): PBL 572.500 €, cierre de ofertas HOY 26/06/2026.",
+    "Exp. 26/057 (medicina emergencia F1): PBL 296.200 €, VEC 1.036.700 €, cierre 07/07/2026.",
+    "Exp. 26/027 (medicamentos y material sanitario): PBL 32.280,68 €, cierre 07/07/2026.",
+    "Exp. 25/175 DESISTIDO por error no subsanable en criterios de adjudicacion.",
+    "Exp. 26/024 (pasarelas): oferta de NUSSLI IBERIA por 9.731.922,17 €, pendiente adjudicacion formal.",
     "HITO CONSTRUCCIÓN 01/06/2026: Las tres capas de asfalto (base, intermedia y rodadura) están completamente instaladas en el 100% del trazado, confirmado por madring.com. El asfaltado comenzó en diciembre 2025 en Valdebebas y concluyó la última semana de mayo 2026.",
     "INSPECCIÓN FIA/FOM SUPERADA (01/06/2026): El lunes 1 de junio la FIA y la FOM realizaron inspección oficial al circuito y dieron el visto bueno. Madring no corre riesgo real de paralización según Motorsport.com.",
     "PRESENTACIÓN MUNDIAL 16/06/2026: IFEMA abrió las puertas del circuito en acto institucional con Isabel Díaz Ayuso, José Luis Martínez-Almeida, Louise Young (Chief Race Promotion Officer F1), Manuel Aviñó (RFEDA), Carlos Sainz y representantes de EMT. Se presentó el cartel oficial ('De Madring al cielo'), se izó la bandera y se anunció la grada 'Team Fifty5' de Carlos Sainz.",
@@ -15,6 +21,457 @@
   ],
   "contratos": [
     {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-05-01",
+      "organismo": "Comunidad de Madrid",
+      "expediente": "SHOW-RUN-2026",
+      "concepto": "Madrid F1 Show Run.",
+      "importe": 200000.0,
+      "importe_texto": "200.000,00 €",
+      "estado": "ejecutado",
+      "fuente": "https://www.comunidad.madrid"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-05-01",
+      "organismo": "Comunidad de Madrid",
+      "expediente": "FANZONE-SOL-2026",
+      "concepto": "Fan Zone Puerta del Sol.",
+      "importe": 121000.0,
+      "importe_texto": "121.000,00 €",
+      "estado": "ejecutado",
+      "fuente": "https://www.comunidad.madrid"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-05-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/087",
+      "concepto": "Carpas y naves prefabricadas.",
+      "importe": 820426.18,
+      "importe_texto": "820.426,18 € (PBL) / 2.051.065,45 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-05-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/113",
+      "concepto": "Lonas publicitarias en cubiertas IFEMA.",
+      "importe": 572500.0,
+      "importe_texto": "572.500,00 € (PBL) / 858.750,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-04-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/057",
+      "concepto": "Servicio de medicina de emergencia.",
+      "importe": 296200.0,
+      "importe_texto": "296.200,00 € (PBL) / 1.036.700,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-04-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/078",
+      "concepto": "Personal temporal mediante ETT.",
+      "importe": 799457.8,
+      "importe_texto": "799.457,80 € (PBL) / 4.394.484,50 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-03-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/052",
+      "concepto": "Seguros (RC, terrorismo, active assailant).",
+      "importe": 352200.0,
+      "importe_texto": "352.200,00 € (PBL) / 528.300,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-03-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/064",
+      "concepto": "Instalacion de cesped artificial. Oferta Gardenstore S.L.: 121.500 €.",
+      "importe": 121500.0,
+      "importe_texto": "121.500,00 € (oferta detectada) / 164.700,00 € (PBL)",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-03-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/024",
+      "concepto": "11 pasarelas peatonales modulares (2026-2028). Una de las mayores partidas fuera de la obra principal. Oferta NUSSLI IBERIA: 9.731.922,17 €.",
+      "importe": 10214611.89,
+      "importe_texto": "10.214.611,89 € (PBL) / 22.300.484,12 € (VEC). Oferta: 9.731.922,17 €",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-02-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/023",
+      "concepto": "Extintores y medios de extincion.",
+      "importe": 25000.0,
+      "importe_texto": "25.000,00 € (PBL) / 37.500,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-02-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/010",
+      "concepto": "Personal temporal mediante ETT (segundo expediente).",
+      "importe": 191156.45,
+      "importe_texto": "191.156,45 € (PBL) / 1.051.211,65 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-02-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/012",
+      "concepto": "Servicio de bomberos para el evento.",
+      "importe": 185040.0,
+      "importe_texto": "185.040,00 € (PBL) / 647.640,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2026-01-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/005",
+      "concepto": "Suministro de cesped artificial (41.000 m²).",
+      "importe": 225500.0,
+      "importe_texto": "225.500,00 € (PBL) / 338.250,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-09-30",
+      "organismo": "IFEMA Madrid / Eiffage",
+      "expediente": "PIT-BUILDING-2025",
+      "concepto": "Pit Building: ampliacion pabellones 1 y 2 IFEMA (boxes, oficinas tecnicas, logistica, Paddock Club, areas VIP). Pendiente localizar expediente IFEMA completo.",
+      "importe": 68100000.0,
+      "importe_texto": "68.100.000,00 € (segun Eiffage y medios economicos)",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-06-01",
+      "organismo": "MADRING / Comunidad Madrid",
+      "expediente": "MARKETING-ANNIE-BONNIE",
+      "concepto": "Comunicacion digital MADRING. Adjudicatario: Annie Bonnie.",
+      "importe": 237620.0,
+      "importe_texto": "237.620,00 € (importe potencial: 1.078.500,00 €)",
+      "estado": "adjudicado",
+      "fuente": "https://www.reasonwhy.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-05-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/229",
+      "concepto": "Diseno y fabricacion del trofeo oficial.",
+      "importe": 34500.0,
+      "importe_texto": "34.500,00 € (importe maximo detectado)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-05-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/212",
+      "concepto": "Vigilancia ambiental del GP.",
+      "importe": 100000.0,
+      "importe_texto": "100.000,00 € (PBL) / 260.000,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-04-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/187",
+      "concepto": "Gestion de prensa, acreditaciones, protocolo, hospitality y VIP.",
+      "importe": 424000.0,
+      "importe_texto": "424.000,00 € (PBL) / 2.332.000,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-04-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "24/226",
+      "concepto": "Construccion del circuito MADRING y reposicion de infraestructuras. UTE Acciona (60%) - Eiffage (40%).",
+      "importe": 83206500.0,
+      "importe_texto": "83.206.500,00 € (adjudicacion) + 2.304.868,93 € (modificacion prevista)",
+      "estado": "adjudicado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-04-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/166",
+      "concepto": "Experiencia de marca MADRING.",
+      "importe": 305381.0,
+      "importe_texto": "305.381,00 € (PBL) / 1.791.794,40 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-03-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "6200014361",
+      "concepto": "Analisis economico y financiero de Fever Group para explotacion de entradas. Contrato menor.",
+      "importe": 14900.0,
+      "importe_texto": "14.900,00 €",
+      "estado": "ejecutado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-03-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/152",
+      "concepto": "Produccion audiovisual integral del GP (TV, web, redes, sponsors, pantallas, drones, animaciones 3D).",
+      "importe": 236000.0,
+      "importe_texto": "236.000,00 € (PBL) / ~1.200.000,00 € (VEC estimado)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-03-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "6200014240",
+      "concepto": "Estudio internacional de branding F1 (UK + USA). Contrato menor.",
+      "importe": 13850.0,
+      "importe_texto": "13.850,00 €",
+      "estado": "ejecutado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-03-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/140",
+      "concepto": "Asistencia tecnica, economica y juridica para preparar licitaciones de Formula 1.",
+      "importe": 390600.0,
+      "importe_texto": "390.600,00 € (PBL) / 976.500,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-02-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/071",
+      "concepto": "Estudios cuantitativos y cualitativos sobre el evento.",
+      "importe": 135000.0,
+      "importe_texto": "135.000,00 € (PBL) / 742.500,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2025-02-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/043",
+      "concepto": "Control de calidad de contraste de las obras del circuito y Pit Building.",
+      "importe": 709718.46,
+      "importe_texto": "709.718,46 € (PBL) / 887.148,08 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "descubierto_el": "2026-06-24",
+      "fecha": "2024-12-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "24/148 - 4000005040",
+      "concepto": "Asistencia tecnica y Project Management: supervision de proyectos, obras, control tecnico, urbanizacion y Pit Building. UTE CONURMA - ACTIINFRA MADRID.",
+      "importe": 2690374.86,
+      "importe_texto": "2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion) = 2.690.374,86 €",
+      "estado": "ejecutado",
+      "fuente": "https://licitaciones2.ifema.es"
+    },
+    {
+      "fecha": "2025-04-14",
+      "organismo": "IFEMA Madrid",
+      "expediente": "Pendiente confirmar",
+      "concepto": "Construcción del circuito Madring - UTE Acciona (60%) + Eiffage (40%)",
+      "importe": 83206500.01,
+      "importe_texto": "83.206.500,01 €",
+      "estado": "adjudicado",
+      "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-03-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "Pendiente confirmar",
+      "concepto": "Asistencia técnica dirección de obras circuito Madring",
+      "importe": 2683874.85,
+      "importe_texto": "2.683.874,85 €",
+      "estado": "adjudicado",
+      "fuente": "https://licitaciones2.ifema.es",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-01-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/140",
+      "concepto": "Servicio profesional y técnico de apoyo en desarrollo de pliegos de licitación (Lotes 1 y 2), incluye desarrollo simulador F1, programa embajadores/influencers, agencia creativa, press clipping",
+      "importe": 0,
+      "importe_texto": "Importe no publicado - pendiente confirmar",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/140&idDoc=R0245350",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-04-02",
+      "organismo": "IFEMA Madrid",
+      "expediente": "Pendiente confirmar",
+      "concepto": "Servicios de comunicación y estrategia digital para circuito Madring (agencia de comunicación)",
+      "importe": 261000.0,
+      "importe_texto": "261.000 € PBL (IVA excl.) / VEC +1.000.000 € con prórrogas",
+      "estado": "licitado",
+      "fuente": "https://www.reasonwhy.es/actualidad/ifema-busca-agencia-comunicacion-circuito-formula-1",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-11-06",
+      "organismo": "IFEMA Madrid",
+      "expediente": "Pendiente confirmar",
+      "concepto": "Construcción Pit Building y Paddock Club",
+      "importe": 68100000.0,
+      "importe_texto": "68.100.000 € (presupuestado, pendiente confirmar adjudicación exacta)",
+      "estado": "en_ejecucion",
+      "fuente": "https://www.madring.com/en/circuit/construction",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2024-12-16",
+      "organismo": "IFEMA Madrid",
+      "expediente": "Pendiente confirmar",
+      "concepto": "Acuerdo Match Hospitality - diseño, construcción y comercialización áreas VIP/Paddock Club (capital privado, 10 años, 15.000 plazas VIP)",
+      "importe": 400000000.0,
+      "importe_texto": "400.000.000 € (inversión privada declarada, 2026-2036)",
+      "estado": "adjudicado",
+      "fuente": "https://www.eldiario.es/madrid/somos/formula-1-madrid-encuentra-primer-gran-inversor-pagara-400-millones-gestion-palcos-vip_1_11906005.html",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2026-02-17",
+      "organismo": "IFEMA Madrid",
+      "expediente": "Pendiente confirmar",
+      "concepto": "Acuerdo Ford - Local Event Supporter GP España F1 (5 años, flota 100% eléctrica logística circuito)",
+      "importe": 0,
+      "importe_texto": "Importe no publicado",
+      "estado": "adjudicado",
+      "fuente": "https://media.ford.com/content/fordmedia/feu/es/es/news/2026/02/madring-se-movera-en-ford.html",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2026-06-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/187",
+      "concepto": "Gestión de acreditaciones de medios y coordinación NPO para el GP de España F1 2026",
+      "importe": 0,
+      "importe_texto": "Importe no publicado - pendiente confirmar",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/187&idDoc=R0252461",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-04-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "24/007 (referencia parcial)",
+      "concepto": "Construcción del circuito Madring — obra principal (trazado 5,4 km, estructuras permanentes, instalaciones temporales, reposición viales públicos). Adjudicado a UTE Circuito Madrid: Acciona 60% + Eiffage Construcción 40%",
+      "importe": 83206500.01,
+      "importe_texto": "83.206.500,01 €",
+      "estado": "en_ejecucion",
+      "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-03-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "No publicado",
+      "concepto": "Dirección facultativa y asistencia técnica de obras del circuito",
+      "importe": 2683874.85,
+      "importe_texto": "2.683.874,85 €",
+      "estado": "adjudicado",
+      "fuente": "https://licitaciones2.ifema.es (referenciado en informe anterior)",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2025-11-06",
+      "organismo": "IFEMA Madrid",
+      "expediente": "No publicado individualmente",
+      "concepto": "Pit Building, garajes de equipos y Paddock Club. PBL declarado: 68,1 M€. Inicio de obras: noviembre 2025. Hito previsto de finalización: mayo 2026.",
+      "importe": 68100000.0,
+      "importe_texto": "68.100.000 € (presupuesto declarado, adjudicación no publicada)",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://www.madring.com/en/circuit/construction",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2024-12-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/140 (referencia previa)",
+      "concepto": "Servicios profesionales técnicos — Lotes 1 y 2: simulador F1, influencers, agencia creativa, press clipping",
+      "importe": 0.0,
+      "importe_texto": "Importe no publicado",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://licitaciones2.ifema.es",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2024-12-01",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/187 (referencia previa)",
+      "concepto": "Acreditaciones de medios y gestión NPO para el GP de España 2026",
+      "importe": 0.0,
+      "importe_texto": "Importe no publicado",
+      "estado": "pendiente_confirmar",
+      "fuente": "https://licitaciones2.ifema.es",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "fecha": "2024-12-16",
+      "organismo": "IFEMA Madrid",
+      "expediente": "No publicado",
+      "concepto": "Acuerdo con Match Hospitality (Suiza) para diseño, construcción y comercialización de zonas VIP y Paddock Club 2026-2035. Inversión privada declarada.",
+      "importe": 400000000.0,
+      "importe_texto": "400.000.000 € (inversión privada Match Hospitality a 10 años, no gasto IFEMA)",
+      "estado": "adjudicado",
+      "fuente": "https://www.eldebate.com/espana/madrid/20241216/madrid-cierra-primer-gran-patrocinio-gran-premio-formula-1-400-millones_253863.html",
+      "descubierto_el": "2026-06-25"
+    },
+    {
       "fecha": "2024-10-01",
       "organismo": "IFEMA MADRID",
       "expediente": "Sin número publicado",
@@ -22,7 +479,8 @@
       "importe": 83206500.01,
       "importe_texto": "83.206.500,01 €",
       "estado": "en_ejecucion",
-      "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit"
+      "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit",
+      "descubierto_el": "2026-06-25"
     },
     {
       "fecha": "2024-11-01",
@@ -32,7 +490,8 @@
       "importe": 2683874.85,
       "importe_texto": "2.683.874,85 €",
       "estado": "adjudicado",
-      "fuente": "https://licitaciones2.ifema.es"
+      "fuente": "https://licitaciones2.ifema.es",
+      "descubierto_el": "2026-06-25"
     },
     {
       "fecha": "2025-11-06",
@@ -42,7 +501,8 @@
       "importe": 68100000.0,
       "importe_texto": "68.100.000 € (presupuesto estimado, adjudicación no publicada)",
       "estado": "en_ejecucion",
-      "fuente": "https://www.madring.com/en/circuit/construction"
+      "fuente": "https://www.madring.com/en/circuit/construction",
+      "descubierto_el": "2026-06-25"
     },
     {
       "fecha": "2025-01-01",
@@ -52,7 +512,8 @@
       "importe": 0.0,
       "importe_texto": "Importe no publicado",
       "estado": "pendiente_confirmar",
-      "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/140&idDoc=R0245350"
+      "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/140&idDoc=R0245350",
+      "descubierto_el": "2026-06-25"
     },
     {
       "fecha": "2025-01-01",
@@ -62,7 +523,8 @@
       "importe": 0.0,
       "importe_texto": "Importe no publicado",
       "estado": "pendiente_confirmar",
-      "fuente": "https://licitaciones2.ifema.es"
+      "fuente": "https://licitaciones2.ifema.es",
+      "descubierto_el": "2026-06-25"
     },
     {
       "fecha": "2024-01-01",
@@ -72,7 +534,19 @@
       "importe": 0.0,
       "importe_texto": "Estimado 40-55 M€/año por fuentes diversas (referencia: canon Barcelona ≈35 M€/año). Total 10 años: 400-550 M€ estimados. Sin documento oficial.",
       "estado": "pendiente_confirmar",
-      "fuente": "https://www.motortime.es/2025/12/la-formula-1-que-prometia-no-costar-ni-un-euro-madrid-revive-el-precedente-de-valencia/"
+      "fuente": "https://www.motortime.es/2025/12/la-formula-1-que-prometia-no-costar-ni-un-euro-madrid-revive-el-precedente-de-valencia/",
+      "descubierto_el": "2026-06-25"
+    },
+    {
+      "descubierto_el": "2026-06-25",
+      "fecha": "2026-06-15",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/027",
+      "concepto": "Suministro de medicamentos y material fungible sanitario para el servicio de medicina de emergencias del GP F1 y servicio medico laboral de IFEMA. Cierre: 07/07/2026.",
+      "importe": 32280.68,
+      "importe_texto": "32.280,68 € (PBL sin impuestos)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/027"
     }
   ],
   "coste_acumulado_confirmado": 85890374.86,
@@ -96,6 +570,9 @@
     "Posible riesgo de incumplimiento contractual y penalizaciones: estimación de hasta 270 M€ mencionada por Motortime.es si se produjeran incumplimientos contractuales graves (no verificable con documentación oficial)."
   ],
   "riesgos_detectados": [
+    "Exp. 26/113 cierra HOY (26/06/2026). Adjudicacion inminente sin tiempo para escrutinio publico.",
+    "Exp. 25/175 desistido: indicio de mala planificacion de pliegos que obliga a repetir expedientes.",
+    "Tres nuevos expedientes sanitarios/logisticos suman +900.980 € al coste comprometido.",
     "RIESGO LEGAL DROMO-TILKE (ACTIVO — ESCALADO): Perito independiente del Tribunal de Colonia confirmó que Tilke tenía documentación confidencial de Dromo en sus archivos. El tribunal dictó medidas cautelares parciales. El caso derivará al Tribunal Regional Superior alemán. Dromo reclama >6 M€ por rescisión + daños adicionales por uso comercial del diseño (imagen, layout, La Monumental, audiovisuales). IFEMA se apoya en dictamen de la Abogacía General de la Comunidad de Madrid y sostiene que Dromo no impugnó formalmente la resolución. Riesgo indirecto de costes adicionales para IFEMA (entidad de naturaleza pública).",
     "RIESGO TEMPORAL — REDUCIDO PERO NO ELIMINADO: 100% del asfaltado completado (01/06/2026). Inspección FIA/FOM superada (01/06/2026). Gradas en instalación (junio 2026). Pit building en construcción. Margen hasta el GP (13/09): ~80 días. Riesgo residual en pit building, paddock club, hospitality e infraestructuras temporales.",
     "OPACIDAD DEL CANON FOM: Sin documento oficial publicado. El contrato IFEMA-FOM está sujeto a pacto de confidencialidad. El canon estimado (40-55 M€/año) podría superar en 10 años el coste total de construcción del circuito. Valencia pagó una media de 20,7 M€/año en canon durante 2008-2012 (103,9 M€ en 5 años).",
@@ -166,5 +643,5 @@
   "proyeccion_10_anios": {},
   "costes_indirectos": [],
   "costes_indirectos_total_estimado": "",
-  "fecha_madrid": "2026-06-25 10:41"
+  "fecha_madrid": "2026-06-25 12:00"
 }
