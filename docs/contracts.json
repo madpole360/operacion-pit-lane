@@ -383,5 +383,71 @@
     "estado": "pendiente_confirmar",
     "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/187&idDoc=R0252461",
     "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-04-15",
+    "organismo": "IFEMA Madrid",
+    "expediente": "24/007 (referencia parcial)",
+    "concepto": "Construcción del circuito Madring — obra principal (trazado 5,4 km, estructuras permanentes, instalaciones temporales, reposición viales públicos). Adjudicado a UTE Circuito Madrid: Acciona 60% + Eiffage Construcción 40%",
+    "importe": 83206500.01,
+    "importe_texto": "83.206.500,01 €",
+    "estado": "en_ejecucion",
+    "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-03-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "No publicado",
+    "concepto": "Dirección facultativa y asistencia técnica de obras del circuito",
+    "importe": 2683874.85,
+    "importe_texto": "2.683.874,85 €",
+    "estado": "adjudicado",
+    "fuente": "https://licitaciones2.ifema.es (referenciado en informe anterior)",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-11-06",
+    "organismo": "IFEMA Madrid",
+    "expediente": "No publicado individualmente",
+    "concepto": "Pit Building, garajes de equipos y Paddock Club. PBL declarado: 68,1 M€. Inicio de obras: noviembre 2025. Hito previsto de finalización: mayo 2026.",
+    "importe": 68100000.0,
+    "importe_texto": "68.100.000 € (presupuesto declarado, adjudicación no publicada)",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://www.madring.com/en/circuit/construction",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-12-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140 (referencia previa)",
+    "concepto": "Servicios profesionales técnicos — Lotes 1 y 2: simulador F1, influencers, agencia creativa, press clipping",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-12-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187 (referencia previa)",
+    "concepto": "Acreditaciones de medios y gestión NPO para el GP de España 2026",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-12-16",
+    "organismo": "IFEMA Madrid",
+    "expediente": "No publicado",
+    "concepto": "Acuerdo con Match Hospitality (Suiza) para diseño, construcción y comercialización de zonas VIP y Paddock Club 2026-2035. Inversión privada declarada.",
+    "importe": 400000000.0,
+    "importe_texto": "400.000.000 € (inversión privada Match Hospitality a 10 años, no gasto IFEMA)",
+    "estado": "adjudicado",
+    "fuente": "https://www.eldebate.com/espana/madrid/20241216/madrid-cierra-primer-gran-patrocinio-gran-premio-formula-1-400-millones_253863.html",
+    "descubierto_el": "2026-06-25"
   }
 ]
