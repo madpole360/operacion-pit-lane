@@ -47,20 +47,78 @@ No debes limitarte al coste del circuito. Debes investigar también cualquier
 gasto asociado al evento.
 
 ────────────────────────────────────────────────────────────────────────────────
-FUENTES PRIORITARIAS (consulta siempre fuentes oficiales antes que medios):
+JERARQUIA DE FUENTES (respeta este orden en tus busquedas):
 
-1. Plataforma de Contratación del Sector Público (contrataciondelestado.es)
-2. BOE (boe.es)
-3. Comunidad de Madrid (comunidad.madrid)
-4. Ayuntamiento de Madrid (madrid.es)
-5. IFEMA Madrid (ifema.es)
-6. Fórmula One Management — FOM
-7. FIA
-8. Tribunal de Cuentas
-9. Portal de Transparencia (transparencia.gob.es)
-10. Presupuestos públicos, expedientes de contratación, convenios
+═══ 1. FUENTES OFICIALES (maxima prioridad — solo estas confirman cifras) ═══
 
-Después, usa medios de comunicación contrastados como complemento.
+A) Madring (web oficial)
+   - https://www.madring.com
+   - https://www.madring.com/circuito/construccion (evolucion de obras, hitos, fotos)
+   - https://www.madring.com/patrocinadores (patrocinadores oficiales)
+   - https://www.madring.com/contacto
+
+B) IFEMA Madrid — LA FUENTE MAS IMPORTANTE DE TODA LA INVESTIGACION
+   - https://licitaciones2.ifema.es (perfil del contratante)
+   - De aqui salen todos los expedientes: 24/148, 25/140, 25/175, 25/212, 26/010,
+     26/012, 26/024, 26/057, 26/064, 26/087, 26/111, 26/113
+   - Busca: presupuesto base, valor estimado, modificaciones, adjudicatarios,
+     pliegos, fechas, ofertas, desistimientos
+   - https://www.ifema.es (portal principal)
+
+C) Plataforma de Contratacion del Sector Publico
+   - https://contrataciondelestado.es
+   - Para comprobar si algun contrato IFEMA aparece tambien publicado aqui
+
+D) Portal de Transparencia del Ayuntamiento de Madrid
+   - https://transparencia.madrid.es
+   - Util para: convenios, inversiones, urbanismo, movilidad
+
+E) Portal de Transparencia de la Comunidad de Madrid
+   - https://www.comunidad.madrid/transparencia
+   - Especialmente: convenios, via pecuaria, expedientes ambientales
+
+F) BOCM (Boletin Oficial de la Comunidad de Madrid)
+   - Para: Vereda de los Leneros, modificaciones urbanisticas, desafectaciones,
+     informacion ambiental
+
+G) BOE (boe.es) — Cuando aparece normativa estatal relacionada
+
+═══ 2. MEDIOS ECONOMICOS Y DE INVESTIGACION (segunda prioridad) ═══
+
+A) Reuters — fuente periodistica de mas peso. Para confirmar adjudicaciones,
+   estado de obras, cronologia.
+B) Cinco Dias — Pit Building, contratos, patrocinadores.
+C) El Pais — litigios, Vereda de los Leneros, conflictos juridicos, cronologia.
+D) AS — cronologia F1, contratos, presentacion del circuito.
+E) Palco23 — licitaciones, hospitality, explotacion comercial.
+F) Economia Digital — nuevos concursos, cesped, contratos auxiliares.
+
+═══ 3. EMPRESAS ADJUDICATARIAS ═══
+
+Cuando publican notas de prensa con contratos. Usar para confirmar adjudicaciones
+y alcance del contrato. NUNCA para confirmar importes sin soporte oficial.
+- Acciona
+- Eiffage
+- Santander
+- El Corte Ingles
+- Atletico de Madrid
+
+═══ 4. FUENTES INSTITUCIONALES ADICIONALES ═══
+
+- Ayuntamiento de Madrid, Comunidad de Madrid, IFEMA
+- Fundacion ONCE, FIA, Formula One Management, Liberty Media
+- Portal de Datos Abiertos del Ayuntamiento y Comunidad de Madrid
+- Portal de Transparencia del Estado
+- TED (Tenders Electronic Daily) para licitaciones europeas
+- CNMC para recursos en materia de contratacion
+- Tribunal Administrativo de Contratacion Publica de la CAM
+- Tribunal de Cuentas para futuras fiscalizaciones
+
+EXPEDIENTES IDENTIFICADOS HASTA LA FECHA (busca actualizaciones de estos):
+24/148 (Asistencia tecnica), 25/140 (Servicios tecnicos), 25/175 (DESISTIDO),
+25/212 (Vigilancia ambiental), 26/010 (Personal ETT), 26/012 (Bomberos),
+26/024 (Pasarelas), 26/057 (Medicina emergencia), 26/064 (Cesped artificial),
+26/087 (Carpas), 26/111 (Vereda de los Leneros), 26/113 (Lonas publicitarias)
 
 ────────────────────────────────────────────────────────────────────────────────
 QUÉ INVESTIGAR:
