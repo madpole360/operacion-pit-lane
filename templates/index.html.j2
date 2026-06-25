@@ -457,8 +457,8 @@
       </div>
       <div class="cost-block" style="border-color:rgba(245,158,11,.4);background:linear-gradient(160deg,rgba(245,158,11,.06) 0%,transparent 60%);">
         <div class="cost-label">Coste comprometido (+ licitaciones)</div>
-        {% set compro_raw = data.coste_comprometido | float | default(0) %}
-        <div class="cost-number" id="costCompro" data-target="{{ compro_raw | int }}" style="color:var(--amber);">{{ data.coste_comprometido_texto or 'Calculando...' }}</div>
+        {% set compro_raw = data.get('coste_comprometido') or data.coste_acumulado_confirmado | float | default(0) %}
+        <div class="cost-number" id="costCompro" data-target="{{ compro_raw | int }}" style="color:var(--amber);">{{ data.get('coste_comprometido_texto') or data.coste_acumulado_texto or 'Calculando...' }}</div>
       </div>
     </div>
     <div class="cost-sub" style="margin-top:.75rem;">

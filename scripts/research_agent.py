@@ -265,6 +265,17 @@ def validate_report(data: dict) -> list:
             data.setdefault(field, [] if field in ("nuevos_hallazgos", "contratos",
                                                     "riesgos_detectados", "fuentes_consultadas") else "")
 
+    # Asegurar campos que la plantilla espera pero el agente puede no devolver
+    for field, default in [
+        ("coste_comprometido", data.get("coste_acumulado_confirmado", 0)),
+        ("coste_comprometido_texto", data.get("coste_acumulado_texto", "")),
+        ("proyeccion_10_anios", {}),
+        ("costes_indirectos", []),
+        ("costes_indirectos_total_estimado", ""),
+    ]:
+        if field not in data:
+            data[field] = default
+
     # Asegurar que contratos tenga los campos correctos
     for i, c in enumerate(data.get("contratos", [])):
         for f in ("fecha", "organismo", "expediente", "concepto", "importe",
