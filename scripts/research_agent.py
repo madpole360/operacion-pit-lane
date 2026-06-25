@@ -345,18 +345,30 @@ def validate_report(data: dict) -> list:
     return warnings
 
 
+# Expedientes genericos que el agente no debe aceptar como nuevos
+GENERIC_EXP = {"no disponible", "pendiente confirmar", "no publicado", "sin numero publicado",
+               "pendiente", "no disponible publicamente", "sin expediente", "contrato confidencial",
+               "pendiente de confirmar", "no consta", "desconocido", ""}
+
 def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
-    """Fusiona contratos nuevos en la BD histórica. Retorna (merged, nuevos_detectados)."""
-    # Clave única: expediente + organismo + fecha
+    """Fusiona contratos nuevos en la BD historica. Retorna (merged, nuevos_detectados)."""
     seen = set()
     for c in existing:
-        key = (c.get("expediente", ""), c.get("organismo", ""), c.get("fecha", ""))
+        key = (c.get("expediente", "").strip().lower(), c.get("organismo", ""), c.get("fecha", ""))
         seen.add(key)
 
     nuevos = []
     for c in new_contracts:
-        key = (c.get("expediente", ""), c.get("organismo", ""), c.get("fecha", ""))
-        if key not in seen and c.get("expediente"):
+        exp_norm = c.get("expediente", "").strip().lower()
+        # Rechazar expedientes genericos (sin numero real)
+        if not exp_norm or exp_norm in GENERIC_EXP:
+            continue
+        # Rechazar si el texto del concepto es muy corto o generico
+        concepto = c.get("concepto", "").strip()
+        if len(concepto) < 15:
+            continue
+        key = (exp_norm, c.get("organismo", ""), c.get("fecha", ""))
+        if key not in seen:
             seen.add(key)
             c["descubierto_el"] = TODAY
             existing.append(c)
