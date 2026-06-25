@@ -295,5 +295,93 @@
     "importe_texto": "2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion) = 2.690.374,86 €",
     "estado": "ejecutado",
     "fuente": "https://licitaciones2.ifema.es"
+  },
+  {
+    "fecha": "2025-04-14",
+    "organismo": "IFEMA Madrid",
+    "expediente": "Pendiente confirmar",
+    "concepto": "Construcción del circuito Madring - UTE Acciona (60%) + Eiffage (40%)",
+    "importe": 83206500.01,
+    "importe_texto": "83.206.500,01 €",
+    "estado": "adjudicado",
+    "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-03-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "Pendiente confirmar",
+    "concepto": "Asistencia técnica dirección de obras circuito Madring",
+    "importe": 2683874.85,
+    "importe_texto": "2.683.874,85 €",
+    "estado": "adjudicado",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "concepto": "Servicio profesional y técnico de apoyo en desarrollo de pliegos de licitación (Lotes 1 y 2), incluye desarrollo simulador F1, programa embajadores/influencers, agencia creativa, press clipping",
+    "importe": 0,
+    "importe_texto": "Importe no publicado - pendiente confirmar",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/140&idDoc=R0245350",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-04-02",
+    "organismo": "IFEMA Madrid",
+    "expediente": "Pendiente confirmar",
+    "concepto": "Servicios de comunicación y estrategia digital para circuito Madring (agencia de comunicación)",
+    "importe": 261000.0,
+    "importe_texto": "261.000 € PBL (IVA excl.) / VEC +1.000.000 € con prórrogas",
+    "estado": "licitado",
+    "fuente": "https://www.reasonwhy.es/actualidad/ifema-busca-agencia-comunicacion-circuito-formula-1",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-11-06",
+    "organismo": "IFEMA Madrid",
+    "expediente": "Pendiente confirmar",
+    "concepto": "Construcción Pit Building y Paddock Club",
+    "importe": 68100000.0,
+    "importe_texto": "68.100.000 € (presupuestado, pendiente confirmar adjudicación exacta)",
+    "estado": "en_ejecucion",
+    "fuente": "https://www.madring.com/en/circuit/construction",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-12-16",
+    "organismo": "IFEMA Madrid",
+    "expediente": "Pendiente confirmar",
+    "concepto": "Acuerdo Match Hospitality - diseño, construcción y comercialización áreas VIP/Paddock Club (capital privado, 10 años, 15.000 plazas VIP)",
+    "importe": 400000000.0,
+    "importe_texto": "400.000.000 € (inversión privada declarada, 2026-2036)",
+    "estado": "adjudicado",
+    "fuente": "https://www.eldiario.es/madrid/somos/formula-1-madrid-encuentra-primer-gran-inversor-pagara-400-millones-gestion-palcos-vip_1_11906005.html",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2026-02-17",
+    "organismo": "IFEMA Madrid",
+    "expediente": "Pendiente confirmar",
+    "concepto": "Acuerdo Ford - Local Event Supporter GP España F1 (5 años, flota 100% eléctrica logística circuito)",
+    "importe": 0,
+    "importe_texto": "Importe no publicado",
+    "estado": "adjudicado",
+    "fuente": "https://media.ford.com/content/fordmedia/feu/es/es/news/2026/02/madring-se-movera-en-ford.html",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2026-06-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "concepto": "Gestión de acreditaciones de medios y coordinación NPO para el GP de España F1 2026",
+    "importe": 0,
+    "importe_texto": "Importe no publicado - pendiente confirmar",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/187&idDoc=R0252461",
+    "descubierto_el": "2026-06-25"
   }
 ]

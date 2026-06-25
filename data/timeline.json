@@ -54,5 +54,12 @@
     "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
     "num_contratos": 27,
     "porcentaje_riesgo_valencia": 55
+  },
+  {
+    "fecha": "2026-06-25",
+    "coste_acumulado": 85890374.86,
+    "coste_texto": "85,89 millones de euros en contratos adjudicados confirmados (obra principal + asistencia técnica). Fuentes diversas sitúan el gasto total de IFEMA en adaptación del entorno en más de 130 millones de euros a mayo de 2026. Si se incluye el Pit Building (68,1 M€ en ejecución), el total de contratos con documentación parcial superaría los 153 M€. No incluye canon FOM ni costes operativos del evento.",
+    "num_contratos": 8,
+    "porcentaje_riesgo_valencia": 74
   }
 ]
