@@ -2,12 +2,9 @@ name: 🏎️ F1 Madrid — Investigación Diaria
 
 on:
   schedule:
-    # Ejecutar cada hora en punto hasta las 13:00 Madrid (CEST = UTC+2)
-    # 10:00 → 8:00 UTC | 11:00 → 9:00 UTC | 12:00 → 10:00 UTC | 13:00 → 11:00 UTC
-    - cron: '0 8 * * *'
-    - cron: '0 9 * * *'
-    - cron: '0 10 * * *'
-    - cron: '0 11 * * *'
+    # 9:00 Madrid en horario de verano (CEST = UTC+2 → 7:00 UTC)
+    # En invierno (CET = UTC+1) cambiar a: 0 8 * * *
+    - cron: '0 7 * * *'
   workflow_dispatch:
 
 permissions:
@@ -35,10 +32,7 @@ jobs:
       - name: 🔍 Ejecutar agente investigador
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          echo "Key length: ${#ANTHROPIC_API_KEY}"
-          echo "Key prefix: ${ANTHROPIC_API_KEY:0:20}..."
-          python scripts/research_agent.py
+        run: python scripts/research_agent.py
 
       - name: 📤 Publicar informe en GitHub Pages
         run: |
