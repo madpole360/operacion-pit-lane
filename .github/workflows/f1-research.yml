@@ -35,7 +35,10 @@ jobs:
       - name: 🔍 Ejecutar agente investigador
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python scripts/research_agent.py
+        run: |
+          echo "Key length: ${#ANTHROPIC_API_KEY}"
+          echo "Key prefix: ${ANTHROPIC_API_KEY:0:20}..."
+          python scripts/research_agent.py
 
       - name: 📤 Publicar informe en GitHub Pages
         run: |
