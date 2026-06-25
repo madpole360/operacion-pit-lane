@@ -326,12 +326,22 @@ def run_research() -> dict:
 Contexto del informe anterior:
 {prev}
 
-INSTRUCCIONES:
-1. Usa web_search para buscar noticias, licitaciones y adjudicaciones de los ultimos 7 dias sobre el circuito Madring, IFEMA y el GP de Madrid.
-2. Busca tambien actualizaciones sobre la comparativa con el caso Valencia.
-3. Cuando tengas los resultados de las busquedas, redacta DIRECTAMENTE el JSON final con toda la informacion recopilada.
+INSTRUCCIONES DE BUSQUEDA:
+Realiza estas busquedas especificas:
 
-IMPORTANTE: Tienes UNA ronda de busquedas. Tras recibir los resultados, debes responder UNICAMENTE con el objeto JSON. No escribas texto introductorio, no intentes hacer mas busquedas, no uses etiquetas XML. Solo el JSON."""
+1. Busca en licitaciones2.ifema.es y contrataciondelestado.es nuevas licitaciones, adjudicaciones, modificaciones o DESISTIMIENTOS de los ultimos 7 dias relacionados con Formula 1, Madring, o IFEMA GP España.
+2. Busca en madring.com actualizaciones de obras, hitos de construccion y notas de prensa recientes.
+3. Busca noticias recientes sobre el GP de España F1 Madrid 2026 (El Pais, El Mundo, El Confidencial, eldiario.es, Palco23, Expansión, Cinco Días).
+4. Busca actualizaciones sobre el litigio Dromo vs Tilke en Alemania.
+5. Busca informacion actualizada sobre patrocinadores y el canon FOM.
+
+IMPORTANTE: Presta especial atencion a:
+- Desistimientos de expedientes (ej: expediente 25/175 desistido por error en criterios)
+- Hitos de construccion (asfaltado, izado de bandera, inspecciones FIA)
+- Modificaciones de contratos existentes
+- Nuevos contratos menores
+
+Tienes UNA ronda de busquedas. Tras recibir los resultados, debes responder UNICAMENTE con el objeto JSON. No escribas texto introductorio, no intentes hacer mas busquedas, no uses etiquetas XML. Solo el JSON."""
         }]
     )
 
