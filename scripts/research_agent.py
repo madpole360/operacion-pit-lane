@@ -408,20 +408,34 @@ def main():
     except Exception as e:
         print(f"❌ Error en la investigación: {e}")
         # Crear informe de fallo para no romper la racha
+        # Cargar datos anteriores para preservar costes y proyecciones
+        prev_data = {}
+        if LATEST_FILE.exists():
+            try:
+                prev_data = json.loads(LATEST_FILE.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+
         data = {
             "fecha": TODAY,
             "fecha_madrid": TODAY_MADRID,
             "error": str(e),
-            "resumen_ejecutivo": f"⚠️ El agente no pudo completar la investigación hoy: {e}",
-            "nuevos_hallazgos": [],
-            "contratos": [],
-            "coste_acumulado_confirmado": 0,
-            "coste_acumulado_texto": "No disponible (error en investigación)",
+            "resumen_ejecutivo": prev_data.get("resumen_ejecutivo",
+                f"⚠️ El agente no pudo completar la investigacion hoy: {e}"),
+            "nuevos_hallazgos": prev_data.get("nuevos_hallazgos", []),
+            "contratos": prev_data.get("contratos", []),
+            "coste_acumulado_confirmado": prev_data.get("coste_acumulado_confirmado", 0),
+            "coste_acumulado_texto": prev_data.get("coste_acumulado_texto", "No disponible (error en investigacion)"),
+            "coste_comprometido": prev_data.get("coste_comprometido", 0),
+            "coste_comprometido_texto": prev_data.get("coste_comprometido_texto", ""),
             "incremento_respecto_anterior": 0,
-            "partidas_pendientes_confirmar": [],
-            "riesgos_detectados": [f"Error técnico: {e}"],
-            "comparativa_valencia": {},
-            "fuentes_consultadas": [],
+            "proyeccion_10_anios": prev_data.get("proyeccion_10_anios", {}),
+            "costes_indirectos": prev_data.get("costes_indirectos", []),
+            "costes_indirectos_total_estimado": prev_data.get("costes_indirectos_total_estimado", ""),
+            "partidas_pendientes_confirmar": prev_data.get("partidas_pendientes_confirmar", []),
+            "riesgos_detectados": prev_data.get("riesgos_detectados", [f"Error tecnico: {e}"]),
+            "comparativa_valencia": prev_data.get("comparativa_valencia", {}),
+            "fuentes_consultadas": prev_data.get("fuentes_consultadas", []),
         }
 
     # Validar

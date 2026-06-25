@@ -2,9 +2,9 @@ name: 🏎️ F1 Madrid — Investigación Diaria
 
 on:
   schedule:
-    # 21:00 Madrid en horario de verano (CEST = UTC+2 → 19:00 UTC)
-    # En invierno (CET = UTC+1) cambiar a: 0 20 * * *
-    - cron: '0 19 * * *'
+    # 8:30 Madrid en horario de verano (CEST = UTC+2 → 6:30 UTC)
+    # En invierno (CET = UTC+1) cambiar a: 30 7 * * *
+    - cron: '30 6 * * *'
   workflow_dispatch:
 
 permissions:

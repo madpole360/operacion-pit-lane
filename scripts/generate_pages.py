@@ -116,9 +116,6 @@ def _generate_archive_index(files: list):
 </html>"""
     (ARCHIVE_DIR / "index.html").write_text(html, encoding="utf-8")
     print("✅ archive/index.html generado")
-    html_v = template_v.render(**ctx)
-    (DOCS_DIR / "valencia.html").write_text(html_v, encoding="utf-8")
-    print("✅ valencia.html generado")
 
 
 def generate_initial_site():
