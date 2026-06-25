@@ -449,5 +449,71 @@
     "estado": "adjudicado",
     "fuente": "https://www.eldebate.com/espana/madrid/20241216/madrid-cierra-primer-gran-patrocinio-gran-premio-formula-1-400-millones_253863.html",
     "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-10-01",
+    "organismo": "IFEMA MADRID",
+    "expediente": "Sin número publicado",
+    "concepto": "Construcción del circuito Madring — UTE Acciona (60%) + Eiffage Construcción (40%)",
+    "importe": 83206500.01,
+    "importe_texto": "83.206.500,01 €",
+    "estado": "en_ejecucion",
+    "fuente": "https://www.acciona.com/updates/news/acciona-will-build-madrids-formula-1-circuit",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-11-01",
+    "organismo": "IFEMA MADRID",
+    "expediente": "Sin número publicado",
+    "concepto": "Asistencia técnica y dirección facultativa de obra del circuito Madring",
+    "importe": 2683874.85,
+    "importe_texto": "2.683.874,85 €",
+    "estado": "adjudicado",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-11-06",
+    "organismo": "IFEMA MADRID",
+    "expediente": "Sin número publicado",
+    "concepto": "Construcción del Pit Building y Paddock Club (inicio obras noviembre 2025)",
+    "importe": 68100000.0,
+    "importe_texto": "68.100.000 € (presupuesto estimado, adjudicación no publicada)",
+    "estado": "en_ejecucion",
+    "fuente": "https://www.madring.com/en/circuit/construction",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA MADRID",
+    "expediente": "25/140",
+    "concepto": "Servicios profesionales técnicos para el GP de España F1 (Lotes 1 y 2): incluye simulador F1, F1 TV, programa de embajadores/influencers, agencia creativa, press clipping internacional y otros servicios auxiliares",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/140&idDoc=R0245350",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA MADRID",
+    "expediente": "25/187",
+    "concepto": "Acreditaciones de medios y gestión NPO para el GP de España F1",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-06-25"
+  },
+  {
+    "fecha": "2024-01-01",
+    "organismo": "IFEMA MADRID / FOM",
+    "expediente": "Contrato confidencial IFEMA-FOM",
+    "concepto": "Canon anual a Formula One Management (FOM) por derechos de organización del GP de España 2026-2035",
+    "importe": 0.0,
+    "importe_texto": "Estimado 40-55 M€/año por fuentes diversas (referencia: canon Barcelona ≈35 M€/año). Total 10 años: 400-550 M€ estimados. Sin documento oficial.",
+    "estado": "pendiente_confirmar",
+    "fuente": "https://www.motortime.es/2025/12/la-formula-1-que-prometia-no-costar-ni-un-euro-madrid-revive-el-precedente-de-valencia/",
+    "descubierto_el": "2026-06-25"
   }
 ]
