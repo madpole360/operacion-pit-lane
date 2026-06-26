@@ -371,6 +371,29 @@ def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
 
 
 # ─── Agente ─────────────────────────────────────────────────────────────────────
+MONITOR_PROMPT = """Eres un monitor automatico de portales de contratacion publica.
+Tu unica tarea: detectar NUEVOS expedientes o licitaciones relacionadas con el
+circuito de Formula 1 de Madrid usando los terminos: 'madring', 'formula 1',
+'gran premio', 'circuito', 'IFEMA'.
+
+Busca especificamente en estos portales:
+
+1. licitaciones2.ifema.es (perfil del contratante IFEMA):
+   Busca: 'madrid formula 1', 'madring', 'gran premio espana', 'circuito IFEMA'
+
+2. contrataciondelestado.es (Plataforma de Contratacion del Estado):
+   Busca: 'IFEMA formula 1', 'madrid gran premio', 'madring circuito'
+
+3. transparencia.madrid.es y madrid.es (Ayuntamiento de Madrid):
+   Busca: 'formula 1 madrid', 'madring', 'gran premio IFEMA'
+
+4. comunidad.madrid (Comunidad de Madrid):
+   Busca: 'formula 1', 'madring', 'gran premio espana', 'circuito urbano'
+
+Para cada hallazgo indica: PORTAL, expediente/expediente, titulo, importe (si visible),
+estado (licitado/adjudicado/desistido), y URL.
+NO uses JSON. Solo texto estructurado. Si no hay novedades di 'SIN NOVEDADES'."""
+
 HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratacion publica espanola.
 Tu tarea: buscar informacion actualizada sobre el GP de Formula 1 de Madrid (Madring)
 y devolver los hallazgos en texto estructurado.
@@ -386,6 +409,25 @@ NO redactes JSON. Solo texto estructurado con los datos encontrados."""
 SONNET_ANALYSIS_PROMPT = SYSTEM_PROMPT  # El prompt completo con toda la metodologia
 
 
+def prev_data_or_empty(prev_str: str) -> dict:
+    """Si no hay novedades, devuelve los datos anteriores intactos."""
+    if LATEST_FILE.exists():
+        try:
+            return json.loads(LATEST_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {
+        "fecha": TODAY, "fecha_madrid": TODAY_MADRID,
+        "resumen_ejecutivo": "Sin novedades detectadas en esta ejecucion.",
+        "nuevos_hallazgos": [], "contratos": [],
+        "coste_acumulado_confirmado": 0, "coste_acumulado_texto": "",
+        "coste_comprometido": 0, "coste_comprometido_texto": "",
+        "incremento_respecto_anterior": 0,
+        "partidas_pendientes_confirmar": [], "riesgos_detectados": [],
+        "comparativa_valencia": {}, "fuentes_consultadas": [],
+    }
+
+
 def run_research() -> dict:
     """Pipeline en 2 pasos: Haiku busca, Sonnet analiza."""
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -397,7 +439,27 @@ def run_research() -> dict:
 
     print(f"🔍 Investigando... Fecha UTC: {TODAY} | Madrid: {TODAY_MADRID}")
 
-    # ── Paso 1: Haiku 4.5 + web_search (barato, solo busca datos) ──
+    # ── Paso 0: Monitor de portales (Haiku, busca nuevos expedientes) ──
+    print("   [Paso 0] Monitor portales contratacion...")
+    monitor_response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=3072,
+        thinking={"type": "disabled"},
+        system=MONITOR_PROMPT,
+        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        messages=[{
+            "role": "user",
+            "content": f"Fecha: {TODAY_MADRID}. Busca nuevos expedientes en IFEMA, Ayto Madrid, Comunidad Madrid y contrataciondelestado.es usando: 'madring', 'formula 1', 'gran premio', 'circuito'. Max 3 busquedas."
+        }]
+    )
+    monitor_data = "\n".join(
+        b.text for b in monitor_response.content if getattr(b, "type", None) == "text"
+    )
+    m_blocks = [getattr(b, "type", "?") for b in monitor_response.content]
+    has_news = "SIN NOVEDADES" not in monitor_data.upper()
+    print(f"   [Monitor] Bloques: {len(monitor_response.content)} ({', '.join(m_blocks)}) | Novedades: {has_news}")
+
+    # ── Paso 1: Haiku 4.5 + web_search (busca datos + noticias) ──
     print("   [Paso 1] Haiku 4.5 + web_search...")
     haiku_response = client.messages.create(
         model="claude-haiku-4-5-20251001",
@@ -407,7 +469,7 @@ def run_research() -> dict:
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{
             "role": "user",
-            "content": f"Fecha: {TODAY_MADRID} (Madrid, CEST). Contexto: {prev}\n\nBusca novedades de los ultimos 7 dias (max 3 busquedas)."
+            "content": f"Fecha: {TODAY_MADRID} (Madrid, CEST).\n\nContexto anterior:\n{prev}\n\nMONITOR DE PORTALES (nuevos expedientes detectados):\n{monitor_data}\n\nBusca mas detalles y noticias sobre estos hallazgos (max 3 busquedas)."
         }]
     )
 
@@ -419,6 +481,11 @@ def run_research() -> dict:
 
     if not raw_data.strip():
         raise ValueError("Haiku no devolvio resultados de busqueda")
+
+    # Si monitor y busqueda no encontraron nada, saltar Sonnet (ahorro ~$2/ejec)
+    if not has_news and len(raw_data) < 500:
+        print("   [Skip] Sin novedades detectadas. Saltando analisis Sonnet.")
+        return prev_data_or_empty(prev)
 
     # ── Paso 2: Sonnet 4.6 (analiza, sin web search, mas barato en output) ──
     print("   [Paso 2] Sonnet 4.6 analizando...")
