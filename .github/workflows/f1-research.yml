@@ -4,7 +4,9 @@ on:
   schedule:
     # 21:00 Madrid en horario de verano (CEST = UTC+2 → 19:00 UTC)
     # En invierno (CET = UTC+1) cambiar a: 0 20 * * *
-    - cron: '0 19 * * *'
+    # Lunes y jueves — los expedientes IFEMA no se publican a diario
+    - cron: '0 19 * * 1'
+    - cron: '0 19 * * 4'
   workflow_dispatch:
 
 permissions:
