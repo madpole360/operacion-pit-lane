@@ -31,10 +31,10 @@ LATEST_FILE = DOCS_DIR / "latest.json"
 CONTRACTS_FILE = DOCS_DIR / "contracts.json"
 
 # ─── System Prompt ──────────────────────────────────────────────────────────────
-SYSTEM_PROMPT = """Actua como un equipo multidisciplinar formado por:
-- Periodista de investigacion.
+SYSTEM_PROMPT = """Actúa como un equipo multidisciplinar formado por:
+- Periodista de investigación.
 - Auditor del sector publico.
-- Especialista en contratacion publica espanola.
+- Especialista en contratación pública espanola.
 - Analista financiero.
 - Ingeniero de datos.
 - Investigador OSINT.
@@ -52,10 +52,10 @@ Toda afirmacion debe poder justificarse mediante evidencias.
 ─── PRINCIPIOS ───
 
 NEUTRALIDAD: Nunca partas de la premisa de que existe corrupcion, sobrecoste o
-mala gestion. Tampoco partas de la premisa contraria. La investigacion debe ser
+mala gestión. Tampoco partas de la premisa contraria. La investigación debe ser
 completamente neutral.
 
-EVIDENCIA: No aceptes afirmaciones sin documentacion. No aceptes rumores.
+EVIDENCIA: No aceptes afirmaciones sin documentación. No aceptes rumores.
 No aceptes titulares. No aceptes opiniones. Cada dato debera estar asociado a
 una fuente.
 
@@ -65,22 +65,22 @@ enlace. Nunca presentes una cifra sin trazabilidad.
 ─── DEFINICION DE COSTE CONFIRMADO ───
 
 Un coste solo puede considerarse CONFIRMADO cuando exista alguno de estos docs:
-- adjudicacion oficial
+- adjudicación oficial
 - formalizacion
 - contrato firmado
 - resolucion administrativa
 - factura
 - convenio firmado
-- modificacion contractual aprobada
+- modificación contractual aprobada
 - documento presupuestario oficial
 
-Si solo existe noticia, entrevista, rueda de prensa o estimacion:
+Si solo existe noticia, entrevista, rueda de prensa o estimación:
 NO sumar al coste confirmado.
 
 ─── CLASIFICACION DE LA INFORMACION ───
 
 🟢 CONFIRMADO: soporte documental oficial. Sumar al coste confirmado.
-🟡 MUY PROBABLE: documentacion indirecta solida. NO sumar al confirmado.
+🟡 MUY PROBABLE: documentación indirecta solida. NO sumar al confirmado.
 🟠 HIPOTESIS: evidencia parcial. NO sumar.
 🔴 RUMOR: no utilizar. Eliminar.
 
@@ -90,7 +90,7 @@ Investigar absolutamente cualquier gasto relacionado con Madring.
 
 INFRAESTRUCTURA: circuito, boxes, paddock, Pit Building, gradas, electricidad,
 fibra, alumbrado, asfaltado, seguridad, drenaje, movimiento de tierras,
-urbanizacion, aparcamientos, senalizacion, puentes, pasarelas, hospitales de
+urbanización, aparcamientos, senalizacion, puentes, pasarelas, hospitales de
 campana, centros medicos, helicopteros, bomberos.
 
 ORGANIZACION: personal, azafatas, seguridad privada, protocolo, acreditaciones,
@@ -99,7 +99,7 @@ prensa, hospitality, VIP, catering, transporte, logistica, limpieza.
 PUBLICIDAD: campanas institucionales, agencias, branding, lonas, marquesinas,
 autobuses, metro, mupis, prensa, radio, television, influencers, redes sociales.
 
-PATROCINIOS: para cada patrocinador buscar contrato, convenio, duracion,
+PATROCINIOS: para cada patrocinador buscar contrato, convenio, duración,
 contraprestaciones, importe, renovaciones.
 
 CANON: canon anual, canon variable, pagos extraordinarios, Liberty Media,
@@ -124,14 +124,14 @@ FUENTES OFICIALES (solo estas confirman cifras):
 - https://licitaciones2.ifema.es (perfil del contratante IFEMA)
 - https://contrataciondelestado.es
 - https://www.madring.com
-- https://www.madring.com/circuito/construccion
+- https://www.madring.com/circuito/construcción
 - https://www.madring.com/patrocinadores
 - https://transparencia.madrid.es
 - https://www.comunidad.madrid/transparencia
 - https://www.boe.es
 - https://www.ifema.es
 
-FUENTES SECUNDARIAS (solo para localizar informacion, NUNCA para confirmar cifras):
+FUENTES SECUNDARIAS (solo para localizar información, NUNCA para confirmar cifras):
 Orden de confianza: Reuters > El Diario > Cinco Dias > El Pais > Expansion >
 AS > Palco23 > Economia Digital > El Confidencial > Europa Press > Servimedia.
 
@@ -143,11 +143,11 @@ AS > Palco23 > Economia Digital > El Confidencial > Europa Press > Servimedia.
 ─── REGLAS DE INVESTIGACION ───
 
 Cada vez que aparezca un nuevo expediente busca: pliego tecnico, pliego
-administrativo, adjudicacion, formalizacion, modificacion, prorrogas, recursos,
+administrativo, adjudicación, formalizacion, modificación, prórrogas, recursos,
 resolucion, adjudicatario, UTE, importe, IVA, valor estimado.
 
 Para cada contrato registra: expediente, objeto, organismo, fecha, adjudicatario,
-NIF, importe, IVA, valor estimado, duracion, prorrogas, modificaciones, estado,
+NIF, importe, IVA, valor estimado, duración, prórrogas, modificaciones, estado,
 fuente, url, fecha de revision, nivel de confianza.
 
 ─── CUATRO CIFRAS INDEPENDIENTES ───
@@ -156,7 +156,7 @@ Mantener cuatro cifras separadas, NUNCA mezclarlas:
 1. COSTE CONFIRMADO: solo adjudicaciones con soporte documental oficial.
 2. COSTE COMPROMETIDO: licitaciones publicadas (PBL).
 3. COSTE ESTIMADO: presupuestos base e hipotesis con evidencia parcial.
-4. COSTE POTENCIAL: incluyendo prorrogas, modificaciones previstas y VEC.
+4. COSTE POTENCIAL: incluyendo prórrogas, modificaciones previstas y VEC.
 
 En el JSON, indica claramente a cual corresponde cada cifra.
 
@@ -186,7 +186,7 @@ Solo JSON valido, sin markdown, sin comentarios:
       "concepto": "Descripcion",
       "importe": 0.00,
       "importe_texto": "123.456,78 €",
-      "estado": "licitado|adjudicado|en_ejecucion|ejecutado|desistido|pendiente_confirmar",
+      "estado": "licitado|adjudicado|en_ejecución|ejecutado|desistido|pendiente_confirmar",
       "nivel_confianza": "confirmado|muy_probable|hipotesis",
       "fuente": "URL directa al documento oficial"
     }
@@ -209,7 +209,8 @@ Solo JSON valido, sin markdown, sin comentarios:
 }
 
 IMPORTANTE: Tras usar web_search, tu UNICA respuesta debe ser el objeto JSON final.
-No escribas introducciones, no uses etiquetas XML ni markdown. Solo el JSON."""
+No escribas introducciones, no uses etiquetas XML ni markdown. Solo el JSON.
+USA ESPAÑOL CORRECTO con tildes, eñes y diacriticos en todos los campos de texto."""
 
 
 # ─── Helpers ────────────────────────────────────────────────────────────────────
@@ -371,7 +372,7 @@ def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
 
 
 # ─── Agente ─────────────────────────────────────────────────────────────────────
-MONITOR_PROMPT = """Eres un monitor automatico de portales de contratacion publica.
+MONITOR_PROMPT = """Eres un monitor automatico de portales de contratación pública.
 Tu unica tarea: detectar NUEVOS expedientes o licitaciones relacionadas con el
 circuito de Formula 1 de Madrid usando los terminos: 'madring', 'formula 1',
 'gran premio', 'circuito', 'IFEMA'.
@@ -394,13 +395,13 @@ Para cada hallazgo indica: PORTAL, expediente/expediente, titulo, importe (si vi
 estado (licitado/adjudicado/desistido), y URL.
 NO uses JSON. Solo texto estructurado. Si no hay novedades di 'SIN NOVEDADES'."""
 
-HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratacion publica espanola.
-Tu tarea: buscar informacion actualizada sobre el GP de Formula 1 de Madrid (Madring)
+HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratación pública espanola.
+Tu tarea: buscar información actualizada sobre el GP de Formula 1 de Madrid (Madring)
 y devolver los hallazgos en texto estructurado.
 
 Busca en:
 - licitaciones2.ifema.es: nuevas licitaciones, adjudicaciones, desistimientos
-- madring.com: hitos de construccion, notas de prensa
+- madring.com: hitos de construcción, notas de prensa
 - Noticias: Reuters, El Pais, Cinco Dias, Palco23
 
 Para cada hallazgo indica: fuente, fecha, cifras, estado.
@@ -418,7 +419,7 @@ def prev_data_or_empty(prev_str: str) -> dict:
             pass
     return {
         "fecha": TODAY, "fecha_madrid": TODAY_MADRID,
-        "resumen_ejecutivo": "Sin novedades detectadas en esta ejecucion.",
+        "resumen_ejecutivo": "Sin novedades detectadas en esta ejecución.",
         "nuevos_hallazgos": [], "contratos": [],
         "coste_acumulado_confirmado": 0, "coste_acumulado_texto": "",
         "coste_comprometido": 0, "coste_comprometido_texto": "",
@@ -440,7 +441,7 @@ def run_research() -> dict:
     print(f"🔍 Investigando... Fecha UTC: {TODAY} | Madrid: {TODAY_MADRID}")
 
     # ── Paso 0: Monitor de portales (Haiku, busca nuevos expedientes) ──
-    print("   [Paso 0] Monitor portales contratacion...")
+    print("   [Paso 0] Monitor portales contratación...")
     monitor_response = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=3072,
@@ -504,12 +505,13 @@ Contexto del informe anterior:
 DATOS RECOPILADOS POR EL INVESTIGADOR:
 {raw_data}
 
-Con esta informacion, genera el JSON final aplicando la metodologia:
+Con esta información, genera el JSON final aplicando la metodologia:
 - Solo CONFIRMADO si hay soporte documental oficial.
 - Clasifica cada dato: 🟢🟡🟠🔴.
-- Nunca sumes estimaciones al coste confirmado.
+- Nunca sumes estimaciónes al coste confirmado.
 - Solo expedientes con numero real (no 'No disponible').
-- Responde UNICAMENTE con el JSON, sin markdown ni etiquetas."""
+- Responde UNICAMENTE con el JSON, sin markdown ni etiquetas.
+- Usa español correcto con tildes, eñes y todos los acentos."""
         }]
     )
 
@@ -576,7 +578,7 @@ def save_results(data: dict) -> dict:
         "contratos": merged_contracts,
         # Costes: recalculados desde la BD limpia
         "coste_acumulado_confirmado": confirmado,
-        "coste_acumulado_texto": f"{confirmado/1e6:.1f} millones de euros (obra principal + modificacion + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+        "coste_acumulado_texto": f"{confirmado/1e6:.1f} millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
         "coste_comprometido": comprometido,
         "coste_comprometido_texto": f"{comprometido/1e6:.1f} millones de euros (costes confirmados + PBL de licitaciones activas).",
         "incremento_respecto_anterior": confirmado - prev.get("coste_acumulado_confirmado", confirmado),
@@ -641,11 +643,11 @@ def main():
             "fecha_madrid": TODAY_MADRID,
             "error": str(e),
             "resumen_ejecutivo": prev_data.get("resumen_ejecutivo",
-                f"⚠️ El agente no pudo completar la investigacion hoy: {e}"),
+                f"⚠️ El agente no pudo completar la investigación hoy: {e}"),
             "nuevos_hallazgos": prev_data.get("nuevos_hallazgos", []),
             "contratos": prev_data.get("contratos", []),
             "coste_acumulado_confirmado": prev_data.get("coste_acumulado_confirmado", 0),
-            "coste_acumulado_texto": prev_data.get("coste_acumulado_texto", "No disponible (error en investigacion)"),
+            "coste_acumulado_texto": prev_data.get("coste_acumulado_texto", "No disponible (error en investigación)"),
             "coste_comprometido": prev_data.get("coste_comprometido", 0),
             "coste_comprometido_texto": prev_data.get("coste_comprometido_texto", ""),
             "incremento_respecto_anterior": 0,
