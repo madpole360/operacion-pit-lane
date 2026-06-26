@@ -340,8 +340,8 @@
       "expediente": "26/097",
       "adjudicatario": "M DOLORES MARTINEZ VARA DE REY S.A. MDM (A28889939)",
       "concepto": "Servicio de montaje, mantenimiento y desmontaje de proyectos efimeros de diseno ferial para el GP de Espana de F1 2026.",
-      "importe": 205630.11,
-      "importe_texto": "205.630,11 € (PBL) / 308.445,14 € (VEC)",
+      "importe": 205584.26,
+      "importe_texto": "205.584,26 € (adjudicacion) / 308.445,14 € (VEC)",
       "estado": "adjudicado",
       "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/097"
     },
@@ -380,10 +380,10 @@
       "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/129"
     }
   ],
-  "coste_acumulado_confirmado": 86739864.97,
-  "coste_acumulado_texto": "86.7 millones de euros (adjudicaciones con soporte documental oficial IFEMA). No incluye Pit Building, canon FOM ni costes indirectos.",
-  "coste_comprometido": 103502288.33999999,
-  "coste_comprometido_texto": "103.5 millones de euros (confirmado + PBL de licitaciones activas en IFEMA).",
+  "coste_acumulado_confirmado": 86739819.12,
+  "coste_acumulado_texto": "86.7 millones de euros (adjudicaciones con soporte documental oficial IFEMA).",
+  "coste_comprometido": 103502242.49,
+  "coste_comprometido_texto": "103.5 millones de euros (confirmado + PBL de licitaciones activas).",
   "incremento_respecto_anterior": 0,
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
