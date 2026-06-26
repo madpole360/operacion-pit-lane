@@ -339,29 +339,28 @@ def validate_report(data: dict) -> list:
     return warnings
 
 
-# Expedientes genericos que el agente no debe aceptar como nuevos
-GENERIC_EXP = {"no disponible", "pendiente confirmar", "no publicado", "sin numero publicado",
-               "pendiente", "no disponible publicamente", "sin expediente", "contrato confidencial",
-               "pendiente de confirmar", "no consta", "desconocido", ""}
+import re
+# Solo aceptar expedientes que coincidan con el formato real de IFEMA
+EXP_RE = re.compile(r"^\d{2}/\d{3,4}$")  # ej: 26/113, 25/043, 24/226
+EXP_CM_RE = re.compile(r"^\d{10}$")       # ej: 6200014240 (contratos menores)
 
 def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
-    """Fusiona contratos nuevos en la BD historica. Retorna (merged, nuevos_detectados)."""
+    """Fusiona contratos nuevos en la BD historica. Solo acepta expedientes con formato real."""
     seen = set()
     for c in existing:
-        key = (c.get("expediente", "").strip().lower(), c.get("organismo", ""), c.get("fecha", ""))
+        key = (c.get("expediente", "").strip(), c.get("organismo", ""), c.get("fecha", ""))
         seen.add(key)
 
     nuevos = []
     for c in new_contracts:
-        exp_norm = c.get("expediente", "").strip().lower()
-        # Rechazar expedientes genericos (sin numero real)
-        if not exp_norm or exp_norm in GENERIC_EXP:
+        exp = c.get("expediente", "").strip()
+        # SOLO aceptar formatos reales: NN/NNN o NNNNNNNNNN
+        if not (EXP_RE.match(exp) or EXP_CM_RE.match(exp)):
             continue
-        # Rechazar si el texto del concepto es muy corto o generico
         concepto = c.get("concepto", "").strip()
         if len(concepto) < 15:
             continue
-        key = (exp_norm, c.get("organismo", ""), c.get("fecha", ""))
+        key = (exp, c.get("organismo", ""), c.get("fecha", ""))
         if key not in seen:
             seen.add(key)
             c["descubierto_el"] = TODAY
