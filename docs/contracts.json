@@ -306,5 +306,63 @@
     "importe_texto": "32.280,68 € (PBL sin impuestos)",
     "estado": "licitado",
     "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/027"
+  },
+  {
+    "descubierto_el": "2026-06-26",
+    "fecha": "2025-12-09",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/176",
+    "adjudicatario": "SGS TECNOS SAU (A28345577)",
+    "concepto": "Servicio de medicion de ruido, calidad del aire, temperatura y vibraciones durante el GP de Espana de F1.",
+    "importe": 15110.7,
+    "importe_texto": "15.110,70 € (adjudicacion) / 17.000,00 € (PBL)",
+    "estado": "adjudicado",
+    "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=25/176"
+  },
+  {
+    "descubierto_el": "2026-06-26",
+    "fecha": "2026-05-27",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/097",
+    "adjudicatario": "M DOLORES MARTINEZ VARA DE REY S.A. MDM (A28889939)",
+    "concepto": "Servicio de montaje, mantenimiento y desmontaje de proyectos efimeros de diseno ferial para el GP de Espana de F1 2026.",
+    "importe": 205584.26,
+    "importe_texto": "205.584,26 € (adjudicacion) / 308.445,14 € (VEC)",
+    "estado": "adjudicado",
+    "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/097"
+  },
+  {
+    "descubierto_el": "2026-06-26",
+    "fecha": "2026-05-27",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/102",
+    "concepto": "Servicio de alquiler y mantenimiento de modulos prefabricados de aseos y WC quimicos portatiles para el GP de Espana de F1 2026.",
+    "importe": 73210.0,
+    "importe_texto": "73.210,00 € (PBL) / 109.815,00 € (VEC)",
+    "estado": "licitado",
+    "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/102"
+  },
+  {
+    "descubierto_el": "2026-06-26",
+    "fecha": "2026-05-27",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/106",
+    "adjudicatario": "PREFABRI SL (B78567799)",
+    "concepto": "Servicio de alquiler de modulos prefabricados para oficinas, produccion y otros usos durante el GP de Espana de F1 2026.",
+    "importe": 32990.0,
+    "importe_texto": "32.990,00 € (adjudicacion) / 41.040,00 € (PBL) / 61.560,00 € (VEC)",
+    "estado": "adjudicado",
+    "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/106"
+  },
+  {
+    "descubierto_el": "2026-06-26",
+    "fecha": "2026-06-22",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/129",
+    "concepto": "Servicio integral de generacion electrica temporal para el GP de Formula 1 Madrid 2026 en IFEMA.",
+    "importe": 639640.91,
+    "importe_texto": "639.640,91 € (PBL) / 959.461,37 € (VEC)",
+    "estado": "licitado",
+    "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/129"
   }
 ]

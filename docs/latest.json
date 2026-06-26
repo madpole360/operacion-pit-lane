@@ -1,24 +1,15 @@
 {
   "fecha": "2026-06-26",
   "fecha_madrid": "2026-06-26 12:00",
-  "resumen_ejecutivo": "INFORME INICIAL (Datos semilla). El coste confirmado asciende a 85,89 millones de euros, correspondientes a la obra principal del circuito (83,2M€ adjudicados a la UTE Acciona-Eiffage) y la asistencia tecnica de supervision (2,69M€ a la UTE CONURMA-ACTIINFRA). Existen 22 expedientes adicionales de IFEMA en distintas fases de licitacion que elevan el coste comprometido a aproximadamente 101,58 millones de euros. El Pit Building (68,1M€ adjudicado a Eiffage) esta pendiente de localizar el expediente IFEMA completo. El canon a FOM permanece sin confirmacion oficial (estimado en ~48M€/ano, 480M€ a 10 anos). El coste potencial total del proyecto podria alcanzar los 581 millones de euros, aunque esta cifra debe tratarse como estimacion. El nivel de riesgo respecto al caso Valencia se situa en MEDIO (55%): IFEMA como promotor y el uso de infraestructuras existentes diferencian este proyecto, pero el elevado canon potencial, la dependencia de ingresos futuros y el crecimiento continuo de contratos auxiliares son factores de riesgo compartidos.",
+  "resumen_ejecutivo": "INFORME ACTUALIZADO (2026-06-26). El coste confirmado asciende a 86.7 millones de euros (10 contratos adjudicados/ejecutados). Las partidas principales: obra del circuito (83,2M€ UTE Acciona-Eiffage, incluyendo modificacion de 2,3M€), asistencia tecnica (2,69M€ CONURMA-ACTIINFRA), y 5 nuevos expedientes localizados en el portal IFEMA (25/176 ruido/aire, 26/097 montaje ferial, 26/102 aseos, 26/106 oficinas, 26/129 generacion electrica) que suman 966.535€. El coste comprometido alcanza 103.5 M€ incluyendo 21 licitaciones activas. El canon FOM (~48M€/ano) sigue sin documento oficial. Los costes indirectos del Ayuntamiento (policia, movilidad, limpieza, EMT) se estiman entre 4,2 y 8,6 M€ por edicion y no estan incluidos en el coste confirmado. Comparativa Valencia: 55% de similitud de riesgo.",
   "nuevos_hallazgos": [
-    "Detectados 3 nuevos expedientes activos en el portal IFEMA: 26/113, 26/057, 26/027.",
-    "Exp. 26/113 (lonas publicitarias F1 2026-2027): PBL 572.500 €, cierre de ofertas HOY 26/06/2026.",
-    "Exp. 26/057 (medicina emergencia F1): PBL 296.200 €, VEC 1.036.700 €, cierre 07/07/2026.",
-    "Exp. 26/027 (medicamentos y material sanitario): PBL 32.280,68 €, cierre 07/07/2026.",
-    "Exp. 25/175 DESISTIDO por error no subsanable en criterios de adjudicacion.",
-    "Exp. 26/024 (pasarelas): oferta de NUSSLI IBERIA por 9.731.922,17 €, pendiente adjudicacion formal.",
-    "Carga inicial de datos: 27 contratos/expedientes documentados desde enero 2024 hasta junio 2026.",
-    "Coste confirmado: 85.890.374,86 € (obra principal 83,2M€ + asistencia tecnica 2,69M€).",
-    "Coste comprometido incluyendo licitaciones activas: ~101,58 millones de euros.",
-    "Pit Building adjudicado a Eiffage por 68,1M€ (pendiente verificacion del expediente IFEMA).",
-    "Detectadas 11 pasarelas peatonales modulares por 10,2M€ (PBL) - segunda mayor partida tras la obra principal.",
-    "Canon FOM estimado en ~48M€/ano (480M€ a 10 anos). NO existe documento oficial que lo acredite.",
-    "Patrocinadores confirmados: Santander (Founding Partner) + 6 Local Event Supporters. Importes NO publicados.",
-    "Litigio Dromo vs Tilke en Tribunal de Colonia (Alemania) por derechos de autor del diseno. Reclamacion: 6M€.",
-    "Vereda de los Leneros: publicada en BOCM (23/06/2026) la desafectacion de 21.330 m².",
-    "Mas del 90% de entradas vendidas a 3 meses del evento."
+    "33 contratos documentados (5 adjudicados, 5 ejecutados, 21 en licitacion).",
+    "Coste confirmado: 86.7 M€.",
+    "Coste comprometido: 103.5 M€.",
+    "5 nuevos expedientes IFEMA: 25/176 (15.111€ SGS TECNOS), 26/097 (205.584€ MDM), 26/102 (73.210€), 26/106 (32.990€ PREFABRI), 26/129 (639.641€).",
+    "Costes indirectos Ayuntamiento: 4,2-8,6 M€/edicion (no incluidos).",
+    "Canon FOM sin confirmar: ~48M€/ano estimado.",
+    "Pipeline optimizado: Haiku+Sonnet, ~20€/mes, lunes y jueves 21:00h."
   ],
   "contratos": [
     {
@@ -328,12 +319,70 @@
       "importe_texto": "32.280,68 € (PBL sin impuestos)",
       "estado": "licitado",
       "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/027"
+    },
+    {
+      "descubierto_el": "2026-06-26",
+      "fecha": "2025-12-09",
+      "organismo": "IFEMA Madrid",
+      "expediente": "25/176",
+      "adjudicatario": "SGS TECNOS SAU (A28345577)",
+      "concepto": "Servicio de medicion de ruido, calidad del aire, temperatura y vibraciones durante el GP de Espana de F1.",
+      "importe": 15110.7,
+      "importe_texto": "15.110,70 € (adjudicacion) / 17.000,00 € (PBL)",
+      "estado": "adjudicado",
+      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=25/176"
+    },
+    {
+      "descubierto_el": "2026-06-26",
+      "fecha": "2026-05-27",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/097",
+      "adjudicatario": "M DOLORES MARTINEZ VARA DE REY S.A. MDM (A28889939)",
+      "concepto": "Servicio de montaje, mantenimiento y desmontaje de proyectos efimeros de diseno ferial para el GP de Espana de F1 2026.",
+      "importe": 205584.26,
+      "importe_texto": "205.584,26 € (adjudicacion) / 308.445,14 € (VEC)",
+      "estado": "adjudicado",
+      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/097"
+    },
+    {
+      "descubierto_el": "2026-06-26",
+      "fecha": "2026-05-27",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/102",
+      "concepto": "Servicio de alquiler y mantenimiento de modulos prefabricados de aseos y WC quimicos portatiles para el GP de Espana de F1 2026.",
+      "importe": 73210.0,
+      "importe_texto": "73.210,00 € (PBL) / 109.815,00 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/102"
+    },
+    {
+      "descubierto_el": "2026-06-26",
+      "fecha": "2026-05-27",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/106",
+      "adjudicatario": "PREFABRI SL (B78567799)",
+      "concepto": "Servicio de alquiler de modulos prefabricados para oficinas, produccion y otros usos durante el GP de Espana de F1 2026.",
+      "importe": 32990.0,
+      "importe_texto": "32.990,00 € (adjudicacion) / 41.040,00 € (PBL) / 61.560,00 € (VEC)",
+      "estado": "adjudicado",
+      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/106"
+    },
+    {
+      "descubierto_el": "2026-06-26",
+      "fecha": "2026-06-22",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/129",
+      "concepto": "Servicio integral de generacion electrica temporal para el GP de Formula 1 Madrid 2026 en IFEMA.",
+      "importe": 639640.91,
+      "importe_texto": "639.640,91 € (PBL) / 959.461,37 € (VEC)",
+      "estado": "licitado",
+      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/129"
     }
   ],
-  "coste_acumulado_confirmado": 85890374.86,
-  "coste_acumulado_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-  "coste_comprometido": 101580000.0,
-  "coste_comprometido_texto": "101,58 millones de euros (costes confirmados + PBL de licitaciones en curso).",
+  "coste_acumulado_confirmado": 86737929.82000001,
+  "coste_acumulado_texto": "86.7 millones de euros (10 contratos adjudicados/ejecutados con soporte documental IFEMA). No incluye Pit Building (68,1M€ pendiente expediente), canon FOM ni costes indirectos.",
+  "coste_comprometido": 103500353.19,
+  "coste_comprometido_texto": "103.5 millones de euros (confirmado + 21 licitaciones activas con PBL).",
   "incremento_respecto_anterior": 0,
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
