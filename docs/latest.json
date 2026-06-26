@@ -1,6 +1,6 @@
 {
   "fecha": "2026-06-26",
-  "fecha_madrid": "2026-06-26 12:00",
+  "fecha_madrid": "2026-06-26 12:07",
   "resumen_ejecutivo": "INFORME ACTUALIZADO (2026-06-26). El coste confirmado asciende a 86.7 millones de euros (10 contratos adjudicados/ejecutados). Las partidas principales: obra del circuito (83,2M€ UTE Acciona-Eiffage, incluyendo modificacion de 2,3M€), asistencia tecnica (2,69M€ CONURMA-ACTIINFRA), y 5 nuevos expedientes localizados en el portal IFEMA (25/176 ruido/aire, 26/097 montaje ferial, 26/102 aseos, 26/106 oficinas, 26/129 generacion electrica) que suman 966.535€. El coste comprometido alcanza 103.5 M€ incluyendo 21 licitaciones activas. El canon FOM (~48M€/ano) sigue sin documento oficial. Los costes indirectos del Ayuntamiento (policia, movilidad, limpieza, EMT) se estiman entre 4,2 y 8,6 M€ por edicion y no estan incluidos en el coste confirmado. Comparativa Valencia: 55% de similitud de riesgo.",
   "nuevos_hallazgos": [
     "33 contratos documentados (5 adjudicados, 5 ejecutados, 21 en licitacion).",
@@ -11,6 +11,62 @@
     "Canon FOM sin confirmar: ~48M€/ano estimado.",
     "Pipeline optimizado: Haiku+Sonnet, ~20€/mes, lunes y jueves 21:00h."
   ],
+  "riesgos_detectados": [
+    "Exp. 26/113 cierra HOY (26/06/2026). Adjudicacion inminente sin tiempo para escrutinio publico.",
+    "Exp. 25/175 desistido: indicio de mala planificacion de pliegos que obliga a repetir expedientes.",
+    "Tres nuevos expedientes sanitarios/logisticos suman +900.980 € al coste comprometido.",
+    "El canon a FOM podria superar ampliamente el coste de construccion del circuito (480M€ estimado vs 83M€ obra).",
+    "Aparicion continua de contratos satelite que incrementan el coste total de forma silenciosa.",
+    "Posibles costes publicos indirectos no contabilizados: seguridad, movilidad, transporte publico, limpieza, emergencias.",
+    "Falta de transparencia: IFEMA es 100% publica pero el discurso oficial niega el uso de dinero publico.",
+    "Vereda de los Leneros: la desafectacion publicada en BOCM podria generar retrasos o recursos judiciales.",
+    "Dependencia de patrocinadores privados con importes no publicados para cubrir el canon anual.",
+    "Riesgo de sobrecostes en las licitaciones pendientes de adjudicacion (VEC total muy superior a PBL).",
+    "Paralelismo con Valencia: mismo discurso de inversion privada, elevado canon, crecimiento de contratos auxiliares."
+  ],
+  "partidas_pendientes_confirmar": [
+    "Canon anual a FOM: estimado en 48M€/ano, 480M€ a 10 anos. Sin documento oficial.",
+    "Pit Building (68,1M€): localizar expediente IFEMA completo antes de incorporarlo al coste confirmado.",
+    "Costes de seguridad y movilidad del Ayuntamiento de Madrid para el evento.",
+    "Costes operativos del fin de semana de carrera (personal, logistica, montaje).",
+    "Coste de la bandera gigante (estimado 128.000-500.000 €). NO localizado.",
+    "Coste del acto de presentacion oficial (16/06/2026) (estimado 250.000-400.000 €). NO localizado.",
+    "Coste del litigio Dromo (indemnizacion reclamada: 6M€).",
+    "Detalle del convenio FOM: reparto de riesgos economicos, avales, aportaciones publicas.",
+    "Importes reales de los contratos de patrocinio."
+  ],
+  "fuentes_consultadas": [
+    "https://licitaciones2.ifema.es",
+    "https://contrataciondelestado.es",
+    "https://www.madring.com",
+    "https://www.madring.com/circuito/construccion",
+    "https://www.madring.com/en/sponsors",
+    "https://corp.formula1.com/madrid-to-join-formula-1-calendar-from-2026-in-new-long-term-deal/",
+    "https://www.reuters.com/sports/formula1/acciona-eiffage-win-contract-build-madrids-new-formula-1-circuit-2025-04-16/",
+    "https://as.com/motor/formula_1/ifema-acciona-y-eiffage-firman-el-contrato-para-construir-el-circuito-de-f1-de-madrid-n/",
+    "https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html",
+    "https://www.santander.com/en/press-room/press-releases/2025/12/santander-will-be-a-founding-partner-of-the-formula-1-tag-heuer-spanish-grand-prix-2026",
+    "https://www.reasonwhy.es",
+    "https://www.comunidad.madrid/transparencia",
+    "https://transparencia.madrid.es"
+  ],
+  "comparativa_valencia": {
+    "coste_total_valencia": 1100000000,
+    "coste_total_valencia_texto": "~1.100 millones de euros (coste total estimado incluyendo canon, construccion, sobrecostes y deficit de explotacion 2008-2012)",
+    "coste_acumulado_madrid": 85890374.86,
+    "coste_acumulado_madrid_texto": "85,89 millones de euros (solo costes confirmados; no incluye Pit Building, canon anual, ni costes operativos)",
+    "factores_riesgo_compartidos": [
+      "Discurso oficial de 'inversion privada' cuando el promotor (IFEMA / Generalitat) es de titularidad publica",
+      "Canon anual a FOM elevado y sin transparencia documental",
+      "Estimaciones de impacto economico sin auditorias independientes que las respalden",
+      "Crecimiento continuo de contratos auxiliares que incrementan el coste real",
+      "Infraestructuras que pueden quedar infrautilizadas tras el evento",
+      "Falta de transparencia en la estructura de costes reales y en los convenios institucionales",
+      "Dependencia de ingresos futuros inciertos para justificar la inversion presente"
+    ],
+    "porcentaje_similitud_riesgo": 55,
+    "justificacion": "Se asigna un 55% (nivel MEDIO). Diferencias clave con Valencia: IFEMA es un operador con experiencia, el circuito aprovecha infraestructuras existentes, y Madrid tiene mayor tejido empresarial. Sin embargo, comparte riesgos: el canon a FOM es el doble que Valencia (~48M€ vs ~26M€), la falta de transparencia documental es similar, y el crecimiento de contratos auxiliares sigue el mismo patron."
+  },
   "contratos": [
     {
       "descubierto_el": "2026-06-24",
@@ -380,10 +436,10 @@
     }
   ],
   "coste_acumulado_confirmado": 86737929.82000001,
-  "coste_acumulado_texto": "86.7 millones de euros (10 contratos adjudicados/ejecutados con soporte documental IFEMA). No incluye Pit Building (68,1M€ pendiente expediente), canon FOM ni costes indirectos.",
+  "coste_acumulado_texto": "86.7 millones de euros (obra principal + modificacion + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
   "coste_comprometido": 103500353.19,
-  "coste_comprometido_texto": "103.5 millones de euros (confirmado + 21 licitaciones activas con PBL).",
-  "incremento_respecto_anterior": 0,
+  "coste_comprometido_texto": "103.5 millones de euros (costes confirmados + PBL de licitaciones activas).",
+  "incremento_respecto_anterior": 0.0,
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
     "gastos_estimados_texto": "~934 millones de euros",
@@ -447,61 +503,5 @@
       "nota": "Campanas institucionales de Turismo de Madrid. Sin desglose F1 especifico."
     }
   ],
-  "costes_indirectos_total_estimado": "4.200.000 - 8.600.000 € por edicion",
-  "partidas_pendientes_confirmar": [
-    "Canon anual a FOM: estimado en 48M€/ano, 480M€ a 10 anos. Sin documento oficial.",
-    "Pit Building (68,1M€): localizar expediente IFEMA completo antes de incorporarlo al coste confirmado.",
-    "Costes de seguridad y movilidad del Ayuntamiento de Madrid para el evento.",
-    "Costes operativos del fin de semana de carrera (personal, logistica, montaje).",
-    "Coste de la bandera gigante (estimado 128.000-500.000 €). NO localizado.",
-    "Coste del acto de presentacion oficial (16/06/2026) (estimado 250.000-400.000 €). NO localizado.",
-    "Coste del litigio Dromo (indemnizacion reclamada: 6M€).",
-    "Detalle del convenio FOM: reparto de riesgos economicos, avales, aportaciones publicas.",
-    "Importes reales de los contratos de patrocinio."
-  ],
-  "riesgos_detectados": [
-    "Exp. 26/113 cierra HOY (26/06/2026). Adjudicacion inminente sin tiempo para escrutinio publico.",
-    "Exp. 25/175 desistido: indicio de mala planificacion de pliegos que obliga a repetir expedientes.",
-    "Tres nuevos expedientes sanitarios/logisticos suman +900.980 € al coste comprometido.",
-    "El canon a FOM podria superar ampliamente el coste de construccion del circuito (480M€ estimado vs 83M€ obra).",
-    "Aparicion continua de contratos satelite que incrementan el coste total de forma silenciosa.",
-    "Posibles costes publicos indirectos no contabilizados: seguridad, movilidad, transporte publico, limpieza, emergencias.",
-    "Falta de transparencia: IFEMA es 100% publica pero el discurso oficial niega el uso de dinero publico.",
-    "Vereda de los Leneros: la desafectacion publicada en BOCM podria generar retrasos o recursos judiciales.",
-    "Dependencia de patrocinadores privados con importes no publicados para cubrir el canon anual.",
-    "Riesgo de sobrecostes en las licitaciones pendientes de adjudicacion (VEC total muy superior a PBL).",
-    "Paralelismo con Valencia: mismo discurso de inversion privada, elevado canon, crecimiento de contratos auxiliares."
-  ],
-  "comparativa_valencia": {
-    "coste_total_valencia": 1100000000,
-    "coste_total_valencia_texto": "~1.100 millones de euros (coste total estimado incluyendo canon, construccion, sobrecostes y deficit de explotacion 2008-2012)",
-    "coste_acumulado_madrid": 85890374.86,
-    "coste_acumulado_madrid_texto": "85,89 millones de euros (solo costes confirmados; no incluye Pit Building, canon anual, ni costes operativos)",
-    "factores_riesgo_compartidos": [
-      "Discurso oficial de 'inversion privada' cuando el promotor (IFEMA / Generalitat) es de titularidad publica",
-      "Canon anual a FOM elevado y sin transparencia documental",
-      "Estimaciones de impacto economico sin auditorias independientes que las respalden",
-      "Crecimiento continuo de contratos auxiliares que incrementan el coste real",
-      "Infraestructuras que pueden quedar infrautilizadas tras el evento",
-      "Falta de transparencia en la estructura de costes reales y en los convenios institucionales",
-      "Dependencia de ingresos futuros inciertos para justificar la inversion presente"
-    ],
-    "porcentaje_similitud_riesgo": 55,
-    "justificacion": "Se asigna un 55% (nivel MEDIO). Diferencias clave con Valencia: IFEMA es un operador con experiencia, el circuito aprovecha infraestructuras existentes, y Madrid tiene mayor tejido empresarial. Sin embargo, comparte riesgos: el canon a FOM es el doble que Valencia (~48M€ vs ~26M€), la falta de transparencia documental es similar, y el crecimiento de contratos auxiliares sigue el mismo patron."
-  },
-  "fuentes_consultadas": [
-    "https://licitaciones2.ifema.es",
-    "https://contrataciondelestado.es",
-    "https://www.madring.com",
-    "https://www.madring.com/circuito/construccion",
-    "https://www.madring.com/en/sponsors",
-    "https://corp.formula1.com/madrid-to-join-formula-1-calendar-from-2026-in-new-long-term-deal/",
-    "https://www.reuters.com/sports/formula1/acciona-eiffage-win-contract-build-madrids-new-formula-1-circuit-2025-04-16/",
-    "https://as.com/motor/formula_1/ifema-acciona-y-eiffage-firman-el-contrato-para-construir-el-circuito-de-f1-de-madrid-n/",
-    "https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html",
-    "https://www.santander.com/en/press-room/press-releases/2025/12/santander-will-be-a-founding-partner-of-the-formula-1-tag-heuer-spanish-grand-prix-2026",
-    "https://www.reasonwhy.es",
-    "https://www.comunidad.madrid/transparencia",
-    "https://transparencia.madrid.es"
-  ]
+  "costes_indirectos_total_estimado": "4.200.000 - 8.600.000 € por edicion"
 }
