@@ -5,5 +5,12 @@
     "coste_texto": "85,89 millones €",
     "num_contratos": 27,
     "porcentaje_riesgo_valencia": 55
+  },
+  {
+    "fecha": "2026-06-26",
+    "coste_acumulado": 179644429.83,
+    "coste_texto": "179.6 millones de euros (obra principal + modificacion + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+    "num_contratos": 60,
+    "porcentaje_riesgo_valencia": 72
   }
 ]
