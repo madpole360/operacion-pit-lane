@@ -328,8 +328,8 @@
       "expediente": "25/176",
       "adjudicatario": "SGS TECNOS SAU (A28345577)",
       "concepto": "Servicio de medicion de ruido, calidad del aire, temperatura y vibraciones durante el GP de Espana de F1.",
-      "importe": 17000.0,
-      "importe_texto": "17.000,00 € (PBL sin impuestos)",
+      "importe": 15110.7,
+      "importe_texto": "15.110,70 € (adjudicacion) / 17.000,00 € (PBL)",
       "estado": "adjudicado",
       "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=25/176"
     },
@@ -380,10 +380,10 @@
       "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/129"
     }
   ],
-  "coste_acumulado_confirmado": 86739819.12,
-  "coste_acumulado_texto": "86.7 millones de euros (adjudicaciones con soporte documental oficial IFEMA).",
-  "coste_comprometido": 103502242.49,
-  "coste_comprometido_texto": "103.5 millones de euros (confirmado + PBL de licitaciones activas).",
+  "coste_acumulado_confirmado": 86737929.82000001,
+  "coste_acumulado_texto": "86.7 M€ (adjudicaciones IFEMA con soporte oficial)",
+  "coste_comprometido": 103500353.19,
+  "coste_comprometido_texto": "103.5 M€ (confirmado + PBL licitaciones)",
   "incremento_respecto_anterior": 0,
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
