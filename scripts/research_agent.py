@@ -372,69 +372,94 @@ def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
 
 
 # ─── Agente ─────────────────────────────────────────────────────────────────────
+HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratacion publica espanola.
+Tu tarea: buscar informacion actualizada sobre el GP de Formula 1 de Madrid (Madring)
+y devolver los hallazgos en texto estructurado.
+
+Busca en:
+- licitaciones2.ifema.es: nuevas licitaciones, adjudicaciones, desistimientos
+- madring.com: hitos de construccion, notas de prensa
+- Noticias: Reuters, El Pais, Cinco Dias, Palco23
+
+Para cada hallazgo indica: fuente, fecha, cifras, estado.
+NO redactes JSON. Solo texto estructurado con los datos encontrados."""
+
+SONNET_ANALYSIS_PROMPT = SYSTEM_PROMPT  # El prompt completo con toda la metodologia
+
+
 def run_research() -> dict:
-    """Ejecuta la investigación con Claude API + web search."""
+    """Pipeline en 2 pasos: Haiku busca, Sonnet analiza."""
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
-        raise RuntimeError("ANTHROPIC_API_KEY no está definida. "
-                           "Añádela en Settings → Secrets → Actions → ANTHROPIC_API_KEY")
+        raise RuntimeError("ANTHROPIC_API_KEY no está definida.")
 
     client = anthropic.Anthropic()
     prev = load_previous_report()
 
     print(f"🔍 Investigando... Fecha UTC: {TODAY} | Madrid: {TODAY_MADRID}")
-    print(f"📋 Contexto previo cargado: {len(prev)} chars")
 
-    response = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=16000,
+    # ── Paso 1: Haiku 4.5 + web_search (barato, solo busca datos) ──
+    print("   [Paso 1] Haiku 4.5 + web_search...")
+    haiku_response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=4096,
         thinking={"type": "disabled"},
-        system=SYSTEM_PROMPT,
-        tools=[{
-            "type": "web_search_20250305",
-            "name": "web_search"
-        }],
+        system=HAIKU_SEARCH_PROMPT,
+        tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{
             "role": "user",
-            "content": f"""Fecha de hoy: {TODAY_MADRID} (Madrid, CEST)
+            "content": f"Fecha: {TODAY_MADRID} (Madrid, CEST). Contexto: {prev}\n\nBusca novedades de los ultimos 7 dias (max 3 busquedas)."
+        }]
+    )
+
+    raw_data = "\n".join(
+        b.text for b in haiku_response.content if getattr(b, "type", None) == "text"
+    )
+    blocks_h = [getattr(b, "type", "?") for b in haiku_response.content]
+    print(f"   [Haiku] Bloques: {len(haiku_response.content)} ({', '.join(blocks_h)}) | Texto: {len(raw_data)} chars")
+
+    if not raw_data.strip():
+        raise ValueError("Haiku no devolvio resultados de busqueda")
+
+    # ── Paso 2: Sonnet 4.6 (analiza, sin web search, mas barato en output) ──
+    print("   [Paso 2] Sonnet 4.6 analizando...")
+    sonnet_response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=8192,
+        thinking={"type": "disabled"},
+        system=SONNET_ANALYSIS_PROMPT,
+        messages=[{
+            "role": "user",
+            "content": f"""Fecha: {TODAY_MADRID} (Madrid, CEST)
 
 Contexto del informe anterior:
 {prev}
 
-INSTRUCCIONES DE BUSQUEDA:
-Realiza estas busquedas especificas:
+DATOS RECOPILADOS POR EL INVESTIGADOR:
+{raw_data}
 
-1. Busca en licitaciones2.ifema.es y contrataciondelestado.es nuevas licitaciones, adjudicaciones, modificaciones o DESISTIMIENTOS de los ultimos 7 dias relacionados con Formula 1, Madring, o IFEMA GP España.
-2. Busca en madring.com actualizaciones de obras, hitos de construccion y notas de prensa recientes.
-3. Busca noticias recientes sobre el GP de España F1 Madrid 2026 (El Pais, El Mundo, El Confidencial, eldiario.es, Palco23, Expansión, Cinco Días).
-4. Busca actualizaciones sobre el litigio Dromo vs Tilke en Alemania.
-5. Busca informacion actualizada sobre patrocinadores y el canon FOM.
-
-IMPORTANTE: Presta especial atencion a:
-- Desistimientos de expedientes (ej: expediente 25/175 desistido por error en criterios)
-- Hitos de construccion (asfaltado, izado de bandera, inspecciones FIA)
-- Modificaciones de contratos existentes
-- Nuevos contratos menores
-
-Tienes UNA ronda de busquedas. Tras recibir los resultados, debes responder UNICAMENTE con el objeto JSON. No escribas texto introductorio, no intentes hacer mas busquedas, no uses etiquetas XML. Solo el JSON."""
+Con esta informacion, genera el JSON final aplicando la metodologia:
+- Solo CONFIRMADO si hay soporte documental oficial.
+- Clasifica cada dato: 🟢🟡🟠🔴.
+- Nunca sumes estimaciones al coste confirmado.
+- Solo expedientes con numero real (no 'No disponible').
+- Responde UNICAMENTE con el JSON, sin markdown ni etiquetas."""
         }]
     )
 
-    text_blocks = [b.text for b in response.content if getattr(b, "type", None) == "text"]
-    block_types = [getattr(b, "type", "unknown") for b in response.content]
-    print(f"   [API] Bloques: {len(response.content)} ({', '.join(block_types)}) | Texto: {len(text_blocks)}")
+    text_blocks = [b.text for b in sonnet_response.content if getattr(b, "type", None) == "text"]
+    blocks_s = [getattr(b, "type", "?") for b in sonnet_response.content]
+    print(f"   [Sonnet] Bloques: {len(sonnet_response.content)} ({', '.join(blocks_s)}) | Texto: {len(text_blocks)}")
 
     if not text_blocks:
-        raise ValueError(f"El agente no devolvio bloques de texto. Stop: {response.stop_reason}")
+        raise ValueError("Sonnet no devolvio respuesta de texto")
 
-    # Intentar JSON del ultimo bloque al primero; fallback al combinado
     for block_text in reversed(text_blocks):
         try:
             return extract_json(block_text)
         except ValueError:
             continue
-    combined = "\n".join(text_blocks)
-    return extract_json(combined)
+    return extract_json("\n".join(text_blocks))
 
 
 # ─── Guardar ────────────────────────────────────────────────────────────────────
