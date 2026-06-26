@@ -1,79 +1,9 @@
 [
   {
-    "fecha": "2026-06-24",
+    "fecha": "2026-06-26",
     "coste_acumulado": 85890374.86,
     "coste_texto": "85,89 millones €",
     "num_contratos": 27,
     "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros (obra principal + asistencia tecnica). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones de euros en contratos adjudicados confirmados (obra principal + asistencia técnica). Fuentes diversas sitúan el gasto total de IFEMA en adaptación del entorno en más de 130 millones de euros a mayo de 2026. Si se incluye el Pit Building (68,1 M€ en ejecución), el total de contratos con documentación parcial superaría los 153 M€. No incluye canon FOM ni costes operativos del evento.",
-    "num_contratos": 8,
-    "porcentaje_riesgo_valencia": 74
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 M€ en contratos con adjudicación confirmada (obra Acciona-Eiffage 83,2 M€ + asistencia técnica 2,68 M€). El total licitado por IFEMA asciende a 149 M€ según múltiples fuentes. Si se incluye el Pit Building (68,1 M€ presupuestado, adjudicación no publicada), el total de contratos con documentación parcial superaría los 153 M€. No incluye canon FOM (estimado 40-55 M€/año, sin documento oficial) ni costes operativos del evento.",
-    "num_contratos": 6,
-    "porcentaje_riesgo_valencia": 72
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 M€ en contratos con adjudicación y documentación confirmada (obra Acciona-Eiffage 83,21 M€ + asistencia técnica 2,68 M€). Si se añade el Pit Building (68,1 M€ en ejecución, sin adjudicación publicada), el total de contratos con documentación parcial supera los 153 M€. Múltiples fuentes sitúan el gasto total ya asumido por IFEMA en >130 M€ (obras + servicios jurídicos). No incluye canon FOM ni costes operativos del evento.",
-    "num_contratos": 6,
-    "porcentaje_riesgo_valencia": 72
   }
 ]

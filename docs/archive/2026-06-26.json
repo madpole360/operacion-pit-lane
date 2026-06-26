@@ -3,12 +3,6 @@
   "fecha_madrid": "2026-06-26 12:00",
   "resumen_ejecutivo": "INFORME INICIAL (Datos semilla). El coste confirmado asciende a 85,89 millones de euros, correspondientes a la obra principal del circuito (83,2M€ adjudicados a la UTE Acciona-Eiffage) y la asistencia tecnica de supervision (2,69M€ a la UTE CONURMA-ACTIINFRA). Existen 22 expedientes adicionales de IFEMA en distintas fases de licitacion que elevan el coste comprometido a aproximadamente 101,58 millones de euros. El Pit Building (68,1M€ adjudicado a Eiffage) esta pendiente de localizar el expediente IFEMA completo. El canon a FOM permanece sin confirmacion oficial (estimado en ~48M€/ano, 480M€ a 10 anos). El coste potencial total del proyecto podria alcanzar los 581 millones de euros, aunque esta cifra debe tratarse como estimacion. El nivel de riesgo respecto al caso Valencia se situa en MEDIO (55%): IFEMA como promotor y el uso de infraestructuras existentes diferencian este proyecto, pero el elevado canon potencial, la dependencia de ingresos futuros y el crecimiento continuo de contratos auxiliares son factores de riesgo compartidos.",
   "nuevos_hallazgos": [
-    "Detectados 3 nuevos expedientes activos en el portal IFEMA: 26/113, 26/057, 26/027.",
-    "Exp. 26/113 (lonas publicitarias F1 2026-2027): PBL 572.500 €, cierre de ofertas HOY 26/06/2026.",
-    "Exp. 26/057 (medicina emergencia F1): PBL 296.200 €, VEC 1.036.700 €, cierre 07/07/2026.",
-    "Exp. 26/027 (medicamentos y material sanitario): PBL 32.280,68 €, cierre 07/07/2026.",
-    "Exp. 25/175 DESISTIDO por error no subsanable en criterios de adjudicacion.",
-    "Exp. 26/024 (pasarelas): oferta de NUSSLI IBERIA por 9.731.922,17 €, pendiente adjudicacion formal.",
     "Carga inicial de datos: 27 contratos/expedientes documentados desde enero 2024 hasta junio 2026.",
     "Coste confirmado: 85.890.374,86 € (obra principal 83,2M€ + asistencia tecnica 2,69M€).",
     "Coste comprometido incluyendo licitaciones activas: ~101,58 millones de euros.",
@@ -317,17 +311,6 @@
       "importe_texto": "2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion) = 2.690.374,86 €",
       "estado": "ejecutado",
       "fuente": "https://licitaciones2.ifema.es"
-    },
-    {
-      "descubierto_el": "2026-06-26",
-      "fecha": "2026-06-15",
-      "organismo": "IFEMA Madrid",
-      "expediente": "26/027",
-      "concepto": "Suministro de medicamentos y material fungible sanitario para el servicio de medicina de emergencias del GP F1 y servicio medico laboral de IFEMA. Cierre: 07/07/2026.",
-      "importe": 32280.68,
-      "importe_texto": "32.280,68 € (PBL sin impuestos)",
-      "estado": "licitado",
-      "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/027"
     }
   ],
   "coste_acumulado_confirmado": 85890374.86,
@@ -411,9 +394,6 @@
     "Importes reales de los contratos de patrocinio."
   ],
   "riesgos_detectados": [
-    "Exp. 26/113 cierra HOY (26/06/2026). Adjudicacion inminente sin tiempo para escrutinio publico.",
-    "Exp. 25/175 desistido: indicio de mala planificacion de pliegos que obliga a repetir expedientes.",
-    "Tres nuevos expedientes sanitarios/logisticos suman +900.980 € al coste comprometido.",
     "El canon a FOM podria superar ampliamente el coste de construccion del circuito (480M€ estimado vs 83M€ obra).",
     "Aparicion continua de contratos satelite que incrementan el coste total de forma silenciosa.",
     "Posibles costes publicos indirectos no contabilizados: seguridad, movilidad, transporte publico, limpieza, emergencias.",

@@ -445,29 +445,73 @@ Tienes UNA ronda de busquedas. Tras recibir los resultados, debes responder UNIC
 
 # ─── Guardar ────────────────────────────────────────────────────────────────────
 def save_results(data: dict) -> dict:
-    """Guarda el informe diario y actualiza la BD de contratos."""
+    """Guarda el informe diario y actualiza la BD de contratos.
+    PRESERVA los datos curados (costes confirmados, proyecciones, etc.)
+    y solo incorpora nuevos hallazgos y contratos del agente."""
     ensure_dirs()
 
-    # Añadir timestamp real
-    data["fecha"] = TODAY
-    data["fecha_madrid"] = TODAY_MADRID
+    # Cargar datos anteriores para preservar campos curados
+    prev = {}
+    if LATEST_FILE.exists():
+        try:
+            prev = json.loads(LATEST_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
 
-    # ── Guardar en archivo diario ──
+    # Fusionar contratos: los existentes + solo los NUEVOS del agente
+    existing_contracts = load_contracts_db()
+    if not existing_contracts and prev.get("contratos"):
+        existing_contracts = prev["contratos"]
+    merged_contracts, nuevos = merge_contracts_db(existing_contracts, data.get("contratos", []))
+    save_contracts_db(merged_contracts)
+
+    # Recalcular costes desde los contratos limpios
+    confirmado = 0
+    comprometido = 0
+    for c in merged_contracts:
+        estado = c.get("estado", "")
+        imp = c.get("importe", 0) or 0
+        if estado in ("adjudicado", "ejecutado"):
+            confirmado += imp
+        if estado in ("adjudicado", "ejecutado", "licitado"):
+            comprometido += imp
+
+    # Construir el informe final: preservar campos curados, actualizar solo lo nuevo
+    final = {
+        "fecha": TODAY,
+        "fecha_madrid": TODAY_MADRID,
+        # Campos narrativos del agente (si trae algo nuevo)
+        "resumen_ejecutivo": data.get("resumen_ejecutivo") or prev.get("resumen_ejecutivo", ""),
+        "nuevos_hallazgos": data.get("nuevos_hallazgos") or prev.get("nuevos_hallazgos", []),
+        "riesgos_detectados": data.get("riesgos_detectados") or prev.get("riesgos_detectados", []),
+        "partidas_pendientes_confirmar": data.get("partidas_pendientes_confirmar") or prev.get("partidas_pendientes_confirmar", []),
+        "fuentes_consultadas": data.get("fuentes_consultadas") or prev.get("fuentes_consultadas", []),
+        "comparativa_valencia": data.get("comparativa_valencia") or prev.get("comparativa_valencia", {}),
+        # Contratos: la BD completa fusionada
+        "contratos": merged_contracts,
+        # Costes: recalculados desde la BD limpia
+        "coste_acumulado_confirmado": confirmado,
+        "coste_acumulado_texto": f"{confirmado/1e6:.1f} millones de euros (obra principal + modificacion + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+        "coste_comprometido": comprometido,
+        "coste_comprometido_texto": f"{comprometido/1e6:.1f} millones de euros (costes confirmados + PBL de licitaciones activas).",
+        "incremento_respecto_anterior": confirmado - prev.get("coste_acumulado_confirmado", confirmado),
+        # Preservar campos curados que el agente no genera
+        "proyeccion_10_anios": prev.get("proyeccion_10_anios", {}),
+        "costes_indirectos": prev.get("costes_indirectos", []),
+        "costes_indirectos_total_estimado": prev.get("costes_indirectos_total_estimado", ""),
+    }
+
+    # ── Guardar archivo diario ──
     daily_file = ARCHIVE_DIR / f"{TODAY}.json"
-    daily_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    daily_file.write_text(json.dumps(final, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ Archivo diario: {daily_file}")
 
     # ── Actualizar latest.json ──
-    LATEST_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    LATEST_FILE.write_text(json.dumps(final, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ latest.json actualizado")
+    print(f"✅ contracts.json: {len(merged_contracts)} total ({len(nuevos)} nuevos hoy)")
 
-    # ── Fusionar contratos en BD histórica ──
-    existing = load_contracts_db()
-    merged, nuevos = merge_contracts_db(existing, data.get("contratos", []))
-    save_contracts_db(merged)
-    print(f"✅ contracts.json: {len(merged)} total ({len(nuevos)} nuevos hoy)")
-
-    # También guardar metadatos en data/
+    # Timeline
     meta_file = DATA_DIR / "timeline.json"
     timeline = []
     if meta_file.exists():
@@ -477,15 +521,15 @@ def save_results(data: dict) -> dict:
             pass
     timeline.append({
         "fecha": TODAY,
-        "coste_acumulado": data.get("coste_acumulado_confirmado", 0),
-        "coste_texto": data.get("coste_acumulado_texto", ""),
-        "num_contratos": len(data.get("contratos", [])),
-        "porcentaje_riesgo_valencia": data.get("comparativa_valencia", {}).get("porcentaje_similitud_riesgo", None),
+        "coste_acumulado": confirmado,
+        "coste_texto": final["coste_acumulado_texto"],
+        "num_contratos": len(merged_contracts),
+        "porcentaje_riesgo_valencia": final["comparativa_valencia"].get("porcentaje_similitud_riesgo", None),
     })
     meta_file.write_text(json.dumps(timeline, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ timeline.json: {len(timeline)} entradas")
 
-    return data
+    return final
 
 
 # ─── Main ───────────────────────────────────────────────────────────────────────
