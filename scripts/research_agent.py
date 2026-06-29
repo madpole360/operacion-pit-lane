@@ -410,6 +410,33 @@ NO redactes JSON. Solo texto estructurado con los datos encontrados."""
 SONNET_ANALYSIS_PROMPT = SYSTEM_PROMPT  # El prompt completo con toda la metodologia
 
 
+def detect_changes(old_contracts: list, new_contracts: list) -> list:
+    """Detecta cambios de estado o importe en expedientes ya conocidos."""
+    cambios = []
+    old_map = {c.get("expediente", ""): c for c in old_contracts}
+
+    for c in new_contracts:
+        exp = c.get("expediente", "")
+        if exp not in old_map:
+            continue  # es nuevo, no un cambio
+        old = old_map[exp]
+        # Detectar cambio de estado
+        if c.get("estado") != old.get("estado"):
+            cambios.append(
+                f"🔄 {exp}: {old.get('estado','?')} → {c.get('estado','?')} "
+                f"({c.get('concepto','')[:60]})"
+            )
+        # Detectar cambio de importe significativo (>5%)
+        old_imp = old.get("importe", 0) or 0
+        new_imp = c.get("importe", 0) or 0
+        if old_imp > 0 and new_imp > 0 and abs(new_imp - old_imp) / old_imp > 0.05:
+            cambios.append(
+                f"💰 {exp}: {old_imp:,.0f}€ → {new_imp:,.0f}€ "
+                f"({c.get('concepto','')[:60]})"
+            )
+    return cambios
+
+
 def prev_data_or_empty(prev_str: str) -> dict:
     """Si no hay novedades, devuelve los datos anteriores intactos."""
     if LATEST_FILE.exists():
@@ -550,6 +577,7 @@ def save_results(data: dict) -> dict:
     if not existing_contracts and prev.get("contratos"):
         existing_contracts = prev["contratos"]
     merged_contracts, nuevos = merge_contracts_db(existing_contracts, data.get("contratos", []))
+    cambios = detect_changes(existing_contracts, data.get("contratos", []))
     save_contracts_db(merged_contracts)
 
     # Recalcular costes desde los contratos limpios
@@ -582,6 +610,7 @@ def save_results(data: dict) -> dict:
         "coste_comprometido": comprometido,
         "coste_comprometido_texto": f"{comprometido/1e6:.1f} millones de euros (costes confirmados + PBL de licitaciones activas).",
         "incremento_respecto_anterior": confirmado - prev.get("coste_acumulado_confirmado", confirmado),
+        "cambios_detectados": cambios,
         # Preservar campos curados que el agente no genera
         "proyeccion_10_anios": prev.get("proyeccion_10_anios", {}),
         "costes_indirectos": prev.get("costes_indirectos", []),

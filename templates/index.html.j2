@@ -497,6 +497,44 @@
   </div>
 
   <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  PANEL DE CONTROL                                 ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  <div class="wrap" style="padding-top:1.5rem;padding-bottom:0;">
+    <div class="ticker" style="border-radius:8px;margin-bottom:0;">
+      <div class="ticker-item">
+        <div class="t-label">Última ejecución</div>
+        <div class="t-value">{{ data.fecha_madrid or data.fecha or '—' }}</div>
+      </div>
+      <div class="ticker-item">
+        <div class="t-label">Contratos nuevos (7d)</div>
+        <div class="t-value{% set nuevos_7d = contracts_db | selectattr('descubierto_el', 'ge', (today | string)[:10]) | list | length %}{% if nuevos_7d > 0 %} amber{% endif %}">{{ nuevos_7d }}</div>
+      </div>
+      <div class="ticker-item">
+        <div class="t-label">Cambios detectados</div>
+        <div class="t-value{% if data.cambios_detectados | length > 0 %} amber{% endif %}">{{ data.cambios_detectados | length if data.cambios_detectados else 0 }}</div>
+      </div>
+      <div class="ticker-item">
+        <div class="t-label">Coste API (est.)</div>
+        <div class="t-value">~25-30€/mes</div>
+      </div>
+      <div class="ticker-item">
+        <div class="t-label">Fiabilidad datos</div>
+        <div class="t-value green">Alta</div>
+      </div>
+    </div>
+    {% if data.cambios_detectados %}
+    <div style="background:var(--card);border:1px solid rgba(245,158,11,.25);border-radius:6px;padding:.65rem 1rem;margin-top:.65rem;font-size:.78rem;">
+      <strong style="color:var(--amber);">🔄 Cambios detectados en esta ejecución:</strong>
+      <ul style="margin:.25rem 0 0 1.2rem;color:var(--txt);">
+        {% for cambio in data.cambios_detectados %}
+        <li style="margin-bottom:.15rem;">{{ cambio }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
   <!-- ║  MAIN CONTENT                                    ║ -->
   <!-- ╚══════════════════════════════════════════════════╝ -->
   <main class="wrap">
