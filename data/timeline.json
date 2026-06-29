@@ -1,15 +1,29 @@
 [
   {
-    "fecha": "2026-06-26",
-    "coste_acumulado": 85890374.86,
-    "coste_texto": "85,89 millones €",
+    "fecha": "2026-06-24",
+    "coste_acumulado": 86484085.56,
+    "coste_texto": "86.5 M€",
     "num_contratos": 27,
     "porcentaje_riesgo_valencia": 55
   },
   {
+    "fecha": "2026-06-25",
+    "coste_acumulado": 86484085.56,
+    "coste_texto": "86.5 M€",
+    "num_contratos": 28,
+    "porcentaje_riesgo_valencia": 55
+  },
+  {
     "fecha": "2026-06-26",
-    "coste_acumulado": 86737929.82000001,
-    "coste_texto": "86.7 millones de euros (obra principal + modificacion + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+    "coste_acumulado": 86739819.07,
+    "coste_texto": "86.7 M€",
+    "num_contratos": 33,
+    "porcentaje_riesgo_valencia": 55
+  },
+  {
+    "fecha": "2026-06-29",
+    "coste_acumulado": 86739819.07,
+    "coste_texto": "86.7 M€",
     "num_contratos": 33,
     "porcentaje_riesgo_valencia": 55
   }
