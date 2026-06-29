@@ -4,7 +4,7 @@ Usa Jinja2 para renderizar las plantillas con los datos de investigación.
 """
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 # Fix Windows encoding for emoji output
@@ -40,6 +40,23 @@ def build_site(latest_data: dict):
 
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)))
 
+    # Calcular próxima ejecución (lunes y jueves 21:00 Madrid)
+    now = datetime.now()
+    next_run = None
+    for d in range(8):
+        check = now + timedelta(days=d)
+        if check.weekday() in (0, 3):  # lunes=0, jueves=3
+            if d == 0 and check.hour < 21:
+                next_run = check.replace(hour=21, minute=0, second=0, microsecond=0)
+                break
+            elif d > 0:
+                next_run = check.replace(hour=21, minute=0, second=0, microsecond=0)
+                break
+    if next_run is None:
+        next_run = now + timedelta(days=1)
+    dias_es = {0: 'Lunes', 1: 'Martes', 2: 'Miércoles', 3: 'Jueves', 4: 'Viernes', 5: 'Sábado', 6: 'Domingo'}
+    next_run_str = f"{dias_es[next_run.weekday()]} {next_run.strftime('%d/%m')} a las 21:00"
+
     # Datos comunes — ordenar contratos por descubierto DESC, luego fecha DESC
     contracts_db = load_json(CONTRACTS_FILE, [])
     contracts_db.sort(key=lambda c: (c.get("descubierto_el") or "", c.get("fecha") or ""), reverse=True)
@@ -56,6 +73,7 @@ def build_site(latest_data: dict):
         "archive_files": archive_files,
         "today": datetime.now().strftime("%Y-%m-%d"),
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "next_run": next_run_str,
     }
 
     # ── Página principal ──
