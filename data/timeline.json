@@ -4,27 +4,35 @@
     "coste_acumulado": 86484085.56,
     "coste_texto": "86.5 M€",
     "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55
+    "porcentaje_riesgo_valencia": 55,
+    "coste_comprometido": 102484085.56,
+    "coste_comprometido_texto": "102.5 M€"
   },
   {
     "fecha": "2026-06-25",
     "coste_acumulado": 86484085.56,
     "coste_texto": "86.5 M€",
     "num_contratos": 28,
-    "porcentaje_riesgo_valencia": 55
+    "porcentaje_riesgo_valencia": 55,
+    "coste_comprometido": 102484085.56,
+    "coste_comprometido_texto": "102.5 M€"
   },
   {
     "fecha": "2026-06-26",
     "coste_acumulado": 86739819.07,
     "coste_texto": "86.7 M€",
     "num_contratos": 33,
-    "porcentaje_riesgo_valencia": 55
+    "porcentaje_riesgo_valencia": 55,
+    "coste_comprometido": 102739819.07,
+    "coste_comprometido_texto": "102.7 M€"
   },
   {
     "fecha": "2026-06-29",
     "coste_acumulado": 86739819.07,
     "coste_texto": "86.7 M€",
     "num_contratos": 33,
-    "porcentaje_riesgo_valencia": 55
+    "porcentaje_riesgo_valencia": 55,
+    "coste_comprometido": 102739819.07,
+    "coste_comprometido_texto": "102.7 M€"
   }
 ]

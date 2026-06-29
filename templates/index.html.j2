@@ -541,18 +541,23 @@
   {% if timeline | length > 0 %}
   <div class="wrap" style="padding-top:0;padding-bottom:0;">
     <section class="section" style="padding-top:1.25rem;padding-bottom:1.25rem;">
-      <h2 class="section-title">📈 Evolución del coste confirmado</h2>
-      {% set max_cost = timeline | map(attribute='coste_acumulado') | max | default(1) %}
-      {% set min_cost = timeline | map(attribute='coste_acumulado') | min | default(0) %}
+      <h2 class="section-title">📈 Evolución del coste</h2>
+      {% set max_comp = timeline | map(attribute='coste_comprometido') | max | default(1) %}
       <div style="display:flex;align-items:flex-end;gap:3px;height:120px;padding:0 0 .5rem 0;">
         {% for entry in timeline %}
-        {% set h = ((entry.coste_acumulado / max_cost * 100) | int) if max_cost > 0 else 0 %}
-        {% set h = [h, 3] | max %}
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:18px;"
-             title="{{ entry.fecha }}: {{ entry.coste_texto }}">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--muted);margin-bottom:2px;">{{ (entry.coste_acumulado / 1e6) | round(1) }}M</span>
-          <div style="width:100%;height:{{ h }}%;background:var(--red);border-radius:2px 2px 0 0;min-height:3px;opacity:.8;transition:opacity .15s;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.8'"></div>
+        {% set h_conf = ((entry.coste_acumulado / max_comp * 100) | int) if max_comp > 0 else 0 %}
+        {% set h_comp = ((entry.coste_comprometido / max_comp * 100) | int) if max_comp > 0 else 0 %}
+        {% set h_conf = [h_conf, 2] | max %}
+        {% set h_comp = [h_comp, 2] | max %}
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:22px;gap:1px;"
+             title="{{ entry.fecha }}: Confirmado {{ entry.coste_texto }} · Comprometido {{ entry.coste_comprometido_texto }}">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.5rem;color:var(--muted);margin-bottom:1px;">
+            {{ (entry.coste_comprometido / 1e6) | round(1) }}
+          </span>
+          <div style="width:70%;height:{{ h_comp }}%;background:var(--amber);border-radius:1px 1px 0 0;min-height:2px;opacity:.6;"
+               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.6'"></div>
+          <div style="width:70%;height:{{ h_conf }}%;background:var(--red);border-radius:1px 1px 0 0;min-height:2px;opacity:.9;"
+               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'"></div>
         </div>
         {% endfor %}
       </div>
@@ -560,9 +565,10 @@
         <span>{{ timeline[0].fecha }}</span>
         <span>{{ timeline[-1].fecha }}</span>
       </div>
-      <p style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">
-        ▲ +{{ ((timeline[-1].coste_acumulado - timeline[0].coste_acumulado) / 1e6) | round(1) }} M€ desde el inicio · {{ timeline | length }} mediciones
-      </p>
+      <div style="display:flex;gap:1.5rem;font-size:.62rem;margin-top:.2rem;">
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--red);border-radius:1px;vertical-align:middle;margin-right:3px;"></span>Confirmado: {{ timeline[-1].coste_texto }}</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:1px;vertical-align:middle;margin-right:3px;"></span>Comprometido: {{ timeline[-1].coste_comprometido_texto }}</span>
+      </div>
     </section>
   </div>
   {% endif %}
