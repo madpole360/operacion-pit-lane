@@ -273,20 +273,28 @@
       <h2 class="section-title">⚙️ Cómo funciona técnicamente</h2>
       <div class="tech-grid">
         <div class="tech-card">
-          <h3>🏗️ GitHub Actions</h3>
-          <p>Un workflow programado se ejecuta cada día a las 21:00h (hora Madrid). Es gratuito para repositorios públicos y no requiere ningún servidor.</p>
+          <h3>⏰ GitHub Actions</h3>
+          <p>Un workflow programado se ejecuta <strong>lunes y jueves a las 21:00h</strong> (hora Madrid). Es gratuito para repositorios públicos y no requiere ningún servidor.</p>
         </div>
         <div class="tech-card">
-          <h3>🤖 Claude API + Web Search</h3>
-          <p>El agente utiliza <code>claude-sonnet-4-6</code> con búsqueda web nativa para consultar fuentes oficiales y medios contrastados. Genera un informe estructurado en JSON.</p>
+          <h3>🔍 Monitor de portales</h3>
+          <p>El <strong>Paso 0</strong> escanea automáticamente <code>licitaciones2.ifema.es</code>, <code>contrataciondelestado.es</code>, <code>transparencia.madrid.es</code> y <code>comunidad.madrid</code> buscando nuevos expedientes con los términos "madring", "fórmula 1", "gran premio" y "circuito".</p>
+        </div>
+        <div class="tech-card">
+          <h3>🤖 Haiku 4.5 + Web Search</h3>
+          <p>El <strong>Paso 1</strong> utiliza <code>claude-haiku-4-5</code> con búsqueda web nativa para recopilar datos de fuentes oficiales, portales de contratación y medios contrastados. Es 3× más barato que Sonnet.</p>
+        </div>
+        <div class="tech-card">
+          <h3>🧠 Sonnet 4.6 + Análisis</h3>
+          <p>El <strong>Paso 2</strong> aplica la metodología rigurosa: clasifica cada dato en 🟢🟡🟠🔴, verifica fuentes, distingue las 4 cifras de coste y genera el informe JSON. Sin web search (ya no lo necesita). Si el monitor no detecta novedades, este paso se salta para ahorrar costes.</p>
         </div>
         <div class="tech-card">
           <h3>🐍 Python + Jinja2</h3>
-          <p>Un script en Python procesa la respuesta del modelo, valida los datos, actualiza la base de contratos histórica, y genera las páginas HTML usando plantillas Jinja2.</p>
+          <p>Un script en Python procesa la respuesta, valida los datos contra el formato real de expedientes IFEMA (<code>NN/NNN</code>), actualiza la base de contratos histórica sin duplicados, y genera las páginas HTML con Jinja2.</p>
         </div>
         <div class="tech-card">
           <h3>🌐 GitHub Pages</h3>
-          <p>El sitio se sirve desde GitHub Pages, sin coste de alojamiento. Las páginas se regeneran automáticamente tras cada investigación nocturna.</p>
+          <p>El sitio se sirve desde GitHub Pages, sin coste de alojamiento. Las páginas se regeneran automáticamente tras cada investigación.</p>
         </div>
         <div class="tech-card">
           <h3>📊 GoatCounter</h3>
@@ -310,8 +318,8 @@
         </tr></thead>
         <tbody>
           <tr>
-            <td>API Claude (Sonnet 4.6) — 8 ejecuciones/mes (lunes y jueves)</td>
-            <td class="amm">~20 €</td>
+            <td>API Claude (Haiku 4.5 + Sonnet 4.6 con monitor de portales) — 8 ejecuciones/mes</td>
+            <td class="amm">~25–30 €</td>
             <td>Anthropic</td>
           </tr>
           <tr>
@@ -331,7 +339,7 @@
           </tr>
           <tr style="background:var(--surface);">
             <td><strong>Total mensual</strong></td>
-            <td class="amm" style="color:var(--amber);"><strong>~20 €</strong></td>
+            <td class="amm" style="color:var(--amber);"><strong>~25–30 €</strong></td>
             <td></td>
           </tr>
         </tbody>
