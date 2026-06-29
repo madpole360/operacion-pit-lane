@@ -436,9 +436,9 @@
     }
   ],
   "coste_acumulado_confirmado": 86737929.82000001,
-  "coste_acumulado_texto": "86.7 millones de euros (obra principal + modificacion + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+  "coste_acumulado_texto": "86.7 millones de euros (10 contratos adjudicados/ejecutados). No incluye Pit Building (68,1M€ pendiente expediente), canon FOM ni costes indirectos.",
   "coste_comprometido": 103500353.19,
-  "coste_comprometido_texto": "103.5 millones de euros (costes confirmados + PBL de licitaciones activas).",
+  "coste_comprometido_texto": "103.5 millones de euros (confirmado + PBL de licitaciones activas).",
   "incremento_respecto_anterior": 0.0,
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
