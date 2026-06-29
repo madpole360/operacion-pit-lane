@@ -532,76 +532,79 @@
     <section class="section" style="padding-top:1.25rem;padding-bottom:1.25rem;">
       <h2 class="section-title">📈 Evolución del coste</h2>
       
-      <div style="display:flex;align-items:flex-end;gap:6px;height:160px;padding:0 0 .5rem 0;">
+      
+      
+      
+      
+      
+      <svg width="100%" height="200" viewBox="0 0 550 200" style="font-family:'JetBrains Mono',monospace;font-size:9px;">
+        <!-- Grid -->
+        
+        
+        
+        <line x1="50" y1="15" x2="530" y2="15" stroke="var(--edge)" stroke-width="0.5"/>
+        <text x="45" y="18" fill="var(--muted)" text-anchor="end" font-size="8">104M</text>
+        
+        
+        
+        <line x1="50" y1="55" x2="530" y2="55" stroke="var(--edge)" stroke-width="0.5"/>
+        <text x="45" y="58" fill="var(--muted)" text-anchor="end" font-size="8">99M</text>
+        
+        
+        
+        <line x1="50" y1="95" x2="530" y2="95" stroke="var(--edge)" stroke-width="0.5"/>
+        <text x="45" y="98" fill="var(--muted)" text-anchor="end" font-size="8">95M</text>
+        
+        
+        
+        <line x1="50" y1="135" x2="530" y2="135" stroke="var(--edge)" stroke-width="0.5"/>
+        <text x="45" y="138" fill="var(--muted)" text-anchor="end" font-size="8">91M</text>
+        
+        
+        
+        <line x1="50" y1="175" x2="530" y2="175" stroke="var(--edge)" stroke-width="0.5"/>
+        <text x="45" y="178" fill="var(--muted)" text-anchor="end" font-size="8">87M</text>
+        
+        <!-- Confirmed line -->
+        <polyline fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round"
+          points="50,175 170,175 290,175 410,175 "/>
+        <!-- Committed line -->
+        <polyline fill="none" stroke="var(--amber)" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"
+          points="50,35 170,35 290,16 410,15 "/>
+        <!-- Dots + labels -->
         
         
         
         
-        
-        <div style="flex:1;display:flex;flex-direction:row;align-items:flex-end;justify-content:center;gap:3px;min-width:35px;"
-             title="2026-06-24&#10;Confirmado 86.8 M€&#10;Comprometido 101.5 M€">
-          <div style="width:12px;height:83%;background:var(--red);border-radius:2px 2px 0 0;min-height:2px;opacity:.9;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'"></div>
-          <div style="width:12px;height:98%;background:var(--amber);border-radius:2px 2px 0 0;min-height:2px;opacity:.7;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.48rem;color:var(--muted);writing-mode:vertical-rl;text-orientation:mixed;position:absolute;bottom:-14px;">
-            06-24
-          </span>
-        </div>
+        <circle cx="50" cy="175" r="4" fill="var(--red)"/>
+        <circle cx="50" cy="35" r="4" fill="var(--amber)"/>
+        <text x="50" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">06-24</text>
         
         
         
         
-        
-        <div style="flex:1;display:flex;flex-direction:row;align-items:flex-end;justify-content:center;gap:3px;min-width:35px;"
-             title="2026-06-25&#10;Confirmado 86.8 M€&#10;Comprometido 101.5 M€">
-          <div style="width:12px;height:83%;background:var(--red);border-radius:2px 2px 0 0;min-height:2px;opacity:.9;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'"></div>
-          <div style="width:12px;height:98%;background:var(--amber);border-radius:2px 2px 0 0;min-height:2px;opacity:.7;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.48rem;color:var(--muted);writing-mode:vertical-rl;text-orientation:mixed;position:absolute;bottom:-14px;">
-            06-25
-          </span>
-        </div>
+        <circle cx="170" cy="175" r="4" fill="var(--red)"/>
+        <circle cx="170" cy="35" r="4" fill="var(--amber)"/>
+        <text x="170" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">06-25</text>
         
         
         
         
-        
-        <div style="flex:1;display:flex;flex-direction:row;align-items:flex-end;justify-content:center;gap:3px;min-width:35px;"
-             title="2026-06-26&#10;Confirmado 86.7 M€&#10;Comprometido 103.5 M€">
-          <div style="width:12px;height:83%;background:var(--red);border-radius:2px 2px 0 0;min-height:2px;opacity:.9;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'"></div>
-          <div style="width:12px;height:99%;background:var(--amber);border-radius:2px 2px 0 0;min-height:2px;opacity:.7;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.48rem;color:var(--muted);writing-mode:vertical-rl;text-orientation:mixed;position:absolute;bottom:-14px;">
-            06-26
-          </span>
-        </div>
+        <circle cx="290" cy="175" r="4" fill="var(--red)"/>
+        <circle cx="290" cy="16" r="4" fill="var(--amber)"/>
+        <text x="290" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">06-26</text>
         
         
         
         
+        <circle cx="410" cy="175" r="4" fill="var(--red)"/>
+        <circle cx="410" cy="15" r="4" fill="var(--amber)"/>
+        <text x="410" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">06-29</text>
         
-        <div style="flex:1;display:flex;flex-direction:row;align-items:flex-end;justify-content:center;gap:3px;min-width:35px;"
-             title="2026-06-29&#10;Confirmado 86.7 M€&#10;Comprometido 103.5 M€">
-          <div style="width:12px;height:83%;background:var(--red);border-radius:2px 2px 0 0;min-height:2px;opacity:.9;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'"></div>
-          <div style="width:12px;height:100%;background:var(--amber);border-radius:2px 2px 0 0;min-height:2px;opacity:.7;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.48rem;color:var(--muted);writing-mode:vertical-rl;text-orientation:mixed;position:absolute;bottom:-14px;">
-            06-29
-          </span>
-        </div>
-        
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:.58rem;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-top:.25rem;">
-        <span>2026-06-24</span>
-        <span>2026-06-29</span>
-      </div>
+      </svg>
       <div style="display:flex;gap:1.5rem;font-size:.62rem;margin-top:.2rem;">
-        <span><span style="display:inline-block;width:8px;height:8px;background:var(--red);border-radius:1px;vertical-align:middle;margin-right:3px;"></span>Confirmado: 86.7 M€</span>
-        <span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:1px;vertical-align:middle;margin-right:3px;"></span>Comprometido: 103.5 M€</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--red);vertical-align:middle;margin-right:4px;"></span>Confirmado: 86.7 M€</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--amber);vertical-align:middle;margin-right:4px;border-top:2px dashed var(--amber);"></span>Comprometido: 103.5 M€</span>
       </div>
     </section>
   </div>

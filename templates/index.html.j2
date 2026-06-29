@@ -542,32 +542,39 @@
   <div class="wrap" style="padding-top:0;padding-bottom:0;">
     <section class="section" style="padding-top:1.25rem;padding-bottom:1.25rem;">
       <h2 class="section-title">📈 Evolución del coste</h2>
-      {% set max_comp = timeline | map(attribute='coste_comprometido') | max | default(1) %}
-      <div style="display:flex;align-items:flex-end;gap:6px;height:160px;padding:0 0 .5rem 0;">
-        {% for entry in timeline %}
-        {% set h_conf = ((entry.coste_acumulado / max_comp * 100) | int) if max_comp > 0 else 0 %}
-        {% set h_comp = ((entry.coste_comprometido / max_comp * 100) | int) if max_comp > 0 else 0 %}
-        {% set h_conf = [h_conf, 2] | max %}
-        {% set h_comp = [h_comp, 2] | max %}
-        <div style="flex:1;display:flex;flex-direction:row;align-items:flex-end;justify-content:center;gap:3px;min-width:35px;"
-             title="{{ entry.fecha }}&#10;Confirmado {{ entry.coste_texto }}&#10;Comprometido {{ entry.coste_comprometido_texto }}">
-          <div style="width:12px;height:{{ h_conf }}%;background:var(--red);border-radius:2px 2px 0 0;min-height:2px;opacity:.9;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'"></div>
-          <div style="width:12px;height:{{ h_comp }}%;background:var(--amber);border-radius:2px 2px 0 0;min-height:2px;opacity:.7;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.48rem;color:var(--muted);writing-mode:vertical-rl;text-orientation:mixed;position:absolute;bottom:-14px;">
-            {{ entry.fecha[-5:] }}
-          </span>
-        </div>
+      {% set max_val = timeline | map(attribute='coste_comprometido') | max | default(1) %}
+      {% set min_val = timeline | map(attribute='coste_acumulado') | min | default(0) %}
+      {% set w = timeline | length %}
+      {% set h = 160 %}
+      {% set pad_l = 50 %}{% set pad_r = 20 %}{% set pad_t = 15 %}{% set pad_b = 25 %}
+      {% set gw = (w - 1) %}
+      <svg width="100%" height="{{ h + pad_t + pad_b }}" viewBox="0 0 {{ w * 120 + pad_l + pad_r }} {{ h + pad_t + pad_b }}" style="font-family:'JetBrains Mono',monospace;font-size:9px;">
+        <!-- Grid -->
+        {% for i in range(5) %}
+        {% set y = pad_t + (h * i / 4) | int %}
+        {% set val = max_val - (max_val - min_val) * i / 4 %}
+        <line x1="{{ pad_l }}" y1="{{ y }}" x2="{{ pad_l + w * 120 }}" y2="{{ y }}" stroke="var(--edge)" stroke-width="0.5"/>
+        <text x="{{ pad_l - 5 }}" y="{{ y + 3 }}" fill="var(--muted)" text-anchor="end" font-size="8">{{ (val / 1e6) | round(0) | int }}M</text>
         {% endfor %}
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:.58rem;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-top:.25rem;">
-        <span>{{ timeline[0].fecha }}</span>
-        <span>{{ timeline[-1].fecha }}</span>
-      </div>
+        <!-- Confirmed line -->
+        <polyline fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round"
+          points="{% for entry in timeline %}{{ pad_l + loop.index0 * 120 }},{{ pad_t + h - ((entry.coste_acumulado - min_val) / (max_val - min_val) * h) | int }} {% endfor %}"/>
+        <!-- Committed line -->
+        <polyline fill="none" stroke="var(--amber)" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"
+          points="{% for entry in timeline %}{{ pad_l + loop.index0 * 120 }},{{ pad_t + h - ((entry.coste_comprometido - min_val) / (max_val - min_val) * h) | int }} {% endfor %}"/>
+        <!-- Dots + labels -->
+        {% for entry in timeline %}
+        {% set cx = pad_l + loop.index0 * 120 %}
+        {% set cy_conf = pad_t + h - ((entry.coste_acumulado - min_val) / (max_val - min_val) * h) | int %}
+        {% set cy_comp = pad_t + h - ((entry.coste_comprometido - min_val) / (max_val - min_val) * h) | int %}
+        <circle cx="{{ cx }}" cy="{{ cy_conf }}" r="4" fill="var(--red)"/>
+        <circle cx="{{ cx }}" cy="{{ cy_comp }}" r="4" fill="var(--amber)"/>
+        <text x="{{ cx }}" y="{{ h + pad_t + pad_b - 5 }}" fill="var(--muted)" text-anchor="middle" font-size="8">{{ entry.fecha[-5:] }}</text>
+        {% endfor %}
+      </svg>
       <div style="display:flex;gap:1.5rem;font-size:.62rem;margin-top:.2rem;">
-        <span><span style="display:inline-block;width:8px;height:8px;background:var(--red);border-radius:1px;vertical-align:middle;margin-right:3px;"></span>Confirmado: {{ timeline[-1].coste_texto }}</span>
-        <span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:1px;vertical-align:middle;margin-right:3px;"></span>Comprometido: {{ timeline[-1].coste_comprometido_texto }}</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--red);vertical-align:middle;margin-right:4px;"></span>Confirmado: {{ timeline[-1].coste_texto }}</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--amber);vertical-align:middle;margin-right:4px;border-top:2px dashed var(--amber);"></span>Comprometido: {{ timeline[-1].coste_comprometido_texto }}</span>
       </div>
     </section>
   </div>
