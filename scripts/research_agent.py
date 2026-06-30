@@ -73,10 +73,10 @@ Antes de aceptar cualquier cifra:
 
 ─── REGLAS ───
 - No inventes datos. No extrapoles cifras. No uses rumores ni titulares.
-- Si una cifra no puede verificarse, indícalo: "No existe evidencia documental suficiente".
+- Si una cifra no puede verificarse, indícalo expresamente.
 - Para cada contrato: organismo, expediente REAL (formato NN/NNN o NNNNNNNNNN), fecha,
   importe, adjudicatario, estado, fuente URL.
-- NUNCA uses expedientes genéricos como "No disponible", "Pendiente confirmar" o "Sin número".
+- NUNCA uses expedientes genéricos como "No disponible" o "Pendiente confirmar".
 - Compara SIEMPRE con el informe anterior. Muestra SOLO novedades.
 - No uses lenguaje político. Sé extremadamente preciso.
 - Usa español correcto con tildes, eñes y todos los acentos.
@@ -129,6 +129,199 @@ IMPORTANTE: Tras usar web_search, responde SOLO con el JSON.
 Sin introducciones, sin etiquetas XML, sin markdown. Solo el JSON."""
 
 
+# ─── Helpers ────────────────────────────────────────────────────────────────────
+def ensure_dirs():
+    """Crea los directorios necesarios."""
+    DOCS_DIR.mkdir(exist_ok=True)
+    ARCHIVE_DIR.mkdir(exist_ok=True)
+    DATA_DIR.mkdir(exist_ok=True)
+
+
+def load_previous_report() -> str:
+    """Carga el informe anterior como contexto para el agente."""
+    if LATEST_FILE.exists():
+        try:
+            data = json.loads(LATEST_FILE.read_text(encoding="utf-8"))
+            prev = {
+                "fecha": data.get("fecha"),
+                "coste_acumulado_confirmado": data.get("coste_acumulado_confirmado"),
+                "coste_acumulado_texto": data.get("coste_acumulado_texto"),
+                "num_contratos_previos": len(data.get("contratos", [])),
+                "riesgos_previos": data.get("riesgos_detectados", []),
+                "partidas_pendientes": data.get("partidas_pendientes_confirmar", []),
+            }
+            return json.dumps(prev, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"⚠️  Error cargando informe anterior: {e}")
+    return "No hay informe previo. Este es el primer informe."
+
+
+def load_contracts_db() -> list:
+    """Carga la base de datos histórica de contratos."""
+    if CONTRACTS_FILE.exists():
+        try:
+            return json.loads(CONTRACTS_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return []
+
+
+def save_contracts_db(contracts: list):
+    """Guarda la base de datos histórica de contratos."""
+    CONTRACTS_FILE.write_text(
+        json.dumps(contracts, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+
+
+def extract_json(text: str) -> dict:
+    """Extrae un objeto JSON de una respuesta que puede contener markdown o texto adicional."""
+    text = text.strip()
+
+    # 1. Limpiar residuos de tool calls que el modelo a veces repite como texto
+    text = re.sub(r'<invoke[^>]*>.*?</invoke>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<parameter[^>]*>.*?</parameter>', '', text, flags=re.DOTALL)
+    text = re.sub(r'</?tool_calls>', '', text)
+    text = re.sub(r'I\'ll start by.*?(?=\{|$)', '', text, flags=re.DOTALL)
+    text = re.sub(r'Now let me.*?(?=\{|$)', '', text, flags=re.DOTALL)
+    text = text.strip()
+
+    # 2. Intentar parseo directo
+    try:
+        return json.loads(text)
+    except (json.JSONDecodeError, ValueError):
+        pass
+
+    # 3. Buscar bloque JSON entre ```json ... ```
+    match = re.search(r'```(?:json)?\s*\n?(.*?)\n?```', text, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group(1).strip())
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    # 4. Buscar desde { hasta el último } usando balance de llaves
+    start = text.find('{')
+    if start >= 0:
+        depth = 0
+        end = -1
+        for i, ch in enumerate(text[start:], start):
+            if ch == '{':
+                depth += 1
+            elif ch == '}':
+                depth -= 1
+                if depth == 0:
+                    end = i
+                    break
+        if end > start:
+            try:
+                return json.loads(text[start:end + 1])
+            except (json.JSONDecodeError, ValueError):
+                pass
+
+    raise ValueError(f"No se pudo extraer JSON valido de la respuesta:\n{text[:800]}")
+
+
+def validate_report(data: dict) -> list:
+    """Valida que los campos obligatorios existan. Retorna lista de warnings."""
+    warnings = []
+    required = ["fecha", "resumen_ejecutivo", "nuevos_hallazgos", "contratos",
+                "coste_acumulado_confirmado", "coste_acumulado_texto",
+                "riesgos_detectados", "fuentes_consultadas"]
+    for field in required:
+        if field not in data:
+            warnings.append(f"Falta campo obligatorio: '{field}'")
+            data.setdefault(field, [] if field in ("nuevos_hallazgos", "contratos",
+                                                    "riesgos_detectados", "fuentes_consultadas") else "")
+
+    # Asegurar campos que la plantilla espera pero el agente puede no devolver
+    for field, default in [
+        ("coste_comprometido", data.get("coste_acumulado_confirmado", 0)),
+        ("coste_comprometido_texto", data.get("coste_acumulado_texto", "")),
+        ("proyeccion_10_anios", {}),
+        ("costes_indirectos", []),
+        ("costes_indirectos_total_estimado", ""),
+    ]:
+        if field not in data:
+            data[field] = default
+
+    # Asegurar que contratos tenga los campos correctos
+    for i, c in enumerate(data.get("contratos", [])):
+        for f in ("fecha", "organismo", "expediente", "concepto", "importe",
+                   "importe_texto", "estado", "fuente"):
+            if f not in c:
+                c[f] = ""
+                warnings.append(f"Contrato {i}: falta campo '{f}'")
+
+    return warnings
+
+
+import re
+# Solo aceptar expedientes que coincidan con el formato real de IFEMA
+EXP_RE = re.compile(r"^\d{2}/\d{3,4}$")  # ej: 26/113, 25/043, 24/226
+EXP_CM_RE = re.compile(r"^\d{10}$")       # ej: 6200014240 (contratos menores)
+
+def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
+    """Fusiona contratos nuevos en la BD historica. Solo acepta expedientes con formato real."""
+    seen = set()
+    for c in existing:
+        key = (c.get("expediente", "").strip(), c.get("organismo", ""), c.get("fecha", ""))
+        seen.add(key)
+
+    nuevos = []
+    for c in new_contracts:
+        exp = c.get("expediente", "").strip()
+        # SOLO aceptar formatos reales: NN/NNN o NNNNNNNNNN
+        if not (EXP_RE.match(exp) or EXP_CM_RE.match(exp)):
+            continue
+        concepto = c.get("concepto", "").strip()
+        if len(concepto) < 15:
+            continue
+        key = (exp, c.get("organismo", ""), c.get("fecha", ""))
+        if key not in seen:
+            seen.add(key)
+            c["descubierto_el"] = TODAY
+            existing.append(c)
+            nuevos.append(c)
+
+    return existing, nuevos
+
+
+# ─── Agente ─────────────────────────────────────────────────────────────────────
+MONITOR_PROMPT = """Eres un monitor automatico de portales de contratación pública.
+Tu unica tarea: detectar NUEVOS expedientes o licitaciones relacionadas con el
+circuito de Formula 1 de Madrid usando los terminos: 'madring', 'formula 1',
+'gran premio', 'circuito', 'IFEMA'.
+
+Busca especificamente en estos portales:
+
+1. licitaciones2.ifema.es (perfil del contratante IFEMA):
+   Busca: 'madrid formula 1', 'madring', 'gran premio espana', 'circuito IFEMA'
+
+2. contrataciondelestado.es (Plataforma de Contratacion del Estado):
+   Busca: 'IFEMA formula 1', 'madrid gran premio', 'madring circuito'
+
+3. transparencia.madrid.es y madrid.es (Ayuntamiento de Madrid):
+   Busca: 'formula 1 madrid', 'madring', 'gran premio IFEMA'
+
+4. comunidad.madrid (Comunidad de Madrid):
+   Busca: 'formula 1', 'madring', 'gran premio espana', 'circuito urbano'
+
+Para cada hallazgo indica: PORTAL, expediente/expediente, titulo, importe (si visible),
+estado (licitado/adjudicado/desistido), y URL.
+NO uses JSON. Solo texto estructurado. Si no hay novedades di 'SIN NOVEDADES'."""
+
+HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratación pública espanola.
+Tu tarea: buscar información actualizada sobre el GP de Formula 1 de Madrid (Madring)
+y devolver los hallazgos en texto estructurado.
+
+Busca en:
+- licitaciones2.ifema.es: nuevas licitaciones, adjudicaciones, desistimientos
+- madring.com: hitos de construcción, notas de prensa
+- Noticias: Reuters, El Pais, Cinco Dias, Palco23
+
+Para cada hallazgo indica: fuente, fecha, cifras, estado.
+NO redactes JSON. Solo texto estructurado con los datos encontrados."""
 
 SONNET_ANALYSIS_PROMPT = SYSTEM_PROMPT  # El prompt completo con toda la metodologia
 
