@@ -542,7 +542,7 @@
   <div class="wrap" style="padding-top:0;padding-bottom:0;">
     <section class="section" style="padding-top:1.25rem;padding-bottom:1.25rem;">
       <h2 class="section-title">📈 Evolución del coste</h2>
-      {% set max_val = timeline | map(attribute='coste_comprometido') | max | default(1) %}
+      {% set max_val = timeline | map(attribute='coste_comprometido') | reject('none') | list | max | default(1) if timeline | map(attribute='coste_comprometido') | reject('none') | list | length > 0 else timeline | map(attribute='coste_acumulado') | max | default(1) %}
       {% set min_val = timeline | map(attribute='coste_acumulado') | min | default(0) %}
       {% set w = timeline | length %}
       {% set h = 160 %}

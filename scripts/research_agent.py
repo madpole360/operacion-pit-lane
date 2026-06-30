@@ -639,6 +639,8 @@ def save_results(data: dict) -> dict:
         "fecha": TODAY,
         "coste_acumulado": confirmado,
         "coste_texto": final["coste_acumulado_texto"],
+        "coste_comprometido": comprometido,
+        "coste_comprometido_texto": final.get("coste_comprometido_texto", ""),
         "num_contratos": len(merged_contracts),
         "porcentaje_riesgo_valencia": final["comparativa_valencia"].get("porcentaje_similitud_riesgo", None),
     })
