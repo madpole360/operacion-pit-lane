@@ -1,47 +1,9 @@
 [
   {
-    "fecha": "2026-06-24",
-    "coste_acumulado": 86800000,
-    "coste_texto": "86.8 M€",
-    "num_contratos": 27,
-    "porcentaje_riesgo_valencia": 55,
-    "coste_comprometido": 101500000,
-    "coste_comprometido_texto": "101.5 M€"
-  },
-  {
-    "fecha": "2026-06-25",
-    "coste_acumulado": 86800000,
-    "coste_texto": "86.8 M€",
-    "num_contratos": 28,
-    "porcentaje_riesgo_valencia": 55,
-    "coste_comprometido": 101500000,
-    "coste_comprometido_texto": "101.5 M€"
-  },
-  {
-    "fecha": "2026-06-26",
-    "coste_acumulado": 86737930,
-    "coste_texto": "86.7 M€",
-    "num_contratos": 33,
-    "porcentaje_riesgo_valencia": 55,
-    "coste_comprometido": 103500353,
-    "coste_comprometido_texto": "103.5 M€"
-  },
-  {
-    "fecha": "2026-06-29",
-    "coste_acumulado": 86737929.82000001,
-    "coste_texto": "86.7 M€",
-    "num_contratos": 33,
-    "porcentaje_riesgo_valencia": 55,
-    "coste_comprometido": 103500353.19,
-    "coste_comprometido_texto": "103.5 M€"
-  },
-  {
     "fecha": "2026-06-30",
-    "coste_acumulado": 86737929.82000001,
-    "coste_texto": "86.7 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
-    "coste_comprometido": 103500353.19,
-    "coste_comprometido_texto": "103.5 millones de euros (costes confirmados + PBL de licitaciones activas).",
-    "num_contratos": 58,
-    "porcentaje_riesgo_valencia": 72
+    "coste_acumulado": 85890374.86,
+    "coste_texto": "85,89 millones €",
+    "num_contratos": 27,
+    "porcentaje_riesgo_valencia": 55
   }
 ]
