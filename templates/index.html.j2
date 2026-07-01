@@ -461,12 +461,6 @@
         <div class="cost-number" id="costCompro" data-target="{{ compro_raw | int }}" style="color:var(--amber);">{{ data.get('coste_comprometido_texto') or data.coste_acumulado_texto or 'Calculando...' }}</div>
       </div>
     </div>
-    <div class="cost-sub" style="margin-top:.75rem;">
-        Informe del <strong id="reportDate">{{ data.fecha_madrid or data.fecha }}</strong>
-        {% if data.incremento_respecto_anterior and data.incremento_respecto_anterior > 0 %}
-        · Incremento respecto al anterior: <strong>+{{ "{:,.0f}".format(data.incremento_respecto_anterior) }} €</strong>
-        {% endif %}
-      </div>
     </div>
   </div>
 
@@ -487,12 +481,8 @@
       <div class="t-value amber">{{ data.riesgos_detectados | length if data.riesgos_detectados else 0 }}</div>
     </div>
     <div class="ticker-item">
-      <div class="t-label">Última actualización</div>
-      <div class="t-value">{{ data.fecha or today }}</div>
-    </div>
-    <div class="ticker-item">
       <div class="t-label">Próxima actualización</div>
-      <div class="t-value green">{{ next_run or 'Lunes/Jueves 21:00' }}</div>
+      <div class="t-value green">{{ next_run or 'Lunes/Jueves 20:00' }}</div>
     </div>
   </div>
 
