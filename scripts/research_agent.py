@@ -508,9 +508,14 @@ def save_results(data: dict) -> dict:
             comprometido += imp
 
     # Construir el informe final: preservar campos curados, actualizar solo lo nuevo
+    # Usar la hora real de ejecución, no la del JSON del agente
+    now_madrid = datetime.now(MADRID_TZ)
+    exec_date = now_madrid.strftime("%Y-%m-%d")
+    exec_datetime = now_madrid.strftime("%Y-%m-%d %H:%M")
+
     final = {
-        "fecha": TODAY,
-        "fecha_madrid": TODAY_MADRID,
+        "fecha": exec_date,
+        "fecha_madrid": exec_datetime,
         # Campos narrativos del agente (si trae algo nuevo)
         "resumen_ejecutivo": data.get("resumen_ejecutivo") or prev.get("resumen_ejecutivo", ""),
         "nuevos_hallazgos": data.get("nuevos_hallazgos") or prev.get("nuevos_hallazgos", []),
@@ -534,7 +539,7 @@ def save_results(data: dict) -> dict:
     }
 
     # ── Guardar archivo diario ──
-    daily_file = ARCHIVE_DIR / f"{TODAY}.json"
+    daily_file = ARCHIVE_DIR / f"{exec_date}.json"
     daily_file.write_text(json.dumps(final, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ Archivo diario: {daily_file}")
 
@@ -552,7 +557,7 @@ def save_results(data: dict) -> dict:
         except Exception:
             pass
     timeline.append({
-        "fecha": TODAY,
+        "fecha": exec_date,
         "coste_acumulado": confirmado,
         "coste_texto": final["coste_acumulado_texto"],
         "coste_comprometido": comprometido,
