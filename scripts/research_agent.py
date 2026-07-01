@@ -126,7 +126,10 @@ Solo JSON válido, sin markdown ni etiquetas:
 }
 
 IMPORTANTE: Tras usar web_search, responde SOLO con el JSON.
-Sin introducciones, sin etiquetas XML, sin markdown. Solo el JSON."""
+Sin introducciones, sin etiquetas XML, sin markdown. Solo el JSON.
+ES OBLIGATORIO usar español correcto con tildes (á, é, í, ó, ú), eñes (ñ) y diéresis (ü)
+en TODOS los campos de texto. Esta página se publica en España y debe usar
+ortografía española real. No uses ASCII simplificado."""
 
 
 # ─── Helpers ────────────────────────────────────────────────────────────────────
