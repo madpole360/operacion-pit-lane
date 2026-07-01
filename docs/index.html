@@ -453,12 +453,12 @@
       <div class="cost-block">
         <div class="cost-label">Coste acumulado confirmado</div>
         
-        <div class="cost-number" id="costCounter" data-target="86499355">86.5 M€ (adjudicaciones con soporte oficial). Pit Building (68,1 M€) y otros pendientes de verificacion NO incluidos.</div>
+        <div class="cost-number" id="costCounter" data-target="86499355">86.5 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.</div>
       </div>
       <div class="cost-block" style="border-color:rgba(245,158,11,.4);background:linear-gradient(160deg,rgba(245,158,11,.06) 0%,transparent 60%);">
         <div class="cost-label">Coste comprometido (+ licitaciones)</div>
         
-        <div class="cost-number" id="costCompro" data-target="103188568" style="color:var(--amber);">103.2 M€ (confirmado + PBL licitaciones activas).</div>
+        <div class="cost-number" id="costCompro" data-target="103188568" style="color:var(--amber);">103.2 millones de euros (costes confirmados + PBL de licitaciones activas).</div>
       </div>
     </div>
     </div>
@@ -474,11 +474,11 @@
     </div>
     <div class="ticker-item">
       <div class="t-label">Pendientes confirmar</div>
-      <div class="t-value amber">9</div>
+      <div class="t-value amber">16</div>
     </div>
     <div class="ticker-item">
       <div class="t-label">Riesgos detectados</div>
-      <div class="t-value amber">11</div>
+      <div class="t-value amber">13</div>
     </div>
     <div class="ticker-item">
       <div class="t-label">Próxima actualización</div>
@@ -494,7 +494,7 @@
     <div class="ticker" style="border-radius:8px;margin-bottom:0;">
       <div class="ticker-item">
         <div class="t-label">Última ejecución</div>
-        <div class="t-value">2026-07-01 00:53</div>
+        <div class="t-value">2026-07-01 09:01</div>
       </div>
       <div class="ticker-item">
         <div class="t-label">Contratos nuevos (7d)</div>
@@ -529,40 +529,40 @@
       
       
       
-      <svg width="100%" height="200" viewBox="0 0 670 200" style="font-family:'JetBrains Mono',monospace;font-size:9px;">
+      <svg width="100%" height="200" viewBox="0 0 790 200" style="font-family:'JetBrains Mono',monospace;font-size:9px;">
         <!-- Grid -->
         
         
         
-        <line x1="50" y1="15" x2="650" y2="15" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="15" x2="770" y2="15" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="18" fill="var(--muted)" text-anchor="end" font-size="8">104M</text>
         
         
         
-        <line x1="50" y1="55" x2="650" y2="55" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="55" x2="770" y2="55" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="58" fill="var(--muted)" text-anchor="end" font-size="8">99M</text>
         
         
         
-        <line x1="50" y1="95" x2="650" y2="95" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="95" x2="770" y2="95" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="98" fill="var(--muted)" text-anchor="end" font-size="8">95M</text>
         
         
         
-        <line x1="50" y1="135" x2="650" y2="135" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="135" x2="770" y2="135" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="138" fill="var(--muted)" text-anchor="end" font-size="8">91M</text>
         
         
         
-        <line x1="50" y1="175" x2="650" y2="175" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="175" x2="770" y2="175" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="178" fill="var(--muted)" text-anchor="end" font-size="8">86M</text>
         
         <!-- Confirmed line -->
         <polyline fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round"
-          points="50,175 170,175 290,173 410,173 530,175 "/>
+          points="50,175 170,175 290,173 410,173 530,175 650,175 "/>
         <!-- Committed line -->
         <polyline fill="none" stroke="var(--amber)" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"
-          points="50,34 170,34 290,15 410,15 530,18 "/>
+          points="50,34 170,34 290,15 410,15 530,18 650,18 "/>
         <!-- Dots + labels -->
         
         
@@ -600,10 +600,17 @@
         <circle cx="530" cy="18" r="4" fill="var(--amber)"/>
         <text x="530" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">06-30</text>
         
+        
+        
+        
+        <circle cx="650" cy="175" r="4" fill="var(--red)"/>
+        <circle cx="650" cy="18" r="4" fill="var(--amber)"/>
+        <text x="650" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">07-01</text>
+        
       </svg>
       <div style="display:flex;gap:1.5rem;font-size:.62rem;margin-top:.2rem;">
-        <span><span style="display:inline-block;width:10px;height:3px;background:var(--red);vertical-align:middle;margin-right:4px;"></span>Confirmado: 86.5 M€</span>
-        <span><span style="display:inline-block;width:10px;height:3px;background:var(--amber);vertical-align:middle;margin-right:4px;border-top:2px dashed var(--amber);"></span>Comprometido: 103.2 M€</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--red);vertical-align:middle;margin-right:4px;"></span>Confirmado: 86.5 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--amber);vertical-align:middle;margin-right:4px;border-top:2px dashed var(--amber);"></span>Comprometido: 103.2 millones de euros (costes confirmados + PBL de licitaciones activas).</span>
       </div>
     </section>
   </div>
@@ -617,7 +624,7 @@
     <section class="section">
       <h2 class="section-title">📋 Resumen ejecutivo</h2>
       <div class="summary-card">
-        El contador sube a 86.5 M€ confirmados (171.7 M€ incluyendo licitaciones). Novedad: 24/148 (Project/Construction Management) adjudicado UTE CONURMA-ACTIINFRA MADRID por 2,59 M€ + modificacion 0,10 M€ (PBL 3,45 M€, VEC 6,30 M€). Tres licitaciones operativas evento 2026 (26/097, 26/102, 26/106) por 319.880 € pendientes verificacion oficial. Sin documentacion oficial sobre canon FOM, patrocinios, seguridad publica, movilidad o limpieza GP.
+        A 72 días del GP de España (11-13 septiembre 2026), el circuito principal de Madring está completado según fuentes secundarias, pero sin expediente oficial verificado para el contrato UTE Acciona-Eiffage (83,2 M€). El Pit Building de Eiffage Construcción (68,1 M€) continúa en construcción avanzada sin fecha de finalización publicada. El coste acumulado CONFIRMADO permanece en 86,5 M€ (33 contratos con soporte documental oficial): ni el contrato del circuito principal ni el del Pit Building han podido verificarse mediante expediente real en licitaciones2.ifema.es o contrataciondelestado.es, por lo que NO se incorporan al coste confirmado. La cifra de '430 M€ de dinero público' difundida por Más Madrid procede de una demanda judicial y no de documentación presupuestaria oficial; se clasifica como hipótesis. El canon FOM (estimado en 48 M€/año, 480 M€ a 10 años) sigue sin documento oficial. No se han localizado nuevos expedientes adjudicados desde el informe anterior. Los riesgos principales son: Pit Building sin plazo público confirmado antes del 11 de septiembre, litigio activo ante el TSJM (demanda de Más Madrid), y acumulación silenciosa de contratos auxiliares no contabilizados.
       </div>
       
       <div style="margin-top:.85rem;display:flex;align-items:center;gap:.65rem;font-size:.76rem;color:var(--muted);">
@@ -634,22 +641,42 @@
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>24/148 detallado: PBL 3.453.190 €, VEC 6.296.663,69 €, adjudicado UTE CONURMA-ACTIINFRA MADRID 2.589.892,50 € + modificacion 100.482,36 € (29/10/2025).</p>
+          <p>El circuito principal se declara completado (fuentes secundarias: Madring.com y prensa); sin embargo, no se ha localizado acta de recepción ni expediente oficial que lo confirme documentalmente.</p>
         </div>
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>26/097, 26/102 y 26/106: licitaciones operativas evento 2026 (319.880 € PBL total) pendientes verificacion oficial directa.</p>
+          <p>Presentación oficial celebrada el 16 de junio de 2026: se anunció bandera gigante (16,66 × 25 m), trofeo diseñado por Pininfarina y póster oficial. Coste de estos elementos no publicado como partida independiente.</p>
         </div>
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>Contratos operativos de evento (aseos, modulos, proyectos efimeros) confirman expansion del coste mas alla de la obra del circuito.</p>
+          <p>Sold out técnico declarado: más de 90.000 entradas vendidas sobre una capacidad de 110.000-140.000 espectadores; abonos de tres días entre 195 € y 1.800 €.</p>
         </div>
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>Sin documentacion oficial: canon FOM, patrocinios, seguridad publica, movilidad, limpieza GP.</p>
+          <p>Más Madrid ha presentado demanda ante el Tribunal Superior de Justicia de Madrid contra la decisión del Ayuntamiento que permite a IFEMA ejecutar las obras del circuito. Estado procesal desconocido.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>La cifra de '430 M€ de dinero público gastado' proviene de la demanda de Más Madrid; no está respaldada por documentación presupuestaria oficial y no se incorpora al coste confirmado.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>Gradas y estructuras temporales en fase de instalación inicial (junio 2026); no se ha localizado expediente de contratación específico.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>El Pit Building sigue sin fecha de finalización publicada oficialmente, lo que constituye un riesgo operativo de primer orden a 72 días del evento.</p>
+        </div>
+        
+        <div class="finding-item">
+          <div class="fi-dot"></div>
+          <p>No se han detectado nuevos expedientes adjudicados en licitaciones2.ifema.es ni en contrataciondelestado.es desde el corte del informe anterior (26 junio 2026).</p>
         </div>
         
         
@@ -1055,27 +1082,31 @@
           <ul class="risk-list">
             
             
-            <li data-icon="🔴">Exp. 26/113 cierra HOY (26/06/2026). Adjudicacion inminente sin tiempo para escrutinio publico.</li>
+            <li data-icon="🔴">Pit Building sin fecha de finalización pública confirmada a 72 días del GP (11 septiembre 2026): riesgo operativo crítico.</li>
             
-            <li data-icon="🔴">Exp. 25/175 desistido: indicio de mala planificacion de pliegos que obliga a repetir expedientes.</li>
+            <li data-icon="🔴">Demanda de Más Madrid ante el TSJM activa: una medida cautelar podría afectar la celebración del evento.</li>
             
-            <li data-icon="🔴">Tres nuevos expedientes sanitarios/logisticos suman +900.980 € al coste comprometido.</li>
+            <li data-icon="🔴">Canon FOM (estimado 48 M€/año) sin documento oficial: el coste público real del evento podría triplicar el coste de construcción del circuito en el horizonte 2026-2035.</li>
             
-            <li data-icon="🔴">El canon a FOM podria superar ampliamente el coste de construccion del circuito (480M€ estimado vs 83M€ obra).</li>
+            <li data-icon="🔴">Ausencia de expedientes reales verificados para los dos mayores contratos (151,3 M€ combinados): opacidad estructural en la contratación de IFEMA.</li>
             
-            <li data-icon="🔴">Aparicion continua de contratos satelite que incrementan el coste total de forma silenciosa.</li>
+            <li data-icon="🔴">La cifra de '430 M€ de dinero público' no está documentada oficialmente pero circula en el espacio público y judicial, generando riesgo reputacional para las administraciones implicadas.</li>
             
-            <li data-icon="🔴">Posibles costes publicos indirectos no contabilizados: seguridad, movilidad, transporte publico, limpieza, emergencias.</li>
+            <li data-icon="🔴">Acumulación silenciosa de contratos auxiliares (gradas, bandera, presentación, trofeo, logística) sin publicación sistemática en perfil del contratante.</li>
             
-            <li data-icon="🔴">Falta de transparencia: IFEMA es 100% publica pero el discurso oficial niega el uso de dinero publico.</li>
+            <li data-icon="🔴">IFEMA es entidad 100% pública pero el discurso oficial mantiene que el proyecto no usa dinero público: contradicción jurídica y contable con potencial efecto en el Tribunal de Cuentas.</li>
             
-            <li data-icon="🔴">Vereda de los Leneros: la desafectacion publicada en BOCM podria generar retrasos o recursos judiciales.</li>
+            <li data-icon="🔴">Vía pecuaria 'Vereda de los Leñeros': desafectación publicada en BOCM bajo escrutinio judicial; posibles recursos que generen paralizaciones.</li>
             
-            <li data-icon="🔴">Dependencia de patrocinadores privados con importes no publicados para cubrir el canon anual.</li>
+            <li data-icon="🔴">Exp. 25/175 previamente desistido: patrón de mala planificación de pliegos que podría repetirse en contratos auxiliares.</li>
             
-            <li data-icon="🔴">Riesgo de sobrecostes en las licitaciones pendientes de adjudicacion (VEC total muy superior a PBL).</li>
+            <li data-icon="🔴">Dependencia de patrocinadores privados con importes no publicados para cubrir el canon anual: riesgo financiero en caso de retirada.</li>
             
-            <li data-icon="🔴">Paralelismo con Valencia: mismo discurso de inversion privada, elevado canon, crecimiento de contratos auxiliares.</li>
+            <li data-icon="🔴">Sin acta de recepción oficial del circuito publicada: la declaración de 'obra completada' no tiene soporte documental verificado.</li>
+            
+            <li data-icon="🔴">Paralelismo con el GP de Valencia: mismo modelo de financiación mixta, elevado canon, crecimiento de contratos auxiliares y discurso de coste cero que se demostró incorrecto.</li>
+            
+            <li data-icon="🔴">Tala de 729 árboles y posibles impactos ambientales: riesgo de nuevas denuncias o recursos contencioso-administrativos.</li>
             
             
           </ul>
@@ -1086,23 +1117,37 @@
           <ul class="risk-list">
             
             
-            <li data-icon="❓">Canon anual a FOM: estimado en 48M€/ano, 480M€ a 10 anos. Sin documento oficial.</li>
+            <li data-icon="❓">Canon anual a FOM: estimado en 48 M€/año, 480 M€ a 10 años (2026-2035). Sin documento oficial publicado.</li>
             
-            <li data-icon="❓">Pit Building (68,1M€): localizar expediente IFEMA completo antes de incorporarlo al coste confirmado.</li>
+            <li data-icon="❓">Expediente real del contrato de construcción del circuito principal (UTE Acciona-Eiffage, 83,2 M€): localizar número de expediente en licitaciones2.ifema.es.</li>
             
-            <li data-icon="❓">Costes de seguridad y movilidad del Ayuntamiento de Madrid para el evento.</li>
+            <li data-icon="❓">Expediente real del contrato del Pit Building (Eiffage Construcción, 68,1 M€): localizar número de expediente en licitaciones2.ifema.es.</li>
             
-            <li data-icon="❓">Costes operativos del fin de semana de carrera (personal, logistica, montaje).</li>
+            <li data-icon="❓">Contrato de instalación de gradas y estructuras temporales: sin expediente localizado.</li>
             
-            <li data-icon="❓">Coste de la bandera gigante (estimado 128.000-500.000 €). NO localizado.</li>
+            <li data-icon="❓">Coste de la bandera gigante (16,66 × 25 m): no publicado como partida independiente.</li>
             
-            <li data-icon="❓">Coste del acto de presentacion oficial (16/06/2026) (estimado 250.000-400.000 €). NO localizado.</li>
+            <li data-icon="❓">Coste del acto de presentación oficial (16 junio 2026): no localizado en perfil del contratante.</li>
             
-            <li data-icon="❓">Coste del litigio Dromo (indemnizacion reclamada: 6M€).</li>
+            <li data-icon="❓">Coste del trofeo oficial diseñado por Pininfarina: no publicado.</li>
             
-            <li data-icon="❓">Detalle del convenio FOM: reparto de riesgos economicos, avales, aportaciones publicas.</li>
+            <li data-icon="❓">Costes de seguridad, policía y movilidad del Ayuntamiento de Madrid para el evento (11-13 septiembre 2026).</li>
             
-            <li data-icon="❓">Importes reales de los contratos de patrocinio.</li>
+            <li data-icon="❓">Costes operativos del fin de semana de carrera: personal, logística, montaje, catering institucional.</li>
+            
+            <li data-icon="❓">Coste del litigio Dromo (indemnización reclamada: 6 M€): sin resolución judicial publicada.</li>
+            
+            <li data-icon="❓">Detalle del convenio con FOM/Liberty Media: reparto de riesgos, avales, aportaciones públicas directas.</li>
+            
+            <li data-icon="❓">Importes reales de los contratos de patrocinio (no publicados).</li>
+            
+            <li data-icon="❓">Fundamento de la cifra '430 M€ de dinero público' alegada por Más Madrid: requiere acceso al escrito de demanda.</li>
+            
+            <li data-icon="❓">Expediente 26/113 (IFEMA): estado tras cierre del plazo el 26 junio 2026; adjudicación no localizada.</li>
+            
+            <li data-icon="❓">Costes de transporte público adicional (EMT, Metro) para los días del evento.</li>
+            
+            <li data-icon="❓">Costes de limpieza y gestión de residuos postevento.</li>
             
             
           </ul>
@@ -1251,8 +1296,8 @@
       <div class="valencia-cta">
         <div class="vc-icon">⚠️</div>
         <div class="vc-text">
-          <strong>55% de similitud de riesgo</strong> con el caso del circuito urbano de Valencia (2008-2012).<br>
-          <span style="font-size:.82rem;color:var(--muted);">Se asigna un 55% (nivel MEDIO). Diferencias clave con Valencia: IFEMA es un operador con experiencia, el circuito aprovecha infraestructuras existentes, y Madrid tiene mayor tejido empresarial. Sin embargo, comparte riesgos: el canon a FOM es el doble que Valencia (~48M€ vs ~26M€), la falta de transparencia documental es similar, y el crecimiento de contratos auxiliares sigue el mismo patron.</span>
+          <strong>78% de similitud de riesgo</strong> con el caso del circuito urbano de Valencia (2008-2012).<br>
+          <span style="font-size:.82rem;color:var(--muted);">El modelo Madrid replica en un 78% los factores de riesgo que materializaron sobrecostes en Valencia: mismo esquema de entidad pública organizadora con discurso privado, mismo tipo de canon FOM no publicado, misma proliferación de contratos auxiliares, y mismos litigios judiciales en fase de construcción. La diferencia principal es la escala (Madrid prevé 110.000-140.000 espectadores frente a los 112.000 de Valencia) y la mayor duración del contrato (10 años frente a los 7 de Valencia), lo que amplifica el riesgo financiero acumulado si el modelo no es rentable desde el primer año.</span>
         </div>
         <a href="valencia.html" class="vc-link">Ver comparativa completa →</a>
       </div>
@@ -1271,25 +1316,15 @@
         
         <a class="source-pill" href="https://www.madring.com" target="_blank">www.madring.com</a>
         
-        <a class="source-pill" href="https://www.madring.com/circuito/construccion" target="_blank">www.madring.com</a>
+        <a class="source-pill" href="https://www.bocm.es" target="_blank">www.bocm.es</a>
         
-        <a class="source-pill" href="https://www.madring.com/en/sponsors" target="_blank">www.madring.com</a>
-        
-        <a class="source-pill" href="https://corp.formula1.com/madrid-to-join-formula-1-calendar-from-2026-in-new-long-term-deal/" target="_blank">corp.formula1.com</a>
-        
-        <a class="source-pill" href="https://www.reuters.com/sports/formula1/acciona-eiffage-win-contract-build-madrids-new-formula-1-circuit-2025-04-16/" target="_blank">www.reuters.com</a>
-        
-        <a class="source-pill" href="https://as.com/motor/formula_1/ifema-acciona-y-eiffage-firman-el-contrato-para-construir-el-circuito-de-f1-de-madrid-n/" target="_blank">as.com</a>
-        
-        <a class="source-pill" href="https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html" target="_blank">cincodias.elpais.com</a>
-        
-        <a class="source-pill" href="https://www.santander.com/en/press-room/press-releases/2025/12/santander-will-be-a-founding-partner-of-the-formula-1-tag-heuer-spanish-grand-prix-2026" target="_blank">www.santander.com</a>
-        
-        <a class="source-pill" href="https://www.reasonwhy.es" target="_blank">www.reasonwhy.es</a>
+        <a class="source-pill" href="https://www.boe.es" target="_blank">www.boe.es</a>
         
         <a class="source-pill" href="https://www.comunidad.madrid/transparencia" target="_blank">www.comunidad.madrid</a>
         
-        <a class="source-pill" href="https://transparencia.madrid.es" target="_blank">transparencia.madrid.es</a>
+        <a class="source-pill" href="https://www.ayuntamiento.madrid.es/transparencia" target="_blank">www.ayuntamiento.madrid.es</a>
+        
+        <a class="source-pill" href="https://www.tribunaldecuentas.es" target="_blank">www.tribunaldecuentas.es</a>
         
         
       </div>
