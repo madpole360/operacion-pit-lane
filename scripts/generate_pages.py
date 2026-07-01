@@ -40,11 +40,20 @@ def build_site(latest_data: dict):
 
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)))
 
-    # Calcular próxima ejecución (diario 20:00 Madrid)
+    # Calcular próxima ejecución (lunes y jueves 20:00 Madrid)
     now = datetime.now()
-    next_run = now.replace(hour=20, minute=0, second=0, microsecond=0)
-    if now.hour >= 20:
-        next_run = next_run + timedelta(days=1)
+    next_run = None
+    for d in range(8):
+        check = now + timedelta(days=d)
+        if check.weekday() in (0, 3):  # lunes=0, jueves=3
+            if d == 0 and check.hour < 20:
+                next_run = check.replace(hour=20, minute=0, second=0, microsecond=0)
+                break
+            elif d > 0:
+                next_run = check.replace(hour=20, minute=0, second=0, microsecond=0)
+                break
+    if next_run is None:
+        next_run = now + timedelta(days=1)
     dias_es = {0: 'Lunes', 1: 'Martes', 2: 'Miércoles', 3: 'Jueves', 4: 'Viernes', 5: 'Sábado', 6: 'Domingo'}
     next_run_str = f"{dias_es[next_run.weekday()]} {next_run.strftime('%d/%m')} a las 20:00"
 
