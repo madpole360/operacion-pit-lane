@@ -368,5 +368,18 @@
     "importe_texto": "639.640,91 € (PBL) / 959.461,37 € (VEC)",
     "estado": "licitado",
     "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/129"
+  },
+  {
+    "fecha": "2026-06-26",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/113",
+    "adjudicatario": "Pendiente de adjudicación publicada",
+    "concepto": "Licitación 26/113: objeto exacto no publicado en fuentes accesibles al cierre del plazo (26 junio 2026); adjudicación no localizada",
+    "importe": 0.0,
+    "importe_texto": "Importe no localizado",
+    "estado": "licitado",
+    "nivel_confianza": "hipotesis",
+    "fuente": "https://licitaciones2.ifema.es — referencia al expediente 26/113 procedente del informe anterior; adjudicación no confirmada",
+    "descubierto_el": "2026-07-02"
   }
 ]
