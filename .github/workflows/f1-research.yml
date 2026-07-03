@@ -5,9 +5,9 @@ on:
     # Lunes y jueves a las 20:00 Madrid (CEST = UTC+2 → 18:00 UTC)
     - cron: '0 18 * * 1'
     - cron: '0 18 * * 4'
-    # Test one-shot: hoy viernes 3 julio 18:30 Madrid (16:30 UTC)
-    - cron: '30 16 3 7 *'
   workflow_dispatch:
+  repository_dispatch:
+    types: [scheduled-run]
 
 permissions:
   contents: write
