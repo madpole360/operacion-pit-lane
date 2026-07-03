@@ -407,5 +407,31 @@
     "nivel_confianza": "confirmado",
     "fuente": "https://licitaciones2.ifema.es (expediente 25/140, consultado 3 julio 2026)",
     "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2025-04-08",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Pendiente de confirmar en fuente oficial",
+    "concepto": "Servicios de comunicación digital y redes sociales para la difusión del Gran Premio de España F1 2026, incluyendo publicidad, marketing y promoción. Valor estimado superior a 1 M€ con prórrogas.",
+    "importe": 264000.0,
+    "importe_texto": "264.000,00 € (presupuesto base IVA excluido; valor estimado con prórrogas superior a 1.000.000 €)",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es (expediente 25/187 — adjudicación no localizada; PBL confirmado por fuentes secundarias)",
+    "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "adjudicatario": "Pendiente de confirmar en fuente oficial",
+    "concepto": "Servicios profesionales técnicos: simulador F1, contratación de embajadores, agencia creativa audiovisual, Media Operations (MAC, media center, TV pen, sala de prensa FIA), VIP Services y protocolo FIA/F1 (himno, parrilla, podio).",
+    "importe": 0.0,
+    "importe_texto": "Importe no localizado en fuente oficial",
+    "estado": "en_ejecución",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es (expediente 25/140 — importe no publicado en fuente consultada)",
+    "descubierto_el": "2026-07-03"
   }
 ]
