@@ -273,8 +273,9 @@
       <h2 class="section-title">⚙️ Cómo funciona técnicamente</h2>
       <div class="tech-grid">
         <div class="tech-card">
-          <h3>⏰ GitHub Actions</h3>
-          <p>Un workflow programado se ejecuta automáticamente de forma periódica. Es gratuito para repositorios públicos y no requiere ningún servidor.</p>
+          <h3>⏰ Programación automática</h3>
+          <p>La ejecución se activa mediante <strong>Cloudflare Workers Cron Triggers</strong>, que llaman a la API de GitHub con precisión horaria. Sin retrasos, sin depender de la cola de GitHub Actions.</p>
+          <p style="font-size:.75rem;color:var(--muted);">Cloudflare Worker → GitHub API (repository_dispatch) → Workflow → Informe actualizado.</p>
         </div>
         <div class="tech-card">
           <h3>🔍 Monitor de portales</h3>
