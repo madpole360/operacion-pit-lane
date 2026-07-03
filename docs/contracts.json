@@ -433,5 +433,57 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es (expediente 25/140 — importe no publicado en fuente consultada)",
     "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2025-02-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "No publicado a 3 de julio de 2026",
+    "concepto": "Servicios de acreditación y transporte lanzadera para el Gran Premio de España de Fórmula 1 2026",
+    "importe": 264000.0,
+    "importe_texto": "264.000,00 € (PBL declarado; valor estimado con prórrogas declarado superior a 1 M€ por fuentes secundarias)",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es/licitacion/25/187 — expediente identificado; pliego técnico publicado; adjudicación no localizada a fecha del informe.",
+    "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2026-03-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/010",
+    "adjudicatario": "No publicado a 3 de julio de 2026",
+    "concepto": "Prórroga de plazo solicitada en marzo de 2026 (objeto completo no publicado)",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es/licitacion/26/010 — expediente identificado; tramitación activa; resolución no localizada.",
+    "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2026-04-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/024",
+    "adjudicatario": "No publicado a 3 de julio de 2026",
+    "concepto": "Mantenimiento y desmontaje de 11 pasarelas modulares del circuito de Madring (2026-2028)",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado; enmiendas notificadas a 3 de julio de 2026",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es/licitacion/26/024 — expediente identificado con enmiendas notificadas; adjudicación no localizada.",
+    "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2026-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/113",
+    "adjudicatario": "No publicado a 3 de julio de 2026",
+    "concepto": "Objeto no publicado; expediente en fase de resolución opaca",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "licitado",
+    "nivel_confianza": "hipotesis",
+    "fuente": "https://licitaciones2.ifema.es — expediente referenciado en informe anterior; resolución no localizada a fecha del informe.",
+    "descubierto_el": "2026-07-03"
   }
 ]
