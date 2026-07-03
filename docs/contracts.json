@@ -381,5 +381,31 @@
     "nivel_confianza": "hipotesis",
     "fuente": "https://licitaciones2.ifema.es — referencia al expediente 26/113 procedente del informe anterior; adjudicación no confirmada",
     "descubierto_el": "2026-07-02"
+  },
+  {
+    "fecha": "2026-07-02",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Pendiente de adjudicación",
+    "concepto": "Atención a Invitados VIP para el Gran Premio de Fórmula 1 de Madrid: gestión de zonas mixtas de entrevistas (Media Pens), Sala de Conferencia de Prensa, coordinación de medios fotográficos acreditados durante los 3 días del GP, servicio integral de gestión de VIP y protocolo, y servicio de transporte lanzadera gratuito desde el MAC hasta el circuito de Madring.",
+    "importe": 0.0,
+    "importe_texto": "Presupuesto base de licitación no publicado en fuente consultada",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es (expediente 25/187, consultado 3 julio 2026)",
+    "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2026-07-02",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "adjudicatario": "Pendiente de adjudicación",
+    "concepto": "Programas de Servicios - Comunicación y Producción (múltiples lotes): contratación de embajadores del GP de España de F1, agencia creativa para material audiovisual y agencia de press clipping.",
+    "importe": 0.0,
+    "importe_texto": "Presupuesto base de licitación no publicado en fuente consultada",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es (expediente 25/140, consultado 3 julio 2026)",
+    "descubierto_el": "2026-07-03"
   }
 ]
