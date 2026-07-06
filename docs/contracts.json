@@ -485,5 +485,57 @@
     "nivel_confianza": "hipotesis",
     "fuente": "https://licitaciones2.ifema.es — expediente referenciado en informe anterior; resolución no localizada a fecha del informe.",
     "descubierto_el": "2026-07-03"
+  },
+  {
+    "fecha": "2025-04-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Por adjudicar",
+    "concepto": "Servicios de acreditación y transporte lanzadera para el Gran Premio de Fórmula 1 de Madrid 2026: validación documental, coordinación con F1, control de duplicados y revocaciones, entrega de acreditaciones, estadísticas en tiempo real y soporte técnico",
+    "importe": 264000.0,
+    "importe_texto": "264.000,00 € (PBL, IVA excluido). Valor estimado con prórrogas: superior a 1.000.000 €",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es/licitaciones/25-187",
+    "descubierto_el": "2026-07-06"
+  },
+  {
+    "fecha": "2025-04-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "adjudicatario": "Por adjudicar",
+    "concepto": "Servicios profesionales técnicos: estrategia de imagen de marca, comunicación digital, redes sociales, generación de contenido, diseño, producción, cobertura presencial, campañas con influencers, VIP, Media Operations y Protocolo",
+    "importe": 261000.0,
+    "importe_texto": "261.000,00 € (PBL, IVA excluido). Valor estimado con prórrogas: superior a 1.000.000 €",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es/licitaciones/25-140",
+    "descubierto_el": "2026-07-06"
+  },
+  {
+    "fecha": "2026-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/024",
+    "adjudicatario": "Por adjudicar",
+    "concepto": "Mantenimiento y desmontaje de 11 pasarelas modulares (2026-2028). Enmiendas notificadas; adjudicación no publicada a 7 de julio de 2026.",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es/licitaciones/26-024 — Enmiendas notificadas; adjudicación no publicada.",
+    "descubierto_el": "2026-07-06"
+  },
+  {
+    "fecha": "2026-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/010",
+    "adjudicatario": "Por determinar",
+    "concepto": "Expediente sin descripción oficial pública confirmada. Sin resolución publicada a 7 de julio de 2026.",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es/licitaciones/26-010 — Sin adjudicación ni resolución publicada.",
+    "descubierto_el": "2026-07-06"
   }
 ]
