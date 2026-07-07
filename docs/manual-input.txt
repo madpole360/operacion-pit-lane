@@ -1,5 +1,4 @@
-# Operación Pit-Lane — Entrada manual de hallazgos
-# Pega aquí tus descubrimientos y ejecuta el workflow "Procesar entrada manual"
-# o ejecuta localmente: python scripts/process_manual_input.py
-# Todo lo que escribas aquí será analizado por Sonnet e incorporado a la base de datos.
+# Último procesamiento: 2026-07-07
+# 1 contratos y 4 hallazgos añadidos.
+# Pega aquí nuevos hallazgos y vuelve a ejecutar.
 

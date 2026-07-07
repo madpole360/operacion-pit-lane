@@ -1,8 +1,12 @@
 {
   "fecha": "2026-07-07",
-  "fecha_madrid": "2026-07-07 00:47",
+  "fecha_madrid": "2026-07-07 12:00",
   "resumen_ejecutivo": "A 7 de julio de 2026, el circuito de Madring tiene el asfaltado completado y aprobado por la FIA (confirmado el 23 de junio de 2026). El Pit Building sigue en construcción sin acta de recepción administrativa formal publicada, con menos de 9 semanas para el Gran Premio (11-13 septiembre). Los expedientes 25/187 y 25/140 permanecen sin adjudicación publicada. Las gradas temporales para 110.000 espectadores no tienen expediente, importe ni adjudicatario publicados. El coste confirmado se mantiene en 86,5 M€ (contratos con soporte documental oficial verificado). Los contratos principales del trazado (UTE Acciona-Eiffage, 83,2 M€) y del Pit Building (Eiffage Construcción, estimado 68,1 M€) no tienen expediente oficial localizado en licitaciones2.ifema.es ni en la Plataforma de Contratación del Sector Público, lo que representa una opacidad estructural sobre aproximadamente 151 M€ en obra. No hay novedades de adjudicaciones entre el 3 y el 7 de julio. El coste comprometido estimado supera los 154 M€ incluyendo licitaciones activas, sin contar canon FOM ni gradas.",
   "nuevos_hallazgos": [
+    "[2026-07-01] Se identifican dos expedientes: exp. 25/030 (comunicación digital y redes, sin importe ni adjudicación) y exp. 25/140 (mapa interno de posibles concursos F1, con importes estimados de partidas como media operations 165.200 €, VIP/protocolos 57.750 €, agencia PR 120.000 €, simulador F1 20.000 €, desarrollo simulador Madring 300.000 €, F1 TV 28.000 €, embajadores/influencers 100.000 €, agencia creativa 160.000 €, clipping 150.000 €, merchandising 250.000 €, NOC 965.000 €, conectividad gradas 320.000 €, tornos 650.000 €, pantallas 1.700.000 €, megafonía 400.000 €, entre otras). Ambos sin adjudicaciones formalizadas, no suman al coste confirmado.",
+    "[2026-07-01] No se localizan nuevas adjudicaciones, formalizaciones, modificaciones contractuales, convenios, canon F1, importes de patrocinios ni costes oficiales definitivos de publicidad.",
+    "[2026-07-01] Quedan pendientes de localizar: canon F1, patrocinios, publicidad, hospitality, VIP/protocolo, media operations, simuladores, F1 TV, embajadores/influencers, pantallas, conectividad, tornos, megafonía, Pit Building, pasarelas, césped artificial y personal ETT.",
+    "[2026-07-01] Riesgo/duda principal: el anexo del exp. 25/140 muestra una bolsa relevante de gasto potencial operativo, tecnológico y promocional, pero sigue sin poder incorporarse al coste confirmado hasta localizar contratos adjudicados o formalizados.",
     "Confirmado mediante fuentes secundarias contrastadas que el asfaltado del circuito fue completado y aprobado por la FIA el 23 de junio de 2026, incluyendo La Monumental (Turn 12, 550 m de longitud, peralte del 24%, el más pronunciado del calendario de Fórmula 1).",
     "Confirmado que el Pit Building es ejecutado por Eiffage Construcción con estructura de tres plantas y altura máxima de 18,5 metros, integrado físicamente con los pabellones existentes de IFEMA mediante conexiones estructurales permanentes. Vocación de uso ferial permanente tras el Gran Premio.",
     "Confirmado que Eiffage Energía Sistemas ejecuta las infraestructuras eléctricas y técnicas del circuito y el Pit Building, con dos centros de transformación prefabricados de dos transformadores de 630 kVA cada uno, conectados en anillo de media tensión con telecontrol centralizado (BMS). Sin expediente independiente localizado.",
@@ -629,12 +633,24 @@
       "nivel_confianza": "muy_probable",
       "fuente": "https://licitaciones2.ifema.es/licitaciones/26-010 — Sin adjudicación ni resolución publicada.",
       "descubierto_el": "2026-07-06"
+    },
+    {
+      "fecha": "2026-07-01",
+      "organismo": "IFEMA",
+      "expediente": "25/030",
+      "adjudicatario": "Pendiente de confirmar",
+      "concepto": "Comunicación digital y redes del circuito IFEMA/F1, incluye cobertura de eventos del circuito, Gran Premio de España de F1, eventos promocionales, contenidos audiovisuales, redes sociales, influencers, acciones comerciales y soporte publicitario para colaboradores y patrocinadores",
+      "importe": 0.0,
+      "importe_texto": "Sin importe definitivo",
+      "estado": "pendiente_confirmar",
+      "fuente": "Entrada manual de hallazgos, 1 de julio de 2026",
+      "descubierto_el": "2026-07-07"
     }
   ],
   "coste_acumulado_confirmado": 86499355.56,
-  "coste_acumulado_texto": "86.5 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+  "coste_acumulado_texto": "86.5 M€ (adjudicaciones con soporte oficial).",
   "coste_comprometido": 104241568.92999999,
-  "coste_comprometido_texto": "104.2 millones de euros (costes confirmados + PBL de licitaciones activas).",
+  "coste_comprometido_texto": "104.2 M€ (confirmado + licitaciones activas).",
   "incremento_respecto_anterior": 0.0,
   "cambios_detectados": [],
   "proyeccion_10_anios": {

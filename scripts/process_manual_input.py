@@ -59,6 +59,11 @@ def process_manual_input():
 
     # Enviar a Sonnet para extraer datos estructurados
     import anthropic
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        print("❌ ANTHROPIC_API_KEY no está configurada.")
+        print("   Ejecuta: $env:ANTHROPIC_API_KEY = 'sk-ant-...' (PowerShell)")
+        sys.exit(1)
     client = anthropic.Anthropic()
     response = client.messages.create(
         model="claude-sonnet-4-6",

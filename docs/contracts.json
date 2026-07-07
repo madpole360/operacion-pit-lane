@@ -537,5 +537,17 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es/licitaciones/26-010 — Sin adjudicación ni resolución publicada.",
     "descubierto_el": "2026-07-06"
+  },
+  {
+    "fecha": "2026-07-01",
+    "organismo": "IFEMA",
+    "expediente": "25/030",
+    "adjudicatario": "Pendiente de confirmar",
+    "concepto": "Comunicación digital y redes del circuito IFEMA/F1, incluye cobertura de eventos del circuito, Gran Premio de España de F1, eventos promocionales, contenidos audiovisuales, redes sociales, influencers, acciones comerciales y soporte publicitario para colaboradores y patrocinadores",
+    "importe": 0.0,
+    "importe_texto": "Sin importe definitivo",
+    "estado": "pendiente_confirmar",
+    "fuente": "Entrada manual de hallazgos, 1 de julio de 2026",
+    "descubierto_el": "2026-07-07"
   }
 ]
