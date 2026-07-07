@@ -428,15 +428,6 @@ def run_research() -> dict:
     has_news = "SIN NOVEDADES" not in monitor_data.upper()
     print(f"   [Monitor] Bloques: {len(monitor_response.content)} ({', '.join(m_blocks)}) | Novedades: {has_news}")
 
-    # ── Paso 0.5: TED Europa (API publica, sin auth) ──
-    ted_data = ""
-    try:
-        from monitor_ted import monitor_ted
-        ted_result = monitor_ted()
-        ted_data = ted_result.get("summary", "")
-        print(f"   [TED] {ted_result.get('total', 0)} resultados")
-    except Exception as e:
-        print(f"   [TED] Error: {e}")
 
     # ── Paso 1: Haiku 4.5 + web_search (busca datos + noticias) ──
     print("   [Paso 1] Haiku 4.5 + web_search...")
@@ -448,7 +439,7 @@ def run_research() -> dict:
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{
             "role": "user",
-            "content": f"Fecha: {TODAY_MADRID} (Madrid, CEST).\n\nContexto anterior:\n{prev}\n\nMONITOR DE PORTALES (nuevos expedientes detectados):\n{monitor_data}\n\nTED EUROPA (licitaciones europeas):\n{ted_data}\n\nBusca mas detalles y noticias sobre estos hallazgos (max 3 busquedas)."
+            "content": f"Fecha: {TODAY_MADRID} (Madrid, CEST).\n\nContexto anterior:\n{prev}\n\nMONITOR DE PORTALES (nuevos expedientes detectados):\n{monitor_data}\n\nBusca mas detalles y noticias sobre estos hallazgos (max 3 busquedas)."
         }]
     )
 
