@@ -46,11 +46,11 @@ def search_ted(query: str, country: str = "ES", days_back: int = 30) -> list:
     )
 
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with urllib.request.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             return data.get("results", [])
     except Exception as e:
-        print(f"   [TED] Error consultando API: {e}")
+        print(f"   [TED] Error: {type(e).__name__}")
         return []
 
 
