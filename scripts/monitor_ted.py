@@ -21,7 +21,7 @@ def search_ted(query: str, country: str = "ES", days_back: int = 30) -> list:
     payload = {
         "query": query,
         "scope": "ACTIVE",
-        "country": country,
+        "buyerCountry": country,
         "publicationDateFrom": from_date,
         "fields": [
             "publication-number",
@@ -34,11 +34,9 @@ def search_ted(query: str, country: str = "ES", days_back: int = 30) -> list:
             "deadline-date",
             "notice-type",
             "procedure-type",
-            "cpv",
-            "links",
         ],
-        "page": 1,
-        "limit": 50,
+        "pageNum": 1,
+        "pageSize": 20,
     }
 
     req = urllib.request.Request(
