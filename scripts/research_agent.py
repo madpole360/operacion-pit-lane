@@ -456,6 +456,7 @@ Con esta información, genera el JSON final aplicando la metodologia:
 - Clasifica cada dato: 🟢🟡🟠🔴.
 - Nunca sumes estimaciónes al coste confirmado.
 - Solo expedientes con numero real (no 'No disponible').
+- Cada nuevo_hallazgo DEBE empezar con la fecha del descubrimiento: "[YYYY-MM-DD] texto del hallazgo".
 - Responde UNICAMENTE con el JSON, sin markdown ni etiquetas.
 - Usa español correcto con tildes, eñes y todos los acentos."""
         }]
