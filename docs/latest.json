@@ -1,6 +1,6 @@
 {
   "fecha": "2026-07-07",
-  "fecha_madrid": "2026-07-07 14:37",
+  "fecha_madrid": "2026-07-07 14:47",
   "resumen_ejecutivo": "A 7 de julio de 2026, el trazado principal del circuito Madring está asfaltado y cuenta con aprobación técnica de la FIA (23 de junio de 2026), pero la instalación de gradas temporales para hasta 110.000 espectadores no ha comenzado, con menos de 66 días hasta el inicio del Gran Premio (11 de septiembre). El coste confirmado con soporte documental oficial permanece en 86,5 M€ (47 contratos), sin nuevas adjudicaciones publicadas desde el informe anterior. La cifra de 130 M€ de dinero público para adaptación del entorno, atribuida a declaraciones políticas de mayo de 2026, sigue sin respaldo en ningún documento oficial y no puede sumarse al coste confirmado. El canon anual de 48 M€ a FOM/Liberty Media (480 M€ a 10 años) tampoco cuenta con soporte documental oficial publicado. Los expedientes 25/187, 25/140, 26/113, 26/010 y 26/024 permanecen sin adjudicación publicada. La contradicción entre el discurso de 'ni un euro público' y la evidencia de financiación pública constituye el principal riesgo de auditoría. El coste público real, incluyendo el canon y la adaptación del entorno, podría superar los 700 M€ a lo largo del contrato 2026-2035, sin que ninguna cifra agregada haya sido publicada oficialmente.",
   "nuevos_hallazgos": [
     "[2026-07-07] Confirmación técnica adicional: las gradas temporales para hasta 98.000 espectadores y las zonas premium para 20.000 personas no estaban instaladas a 16 de junio de 2026 (fecha de inauguración oficial), junto con la mayoría de las vallas de seguridad. Riesgo operativo crítico persistente con menos de 66 días hasta el GP.",
@@ -654,7 +654,11 @@
   "coste_comprometido": 104241568.92999999,
   "coste_comprometido_texto": "104.2 millones de euros (costes confirmados + PBL de licitaciones activas).",
   "incremento_respecto_anterior": 0.0,
-  "cambios_detectados": [],
+  "cambios_detectados": [
+    "💰 25/187: 264,000€ → 424,000€ (Gestion de prensa, acreditaciones, protocolo, hospitality y )",
+    "💰 25/140: 261,000€ → 390,600€ (Asistencia tecnica, economica y juridica para preparar licit)",
+    "🔄 25/140: licitado → en_ejecución (Servicios profesionales técnicos: simulador F1, contratación)"
+  ],
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
     "gastos_estimados_texto": "~934 millones de euros",
