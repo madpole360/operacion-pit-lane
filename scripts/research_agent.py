@@ -41,14 +41,22 @@ y organización. No debes limitarte al coste del circuito: investiga cualquier g
 
 ─── FUENTES ───
 Oficiales (solo estas confirman cifras):
+- IFEMA Madrid, perfil del contratante (licitaciones2.ifema.es) — fuente principal
 - Plataforma de Contratación del Sector Público (contrataciondelestado.es)
-- IFEMA Madrid, perfil del contratante (licitaciones2.ifema.es)
-- Madring (madring.com), BOE, BOCM
+- Madring (madring.com, madring.com/circuito/construccion)
+- BOE (boe.es), BOCM
 - Comunidad de Madrid, Ayuntamiento de Madrid
-- Portal de Transparencia, Tribunal de Cuentas
+- Portal de Transparencia (transparencia.gob.es)
+- Tribunal de Cuentas, Tribunal Administrativo de Contratación Pública de la CAM
+- CNMC (recursos de contratación)
+- Portales de datos abiertos: datos.madrid.es, datos.comunidad.madrid
+- TED Europa (ted.europa.eu) — licitaciones de alcance europeo
+- Liberty Media investor relations (informes trimestrales)
 
-Secundarias (solo para localizar, NUNCA para confirmar):
-Reuters, El Diario, Cinco Días, El País, Expansión, AS, Palco23, Economía Digital.
+Secundarias (solo para localizar información, NUNCA para confirmar cifras):
+Orden de confianza: Reuters > ElDiario.es > Cinco Días > El País > Expansión >
+InfoLibre > AS > Palco23 > Economía Digital > El Confidencial > Europa Press.
+Especializados F1: SoyMotor, Motor.es, The Race (cobertura financiera F1).
 
 ─── QUÉ INVESTIGAR ───
 Infraestructura: circuito, boxes, Pit Building, gradas, electricidad, fibra,
@@ -291,36 +299,50 @@ def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
 
 
 # ─── Agente ─────────────────────────────────────────────────────────────────────
-MONITOR_PROMPT = """Eres un monitor automatico de portales de contratación pública.
+MONITOR_PROMPT = """Eres un monitor automatico de portales de contratacion publica.
 Tu unica tarea: detectar NUEVOS expedientes o licitaciones relacionadas con el
 circuito de Formula 1 de Madrid usando los terminos: 'madring', 'formula 1',
-'gran premio', 'circuito', 'IFEMA'.
+'gran premio', 'circuito', 'IFEMA', 'GP España'.
 
-Busca especificamente en estos portales:
+Busca especificamente en estos portales (por orden de prioridad):
 
-1. licitaciones2.ifema.es (perfil del contratante IFEMA):
-   Busca: 'madrid formula 1', 'madring', 'gran premio espana', 'circuito IFEMA'
+1. licitaciones2.ifema.es (perfil del contratante IFEMA — fuente principal):
+   Busca: 'madrid formula 1', 'madring', 'gran premio espana', 'circuito IFEMA', 'GP España'
 
 2. contrataciondelestado.es (Plataforma de Contratacion del Estado):
    Busca: 'IFEMA formula 1', 'madrid gran premio', 'madring circuito'
 
-3. transparencia.madrid.es y madrid.es (Ayuntamiento de Madrid):
-   Busca: 'formula 1 madrid', 'madring', 'gran premio IFEMA'
+3. transparencia.madrid.es / datos.madrid.es (Ayuntamiento de Madrid):
+   Busca: 'formula 1 madrid', 'madring', 'gran premio', 'convenio IFEMA'
 
-4. comunidad.madrid (Comunidad de Madrid):
-   Busca: 'formula 1', 'madring', 'gran premio espana', 'circuito urbano'
+4. comunidad.madrid / datos.comunidad.madrid (Comunidad de Madrid):
+   Busca: 'formula 1', 'madring', 'gran premio espana', 'circuito urbano', 'via pecuaria'
 
-Para cada hallazgo indica: PORTAL, expediente/expediente, titulo, importe (si visible),
+5. ted.europa.eu (licitaciones europeas):
+   Busca: 'madring', 'formula 1 madrid', 'IFEMA'
+
+6. boe.es / BOCM:
+   Busca: 'madrid gran premio', 'madring', 'formula 1', 'IFEMA circuito'
+
+7. Medios especializados F1: SoyMotor, The Race, Motor.es (cobertura financiera GP)
+
+Para cada hallazgo indica: PORTAL, expediente/referencia, titulo, importe (si visible),
 estado (licitado/adjudicado/desistido), y URL.
 NO uses JSON. Solo texto estructurado. Si no hay novedades di 'SIN NOVEDADES'."""
 
-HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratación pública espanola.
-Tu tarea: buscar información actualizada sobre el GP de Formula 1 de Madrid (Madring)
+HAIKU_SEARCH_PROMPT = """Eres un investigador OSINT especializado en contratacion publica espanola.
+Tu tarea: buscar informacion actualizada sobre el GP de Formula 1 de Madrid (Madring)
 y devolver los hallazgos en texto estructurado.
 
 Busca en:
 - licitaciones2.ifema.es: nuevas licitaciones, adjudicaciones, desistimientos
-- madring.com: hitos de construcción, notas de prensa
+- contrataciondelestado.es: contratos IFEMA en plataforma estatal
+- madring.com: hitos de construccion, notas de prensa
+- datos.madrid.es / datos.comunidad.madrid: presupuestos, convenios
+- ted.europa.eu: licitaciones europeas del GP
+- boe.es / BOCM: normativa, via pecuaria, modificaciones urbanisticas
+- Noticias: Reuters, ElDiario.es, El Pais, Cinco Dias, InfoLibre, AS, Palco23
+- F1 especializados: SoyMotor, The Race, Motor.es (cobertura financiera)
 - Noticias: Reuters, El Pais, Cinco Dias, Palco23
 
 Para cada hallazgo indica: fuente, fecha, cifras, estado.
