@@ -339,8 +339,8 @@ Busca en:
 - contrataciondelestado.es: contratos IFEMA en plataforma estatal
 - madring.com: hitos de construccion, notas de prensa
 - datos.madrid.es / datos.comunidad.madrid: presupuestos, convenios
-- ted.europa.eu: licitaciones europeas del GP
 - boe.es / BOCM: normativa, via pecuaria, modificaciones urbanisticas
+- site:ted.europa.eu IFEMA Madrid (licitaciones europeas)
 - Noticias: Reuters, ElDiario.es, El Pais, Cinco Dias, InfoLibre, AS, Palco23
 - F1 especializados: SoyMotor, The Race, Motor.es (cobertura financiera)
 - Noticias: Reuters, El Pais, Cinco Dias, Palco23
