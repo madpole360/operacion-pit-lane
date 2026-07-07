@@ -3,4 +3,4 @@ main = "cloudflare-worker.js"
 compatibility_date = "2026-07-03"
 
 [triggers]
-crons = ["0 18 * * 1", "0 18 * * 4", "30 17 3 7 *"]
+crons = ["0 18 * * 1", "0 18 * * 4"]
