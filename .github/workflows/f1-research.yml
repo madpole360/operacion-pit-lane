@@ -5,6 +5,8 @@ on:
     # Lunes y jueves a las 20:00 Madrid (CEST = UTC+2 → 18:00 UTC)
     - cron: '0 18 * * 1'
     - cron: '0 18 * * 4'
+    # One-shot: hoy 8 julio 9:00 Madrid (CEST = UTC+2 → 7:00 UTC)
+    - cron: '0 7 8 7 *'
   workflow_dispatch:
   repository_dispatch:
     types: [scheduled-run]
