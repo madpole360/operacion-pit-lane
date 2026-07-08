@@ -549,5 +549,18 @@
     "estado": "pendiente_confirmar",
     "fuente": "Entrada manual de hallazgos, 1 de julio de 2026",
     "descubierto_el": "2026-07-07"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Sin adjudicación publicada a 8 de julio de 2026",
+    "concepto": "Servicios de acreditación y transporte lanzadera: gestión de espacios para medios de comunicación, sistema de acreditaciones de prensa acreditada actuando en nombre del promotor del GP en coordinación con la dirección de F1, y gestión de servicio de transporte lanzadera gratuito. PBL publicado: 264.000 €; valor estimado con prórrogas declarado superior a 1 M€.",
+    "importe": 264000.0,
+    "importe_texto": "264.000 € (PBL publicado) — valor estimado con prórrogas superior a 1 M€ según declaraciones",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-08"
   }
 ]
