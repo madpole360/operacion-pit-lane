@@ -1,6 +1,6 @@
 {
   "fecha": "2026-07-08",
-  "fecha_madrid": "2026-07-08 14:11",
+  "fecha_madrid": "2026-07-08 20:03",
   "resumen_ejecutivo": "A 8 de julio de 2026, el circuito de Fórmula 1 de Madrid (Madring) ha completado su construcción principal: el trazado de 5,47 km está asfaltado y recibió la aprobación técnica de la FIA el 23 de junio de 2026. Sin embargo, persisten tres riesgos CRÍTICOS sin resolución pública documentada: (1) las gradas temporales para hasta 118.000 espectadores siguen sin expediente de contratación publicado a 65 días del GP (11-13 septiembre); (2) las vallas de seguridad del circuito no estaban instaladas el 16 de junio y no hay expediente publicado; (3) el Pit Building carece de acta de recepción administrativa formal. Los expedientes 25/140 y 25/187 permanecen sin adjudicación publicada. El coste acumulado confirmado se mantiene en 86.499.355,56 € (contratos con soporte documental oficial). Las principales partidas no confirmadas —canon FOM (480 M€ declarados a 10 años), gradas temporales, zonas de hospitalidad, vallas y adaptación del entorno (130 M€ declarados)— siguen sin soporte documental oficial. El director general de Madring, Luis García Abad, ha declarado que el proyecto va bien en términos constructivos, pero ha reconocido el reto de sincronizar la actividad de construcción con la actividad ferial ordinaria de IFEMA como el principal problema del último mes. No se han identificado contratos nuevos ni adjudicaciones adicionales desde el informe anterior.",
   "nuevos_hallazgos": [
     "[2026-06-23] Aprobación técnica formal de la FIA del trazado de Madring: el circuito fue inspeccionado y aprobado por la Federación Internacional del Automóvil el 23 de junio de 2026, confirmando que las tres capas de asfalto (base, intermedia y capa de desgaste) están completadas. Esta aprobación es técnica y no equivale a recepción administrativa formal del contrato de construcción.",
@@ -662,7 +662,11 @@
   "coste_comprometido": 104505568.92999999,
   "coste_comprometido_texto": "104.5 millones de euros (costes confirmados + PBL de licitaciones activas).",
   "incremento_respecto_anterior": 0.0,
-  "cambios_detectados": [],
+  "cambios_detectados": [
+    "💰 25/187: 264,000€ → 424,000€ (Gestion de prensa, acreditaciones, protocolo, hospitality y )",
+    "💰 25/140: 261,000€ → 390,600€ (Asistencia tecnica, economica y juridica para preparar licit)",
+    "🔄 25/140: licitado → en_ejecución (Servicios profesionales técnicos: simulador F1, contratación)"
+  ],
   "proyeccion_10_anios": {
     "gastos_estimados": 934000000,
     "gastos_estimados_texto": "~934 millones de euros",
