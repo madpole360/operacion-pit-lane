@@ -609,18 +609,20 @@
 
     <!-- ── Contratos detectados ──────────────────────────── -->
     <section class="section">
-      <h2 class="section-title">📄 Contratos detectados ({{ contracts_db | length }} en histórico)</h2>
+      <h2 class="section-title">📄 Contratos detectados ({{ contracts_db | length }} en histórico)
+        <button onclick="exportCSV()" style="margin-left:auto;background:var(--surface);color:var(--amber);border:1px solid var(--edge);padding:.25rem .65rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">📥 CSV</button>
+      </h2>
       <div class="table-wrap">
-        <table>
+        <table id="contractsTable">
           <thead>
             <tr>
-              <th>Descubierto</th>
-              <th>Fecha</th>
-              <th>Organismo</th>
-              <th>Expediente</th>
-              <th>Concepto</th>
-              <th>Importe</th>
-              <th>Estado</th>
+              <th onclick="sortTable(0)" style="cursor:pointer;">Descubierto ▾</th>
+              <th onclick="sortTable(1)" style="cursor:pointer;">Fecha ▾</th>
+              <th onclick="sortTable(2)" style="cursor:pointer;">Organismo ▾</th>
+              <th onclick="sortTable(3)" style="cursor:pointer;">Expediente ▾</th>
+              <th onclick="sortTable(4)" style="cursor:pointer;">Concepto ▾</th>
+              <th onclick="sortTable(5)" style="cursor:pointer;">Importe ▾</th>
+              <th onclick="sortTable(6)" style="cursor:pointer;">Estado ▾</th>
               <th>Fuente</th>
             </tr>
           </thead>
@@ -628,14 +630,14 @@
             {% if contracts_db %}
             {% for c in contracts_db %}
             <tr>
-              <td class="mono">{{ c.descubierto_el or '—' }}</td>
-              <td class="mono">{{ c.fecha or '—' }}</td>
-              <td>{{ c.organismo or '—' }}</td>
-              <td class="mono">{{ c.expediente or '—' }}</td>
-              <td>{{ c.concepto or '—' }}</td>
-              <td class="amount">{{ c.importe_texto or '—' }}</td>
-              <td><span class="badge badge-{{ c.estado or 'sin_confirmar' }}">{{ (c.estado or 'sin confirmar').replace('_', ' ') }}</span></td>
-              <td>{% if c.fuente %}<a href="{{ c.fuente }}" target="_blank">🔗 {{ c.fuente.split('/')[2] if c.fuente.startswith('http') else 'Enlace' }}</a>{% else %}—{% endif %}</td>
+              <td class="mono" data-val="{{ c.descubierto_el or '' }}">{{ c.descubierto_el or '—' }}</td>
+              <td class="mono" data-val="{{ c.fecha or '' }}">{{ c.fecha or '—' }}</td>
+              <td data-val="{{ c.organismo or '' }}">{{ c.organismo or '—' }}</td>
+              <td class="mono" data-val="{{ c.expediente or '' }}">{{ c.expediente or '—' }}</td>
+              <td data-val="{{ c.concepto or '' }}">{{ c.concepto or '—' }}</td>
+              <td class="amount" data-val="{{ c.importe | float | default(0) }}">{{ c.importe_texto or '—' }}</td>
+              <td data-val="{{ c.estado or '' }}"><span class="badge badge-{{ c.estado or 'sin_confirmar' }}">{{ (c.estado or 'sin confirmar').replace('_', ' ') }}</span></td>
+              <td>{% if c.fuente %}<a href="{{ c.fuente }}" target="_blank">🔗</a>{% else %}—{% endif %}</td>
             </tr>
             {% endfor %}
             {% else %}
@@ -845,5 +847,42 @@
     })();
   </script>
 
+<script>
+/* ── Ordenacion de tabla por columna ── */
+let sortDir = {};
+function sortTable(col) {
+  const tbody = document.querySelector('#contractsTable tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  sortDir[col] = !sortDir[col];
+  rows.sort((a, b) => {
+    const va = (a.cells[col].dataset.val || a.cells[col].textContent).trim();
+    const vb = (b.cells[col].dataset.val || b.cells[col].textContent).trim();
+    const na = parseFloat(va), nb = parseFloat(vb);
+    if (!isNaN(na) && !isNaN(nb)) return sortDir[col] ? nb - na : na - nb;
+    return sortDir[col] ? vb.localeCompare(va) : va.localeCompare(vb);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+
+/* ── Exportar CSV ── */
+function exportCSV() {
+  const rows = document.querySelectorAll('#contractsTable tbody tr');
+  const headers = Array.from(document.querySelectorAll('#contractsTable thead th')).map(h => h.textContent.replace(' ▾',''));
+  let csv = headers.join(',') + '\n';
+  rows.forEach(r => {
+    const cols = Array.from(r.cells).map(c => {
+      let v = (c.dataset.val || c.textContent).trim().replace(/"/g,'""');
+      if (v.includes(',') || v.includes('"')) v = '"' + v + '"';
+      return v;
+    });
+    csv += cols.slice(0, 8).join(',') + '\n';
+  });
+  const blob = new Blob(['﻿' + csv], {type: 'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'contratos-madring.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
 </body>
 </html>

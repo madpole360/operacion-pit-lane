@@ -1,4 +1,4 @@
 # Último procesamiento: 2026-07-10
-# 1 contratos y 3 hallazgos añadidos.
+# 0 contratos y 30 hallazgos añadidos.
 # Pega aquí nuevos hallazgos y vuelve a ejecutar.
 

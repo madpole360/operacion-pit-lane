@@ -221,14 +221,15 @@
   },
   {
     "descubierto_el": "2026-06-24",
-    "fecha": "2025-03-15",
+    "fecha": "2025-02-28",
     "organismo": "IFEMA Madrid",
     "expediente": "6200014361",
-    "concepto": "Analisis economico y financiero de Fever Group para explotacion de entradas. Contrato menor.",
+    "concepto": "Analisis tecnico, financiero y economico de Fever Group para explotacion de admision general del GP.",
     "importe": 14900.0,
     "importe_texto": "14.900,00 €",
     "estado": "ejecutado",
-    "fuente": "https://licitaciones2.ifema.es"
+    "fuente": "https://licitaciones2.ifema.es",
+    "adjudicatario": "Ernst & Young S.L."
   },
   {
     "descubierto_el": "2026-06-24",
@@ -282,7 +283,7 @@
     "concepto": "Control de calidad de contraste de las obras del circuito y Pit Building.",
     "importe": 709718.46,
     "importe_texto": "709.718,46 € (PBL) / 887.148,08 € (VEC)",
-    "estado": "licitado",
+    "estado": "en_ejecucion",
     "fuente": "https://licitaciones2.ifema.es"
   },
   {
@@ -291,8 +292,8 @@
     "organismo": "IFEMA Madrid",
     "expediente": "24/148 - 4000005040",
     "concepto": "Project/Construction Management circuito F1 e infraestructuras asociadas: supervision, BIM, commissioning, control de costes, drones, coordinacion tecnica.",
-    "importe": 2690374.86,
-    "importe_texto": "2.589.892,50 € (adjudicacion) + 100.482,36 € (modificacion 29/10/2025) = 2.690.374,86 €. PBL: 3.453.190 €, VEC: 6.296.663,69 €",
+    "importe": 2956858.26,
+    "importe_texto": "2.589.892,50 € (adjudicacion) + 366.965,76 € (3 modificaciones: 28.883,40 + 237.600,00 + 100.482,36) = 2.956.858,26 €",
     "estado": "ejecutado",
     "fuente": "https://licitaciones2.ifema.es",
     "adjudicatario": "UTE CONURMA-ACTIINFRA MADRID"
@@ -325,12 +326,12 @@
     "fecha": "2026-05-27",
     "organismo": "IFEMA Madrid",
     "expediente": "26/097",
-    "adjudicatario": "M DOLORES MARTINEZ VARA DE REY S.A. MDM (A28889939)",
+    "adjudicatario": "M. Dolores Martinez Vara de Rey S.A. (A28889939)",
     "concepto": "Montaje, mantenimiento y desmontaje de proyectos efimeros e instalaciones complementarias GP F1 2026.",
     "importe": 205584.26,
     "importe_texto": "205.584,26 € (adjudicacion MDM) / 308.445,14 € (VEC)",
-    "estado": "pendiente_confirmar",
-    "nivel_confianza": "muy_probable",
+    "estado": "adjudicado",
+    "nivel_confianza": "confirmado",
     "fuente": "https://licitaciones2.ifema.es/licitacion?numExpediente=26/097"
   },
   {
