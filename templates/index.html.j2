@@ -469,8 +469,12 @@
   <!-- ╚══════════════════════════════════════════════════╝ -->
   <div class="ticker">
     <div class="ticker-item">
-      <div class="t-label">Contratos detectados</div>
-      <div class="t-value red">{{ contracts_db | length }}</div>
+      <div class="t-label">Licitaciones</div>
+      <div class="t-value red">{{ licitaciones | length }}</div>
+    </div>
+    <div class="ticker-item">
+      <div class="t-label">Contratos menores</div>
+      <div class="t-value amber">{{ contratos_menores | length }}</div>
     </div>
     <div class="ticker-item">
       <div class="t-label">Pendientes confirmar</div>
@@ -483,6 +487,43 @@
   </div>
 
   <!-- ╔══════════════════════════════════════════════════╗ -->
+  <!-- ║  DESGLOSE POR CATEGORÍAS                         ║ -->
+  <!-- ╚══════════════════════════════════════════════════╝ -->
+  {% if categorias and categorias.categories %}
+  <div class="wrap" style="padding-top:1.25rem;padding-bottom:0;">
+    <section class="section" style="padding-top:.75rem;padding-bottom:.75rem;">
+      <h2 class="section-title">📊 Desglose del coste confirmado por categoría</h2>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;">
+        <div style="flex:1;min-width:280px;">
+          {% set max_cat = categorias.categories.values() | map(attribute='total') | max | default(1) %}
+          {% for name, cat in categorias.categories.items() %}
+          {% if cat.total > 0 %}
+          {% set pct = (cat.total / max_cat * 100) | int %}
+          <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;font-size:.7rem;">
+            <span style="width:120px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.65rem;">{{ name }}</span>
+            <div style="flex:1;height:14px;background:var(--surface);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:{{ pct }}%;background:{{ cat.color }};border-radius:3px;opacity:.85;" title="{{ (cat.total / 1e6) | round(1) }} M€ — {{ cat.count }} contratos"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">{{ (cat.total / 1e6) | round(1) }} M€</span>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div style="min-width:120px;font-size:.6rem;">
+          {% for name, cat in categorias.categories.items() %}
+          {% if cat.total > 0 %}
+          <div style="display:flex;align-items:center;gap:.3rem;margin-bottom:.1rem;white-space:nowrap;">
+            <span style="width:7px;height:7px;border-radius:2px;background:{{ cat.color }};flex-shrink:0;"></span>
+            <span style="color:var(--muted);">{{ name }}</span>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
   <!-- ╔══════════════════════════════════════════════════╗ -->
   <!-- ║  PANEL DE CONTROL                                 ║ -->
   <!-- ╚══════════════════════════════════════════════════╝ -->
@@ -589,64 +630,29 @@
 
     <!-- ── Nuevos hallazgos ───────────────────────────────── -->
     <section class="section">
-      <h2 class="section-title">🆕 Nuevos hallazgos</h2>
-      <div class="findings-grid">
+      <h2 class="section-title">🆕 Nuevos hallazgos ({{ data.nuevos_hallazgos | length if data.nuevos_hallazgos else 0 }})</h2>
+      <div class="findings-grid" id="findingsGrid">
         {% if data.nuevos_hallazgos %}
         {% for h in data.nuevos_hallazgos %}
-        <div class="finding-item">
+        <div class="finding-item"{% if loop.index > 3 %} style="display:none;"{% endif %}>
           <div class="fi-dot"></div>
           <p>{{ h }}</p>
         </div>
         {% endfor %}
+        {% if data.nuevos_hallazgos | length > 3 %}
+        <button onclick="toggleFindings()" id="btnFindings" style="background:var(--surface);color:var(--amber);border:1px solid var(--edge);padding:.35rem .75rem;border-radius:4px;cursor:pointer;font-size:.75rem;margin-top:.25rem;">
+          Ver más (+{{ data.nuevos_hallazgos | length - 3 }})
+        </button>
+        {% endif %}
         {% else %}
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>No se han detectado nuevos hallazgos en la investigación de hoy.</p>
+          <p>No se han detectado nuevos hallazgos en esta investigación.</p>
         </div>
         {% endif %}
       </div>
     </section>
 
-    <!-- ╔══════════════════════════════════════════════════╗ -->
-    <!-- ║  DESGLOSE POR CATEGORÍAS                         ║ -->
-    <!-- ╚══════════════════════════════════════════════════╝ -->
-    {% if categorias and categorias.categories %}
-    <section class="section">
-      <h2 class="section-title">📊 Desglose del coste confirmado por categoría</h2>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;">
-        <!-- Barras horizontales -->
-        <div style="flex:1;min-width:300px;">
-          {% set max_cat = categorias.categories.values() | map(attribute='total') | max | default(1) %}
-          {% for name, cat in categorias.categories.items() %}
-          {% if cat.total > 0 %}
-          {% set pct = (cat.total / max_cat * 100) | int %}
-          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;font-size:.72rem;">
-            <span style="width:130px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.68rem;">{{ name }}</span>
-            <div style="flex:1;height:16px;background:var(--surface);border-radius:3px;overflow:hidden;">
-              <div style="height:100%;width:{{ pct }}%;background:{{ cat.color }};border-radius:3px;opacity:.85;min-width:2px;"
-                   title="{{ (cat.total / 1e6) | round(1) }} M€ — {{ cat.count }} contratos"></div>
-            </div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--txt);min-width:50px;">{{ (cat.total / 1e6) | round(1) }} M€</span>
-            <span style="font-size:.6rem;color:var(--dim);min-width:30px;">{{ cat.count }} c.</span>
-          </div>
-          {% endif %}
-          {% endfor %}
-          <p style="font-size:.6rem;color:var(--dim);margin-top:.35rem;text-align:right;">Total confirmado: {{ (categorias.total_confirmado / 1e6) | round(1) }} M€</p>
-        </div>
-        <!-- Leyenda -->
-        <div style="min-width:140px;font-size:.62rem;">
-          {% for name, cat in categorias.categories.items() %}
-          {% if cat.total > 0 %}
-          <div style="display:flex;align-items:center;gap:.35rem;margin-bottom:.15rem;white-space:nowrap;">
-            <span style="width:8px;height:8px;border-radius:2px;background:{{ cat.color }};flex-shrink:0;"></span>
-            <span style="color:var(--muted);">{{ name }}</span>
-          </div>
-          {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-    {% endif %}
 
     <!-- ── Licitaciones ───────────────────────────────── -->
     <section class="section">
@@ -916,6 +922,20 @@
   </script>
 
 <script>
+/* ── Mostrar/ocultar hallazgos ── */
+function toggleFindings() {
+  const items = document.querySelectorAll('#findingsGrid .finding-item');
+  const btn = document.getElementById('btnFindings');
+  const hidden = Array.from(items).filter(i => i.style.display === 'none');
+  if (hidden.length > 0) {
+    hidden.forEach(i => i.style.display = 'flex');
+    btn.textContent = 'Ver menos';
+  } else {
+    items.forEach((i, idx) => { if (idx >= 3) i.style.display = 'none'; });
+    btn.textContent = 'Ver más (+' + (items.length - 3) + ')';
+  }
+}
+
 /* ── Ordenacion de tabla por columna ── */
 const sortState = {};
 function sortTable(th, col) {
