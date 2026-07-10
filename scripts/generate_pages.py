@@ -3,6 +3,7 @@ Generador de páginas HTML para el sitio de Operación Pit-Lane.
 Usa Jinja2 para renderizar las plantillas con los datos de investigación.
 """
 import json
+import re
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -61,7 +62,6 @@ def build_site(latest_data: dict):
     contracts_db = load_json(CONTRACTS_FILE, [])
     contracts_db.sort(key=lambda c: (c.get("descubierto_el") or "", c.get("fecha") or ""), reverse=True)
     # Separar licitaciones de contratos menores
-    import re
     licitaciones = [c for c in contracts_db if re.match(r"^\d{2}/\d{3,4}", c.get("expediente", ""))]
     menores = [c for c in contracts_db if not re.match(r"^\d{2}/\d{3,4}", c.get("expediente", ""))]
     # Desglose por categorias
