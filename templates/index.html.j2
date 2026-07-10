@@ -624,7 +624,7 @@
             <span style="width:130px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.68rem;">{{ name }}</span>
             <div style="flex:1;height:16px;background:var(--surface);border-radius:3px;overflow:hidden;">
               <div style="height:100%;width:{{ pct }}%;background:{{ cat.color }};border-radius:3px;opacity:.85;min-width:2px;"
-                   title="{{ cat.total | int | format_currency }} — {{ cat.count }} contratos"></div>
+                   title="{{ (cat.total / 1e6) | round(1) }} M€ — {{ cat.count }} contratos"></div>
             </div>
             <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--txt);min-width:50px;">{{ (cat.total / 1e6) | round(1) }} M€</span>
             <span style="font-size:.6rem;color:var(--dim);min-width:30px;">{{ cat.count }} c.</span>
