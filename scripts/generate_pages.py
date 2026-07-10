@@ -64,6 +64,8 @@ def build_site(latest_data: dict):
     import re
     licitaciones = [c for c in contracts_db if re.match(r"^\d{2}/\d{3,4}", c.get("expediente", ""))]
     menores = [c for c in contracts_db if not re.match(r"^\d{2}/\d{3,4}", c.get("expediente", ""))]
+    # Desglose por categorias
+    categorias = _build_categories(contracts_db)
     timeline = load_json(TIMELINE_FILE, [])
     archive_files = sorted(
         [f.name for f in ARCHIVE_DIR.glob("*.json")],
@@ -75,6 +77,7 @@ def build_site(latest_data: dict):
         "contracts_db": contracts_db,
         "licitaciones": licitaciones,
         "contratos_menores": menores,
+        "categorias": categorias,
         "timeline": timeline,
         "archive_files": archive_files,
         "today": datetime.now().strftime("%Y-%m-%d"),
@@ -140,6 +143,54 @@ def _generate_archive_index(files: list):
 </html>"""
     (ARCHIVE_DIR / "index.html").write_text(html, encoding="utf-8")
     print("✅ archive/index.html generado")
+
+
+def _build_categories(contracts: list) -> dict:
+    """Categoriza contratos y devuelve desglose de costes por tipo."""
+    cat_map = {
+        "Obra civil": re.compile(r"obra|construcci|asfaltado|pabell|pit.build|edificio|urbaniz|paviment|reposici",
+                                 re.IGNORECASE),
+        "Asistencia técnica": re.compile(r"asistencia|asesor|consultor|control.*calidad|supervisi|direcci.*obra|"
+                                         r"project.*management|comissioning|pliego|estudios? (cuantitativo|de mercado)",
+                                         re.IGNORECASE),
+        "Servicios operativos": re.compile(r"montaje|desmontaje|mantenimiento|vigilancia|bombero|medicin|emergencia|"
+                                           r"personal|ett|azafata|protocolo|acreditaci|prensa|limpieza|aseos|wc|"
+                                           r"carpas|pasarela|modulo|oficina|generaci|electric|ruido|calidad.*aire|"
+                                           r"hospitality|catering|transporte|logístic",
+                                           re.IGNORECASE),
+        "Suministros": re.compile(r"suministro|cesped|extintor|lonas|pantalla|fibra|alumbrado|iluminaci|megafon|"
+                                  r"tornos|conectividad|bandera|trofeo",
+                                  re.IGNORECASE),
+        "Seguros": re.compile(r"seguro|rc\b|responsabilidad civil|póliza", re.IGNORECASE),
+        "Marketing y comunicación": re.compile(r"comunicaci|marketing|branding|publicidad|promoci|redes social|"
+                                                r"audiovisual|fotograf|influencer|merchandising|agencia creativa|"
+                                                r"experiencia.*marca|fan.zone|show.run",
+                                                re.IGNORECASE),
+        "Patrocinios": re.compile(r"patrocinador|sponsor|santander|ford|corte.ingl|heineken", re.IGNORECASE),
+    }
+
+    categories = {k: {"total": 0, "count": 0, "color": "", "items": []} for k in cat_map}
+    colors = ["#E10600", "#F59E0B", "#60A5FA", "#34D399", "#C084FC", "#FB923C", "#F87171"]
+
+    for i, (name, pattern) in enumerate(cat_map.items()):
+        categories[name]["color"] = colors[i]
+        for c in contracts:
+            concepto = c.get("concepto", "")
+            if pattern.search(concepto):
+                imp = c.get("importe", 0) or 0
+                est = c.get("estado", "")
+                # Solo adjudicado/ejecutado para el grafico de confirmado
+                if est in ("adjudicado", "ejecutado"):
+                    categories[name]["total"] += imp
+                categories[name]["count"] += 1
+                categories[name]["items"].append(c.get("expediente", ""))
+
+    # Ordenar por total descendente
+    result = {
+        "categories": dict(sorted(categories.items(), key=lambda x: x[1]["total"], reverse=True)),
+        "total_confirmado": sum(v["total"] for v in categories.values()),
+    }
+    return result
 
 
 def generate_initial_site():

@@ -607,6 +607,47 @@
       </div>
     </section>
 
+    <!-- ╔══════════════════════════════════════════════════╗ -->
+    <!-- ║  DESGLOSE POR CATEGORÍAS                         ║ -->
+    <!-- ╚══════════════════════════════════════════════════╝ -->
+    {% if categorias and categorias.categories %}
+    <section class="section">
+      <h2 class="section-title">📊 Desglose del coste confirmado por categoría</h2>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;">
+        <!-- Barras horizontales -->
+        <div style="flex:1;min-width:300px;">
+          {% set max_cat = categorias.categories.values() | map(attribute='total') | max | default(1) %}
+          {% for name, cat in categorias.categories.items() %}
+          {% if cat.total > 0 %}
+          {% set pct = (cat.total / max_cat * 100) | int %}
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;font-size:.72rem;">
+            <span style="width:130px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.68rem;">{{ name }}</span>
+            <div style="flex:1;height:16px;background:var(--surface);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:{{ pct }}%;background:{{ cat.color }};border-radius:3px;opacity:.85;min-width:2px;"
+                   title="{{ cat.total | int | format_currency }} — {{ cat.count }} contratos"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--txt);min-width:50px;">{{ (cat.total / 1e6) | round(1) }} M€</span>
+            <span style="font-size:.6rem;color:var(--dim);min-width:30px;">{{ cat.count }} c.</span>
+          </div>
+          {% endif %}
+          {% endfor %}
+          <p style="font-size:.6rem;color:var(--dim);margin-top:.35rem;text-align:right;">Total confirmado: {{ (categorias.total_confirmado / 1e6) | round(1) }} M€</p>
+        </div>
+        <!-- Leyenda -->
+        <div style="min-width:140px;font-size:.62rem;">
+          {% for name, cat in categorias.categories.items() %}
+          {% if cat.total > 0 %}
+          <div style="display:flex;align-items:center;gap:.35rem;margin-bottom:.15rem;white-space:nowrap;">
+            <span style="width:8px;height:8px;border-radius:2px;background:{{ cat.color }};flex-shrink:0;"></span>
+            <span style="color:var(--muted);">{{ name }}</span>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
     <!-- ── Licitaciones ───────────────────────────────── -->
     <section class="section">
       <h2 class="section-title">📄 Licitaciones IFEMA ({{ licitaciones | length }})</h2>
