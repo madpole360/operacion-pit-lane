@@ -1,8 +1,11 @@
 {
   "fecha": "2026-07-10",
-  "fecha_madrid": "2026-07-10 08:37",
+  "fecha_madrid": "2026-07-10 12:00",
   "resumen_ejecutivo": "A 10 de julio de 2026, con 63 días hasta el inicio del Gran Premio de España (11 de septiembre), el estado de la contratación pública presenta lagunas documentales críticas que impiden la auditoría ordinaria. El coste confirmado se mantiene en 86,5 M€ respecto al informe anterior: no se ha publicado ninguna adjudicación nueva en los portales oficiales. Los dos contratos de construcción principales (UTE Acciona-Eiffage, 83,2 M€, y Eiffage Construcción para el Pit Building, ~68 M€) carecen de expediente verificado en licitaciones2.ifema.es o en la Plataforma de Contratación del Sector Público. El informe confirma que las estructuras permanentes (gradas fijas, paddock, pabellones) están en fase avanzada, pero las gradas temporales para hasta 110.000 espectadores siguen sin expediente de contratación publicado a 65 días del evento. Las vallas de seguridad, imprescindibles para la homologación FIA, tampoco cuentan con expediente visible. Cinco expedientes de servicios operacionales (25/187, 25/140, 26/113, 26/010, 26/024) permanecen sin adjudicación publicada. El coste comprometido estimado con las licitaciones activas asciende a ~87,5 M€. El coste potencial total, incluyendo el canon FOM declarado (48 M€/año × 10 años), la adaptación del entorno (130 M€ declarados) y los contratos pendientes, supera los 700 M€, pero ninguna de estas partidas cuenta con soporte documental oficial suficiente para sumarse al coste confirmado.",
   "nuevos_hallazgos": [
+    "[2026-07-07] MADRING publica que PwC España se incorpora como Local Event Supporter del GP de F1 de Madrid, ofreciendo consultoría para el impacto económico, empresarial y social del evento; no se publica importe ni contrato.",
+    "[2026-07-10] Se localiza el expediente 26/002 de IFEMA para la adecuación de salas con comunicación acústica durante el GP; faltan datos de presupuesto y adjudicación.",
+    "[2026-07-10] Nueva licitación del expediente 26/023 de IFEMA para suministro de medios de extinción del GP de F1, con valor estimado de 37.500 € sin IVA y modificación máxima de 12.500 €; pliegos publicados, sin adjudicación conocida.",
     "[2026-07-10] Confirmación oficial de las fechas definitivas del GP de España de F1 2026: 11 (viernes, entrenamientos), 12 (sábado, clasificación) y 13 (domingo, carrera) de septiembre de 2026 en IFEMA-Valdebebas. Fuente: madring.com y formula1.com.",
     "[2026-07-10] El expediente 25/140 (Servicios Profesionales Técnicos) cuenta con dos números de referencia interna en el portal IFEMA: 2000026784 y 2000026785 (dos lotes). Estos identificadores no equivalen a números de expediente en formato normalizado de la Plataforma de Contratación del Sector Público y no permiten verificación cruzada. Adjudicación no publicada a 10-VII-2026.",
     "[2026-07-10] Eiffage Energía Sistemas ha ejecutado instalaciones eléctricas en el circuito: dos centros de transformación prefabricados de superficie con dos transformadores de 630 kVA cada uno, anillo de media tensión subterráneo y líneas de baja tensión para gradas e instalaciones temporales. No existe expediente de contratación público verificado ni importe oficial publicado para este trabajo.",
@@ -769,12 +772,24 @@
       "nivel_confianza": "muy_probable",
       "fuente": "https://licitaciones2.ifema.es",
       "descubierto_el": "2026-07-10"
+    },
+    {
+      "fecha": "2026-07-10",
+      "organismo": "IFEMA Madrid",
+      "expediente": "26/002",
+      "adjudicatario": "No disponible",
+      "concepto": "Adecuación de salas para comunicación acústica con el exterior durante el Gran Premio de España de F1",
+      "importe": 0.0,
+      "importe_texto": "No disponible",
+      "estado": "pendiente_confirmar",
+      "fuente": "Descripción: he localizado un expediente de IFEMA vinculado al GP",
+      "descubierto_el": "2026-07-10"
     }
   ],
   "coste_acumulado_confirmado": 86499355.56,
-  "coste_acumulado_texto": "86.5 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+  "coste_acumulado_texto": "86.5 M€ (adjudicaciones con soporte oficial).",
   "coste_comprometido": 105033568.92999999,
-  "coste_comprometido_texto": "105.0 millones de euros (costes confirmados + PBL de licitaciones activas).",
+  "coste_comprometido_texto": "105.0 M€ (confirmado + licitaciones activas).",
   "incremento_respecto_anterior": 0.0,
   "cambios_detectados": [],
   "proyeccion_10_anios": {

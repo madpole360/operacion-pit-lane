@@ -666,5 +666,17 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es",
     "descubierto_el": "2026-07-10"
+  },
+  {
+    "fecha": "2026-07-10",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/002",
+    "adjudicatario": "No disponible",
+    "concepto": "Adecuación de salas para comunicación acústica con el exterior durante el Gran Premio de España de F1",
+    "importe": 0.0,
+    "importe_texto": "No disponible",
+    "estado": "pendiente_confirmar",
+    "fuente": "Descripción: he localizado un expediente de IFEMA vinculado al GP",
+    "descubierto_el": "2026-07-10"
   }
 ]
