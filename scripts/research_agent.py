@@ -189,6 +189,13 @@ def extract_json(text: str) -> dict:
     """Extrae un objeto JSON de una respuesta que puede contener markdown o texto adicional."""
     text = text.strip()
 
+    # Si el texto empieza con un campo JSON pero no tiene llave de apertura, envolverlo
+    if text.startswith('"') and not text.startswith('{'):
+        text = '{' + text
+        # Buscar el ultimo } y cerrar si no esta
+        if text.rstrip().endswith('"') or text.rstrip().endswith(']'):
+            text = text.rstrip().rstrip(',') + '}'
+
     # 1. Limpiar residuos de tool calls que el modelo a veces repite como texto
     text = re.sub(r'<invoke[^>]*>.*?</invoke>', '', text, flags=re.DOTALL)
     text = re.sub(r'<parameter[^>]*>.*?</parameter>', '', text, flags=re.DOTALL)
