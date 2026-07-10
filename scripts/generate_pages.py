@@ -60,6 +60,10 @@ def build_site(latest_data: dict):
     # Datos comunes — ordenar contratos por descubierto DESC, luego fecha DESC
     contracts_db = load_json(CONTRACTS_FILE, [])
     contracts_db.sort(key=lambda c: (c.get("descubierto_el") or "", c.get("fecha") or ""), reverse=True)
+    # Separar licitaciones de contratos menores
+    import re
+    licitaciones = [c for c in contracts_db if re.match(r"^\d{2}/\d{3,4}", c.get("expediente", ""))]
+    menores = [c for c in contracts_db if not re.match(r"^\d{2}/\d{3,4}", c.get("expediente", ""))]
     timeline = load_json(TIMELINE_FILE, [])
     archive_files = sorted(
         [f.name for f in ARCHIVE_DIR.glob("*.json")],
@@ -69,6 +73,8 @@ def build_site(latest_data: dict):
     ctx = {
         "data": latest_data,
         "contracts_db": contracts_db,
+        "licitaciones": licitaciones,
+        "contratos_menores": menores,
         "timeline": timeline,
         "archive_files": archive_files,
         "today": datetime.now().strftime("%Y-%m-%d"),

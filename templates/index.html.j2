@@ -607,28 +607,24 @@
       </div>
     </section>
 
-    <!-- ── Contratos detectados ──────────────────────────── -->
+    <!-- ── Licitaciones ───────────────────────────────── -->
     <section class="section">
-      <h2 class="section-title">📄 Contratos detectados ({{ contracts_db | length }} en histórico)
-        <button onclick="exportCSV()" style="margin-left:auto;background:var(--surface);color:var(--amber);border:1px solid var(--edge);padding:.25rem .65rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">📥 CSV</button>
-      </h2>
+      <h2 class="section-title">📄 Licitaciones IFEMA ({{ licitaciones | length }})</h2>
       <div class="table-wrap">
-        <table id="contractsTable">
-          <thead>
-            <tr>
-              <th onclick="sortTable(0)" style="cursor:pointer;">Descubierto ▾</th>
-              <th onclick="sortTable(1)" style="cursor:pointer;">Fecha ▾</th>
-              <th onclick="sortTable(2)" style="cursor:pointer;">Organismo ▾</th>
-              <th onclick="sortTable(3)" style="cursor:pointer;">Expediente ▾</th>
-              <th onclick="sortTable(4)" style="cursor:pointer;">Concepto ▾</th>
-              <th onclick="sortTable(5)" style="cursor:pointer;">Importe ▾</th>
-              <th onclick="sortTable(6)" style="cursor:pointer;">Estado ▾</th>
-              <th>Fuente</th>
-            </tr>
-          </thead>
+        <table class="sortable">
+          <thead><tr>
+            <th onclick="sortTable(this,0)">Descubierto ▾</th>
+            <th onclick="sortTable(this,1)">Fecha ▾</th>
+            <th onclick="sortTable(this,2)">Organismo ▾</th>
+            <th onclick="sortTable(this,3)">Expediente ▾</th>
+            <th onclick="sortTable(this,4)">Concepto ▾</th>
+            <th onclick="sortTable(this,5)">Importe ▾</th>
+            <th onclick="sortTable(this,6)">Estado ▾</th>
+            <th onclick="sortTable(this,7)">Adjudicatario ▾</th>
+            <th>F</th>
+          </tr></thead>
           <tbody>
-            {% if contracts_db %}
-            {% for c in contracts_db %}
+            {% for c in licitaciones %}
             <tr>
               <td class="mono" data-val="{{ c.descubierto_el or '' }}">{{ c.descubierto_el or '—' }}</td>
               <td class="mono" data-val="{{ c.fecha or '' }}">{{ c.fecha or '—' }}</td>
@@ -637,6 +633,44 @@
               <td data-val="{{ c.concepto or '' }}">{{ c.concepto or '—' }}</td>
               <td class="amount" data-val="{{ c.importe | float | default(0) }}">{{ c.importe_texto or '—' }}</td>
               <td data-val="{{ c.estado or '' }}"><span class="badge badge-{{ c.estado or 'sin_confirmar' }}">{{ (c.estado or 'sin confirmar').replace('_', ' ') }}</span></td>
+              <td data-val="{{ c.adjudicatario or '' }}">{{ c.adjudicatario or '—' }}</td>
+              <td>{% if c.fuente %}<a href="{{ c.fuente }}" target="_blank">🔗</a>{% else %}—{% endif %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Contratos menores ──────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📋 Contratos menores y otros ({{ contratos_menores | length }})
+        <button onclick="exportTable('contratosMenoresTable')" style="margin-left:auto;background:var(--surface);color:var(--amber);border:1px solid var(--edge);padding:.25rem .65rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">📥 CSV</button>
+      </h2>
+      <div class="table-wrap">
+        <table class="sortable" id="contratosMenoresTable">
+          <thead><tr>
+            <th onclick="sortTable(this,0)">Descubierto ▾</th>
+            <th onclick="sortTable(this,1)">Fecha ▾</th>
+            <th onclick="sortTable(this,2)">Organismo ▾</th>
+            <th onclick="sortTable(this,3)">Expediente ▾</th>
+            <th onclick="sortTable(this,4)">Concepto ▾</th>
+            <th onclick="sortTable(this,5)">Importe ▾</th>
+            <th onclick="sortTable(this,6)">Estado ▾</th>
+            <th onclick="sortTable(this,7)">Adjudicatario ▾</th>
+            <th>F</th>
+          </tr></thead>
+          <tbody>
+            {% for c in contratos_menores %}
+            <tr>
+              <td class="mono" data-val="{{ c.descubierto_el or '' }}">{{ c.descubierto_el or '—' }}</td>
+              <td class="mono" data-val="{{ c.fecha or '' }}">{{ c.fecha or '—' }}</td>
+              <td data-val="{{ c.organismo or '' }}">{{ c.organismo or '—' }}</td>
+              <td class="mono" data-val="{{ c.expediente or '' }}">{{ c.expediente or '—' }}</td>
+              <td data-val="{{ c.concepto or '' }}">{{ c.concepto or '—' }}</td>
+              <td class="amount" data-val="{{ c.importe | float | default(0) }}">{{ c.importe_texto or '—' }}</td>
+              <td data-val="{{ c.estado or '' }}"><span class="badge badge-{{ c.estado or 'sin_confirmar' }}">{{ (c.estado or 'sin confirmar').replace('_', ' ') }}</span></td>
+              <td data-val="{{ c.adjudicatario or '' }}">{{ c.adjudicatario or '—' }}</td>
               <td>{% if c.fuente %}<a href="{{ c.fuente }}" target="_blank">🔗</a>{% else %}—{% endif %}</td>
             </tr>
             {% endfor %}
@@ -849,39 +883,44 @@
 
 <script>
 /* ── Ordenacion de tabla por columna ── */
-let sortDir = {};
-function sortTable(col) {
-  const tbody = document.querySelector('#contractsTable tbody');
+const sortState = {};
+function sortTable(th, col) {
+  const table = th.closest('table');
+  const id = table.id || 't';
+  const tbody = table.querySelector('tbody');
   const rows = Array.from(tbody.querySelectorAll('tr'));
-  sortDir[col] = !sortDir[col];
+  sortState[id+col] = !sortState[id+col];
+  const desc = sortState[id+col];
   rows.sort((a, b) => {
     const va = (a.cells[col].dataset.val || a.cells[col].textContent).trim();
     const vb = (b.cells[col].dataset.val || b.cells[col].textContent).trim();
     const na = parseFloat(va), nb = parseFloat(vb);
-    if (!isNaN(na) && !isNaN(nb)) return sortDir[col] ? nb - na : na - nb;
-    return sortDir[col] ? vb.localeCompare(va) : va.localeCompare(vb);
+    if (!isNaN(na) && !isNaN(nb)) return desc ? nb - na : na - nb;
+    return desc ? vb.localeCompare(va) : va.localeCompare(vb);
   });
   rows.forEach(r => tbody.appendChild(r));
 }
 
-/* ── Exportar CSV ── */
-function exportCSV() {
-  const rows = document.querySelectorAll('#contractsTable tbody tr');
-  const headers = Array.from(document.querySelectorAll('#contractsTable thead th')).map(h => h.textContent.replace(' ▾',''));
+/* ── Exportar tabla a CSV ── */
+function exportTable(tableId) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const rows = table.querySelectorAll('tbody tr');
+  const headers = Array.from(table.querySelectorAll('thead th')).map(h => h.textContent.replace(' ▾','')).slice(0, -1);
   let csv = headers.join(',') + '\n';
   rows.forEach(r => {
-    const cols = Array.from(r.cells).map(c => {
+    const cols = Array.from(r.cells).slice(0, -1).map(c => {
       let v = (c.dataset.val || c.textContent).trim().replace(/"/g,'""');
       if (v.includes(',') || v.includes('"')) v = '"' + v + '"';
       return v;
     });
-    csv += cols.slice(0, 8).join(',') + '\n';
+    csv += cols.join(',') + '\n';
   });
   const blob = new Blob(['﻿' + csv], {type: 'text/csv;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'contratos-madring.csv'; a.click();
-  URL.revokeObjectURL(url);
+  a.href = URL.createObjectURL(blob);
+  a.download = tableId + '.csv'; a.click();
+  URL.revokeObjectURL(a.href);
 }
 </script>
 </body>
