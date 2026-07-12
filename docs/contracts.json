@@ -931,5 +931,44 @@
     "estado": "ejecutado",
     "fuente": "IFEMA MADRID - relación oficial de contratos menores 2025",
     "descubierto_el": "2026-07-10"
+  },
+  {
+    "fecha": "2026-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Pendiente de adjudicación publicada",
+    "concepto": "Servicios de acreditación y transporte lanzadera para el Gran Premio de España 2026",
+    "importe": 264000.0,
+    "importe_texto": "264.000 € (PBL publicado; valor estimado con prórrogas declarado superior a 1 M€)",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-12"
+  },
+  {
+    "fecha": "2026-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026784",
+    "adjudicatario": "Pendiente de adjudicación publicada",
+    "concepto": "Servicios profesionales técnicos — Lote 1 (simulador, embajadores, agencia creativa, press clipping)",
+    "importe": 264000.0,
+    "importe_texto": "264.000 € (PBL publicado)",
+    "estado": "licitado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-12"
+  },
+  {
+    "fecha": "2026-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026785",
+    "adjudicatario": "Pendiente de adjudicación publicada",
+    "concepto": "Servicios profesionales técnicos — Lote 2",
+    "importe": 0.0,
+    "importe_texto": "Importe PBL no localizado en documento oficial verificado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-12"
   }
 ]
