@@ -1126,5 +1126,18 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es",
     "descubierto_el": "2026-07-15"
+  },
+  {
+    "fecha": "2025-02-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/113",
+    "adjudicatario": "Sin adjudicación publicada verificada",
+    "concepto": "Agencia de comunicación digital para el circuito de Fórmula 1 de Madrid. Estrategia de imagen, redes sociales, generación de contenido, diseño, campañas con influencers y cobertura presencial. PBL 261.000 € (IVA excluido). Valor estimado con prórrogas superior a 1 M€. Duración: dos prórrogas anuales más una de 17 meses.",
+    "importe": 261000.0,
+    "importe_texto": "261.000,00 € (PBL, IVA excluido); valor estimado con prórrogas superior a 1.000.000 €",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-19"
   }
 ]
