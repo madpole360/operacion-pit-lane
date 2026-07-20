@@ -205,5 +205,14 @@
     "coste_comprometido_texto": "106.6 millones de euros (costes confirmados + PBL de licitaciones activas).",
     "num_contratos": 94,
     "porcentaje_riesgo_valencia": 72
+  },
+  {
+    "fecha": "2026-07-20",
+    "coste_acumulado": 87216854.32000002,
+    "coste_texto": "87.2 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+    "coste_comprometido": 106622349.23000002,
+    "coste_comprometido_texto": "106.6 millones de euros (costes confirmados + PBL de licitaciones activas).",
+    "num_contratos": 94,
+    "porcentaje_riesgo_valencia": 72
   }
 ]
