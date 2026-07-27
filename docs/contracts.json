@@ -1321,5 +1321,57 @@
     "nivel_confianza": "hipotesis",
     "fuente": "Referencia de informe anterior — sin datos publicados en licitaciones2.ifema.es a 26-VII-2026",
     "descubierto_el": "2026-07-26"
+  },
+  {
+    "fecha": "2025-03-15",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "adjudicatario": "Sin adjudicatario con importe oficial publicado",
+    "concepto": "Simulador F1, embajadores de marca (incluye contrato con Carlos Sainz), agencia creativa y press clipping",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documento oficial localizado",
+    "estado": "adjudicado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-27"
+  },
+  {
+    "fecha": "2025-09-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026784",
+    "adjudicatario": "Sin adjudicación verificada",
+    "concepto": "Servicios profesionales técnicos, lote 1",
+    "importe": 0.0,
+    "importe_texto": "Importe sin adjudicación publicada verificada",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-27"
+  },
+  {
+    "fecha": "2025-09-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026785",
+    "adjudicatario": "Sin adjudicación verificada",
+    "concepto": "Servicios profesionales técnicos, lote 2",
+    "importe": 0.0,
+    "importe_texto": "Importe sin adjudicación publicada verificada",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-27"
+  },
+  {
+    "fecha": "2026-04-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/113",
+    "adjudicatario": "Sin adjudicación verificada",
+    "concepto": "Agencia de comunicación digital. PBL declarado: 261.000 €. Valor estimado con prórrogas declarado: superior a 1.000.000 €",
+    "importe": 261000.0,
+    "importe_texto": "261.000 € (PBL publicado; discrepancia con valor estimado con prórrogas no resuelta)",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-07-27"
   }
 ]
