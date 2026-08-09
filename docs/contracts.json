@@ -1438,5 +1438,70 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es — expediente identificado en informes previos; importe exacto pendiente de verificación documental",
     "descubierto_el": "2026-08-06"
+  },
+  {
+    "fecha": "2026-08-09",
+    "organismo": "IFEMA Madrid",
+    "expediente": "24/226",
+    "adjudicatario": "Dragados, S.A.",
+    "concepto": "Obras para la construcción y posterior reposición de infraestructuras para GP F1 (trazado, reposición de viales públicos)",
+    "importe": 85369861.31,
+    "importe_texto": "85.369.861,31 €",
+    "estado": "adjudicado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-09"
+  },
+  {
+    "fecha": "2026-08-09",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/024",
+    "adjudicatario": "Sin adjudicatario publicado verificado",
+    "concepto": "Pasarelas peatonales modulares — instalación, mantenimiento y desmontaje 2026-2028 (ubicación entre curvas T9 y T10). Código interno 2000027685. Estado: licitado con erratas documentales no corregidas a 09-08-2026",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documentación disponible",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-09"
+  },
+  {
+    "fecha": "2026-08-09",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Sin adjudicatario publicado verificado",
+    "concepto": "Servicios profesionales para trabajos de Grandes Premios F1 y presentaciones de stakeholders — GP España 2026-2028. Documento R0252461 localizado",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documentación disponible",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-09"
+  },
+  {
+    "fecha": "2026-08-09",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/129",
+    "adjudicatario": "Sin adjudicatario publicado verificado en esta entrada",
+    "concepto": "Prórroga de contrato (código 2000026722) — concepto exacto del servicio pendiente de verificación documental completa",
+    "importe": 359469.0,
+    "importe_texto": "359.469,00 €",
+    "estado": "en_ejecución",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-09"
+  },
+  {
+    "fecha": "2026-08-09",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/078",
+    "adjudicatario": "Sin adjudicatario publicado verificado en esta entrada",
+    "concepto": "Lote 2 (códigos 4000005394 / 4000005395) — concepto exacto del servicio pendiente de verificación documental completa",
+    "importe": 7524.78,
+    "importe_texto": "7.524,78 €",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-09"
   }
 ]
