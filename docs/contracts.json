@@ -1620,5 +1620,57 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es",
     "descubierto_el": "2026-08-10"
+  },
+  {
+    "fecha": "2025-08-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "adjudicatario": "No publicado con importe oficial verificado",
+    "concepto": "Servicios profesionales técnicos asociados al Gran Premio de Fórmula 1 (incluye lotes relacionados con simulador F1, embajadores y agencia creativa). Lotes internos: 2000026784 y 2000026785.",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documento oficial verificado",
+    "estado": "en_ejecución",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-16"
+  },
+  {
+    "fecha": "2024-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026784",
+    "adjudicatario": "No publicado",
+    "concepto": "Servicios profesionales técnicos, lote 1 (subexpediente de 25/140). Sin adjudicación publicada verificada.",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-16"
+  },
+  {
+    "fecha": "2024-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026785",
+    "adjudicatario": "No publicado",
+    "concepto": "Servicios profesionales técnicos, lote 2 (subexpediente de 25/140). Sin adjudicación publicada verificada.",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-16"
+  },
+  {
+    "fecha": "2024-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "24/226",
+    "adjudicatario": "Dragados S.A. (según documentación verificada en plataforma oficial)",
+    "concepto": "Construcción de infraestructuras del circuito Madring (alcance exacto no aclarado públicamente). Discrepancia crítica no resuelta con el contrato UTE Acciona-Eiffage (83.206.500,01 €). Adjudicatarios e importes diferentes sin explicación oficial publicada.",
+    "importe": 85369861.31,
+    "importe_texto": "85.369.861,31 €",
+    "estado": "adjudicado",
+    "nivel_confianza": "confirmado",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-16"
   }
 ]
