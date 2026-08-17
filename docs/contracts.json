@@ -1672,5 +1672,44 @@
     "nivel_confianza": "confirmado",
     "fuente": "https://licitaciones2.ifema.es",
     "descubierto_el": "2026-08-16"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026784",
+    "adjudicatario": "Sin adjudicatario publicado verificado",
+    "concepto": "Servicios profesionales técnicos, lote 1",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documento oficial verificado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-17"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "2000026785",
+    "adjudicatario": "Sin adjudicatario publicado verificado",
+    "concepto": "Servicios profesionales técnicos, lote 2",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documento oficial verificado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-17"
+  },
+  {
+    "fecha": "2025-01-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/010",
+    "adjudicatario": "Sin adjudicatario publicado verificado",
+    "concepto": "Servicios VIP, protocolo y media operations",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado en documento oficial verificado",
+    "estado": "licitado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-17"
   }
 ]
