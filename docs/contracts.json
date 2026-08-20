@@ -1711,5 +1711,70 @@
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es",
     "descubierto_el": "2026-08-17"
+  },
+  {
+    "fecha": "2025-06-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "24/226",
+    "adjudicatario": "Dragados S.A.",
+    "concepto": "Obra principal del circuito de Fórmula 1 de Madrid (trazado, infraestructuras y urbanización). DISCREPANCIA CRÍTICA NO RESUELTA: el mismo alcance es atribuido por fuentes secundarias a la UTE Acciona-Eiffage por 83.206.500,01 €. Adjudicatarios e importes diferentes. Soporte documental oficial no localizado públicamente para ninguna de las dos versiones.",
+    "importe": 85369861.31,
+    "importe_texto": "85.369.861,31 €",
+    "estado": "adjudicado",
+    "nivel_confianza": "muy_probable",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-20"
+  },
+  {
+    "fecha": "2026-01-15",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/024",
+    "adjudicatario": "Por confirmar — erratas no corregidas, importe no publicado verificado",
+    "concepto": "Pasarelas modulares tramos T9-T10. Erratas no corregidas en publicación oficial. Importe sin verificar.",
+    "importe": 0.0,
+    "importe_texto": "Importe no verificado — erratas en publicación",
+    "estado": "licitado",
+    "nivel_confianza": "hipotesis",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-20"
+  },
+  {
+    "fecha": "2026-02-15",
+    "organismo": "IFEMA Madrid",
+    "expediente": "26/113",
+    "adjudicatario": "Por confirmar — sin adjudicación publicada verificada a 20-08-2026",
+    "concepto": "Agencia de comunicación digital. PBL publicado: 261.000 €. Valor estimado con prórrogas declarado superior a 1.000.000 €. Posible fraccionamiento contractual no descartado.",
+    "importe": 261000.0,
+    "importe_texto": "261.000,00 € (PBL publicado — valor real estimado superior)",
+    "estado": "licitado",
+    "nivel_confianza": "hipotesis",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-20"
+  },
+  {
+    "fecha": "2026-03-01",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/140",
+    "adjudicatario": "Por confirmar — licitación ABIERTA a 20-08-2026",
+    "concepto": "Servicios profesionales para el Gran Premio de España F1: desarrollo de simulador F1, programa de embajadores e influencers, agencia creativa audiovisual y agencia de press clipping. El plazo para adjudicación, firma, movilización y prestación efectiva es materialmente insuficiente a 22 días del evento.",
+    "importe": 0.0,
+    "importe_texto": "Importe no publicado — licitación abierta",
+    "estado": "licitado",
+    "nivel_confianza": "hipotesis",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-20"
+  },
+  {
+    "fecha": "2026-03-15",
+    "organismo": "IFEMA Madrid",
+    "expediente": "25/187",
+    "adjudicatario": "Por confirmar — objeto contractual con divergencia no resuelta",
+    "concepto": "Divergencia no resuelta: descrito como servicios profesionales GP F1 (2026-2028) en una fuente y como sistema de acreditación de medios con transporte lanzadera en otra. Importe y adjudicatario sin verificación oficial.",
+    "importe": 0.0,
+    "importe_texto": "Importe no verificado",
+    "estado": "licitado",
+    "nivel_confianza": "hipotesis",
+    "fuente": "https://licitaciones2.ifema.es",
+    "descubierto_el": "2026-08-20"
   }
 ]
