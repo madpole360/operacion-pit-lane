@@ -858,6 +858,52 @@
     </section>
     {% endif %}
 
+    <!-- ── Contador municipal ───────────────────────────────── -->
+    {% if data.contador_municipal %}
+    {% set cm = data.contador_municipal %}
+    <section class="section">
+      <h2 class="section-title">🏙️ Contador municipal (Ayuntamiento de Madrid)</h2>
+      <div class="ticker" style="margin-bottom:1.25rem;border-radius:8px;">
+        <div class="ticker-item">
+          <div class="t-label">Directo F1 (documentado)</div>
+          <div class="t-value red">{{ cm.directo_f1.texto }}</div>
+        </div>
+        <div class="ticker-item">
+          <div class="t-label">Asociado motor</div>
+          <div class="t-value">{{ cm.asociado_motor.texto }}</div>
+        </div>
+        <div class="ticker-item">
+          <div class="t-label">Total bruto 2026 (est.)</div>
+          <div class="t-value amber">{{ cm.total_bruto_2026.texto }}</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Partida</th><th>Importe</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Directamente vinculado a F1</td><td class="amount">{{ cm.directo_f1.texto }}</td><td style="color:var(--green);font-size:.75rem;">Documentado</td></tr>
+            <tr><td>Patrocinio World Motorsport Tourism Congress (SP26-00246)</td><td class="amount">18.059,25 €</td><td style="color:var(--green);font-size:.75rem;">Asociado</td></tr>
+            <tr><td>FITUR 2025 (elementos promocionales F1)</td><td class="amount">{{ cm.fitur_f1_pendiente.texto }}</td><td style="color:var(--amber);font-size:.75rem;">Pendiente reparto</td></tr>
+            <tr><td>Seguridad y emergencias municipal</td><td class="amount">{{ cm.operativo_estimado.seguridad_emergencias }}</td><td style="color:var(--amber);font-size:.75rem;">Estimación</td></tr>
+            <tr><td>EMT (5 servicios especiales)</td><td class="amount">{{ cm.operativo_estimado.emt }}</td><td style="color:var(--amber);font-size:.75rem;">Estimación</td></tr>
+            <tr><td>Limpieza / SELUR</td><td class="amount">—</td><td style="color:var(--amber);font-size:.75rem;">Pendiente</td></tr>
+          </tbody>
+        </table>
+      </div>
+      {% if cm.ingresos_pendientes %}
+      <div style="margin-top:.7rem;font-size:.75rem;color:var(--muted);">
+        <strong style="color:var(--blue);">Ingresos municipales pendientes de cuantificar (reducirían el coste neto):</strong>
+        <ul style="margin:.3rem 0 0 1.2rem;">
+          {% for ing in cm.ingresos_pendientes %}
+          <li>{{ ing }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <p style="font-size:.72rem;color:var(--muted);margin-top:.7rem;">⚠️ {{ cm.nota }}</p>
+    </section>
+    {% endif %}
+
     <!-- ── Proyeccion 10 anos ────────────────────────────────── -->
     {% if data.proyeccion_10_anios %}
     <section class="section">

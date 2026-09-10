@@ -835,5 +835,19 @@
     "estado": "adjudicado",
     "nivel_confianza": "confirmado",
     "fuente": "Registro de Contratos Menores del Ayuntamiento de Madrid"
+  },
+  {
+    "descubierto_el": "2026-09-10",
+    "fecha": "2026-06-03",
+    "organismo": "Madrid Destino",
+    "expediente": "SP26-00246",
+    "adjudicatario": "No especificado",
+    "concepto": "Patrocinio del World Motorsport Tourism Congress (asociado a la estrategia de turismo del motor, no directamente al GP de F1).",
+    "importe": 18059.25,
+    "importe_texto": "18.059,25 € (adjudicación)",
+    "estado": "adjudicado",
+    "nivel_confianza": "confirmado",
+    "vinculo": "asociado",
+    "fuente": "Registro de contratos menores del Ayuntamiento de Madrid"
   }
 ]
