@@ -450,10 +450,10 @@
   <div class="hero">
     <p class="eyebrow">Gran Premio de España · Madrid · Circuito Madring</p>
     <h1>¿Cuánto cuesta<br>la <em>F1 de Madrid</em>?</h1>
-    <div class="cost-block" style="border-color:rgba(225,6,0,.55);background:linear-gradient(160deg,rgba(225,6,0,.14) 0%,rgba(245,158,11,.05) 55%,transparent 90%);padding:1.5rem 3rem;margin-bottom:1.75rem;">
-      <div class="cost-label">Coste total estimado · 2026–2035</div>
+    <div class="cost-block" style="border-color:rgba(225,6,0,.7);background:linear-gradient(160deg,rgba(225,6,0,.18) 0%,rgba(245,158,11,.07) 55%,transparent 90%);padding:1.75rem 3rem;margin-bottom:1.75rem;box-shadow:0 0 50px rgba(225,6,0,.28),0 0 120px rgba(245,158,11,.12);">
+      <div class="cost-label" style="color:var(--amber);">✦ Cifra clave · Coste total estimado · 2026–2035</div>
       {% set total_raw = data.coste_total_estimado_provisional | float | default(0) %}
-      <div class="cost-number" style="font-size:clamp(3rem,10vw,6rem);color:var(--txt);">≈{{ (total_raw / 1e6) | round(1) }} M€</div>
+      <div class="cost-number" id="costTotal" data-target="{{ total_raw | int }}" style="font-size:clamp(3.2rem,11vw,6.5rem);color:var(--red);text-shadow:0 0 24px rgba(225,6,0,.45);">≈{{ (total_raw / 1e6) | round(1) }} M€</div>
       <div class="cost-sub">compromisos + servicios extraordinarios + canon F1 (<strong>no confirmado</strong>) · antes de costes recurrentes</div>
     </div>
     <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
@@ -958,16 +958,16 @@
   <script>
     /* Animación de los contadores de coste al cargar la página */
     (function() {
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+      function formatEUR(n) {
+        return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.round(n));
+      }
       function animateCounter(elId, duration) {
         const el = document.getElementById(elId);
         if (!el) return;
         const target = parseFloat(el.dataset.target);
         if (isNaN(target) || target === 0) return;
         const start = performance.now();
-        function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-        function formatEUR(n) {
-          return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.round(n));
-        }
         function frame(now) {
           const elapsed = now - start;
           const progress = Math.min(elapsed / duration, 1);
@@ -976,6 +976,23 @@
         }
         requestAnimationFrame(frame);
       }
+      // Cifra clave: anima el total estimado en millones (≈X,X M€)
+      function animateTotal(elId, duration) {
+        const el = document.getElementById(elId);
+        if (!el) return;
+        const targetM = parseFloat(el.dataset.target) / 1e6;
+        if (isNaN(targetM) || targetM === 0) return;
+        const start = performance.now();
+        function frame(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const v = targetM * easeOut(progress);
+          el.textContent = '≈' + v.toFixed(1).replace('.', ',') + ' M€';
+          if (progress < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+      animateTotal('costTotal', 2800);
       animateCounter('costCounter', 1800);
       animateCounter('costCompro', 2200);
     })();
