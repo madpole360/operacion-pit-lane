@@ -450,6 +450,12 @@
   <div class="hero">
     <p class="eyebrow">Gran Premio de España · Madrid · Circuito Madring</p>
     <h1>¿Cuánto cuesta<br>la <em>F1 de Madrid</em>?</h1>
+    <div class="cost-block" style="border-color:rgba(225,6,0,.55);background:linear-gradient(160deg,rgba(225,6,0,.14) 0%,rgba(245,158,11,.05) 55%,transparent 90%);padding:1.5rem 3rem;margin-bottom:1.75rem;">
+      <div class="cost-label">Coste total estimado · 2026–2035</div>
+      {% set total_raw = data.coste_total_estimado_provisional | float | default(0) %}
+      <div class="cost-number" style="font-size:clamp(3rem,10vw,6rem);color:var(--txt);">≈{{ (total_raw / 1e6) | round(1) }} M€</div>
+      <div class="cost-sub">compromisos + servicios extraordinarios + canon F1 (<strong>no confirmado</strong>) · antes de costes recurrentes</div>
+    </div>
     <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
       <div class="cost-block">
         <div class="cost-label">Coste acumulado confirmado</div>
@@ -476,11 +482,6 @@
         <div class="cost-sub">10 ediciones · <strong>no confirmado</strong></div>
       </div>
     </div>
-    {% if data.coste_total_estimado_provisional %}
-    <div style="margin-top:1.1rem;">
-      <span class="increment-note" style="font-size:.85rem;">📊 {{ data.coste_total_estimado_provisional_texto or 'Estimación provisional ampliada' }}</span>
-    </div>
-    {% endif %}
     </div>
   </div>
 
