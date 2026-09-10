@@ -307,7 +307,8 @@
     }
     .badge-licitado     { background: var(--amber-dim); color: var(--amber);  border: 1px solid rgba(245,158,11,.25); }
     .badge-adjudicado   { background: var(--blue-dim);  color: var(--blue);   border: 1px solid rgba(96,165,250,.25); }
-    .badge-en_ejecucion { background: rgba(168,85,247,.12); color: #C084FC; border: 1px solid rgba(168,85,247,.25); }
+    .badge-comprometido { background: var(--amber-dim); color: var(--amber);  border: 1px solid rgba(245,158,11,.4); }
+    .badge-en_ejecucion, .badge-en_ejecución { background: rgba(168,85,247,.12); color: #C084FC; border: 1px solid rgba(168,85,247,.25); }
     .badge-ejecutado    { background: var(--green-dim); color: var(--green);  border: 1px solid rgba(52,211,153,.25); }
     .badge-pendiente_confirmar, .badge-sin_confirmar { background: var(--red-dim); color: #F87171; border: 1px solid rgba(248,113,113,.25); }
 
@@ -453,14 +454,26 @@
       <div class="cost-block">
         <div class="cost-label">Coste acumulado confirmado</div>
         
-        <div class="cost-number" id="costCounter" data-target="428696299">428.7 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.</div>
+        <div class="cost-number" id="costCounter" data-target="161030120">161.0 M€ (adjudicaciones con soporte oficial, incluye Pit Building 68,1 M€ adicional). No incluye canon FOM.</div>
       </div>
       <div class="cost-block" style="border-color:rgba(245,158,11,.4);background:linear-gradient(160deg,rgba(245,158,11,.06) 0%,transparent 60%);">
-        <div class="cost-label">Coste comprometido (+ licitaciones)</div>
+        <div class="cost-label">Mínimo comprometido</div>
         
-        <div class="cost-number" id="costCompro" data-target="449153319" style="color:var(--amber);">449.2 millones de euros (costes confirmados + PBL de licitaciones activas).</div>
+        <div class="cost-number" id="costCompro" data-target="162930120" style="color:var(--amber);">162.9 M€ (mínimo de compromisos identificados: confirmado + aportación municipal 1,9 M€).</div>
+      </div>
+      <div class="cost-block" style="border-color:rgba(96,165,250,.4);background:linear-gradient(160deg,rgba(96,165,250,.06) 0%,transparent 60%);">
+        <div class="cost-label">Servicios públicos extraordinarios (est.)</div>
+        
+        
+        <div class="cost-number" style="color:var(--blue);">≈2.6 M€</div>
+        <div class="cost-sub">rango 1,68–3,82 M€ · <strong>0 € confirmado</strong></div>
       </div>
     </div>
+    
+    <div style="margin-top:1.1rem;">
+      <span class="increment-note" style="font-size:.85rem;">📊 ≈165.5 M€ (compromisos + servicios extraordinarios estimados), antes de canon FOM y costes operativos sin cuantificar.</span>
+    </div>
+    
     </div>
   </div>
 
@@ -470,19 +483,19 @@
   <div class="ticker">
     <div class="ticker-item">
       <div class="t-label">Licitaciones</div>
-      <div class="t-value red">92</div>
+      <div class="t-value red">35</div>
     </div>
     <div class="ticker-item">
       <div class="t-label">Contratos menores</div>
-      <div class="t-value amber">51</div>
+      <div class="t-value amber">34</div>
     </div>
     <div class="ticker-item">
       <div class="t-label">Pendientes confirmar</div>
-      <div class="t-value amber">37</div>
+      <div class="t-value amber">10</div>
     </div>
     <div class="ticker-item">
       <div class="t-label">Riesgos detectados</div>
-      <div class="t-value amber">19</div>
+      <div class="t-value amber">11</div>
     </div>
   </div>
 
@@ -502,9 +515,20 @@
           <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;font-size:.7rem;">
             <span style="width:120px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.65rem;">Obra civil</span>
             <div style="flex:1;height:14px;background:var(--surface);border-radius:3px;overflow:hidden;">
-              <div style="height:100%;width:100%;background:#E10600;border-radius:3px;opacity:.85;" title="339.4 M€ — 20 contratos"></div>
+              <div style="height:100%;width:100%;background:#E10600;border-radius:3px;opacity:.85;" title="153.7 M€ — 13 contratos"></div>
             </div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">339.4 M€</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">153.7 M€</span>
+          </div>
+          
+          
+          
+          
+          <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;font-size:.7rem;">
+            <span style="width:120px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.65rem;">Servicios operativos</span>
+            <div style="flex:1;height:14px;background:var(--surface);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:44%;background:#60A5FA;border-radius:3px;opacity:.85;" title="68.4 M€ — 22 contratos"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">68.4 M€</span>
           </div>
           
           
@@ -513,7 +537,7 @@
           <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;font-size:.7rem;">
             <span style="width:120px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.65rem;">Asistencia técnica</span>
             <div style="flex:1;height:14px;background:var(--surface);border-radius:3px;overflow:hidden;">
-              <div style="height:100%;width:0%;background:#F59E0B;border-radius:3px;opacity:.85;" title="3.0 M€ — 9 contratos"></div>
+              <div style="height:100%;width:1%;background:#F59E0B;border-radius:3px;opacity:.85;" title="3.0 M€ — 8 contratos"></div>
             </div>
             <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">3.0 M€</span>
           </div>
@@ -524,20 +548,9 @@
           <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;font-size:.7rem;">
             <span style="width:120px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.65rem;">Marketing y comunicación</span>
             <div style="flex:1;height:14px;background:var(--surface);border-radius:3px;overflow:hidden;">
-              <div style="height:100%;width:0%;background:#FB923C;border-radius:3px;opacity:.85;" title="0.6 M€ — 32 contratos"></div>
+              <div style="height:100%;width:0%;background:#FB923C;border-radius:3px;opacity:.85;" title="0.6 M€ — 14 contratos"></div>
             </div>
             <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">0.6 M€</span>
-          </div>
-          
-          
-          
-          
-          <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;font-size:.7rem;">
-            <span style="width:120px;text-align:right;color:var(--muted);flex-shrink:0;font-size:.65rem;">Servicios operativos</span>
-            <div style="flex:1;height:14px;background:var(--surface);border-radius:3px;overflow:hidden;">
-              <div style="height:100%;width:0%;background:#60A5FA;border-radius:3px;opacity:.85;" title="0.3 M€ — 48 contratos"></div>
-            </div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt);min-width:45px;">0.3 M€</span>
           </div>
           
           
@@ -559,6 +572,13 @@
           
           
           <div style="display:flex;align-items:center;gap:.3rem;margin-bottom:.1rem;white-space:nowrap;">
+            <span style="width:7px;height:7px;border-radius:2px;background:#60A5FA;flex-shrink:0;"></span>
+            <span style="color:var(--muted);">Servicios operativos</span>
+          </div>
+          
+          
+          
+          <div style="display:flex;align-items:center;gap:.3rem;margin-bottom:.1rem;white-space:nowrap;">
             <span style="width:7px;height:7px;border-radius:2px;background:#F59E0B;flex-shrink:0;"></span>
             <span style="color:var(--muted);">Asistencia técnica</span>
           </div>
@@ -568,13 +588,6 @@
           <div style="display:flex;align-items:center;gap:.3rem;margin-bottom:.1rem;white-space:nowrap;">
             <span style="width:7px;height:7px;border-radius:2px;background:#FB923C;flex-shrink:0;"></span>
             <span style="color:var(--muted);">Marketing y comunicación</span>
-          </div>
-          
-          
-          
-          <div style="display:flex;align-items:center;gap:.3rem;margin-bottom:.1rem;white-space:nowrap;">
-            <span style="width:7px;height:7px;border-radius:2px;background:#60A5FA;flex-shrink:0;"></span>
-            <span style="color:var(--muted);">Servicios operativos</span>
           </div>
           
           
@@ -597,15 +610,15 @@
     <div class="ticker" style="border-radius:8px;margin-bottom:0;">
       <div class="ticker-item">
         <div class="t-label">Última ejecución</div>
-        <div class="t-value">2026-09-09 20:00</div>
+        <div class="t-value">2026-09-10 09:57</div>
       </div>
       <div class="ticker-item">
         <div class="t-label">Contratos nuevos (7d)</div>
-        <div class="t-value">0</div>
+        <div class="t-value amber">8</div>
       </div>
       <div class="ticker-item">
         <div class="t-label">Cambios detectados</div>
-        <div class="t-value amber">10</div>
+        <div class="t-value amber">7</div>
       </div>
       <div class="ticker-item">
         <div class="t-label">Coste API (est.)</div>
@@ -621,25 +634,19 @@
       <strong style="color:var(--amber);">🔄 Cambios detectados en esta ejecución:</strong>
       <ul style="margin:.25rem 0 0 1.2rem;color:var(--txt);">
         
-        <li style="margin-bottom:.15rem;">💰 26/113: 261,000€ → 572,500€ (Lonas publicitarias en cubiertas IFEMA.)</li>
+        <li style="margin-bottom:.15rem;">🔧 Corrección de base: Pit Building 68,1 M€ era ADICIONAL y no estaba en el contador.</li>
         
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → en_ejecución (Servicios profesionales técnicos: simulador F1, contratación)</li>
+        <li style="margin-bottom:.15rem;">🔧 Corrección de base: circuito con adjudicatario erróneo (Dragados) quintuplicado -> UTE Acciona-Eiffage.</li>
         
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → adjudicado (Desarrollo de simulador propio de F1 del circuito Madring; c)</li>
+        <li style="margin-bottom:.15rem;">🔧 Corrección de base: deduplicados 25/187 (×15), 25/140 (×12), 26/113 (×11) y otros expedientes repetidos.</li>
         
-        <li style="margin-bottom:.15rem;">🔄 25/187: licitado → adjudicado (Servicio de acreditación desde el MAC (Centro de Distribució)</li>
+        <li style="margin-bottom:.15rem;">🔧 Corrección de base: Fan Zone Red Bull Sol (121.000 €) liquidada a 0,00 € — retirada.</li>
         
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → adjudicado (Desarrollo de simulador F1 del circuito Madring, embajadores)</li>
+        <li style="margin-bottom:.15rem;">🔧 Corrección de base: retirada la hipótesis del canon 48 M€/año (480 M€); canon desconocido.</li>
         
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → adjudicado (Simulador F1, embajadores (incluye contrato Carlos Sainz), a)</li>
+        <li style="margin-bottom:.15rem;">🆕 Aportación municipal 1,9 M€ (BOAM 07/09/2026) + TRAGSATEC 167.354,13 € + expedientes 25/211 y 24/047 R.</li>
         
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → adjudicado (Simulador F1, embajadores de marca (incluye contrato con Car)</li>
-        
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → adjudicado (Simulador de Fórmula 1, contrato de embajadores (incluye a C)</li>
-        
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → adjudicado (Simulador F1, embajadores, agencia creativa y press clipping)</li>
-        
-        <li style="margin-bottom:.15rem;">🔄 25/140: licitado → en_ejecución (Servicios profesionales técnicos asociados al Gran Premio de)</li>
+        <li style="margin-bottom:.15rem;">🆕 Estimación de servicios públicos extraordinarios: ≈2,6 M€ (rango 1,68-3,82 M€), 0 € confirmado.</li>
         
       </ul>
     </div>
@@ -659,40 +666,40 @@
       
       
       
-      <svg width="100%" height="200" viewBox="0 0 6310 200" style="font-family:'JetBrains Mono',monospace;font-size:9px;">
+      <svg width="100%" height="200" viewBox="0 0 6430 200" style="font-family:'JetBrains Mono',monospace;font-size:9px;">
         <!-- Grid -->
         
         
         
-        <line x1="50" y1="15" x2="6290" y2="15" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="15" x2="6410" y2="15" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="18" fill="var(--muted)" text-anchor="end" font-size="8">449M</text>
         
         
         
-        <line x1="50" y1="55" x2="6290" y2="55" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="55" x2="6410" y2="55" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="58" fill="var(--muted)" text-anchor="end" font-size="8">358M</text>
         
         
         
-        <line x1="50" y1="95" x2="6290" y2="95" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="95" x2="6410" y2="95" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="98" fill="var(--muted)" text-anchor="end" font-size="8">268M</text>
         
         
         
-        <line x1="50" y1="135" x2="6290" y2="135" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="135" x2="6410" y2="135" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="138" fill="var(--muted)" text-anchor="end" font-size="8">177M</text>
         
         
         
-        <line x1="50" y1="175" x2="6290" y2="175" stroke="var(--edge)" stroke-width="0.5"/>
+        <line x1="50" y1="175" x2="6410" y2="175" stroke="var(--edge)" stroke-width="0.5"/>
         <text x="45" y="178" fill="var(--muted)" text-anchor="end" font-size="8">86M</text>
         
         <!-- Confirmed line -->
         <polyline fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round"
-          points="50,175 170,175 290,175 410,175 530,175 650,175 770,175 890,175 1010,175 1130,175 1250,175 1370,175 1490,175 1610,175 1730,175 1850,175 1970,175 2090,175 2210,175 2330,175 2450,175 2570,175 2690,175 2810,175 2930,175 3050,175 3170,175 3290,175 3410,175 3530,175 3650,175 3770,175 3890,175 4010,138 4130,100 4250,100 4370,100 4490,62 4610,62 4730,62 4850,25 4970,25 5090,25 5210,25 5330,25 5450,25 5570,25 5690,25 5810,25 5930,25 6050,25 6170,25 "/>
+          points="50,175 170,175 290,175 410,175 530,175 650,175 770,175 890,175 1010,175 1130,175 1250,175 1370,175 1490,175 1610,175 1730,175 1850,175 1970,175 2090,175 2210,175 2330,175 2450,175 2570,175 2690,175 2810,175 2930,175 3050,175 3170,175 3290,175 3410,175 3530,175 3650,175 3770,175 3890,175 4010,138 4130,100 4250,100 4370,100 4490,62 4610,62 4730,62 4850,25 4970,25 5090,25 5210,25 5330,25 5450,25 5570,25 5690,25 5810,25 5930,25 6050,25 6170,25 6290,143 "/>
         <!-- Committed line -->
         <polyline fill="none" stroke="var(--amber)" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"
-          points="50,169 170,169 290,168 410,168 530,168 650,168 770,168 890,168 1010,168 1130,168 1250,168 1370,168 1490,168 1610,168 1730,168 1850,168 1970,168 2090,167 2210,167 2330,167 2450,167 2570,167 2690,167 2810,167 2930,167 3050,167 3170,167 3290,166 3410,166 3530,166 3650,166 3770,166 3890,166 4010,129 4130,91 4250,91 4370,91 4490,53 4610,53 4730,53 4850,15 4970,15 5090,15 5210,15 5330,15 5450,15 5570,15 5690,15 5810,15 5930,15 6050,15 6170,15 "/>
+          points="50,169 170,169 290,168 410,168 530,168 650,168 770,168 890,168 1010,168 1130,168 1250,168 1370,168 1490,168 1610,168 1730,168 1850,168 1970,168 2090,167 2210,167 2330,167 2450,167 2570,167 2690,167 2810,167 2930,167 3050,167 3170,167 3290,166 3410,166 3530,166 3650,166 3770,166 3890,166 4010,129 4130,91 4250,91 4370,91 4490,53 4610,53 4730,53 4850,15 4970,15 5090,15 5210,15 5330,15 5450,15 5570,15 5690,15 5810,15 5930,15 6050,15 6170,15 6290,142 "/>
         <!-- Dots + labels -->
         
         
@@ -1059,10 +1066,17 @@
         <circle cx="6170" cy="15" r="4" fill="var(--amber)"/>
         <text x="6170" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">09-09</text>
         
+        
+        
+        
+        <circle cx="6290" cy="143" r="4" fill="var(--red)"/>
+        <circle cx="6290" cy="142" r="4" fill="var(--amber)"/>
+        <text x="6290" y="195" fill="var(--muted)" text-anchor="middle" font-size="8">09-10</text>
+        
       </svg>
       <div style="display:flex;gap:1.5rem;font-size:.62rem;margin-top:.2rem;">
-        <span><span style="display:inline-block;width:10px;height:3px;background:var(--red);vertical-align:middle;margin-right:4px;"></span>Confirmado: 428.7 millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.</span>
-        <span><span style="display:inline-block;width:10px;height:3px;background:var(--amber);vertical-align:middle;margin-right:4px;border-top:2px dashed var(--amber);"></span>Comprometido: 449.2 millones de euros (costes confirmados + PBL de licitaciones activas).</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--red);vertical-align:middle;margin-right:4px;"></span>Confirmado: 161.0 M€ (adjudicaciones con soporte oficial, incluye Pit Building 68,1 M€ adicional). No incluye canon FOM.</span>
+        <span><span style="display:inline-block;width:10px;height:3px;background:var(--amber);vertical-align:middle;margin-right:4px;border-top:2px dashed var(--amber);"></span>Comprometido: 162.9 M€ (mínimo de compromisos identificados: confirmado + aportación municipal 1,9 M€).</span>
       </div>
     </section>
   </div>
@@ -1076,7 +1090,7 @@
     <section class="section">
       <h2 class="section-title">📋 Resumen ejecutivo</h2>
       <div class="summary-card">
-        A 20 de agosto de 2026, a 22 días del Gran Premio de España F1 (11-13 septiembre) y a menos de 5 días de las pruebas de Fórmula 3 (24-25 agosto), el estado del circuito Madring no presenta variaciones documentales verificables respecto al informe del 19 de agosto. Las fuentes secundarias consultadas confirman que el trazado está asfaltado con aprobación técnica FIA (23-06-2026), pero ningún documento oficial de homologación FIA Grado 1 definitivo ha sido publicado. El montaje de gradas, instalaciones VIP y elementos de seguridad vial continúa sin expediente público verificado con número real. Las tres discrepancias estructurales críticas persisten sin resolución: (1) diferencia entre expediente 24/226 (Dragados, 85.369.861,31 €) y contrato UTE Acciona-Eiffage (83.206.500,01 €); (2) expediente del Pit Building (68.000.000 € atribuidos) sin número oficial localizado; (3) cinco expedientes operacionales sin adjudicación publicada a menos de 5 días de las pruebas de F3. El coste confirmado se mantiene en 343.326.438,25 € al no haberse registrado nuevas adjudicaciones con soporte documental oficial. Los litigios de Liberum Natura y Dromo siguen sin resolución publicada. La omisión más grave del día es la ausencia de cualquier comunicado oficial de IFEMA sobre el estado de instalación de gradas y homologación operativa, a horas de que el plazo crítico de las pruebas F3 se haga efectivo.
+        A 10 de septiembre de 2026, un día antes del Gran Premio de España (11-13 de septiembre), rehago el contador tras una corrección estructural y una limpieza de duplicados. El Pit Building / ampliación de los pabellones 1 y 2 cuesta 68,1 M€ ADICIONALES al contrato del circuito: Eiffage confirma que 'este contrato se suma' al de la UTE Acciona-Eiffage, por lo que no estaba incluido en los 83,2 M€ del circuito. El circuito aparece en el portal con adjudicatario correcto (UTE Acciona-Eiffage), no Dragados, y su adjudicación más modificación suma 85,51 M€. El coste confirmado (adjudicaciones con soporte oficial) se sitúa en 161.0 M€ y el mínimo de compromisos identificados en 162.9 M€, sumando la aportación municipal de 1,9 M€ (BOAM 07/09/2026). El descenso desde los 428,7 M€ anteriores es una corrección de base histórica (duplicados y adjudicatario erróneo), no una reducción del gasto. Retiro la hipótesis del canon de 48 M€/año (480 M€): no hay documento oficial y el canon continúa desconocido. Retiro la Fan Zone Red Bull de Sol (121.000 €), liquidada a 0,00 €. Se incorporan 167.354,13 € de la Comunidad vía TRAGSATEC y se registran el 25/211 (que sustituye al 25/187 desistido) y el 24/047 R (asesoramiento jurídico). La inversión privada de MATCH Hospitality (400 M€, 2026-2035) está confirmada pero no es ingreso. Añado una estimación de 2.60 M€ (rango 1,68-3,82 M€) por los servicios públicos extraordinarios de seguridad, emergencias y transporte, lo que eleva la estimación provisional ampliada a ≈165.5 M€.
       </div>
       
       <div style="margin-top:.85rem;display:flex;align-items:center;gap:.65rem;font-size:.76rem;color:var(--muted);">
@@ -1087,48 +1101,98 @@
 
     <!-- ── Nuevos hallazgos ───────────────────────────────── -->
     <section class="section">
-      <h2 class="section-title">🆕 Nuevos hallazgos (7)</h2>
+      <h2 class="section-title">🆕 Nuevos hallazgos (17)</h2>
       <div class="findings-grid" id="findingsGrid">
         
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] Sin variación documental verificable respecto al informe del 19-08-2026: ningún nuevo expediente adjudicado, ningún número de expediente real localizado para gradas temporales ni Pit Building, ninguna resolución judicial publicada en los tres frentes litigiosos activos.</p>
+          <p>[2026-09-10] El Pit Building son 68,1 M€ ADICIONALES al contrato del circuito: IFEMA adjudicó a Eiffage Construcción otro contrato para ampliar los pabellones 1 y 2 (boxes, oficinas técnicas, logística y Paddock Club), y Eiffage confirma que 'este contrato se suma' al del circuito urbano.</p>
         </div>
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] Las pruebas de Fórmula 3 previstas para el 24-25 de agosto de 2026 se sitúan a menos de 96 horas desde la fecha de este informe, sin que conste publicación oficial del expediente de organización de dichas pruebas ni del certificado de homologación FIA Grado 1 operativo.</p>
+          <p>[2026-09-10] Corrección del contador: el circuito estaba registrado con adjudicatario erróneo (Dragados, quintuplicado) y sin contar el contrato real de la UTE Acciona-Eiffage. El adjudicatario correcto es la UTE Acciona (60%) - Eiffage (40%), con adjudicación + modificación de 85,51 M€.</p>
         </div>
         
         <div class="finding-item">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] La característica técnica de la tribuna 'La Monumental' (curva 12, 45.000 asientos, inclinación del 24% sobre 500 metros) es confirmada por fuentes secundarias como el mayor graderío individual del circuito, pero no existe acta de recepción ni certificado de seguridad estructural publicado en portal oficial a esta fecha.</p>
+          <p>[2026-09-10] La Junta de Gobierno del Ayuntamiento del 3-IX-2026 autorizó 1.900.000 € adicionales para Madrid Destino (convenio de promoción internacional F1, BOAM 07/09/2026). Parte del Destination Signage Package (~5 M€).</p>
         </div>
         
         <div class="finding-item" style="display:none;">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] El contrato de 10 años (2026-2035) entre IFEMA y la entidad promotora es reconfirmado por fuentes secundarias, pero el documento del convenio con reparto de riesgos, avales y aportaciones públicas directas sigue sin publicación oficial.</p>
+          <p>[2026-09-10] La Comunidad formalizó el 11-VIII-2026 el expediente EG/2026/0000009265, encargado a TRAGSATEC, para promocionar productos agroalimentarios madrileños durante el GP. Importe: 167.354,13 €.</p>
         </div>
         
         <div class="finding-item" style="display:none;">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] La proyección de ingresos de 450.000.000 € anuales y el impacto económico total de 4.500.000.000 € son reiterados por fuentes secundarias sin soporte documental oficial; la discrepancia por factor 10 entre cifra anual y total decenal persiste sin explicación pública.</p>
+          <p>[2026-09-10] El expediente 25/187 (medios, acreditaciones, protocolo y VIP), desistido, reaparece como 25/211: PBL 524.000 € y VEC 2.882.000 € sin IVA. Sin adjudicación localizada.</p>
         </div>
         
         <div class="finding-item" style="display:none;">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] Carlos Sainz (Williams) como embajador de Madring F1 es reconfirmado por fuentes secundarias; el expediente e importe del contrato de embajada siguen sin publicación oficial.</p>
+          <p>[2026-09-10] El asesoramiento jurídico del proyecto es el expediente 24/047 R: PBL anual 874.500 € y VEC máximo 4.809.750 €. No se valida la cifra de 10 M€ aparecida en prensa.</p>
         </div>
         
         <div class="finding-item" style="display:none;">
           <div class="fi-dot"></div>
-          <p>[2026-08-20] El expediente 25/140 (simulador F1, embajadores, agencia creativa, press clipping) sigue en estado abierto según los datos disponibles, sin adjudicación publicada verificada a 20-08-2026, a menos de 5 días de las pruebas de F3.</p>
+          <p>[2026-09-10] IFEMA confirma que MATCH Hospitality invertirá 400 M€ (2026-2035) en las zonas VIP/hospitality. Inversión privada, no ingreso.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] La Fan Zone Red Bull de Sol (121.000 €) se retira: liquidación del contrato de 0,00 €.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] Se retira la hipótesis del canon de 48 M€/año (480 M€): sin documento oficial. El País publica 277 M€/10 años atribuidos a Más Madrid, no a FOM/IFEMA. El canon continúa oficialmente desconocido.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] Nuevas licitaciones operativas: 26/129 (639.640,91 € PBL), 26/057 (296.200 € PBL), cerramientos+lona (203.911 €), buggies (68.090 €) y scooters (46.104 €). Total detectado 1.253.945,91 €.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] El gasto de IFEMA se acerca a 180 M€ (elDiario.es: casi 183 M€, 171,5 M€ en obras), no a los 100 M€ iniciales. Pendiente de homogeneizar IVA, adjudicaciones y PBL.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] Dispositivo de seguridad y transporte: >1.000 policías municipales, ~250 SAMUR-PC, >60 bomberos, ~60 agentes de movilidad, ~1.500 policías nacionales/guardias civiles diarios, 5 lanzaderas EMT, refuerzo Metro L4/L5/L8 y Cercanías. Coste extraordinario sin publicar.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] Estimación de coste público extraordinario de seguridad, emergencias y transporte: ≈2,6 M€ (rango 1,68-3,82 M€), 0 € confirmado.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] Vacío de contratos menores IFEMA 2026: el portal solo muestra 2023-2025 a 10-IX-2026, justo antes del GP.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] Patrocinios MADRING: Founding Partners (Santander, Fever); Local Event Supporters (American Express, Atlético de Madrid, Ford, Aqualy, Heineken, El Corte Inglés, PwC, Real Madrid); Official Partner (Red Bull); Destination Partner (Madrid Beats). Sin cuantías publicadas.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] El estudio PwC eleva el impacto económico estimado de 2026 a 467 M€, 8.850 empleos y ~83 M€ en impuestos. Es impacto económico, no ingreso.</p>
+        </div>
+        
+        <div class="finding-item" style="display:none;">
+          <div class="fi-dot"></div>
+          <p>[2026-09-10] El circuito está homologado por la FIA (test F3 25-26 de agosto) y las gradas (~98.000 plazas) y barreras instaladas. Riesgos CRÍTICOS de julio resueltos en lo operativo.</p>
         </div>
         
         
         <button onclick="toggleFindings()" id="btnFindings" style="background:var(--surface);color:var(--amber);border:1px solid var(--edge);padding:.35rem .75rem;border-radius:4px;cursor:pointer;font-size:.75rem;margin-top:.25rem;">
-          Ver más (+4)
+          Ver más (+14)
         </button>
         
         
@@ -1138,7 +1202,7 @@
 
     <!-- ── Licitaciones ───────────────────────────────── -->
     <section class="section">
-      <h2 class="section-title">📄 Licitaciones IFEMA (92)</h2>
+      <h2 class="section-title">📄 Licitaciones IFEMA (35)</h2>
       <div class="table-wrap">
         <table class="sortable">
           <thead><tr>
@@ -1155,171 +1219,39 @@
           <tbody>
             
             <tr>
-              <td class="mono" data-val="2026-08-20">2026-08-20</td>
-              <td class="mono" data-val="2026-03-15">2026-03-15</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-09-01">2026-09-01</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Divergencia no resuelta: descrito como servicios profesionales GP F1 (2026-2028) en una fuente y como sistema de acreditación de medios con transporte lanzadera en otra. Importe y adjudicatario sin verificación oficial.">Divergencia no resuelta: descrito como servicios profesionales GP F1 (2026-2028) en una fuente y como sistema de acreditación de medios con transporte lanzadera en otra. Importe y adjudicatario sin verificación oficial.</td>
-              <td class="amount" data-val="0.0">Importe no verificado</td>
+              <td class="mono" data-val="25/211">25/211</td>
+              <td data-val="Medios, acreditaciones, protocolo y atención VIP (sustituye al 25/187 desistido). Hasta 100.000 € para viajes, 186.000 € PR/comunicación y 20.000 € press clipping.">Medios, acreditaciones, protocolo y atención VIP (sustituye al 25/187 desistido). Hasta 100.000 € para viajes, 186.000 € PR/comunicación y 20.000 € press clipping.</td>
+              <td class="amount" data-val="524000.0">524.000,00 € (PBL) / 2.882.000,00 € (VEC)</td>
               <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por confirmar — objeto contractual con divergencia no resuelta">Por confirmar — objeto contractual con divergencia no resuelta</td>
+              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-08-20">2026-08-20</td>
-              <td class="mono" data-val="2026-03-01">2026-03-01</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-09-01">2026-09-01</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Servicios profesionales para el Gran Premio de España F1: desarrollo de simulador F1, programa de embajadores e influencers, agencia creativa audiovisual y agencia de press clipping. El plazo para adjudicación, firma, movilización y prestación efectiva es materialmente insuficiente a 22 días del evento.">Servicios profesionales para el Gran Premio de España F1: desarrollo de simulador F1, programa de embajadores e influencers, agencia creativa audiovisual y agencia de press clipping. El plazo para adjudicación, firma, movilización y prestación efectiva es materialmente insuficiente a 22 días del evento.</td>
-              <td class="amount" data-val="0.0">Importe no publicado — licitación abierta</td>
+              <td class="mono" data-val="24/047 R">24/047 R</td>
+              <td data-val="Asesoramiento jurídico del proyecto F1 (PBL anual 874.500 €; VEC máximo 4.809.750 € con prórrogas y modificación del 50%).">Asesoramiento jurídico del proyecto F1 (PBL anual 874.500 €; VEC máximo 4.809.750 € con prórrogas y modificación del 50%).</td>
+              <td class="amount" data-val="874500.0">874.500,00 € (PBL anual) / 4.809.750,00 € (VEC)</td>
               <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por confirmar — licitación ABIERTA a 20-08-2026">Por confirmar — licitación ABIERTA a 20-08-2026</td>
+              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-08-20">2026-08-20</td>
-              <td class="mono" data-val="2026-02-15">2026-02-15</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2025-09-30">2025-09-30</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Agencia de comunicación digital. PBL publicado: 261.000 €. Valor estimado con prórrogas declarado superior a 1.000.000 €. Posible fraccionamiento contractual no descartado.">Agencia de comunicación digital. PBL publicado: 261.000 €. Valor estimado con prórrogas declarado superior a 1.000.000 €. Posible fraccionamiento contractual no descartado.</td>
-              <td class="amount" data-val="261000.0">261.000,00 € (PBL publicado — valor real estimado superior)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por confirmar — sin adjudicación publicada verificada a 20-08-2026">Por confirmar — sin adjudicación publicada verificada a 20-08-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-20">2026-08-20</td>
-              <td class="mono" data-val="2026-01-15">2026-01-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Pasarelas modulares tramos T9-T10. Erratas no corregidas en publicación oficial. Importe sin verificar.">Pasarelas modulares tramos T9-T10. Erratas no corregidas en publicación oficial. Importe sin verificar.</td>
-              <td class="amount" data-val="0.0">Importe no verificado — erratas en publicación</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por confirmar — erratas no corregidas, importe no publicado verificado">Por confirmar — erratas no corregidas, importe no publicado verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-20">2026-08-20</td>
-              <td class="mono" data-val="2025-06-01">2025-06-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="24/226">24/226</td>
-              <td data-val="Obra principal del circuito de Fórmula 1 de Madrid (trazado, infraestructuras y urbanización). DISCREPANCIA CRÍTICA NO RESUELTA: el mismo alcance es atribuido por fuentes secundarias a la UTE Acciona-Eiffage por 83.206.500,01 €. Adjudicatarios e importes diferentes. Soporte documental oficial no localizado públicamente para ninguna de las dos versiones.">Obra principal del circuito de Fórmula 1 de Madrid (trazado, infraestructuras y urbanización). DISCREPANCIA CRÍTICA NO RESUELTA: el mismo alcance es atribuido por fuentes secundarias a la UTE Acciona-Eiffage por 83.206.500,01 €. Adjudicatarios e importes diferentes. Soporte documental oficial no localizado públicamente para ninguna de las dos versiones.</td>
-              <td class="amount" data-val="85369861.31">85.369.861,31 €</td>
+              <td class="mono" data-val="25/053">25/053</td>
+              <td data-val="Pit Building: ampliación de los pabellones 1 y 2 IFEMA (boxes, oficinas técnicas, logística y Paddock Club). Contrato ADICIONAL al circuito: Eiffage confirma que 'se suma' al contrato de la UTE Acciona-Eiffage.">Pit Building: ampliación de los pabellones 1 y 2 IFEMA (boxes, oficinas técnicas, logística y Paddock Club). Contrato ADICIONAL al circuito: Eiffage confirma que 'se suma' al contrato de la UTE Acciona-Eiffage.</td>
+              <td class="amount" data-val="68100000.0">68.100.000,00 € (adjudicado a Eiffage; adicional al circuito)</td>
               <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Dragados S.A.">Dragados S.A.</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-17">2026-08-17</td>
-              <td class="mono" data-val="2025-01-01">2025-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Servicios VIP, protocolo y media operations">Servicios VIP, protocolo y media operations</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial verificado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicatario publicado verificado">Sin adjudicatario publicado verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-16">2026-08-16</td>
-              <td class="mono" data-val="2025-08-01">2025-08-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Servicios profesionales técnicos asociados al Gran Premio de Fórmula 1 (incluye lotes relacionados con simulador F1, embajadores y agencia creativa). Lotes internos: 2000026784 y 2000026785.">Servicios profesionales técnicos asociados al Gran Premio de Fórmula 1 (incluye lotes relacionados con simulador F1, embajadores y agencia creativa). Lotes internos: 2000026784 y 2000026785.</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial verificado</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="No publicado con importe oficial verificado">No publicado con importe oficial verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-16">2026-08-16</td>
-              <td class="mono" data-val="2024-01-01">2024-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="24/226">24/226</td>
-              <td data-val="Construcción de infraestructuras del circuito Madring (alcance exacto no aclarado públicamente). Discrepancia crítica no resuelta con el contrato UTE Acciona-Eiffage (83.206.500,01 €). Adjudicatarios e importes diferentes sin explicación oficial publicada.">Construcción de infraestructuras del circuito Madring (alcance exacto no aclarado públicamente). Discrepancia crítica no resuelta con el contrato UTE Acciona-Eiffage (83.206.500,01 €). Adjudicatarios e importes diferentes sin explicación oficial publicada.</td>
-              <td class="amount" data-val="85369861.31">85.369.861,31 €</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Dragados S.A. (según documentación verificada en plataforma oficial)">Dragados S.A. (según documentación verificada en plataforma oficial)</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="24/226">24/226</td>
-              <td data-val="Contrato identificado en licitaciones2.ifema.es el 09-08-2026. Naturaleza exacta del alcance pendiente de aclaración: persiste discrepancia con contrato UTE Acciona-Eiffage (83.206.500,01 €). Sin resolución pública de la contradicción entre ambos registros a 10-08-2026.">Contrato identificado en licitaciones2.ifema.es el 09-08-2026. Naturaleza exacta del alcance pendiente de aclaración: persiste discrepancia con contrato UTE Acciona-Eiffage (83.206.500,01 €). Sin resolución pública de la contradicción entre ambos registros a 10-08-2026.</td>
-              <td class="amount" data-val="85369861.31">85.369.861,31 €</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Dragados S.A.">Dragados S.A.</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Servicios VIP, protocolo y media operations. Sin adjudicación publicada verificada a 10-08-2026.">Servicios VIP, protocolo y media operations. Sin adjudicación publicada verificada a 10-08-2026.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Pasarelas modulares entre T9 y T10. Expediente con erratas documentales no corregidas a 10-08-2026. Sin adjudicación publicada verificada. Sin importe publicado visible. A 33 días del evento, el plazo de fabricación y montaje es materialmente insuficiente si la adjudicación no se resuelve de forma inmediata.">Pasarelas modulares entre T9 y T10. Expediente con erratas documentales no corregidas a 10-08-2026. Sin adjudicación publicada verificada. Sin importe publicado visible. A 33 días del evento, el plazo de fabricación y montaje es materialmente insuficiente si la adjudicación no se resuelve de forma inmediata.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Agencia de comunicación digital. PBL publicado: 261.000 €. Valor estimado con prórrogas declarado superior a 1.000.000 €. Discrepancia no resuelta. Riesgo de fraccionamiento de contrato no descartado.">Agencia de comunicación digital. PBL publicado: 261.000 €. Valor estimado con prórrogas declarado superior a 1.000.000 €. Discrepancia no resuelta. Riesgo de fraccionamiento de contrato no descartado.</td>
-              <td class="amount" data-val="261000.0">261.000,00 € (PBL publicado; valor estimado con prórrogas superior a 1.000.000 €)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada verificada">Pendiente de adjudicación publicada verificada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios profesionales Grandes Premios F1 y presentaciones stakeholders, 2026-2028. En estado LICITADO sin importe publicado ni adjudicación verificada a 10-08-2026.">Servicios profesionales Grandes Premios F1 y presentaciones stakeholders, 2026-2028. En estado LICITADO sin importe publicado ni adjudicación verificada a 10-08-2026.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Simulador F1, embajadores, agencia creativa y press clipping. Adjudicado según informe anterior pero sin importe publicado en documento oficial localizado a 10-08-2026.">Simulador F1, embajadores, agencia creativa y press clipping. Adjudicado según informe anterior pero sin importe publicado en documento oficial localizado a 10-08-2026.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Adjudicado (adjudicatario no publicado en fuente oficial verificada)">Adjudicado (adjudicatario no publicado en fuente oficial verificada)</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
+              <td data-val="Eiffage Construcción">Eiffage Construcción</td>
+              <td><a href="https://www.eiffage.es/proyectos/pit-building-formula-1-madrid" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
@@ -1338,227 +1270,11 @@
               <td class="mono" data-val="2026-08-09">2026-08-09</td>
               <td class="mono" data-val="2026-08-09">2026-08-09</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="24/226">24/226</td>
-              <td data-val="Obras para la construcción y posterior reposición de infraestructuras para GP F1 (trazado, reposición de viales públicos)">Obras para la construcción y posterior reposición de infraestructuras para GP F1 (trazado, reposición de viales públicos)</td>
-              <td class="amount" data-val="85369861.31">85.369.861,31 €</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Dragados, S.A.">Dragados, S.A.</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Pasarelas peatonales modulares — instalación, mantenimiento y desmontaje 2026-2028 (ubicación entre curvas T9 y T10). Código interno 2000027685. Estado: licitado con erratas documentales no corregidas a 09-08-2026">Pasarelas peatonales modulares — instalación, mantenimiento y desmontaje 2026-2028 (ubicación entre curvas T9 y T10). Código interno 2000027685. Estado: licitado con erratas documentales no corregidas a 09-08-2026</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documentación disponible</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicatario publicado verificado">Sin adjudicatario publicado verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios profesionales para trabajos de Grandes Premios F1 y presentaciones de stakeholders — GP España 2026-2028. Documento R0252461 localizado">Servicios profesionales para trabajos de Grandes Premios F1 y presentaciones de stakeholders — GP España 2026-2028. Documento R0252461 localizado</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documentación disponible</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicatario publicado verificado">Sin adjudicatario publicado verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/129">25/129</td>
-              <td data-val="Prórroga de contrato (código 2000026722) — concepto exacto del servicio pendiente de verificación documental completa">Prórroga de contrato (código 2000026722) — concepto exacto del servicio pendiente de verificación documental completa</td>
-              <td class="amount" data-val="359469.0">359.469,00 €</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="Sin adjudicatario publicado verificado en esta entrada">Sin adjudicatario publicado verificado en esta entrada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td class="mono" data-val="2026-08-09">2026-08-09</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
               <td class="mono" data-val="25/078">25/078</td>
               <td data-val="Lote 2 (códigos 4000005394 / 4000005395) — concepto exacto del servicio pendiente de verificación documental completa">Lote 2 (códigos 4000005394 / 4000005395) — concepto exacto del servicio pendiente de verificación documental completa</td>
               <td class="amount" data-val="7524.78">7.524,78 €</td>
               <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
               <td data-val="Sin adjudicatario publicado verificado en esta entrada">Sin adjudicatario publicado verificado en esta entrada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-06">2026-08-06</td>
-              <td class="mono" data-val="2025-01-15">2025-01-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Simulador de Fórmula 1, contrato de embajadores (incluye a Carlos Sainz), agencia creativa y servicio de press clipping">Simulador de Fórmula 1, contrato de embajadores (incluye a Carlos Sainz), agencia creativa y servicio de press clipping</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial localizado</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="No publicado oficialmente">No publicado oficialmente</td>
-              <td><a href="https://licitaciones2.ifema.es/expediente/25/140 — adjudicación confirmada; importe sin publicar en portal oficial a 2026-08-07" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-27">2026-07-27</td>
-              <td class="mono" data-val="2026-04-01">2026-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Agencia de comunicación digital. PBL declarado: 261.000 €. Valor estimado con prórrogas declarado: superior a 1.000.000 €">Agencia de comunicación digital. PBL declarado: 261.000 €. Valor estimado con prórrogas declarado: superior a 1.000.000 €</td>
-              <td class="amount" data-val="261000.0">261.000 € (PBL publicado; discrepancia con valor estimado con prórrogas no resuelta)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación verificada">Sin adjudicación verificada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-27">2026-07-27</td>
-              <td class="mono" data-val="2025-03-15">2025-03-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Simulador F1, embajadores de marca (incluye contrato con Carlos Sainz), agencia creativa y press clipping">Simulador F1, embajadores de marca (incluye contrato con Carlos Sainz), agencia creativa y press clipping</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial localizado</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Sin adjudicatario con importe oficial publicado">Sin adjudicatario con importe oficial publicado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Servicios VIP, protocolo y media operations para el Gran Premio de España 2026">Servicios VIP, protocolo y media operations para el Gran Premio de España 2026</td>
-              <td class="amount" data-val="0.0">Importe no publicado — sin adjudicación verificada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No adjudicado — pendiente de verificación">No adjudicado — pendiente de verificación</td>
-              <td><a href="Referencia de informe anterior — sin acto de adjudicación localizado en licitaciones2.ifema.es a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Mantenimiento y desmontaje de 11 pasarelas modulares, período 2026-2028">Mantenimiento y desmontaje de 11 pasarelas modulares, período 2026-2028</td>
-              <td class="amount" data-val="0.0">Importe no publicado — sin adjudicación verificada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No adjudicado — pendiente de verificación">No adjudicado — pendiente de verificación</td>
-              <td><a href="Referencia de informe anterior — sin acto de adjudicación localizado en licitaciones2.ifema.es a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Agencia de comunicación digital — PBL declarado 261.000 €; valor estimado con prórrogas superior a 1.000.000 €">Agencia de comunicación digital — PBL declarado 261.000 €; valor estimado con prórrogas superior a 1.000.000 €</td>
-              <td class="amount" data-val="261000.0">261.000,00 € (PBL publicado; valor real con prórrogas superior a 1.000.000 €)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No adjudicado — pendiente de verificación">No adjudicado — pendiente de verificación</td>
-              <td><a href="licitaciones2.ifema.es — sin adjudicación publicada a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Simulador F1, embajadores (incluye contrato Carlos Sainz), agencia creativa y press clipping">Simulador F1, embajadores (incluye contrato Carlos Sainz), agencia creativa y press clipping</td>
-              <td class="amount" data-val="0.0">Importe no publicado — adjudicado pero sin importe oficial localizado</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Adjudicado — adjudicatario e importe sin publicación verificada">Adjudicado — adjudicatario e importe sin publicación verificada</td>
-              <td><a href="Referencia de informe anterior — importe no localizado en licitaciones2.ifema.es a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Atención a invitados VIP para el Gran Premio de España 2026 (referencia interna 2000027136)">Atención a invitados VIP para el Gran Premio de España 2026 (referencia interna 2000027136)</td>
-              <td class="amount" data-val="0.0">Importe no publicado — sin datos oficiales</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No identificado">No identificado</td>
-              <td><a href="Referencia de informe anterior — sin datos publicados en licitaciones2.ifema.es a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2026-07-01">2026-07-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Atención a invitados VIP para el Gran Premio de Fórmula 1 de Madrid (referencia 2000027136)">Atención a invitados VIP para el Gran Premio de Fórmula 1 de Madrid (referencia 2000027136)</td>
-              <td class="amount" data-val="0.0">Sin importe publicado a 23-VII-2026</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada a 23-VII-2026">Sin adjudicación publicada a 23-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2026-01-20">2026-01-20</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Mantenimiento y desmontaje de 11 pasarelas modulares (2026-2028)">Mantenimiento y desmontaje de 11 pasarelas modulares (2026-2028)</td>
-              <td class="amount" data-val="0.0">Sin importe publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada a 23-VII-2026">Sin adjudicación publicada a 23-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2025-10-01">2025-10-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Desarrollo de simulador F1 del circuito Madring, embajadores, agencia creativa y press clipping">Desarrollo de simulador F1 del circuito Madring, embajadores, agencia creativa y press clipping</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial a 23-VII-2026</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="Pendiente de publicación oficial">Pendiente de publicación oficial</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2025-04-01">2025-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/052">25/052</td>
-              <td data-val="Construcción del circuito Madring: trazado de 5.474 km, 22 curvas, firme, drenaje, urbanización, estructuras temporales y restauración de vías públicas">Construcción del circuito Madring: trazado de 5.474 km, 22 curvas, firme, drenaje, urbanización, estructuras temporales y restauración de vías públicas</td>
-              <td class="amount" data-val="83200000.0">83.200.000,00 € (adjudicación; PBL: 111.000.000 €)</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="UTE Acciona Construcción S.A. (60%) — Eiffage Construcción S.A. (40%)">UTE Acciona Construcción S.A. (60%) — Eiffage Construcción S.A. (40%)</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2025-04-01">2025-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/053">25/053</td>
-              <td data-val="Ampliación de pabellones 1 y 2 de IFEMA: Pit Building, boxes, áreas técnicas y zonas VIP (Paddock Club)">Ampliación de pabellones 1 y 2 de IFEMA: Pit Building, boxes, áreas técnicas y zonas VIP (Paddock Club)</td>
-              <td class="amount" data-val="68100000.0">68.100.000,00 € (cifra citada en sede judicial y fuentes secundarias; sin expediente oficial localizado en portal público)</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="Eiffage Construcción S.A.">Eiffage Construcción S.A.</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-19">2026-07-19</td>
-              <td class="mono" data-val="2025-02-01">2025-02-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Agencia de comunicación digital para el circuito de Fórmula 1 de Madrid. Estrategia de imagen, redes sociales, generación de contenido, diseño, campañas con influencers y cobertura presencial. PBL 261.000 € (IVA excluido). Valor estimado con prórrogas superior a 1 M€. Duración: dos prórrogas anuales más una de 17 meses.">Agencia de comunicación digital para el circuito de Fórmula 1 de Madrid. Estrategia de imagen, redes sociales, generación de contenido, diseño, campañas con influencers y cobertura presencial. PBL 261.000 € (IVA excluido). Valor estimado con prórrogas superior a 1 M€. Duración: dos prórrogas anuales más una de 17 meses.</td>
-              <td class="amount" data-val="261000.0">261.000,00 € (PBL, IVA excluido); valor estimado con prórrogas superior a 1.000.000 €</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada verificada">Sin adjudicación publicada verificada</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
@@ -1575,102 +1291,6 @@
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicio de acreditación desde el MAC (Centro de Distribución) hasta el circuito de Madring; planificación del Media Journey para medios internacionales">Servicio de acreditación desde el MAC (Centro de Distribución) hasta el circuito de Madring; planificación del Media Journey para medios internacionales</td>
-              <td class="amount" data-val="0.0">Importe no localizado con precisión en documento oficial a 15-VII-2026 (PBL publicado: 264.000 €; valor estimado con prórrogas declarado: superior a 1 M€)</td>
-              <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="No publicado en documento oficial localizado">No publicado en documento oficial localizado</td>
-              <td><a href="https://licitaciones2.ifema.es/licitacion/documento?numExpediente=25/187&idDoc=R0252461" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Comunicación digital y marketing del GP de España de F1">Comunicación digital y marketing del GP de España de F1</td>
-              <td class="amount" data-val="0.0">Sin importe oficial publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Servicios VIP, protocolo y media operations del GP de España de F1">Servicios VIP, protocolo y media operations del GP de España de F1</td>
-              <td class="amount" data-val="0.0">Sin importe oficial publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Mantenimiento y desmontaje de 11 pasarelas modulares del circuito (2026-2028)">Mantenimiento y desmontaje de 11 pasarelas modulares del circuito (2026-2028)</td>
-              <td class="amount" data-val="0.0">Sin importe oficial publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td class="mono" data-val="2025-10-01">2025-10-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Comunicación digital y marketing del GP de España 2026">Comunicación digital y marketing del GP de España 2026</td>
-              <td class="amount" data-val="0.0">PBL no confirmado públicamente</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación a 13-VII-2026">Pendiente de adjudicación a 13-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td class="mono" data-val="2025-10-01">2025-10-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Servicios VIP, protocolo y media operations para el GP de España 2026">Servicios VIP, protocolo y media operations para el GP de España 2026</td>
-              <td class="amount" data-val="0.0">PBL no confirmado públicamente</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación a 13-VII-2026">Pendiente de adjudicación a 13-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td class="mono" data-val="2025-06-01">2025-06-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de acreditación y transporte lanzadera para el GP de España 2026">Servicios de acreditación y transporte lanzadera para el GP de España 2026</td>
-              <td class="amount" data-val="264000.0">264.000 € (PBL publicado; valor estimado con prórrogas declarado superior a 1 M€)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación a 13-VII-2026">Pendiente de adjudicación a 13-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-12">2026-07-12</td>
-              <td class="mono" data-val="2026-01-01">2026-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de acreditación y transporte lanzadera para el Gran Premio de España 2026">Servicios de acreditación y transporte lanzadera para el Gran Premio de España 2026</td>
-              <td class="amount" data-val="264000.0">264.000 € (PBL publicado; valor estimado con prórrogas declarado superior a 1 M€)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
               <td class="mono" data-val="2026-07-10">2026-07-10</td>
               <td class="mono" data-val="2026-07-10">2026-07-10</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
@@ -1684,54 +1304,6 @@
             
             <tr>
               <td class="mono" data-val="2026-07-10">2026-07-10</td>
-              <td class="mono" data-val="2026-03-01">2026-03-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Comunicación digital y marketing del GP de España de F1 2026">Comunicación digital y marketing del GP de España de F1 2026</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-10">2026-07-10</td>
-              <td class="mono" data-val="2026-02-01">2026-02-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Mantenimiento y desmontaje de 11 pasarelas modulares del circuito (período 2026-2028); enmiendas al pliego notificadas">Mantenimiento y desmontaje de 11 pasarelas modulares del circuito (período 2026-2028); enmiendas al pliego notificadas</td>
-              <td class="amount" data-val="0.0">Importe no publicado; enmiendas notificadas</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-10">2026-07-10</td>
-              <td class="mono" data-val="2026-01-15">2026-01-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Servicios VIP, protocolo y media operations para el GP de España de F1 2026">Servicios VIP, protocolo y media operations para el GP de España de F1 2026</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-10">2026-07-10</td>
-              <td class="mono" data-val="2025-09-01">2025-09-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de acreditación y transporte lanzadera para el GP de España de F1 2026">Servicios de acreditación y transporte lanzadera para el GP de España de F1 2026</td>
-              <td class="amount" data-val="264000.0">264.000 € (PBL publicado; valor estimado con prórrogas declarado superior a 1 M€ — posible riesgo de fraccionamiento)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-10">2026-07-10</td>
               <td class="mono" data-val="2025-04-01">2025-04-01</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
               <td class="mono" data-val="25/062">25/062</td>
@@ -1739,30 +1311,6 @@
               <td class="amount" data-val="1292855.55">1.292.855,55 €</td>
               <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
               <td data-val="Por confirmar">Por confirmar</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-10">2026-07-10</td>
-              <td class="mono" data-val="2025-03-15">2025-03-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/047">25/047</td>
-              <td data-val="Modificación número 1 del contrato principal de construcción del circuito (alcance técnico ampliado: desviación de colectores, aguas pluviales y pozos de inspección en sección urbana — Ribera del Sena, Vía de Dublín, Francisco Umbral)">Modificación número 1 del contrato principal de construcción del circuito (alcance técnico ampliado: desviación de colectores, aguas pluviales y pozos de inspección en sección urbana — Ribera del Sena, Vía de Dublín, Francisco Umbral)</td>
-              <td class="amount" data-val="2100000.0">~2.100.000 € (estimación derivada de modificado declarado; sin documento oficial publicado)</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="Por confirmar">Por confirmar</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-08">2026-07-08</td>
-              <td class="mono" data-val="2025-01-01">2025-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de acreditación y transporte lanzadera: gestión de espacios para medios de comunicación, sistema de acreditaciones de prensa acreditada actuando en nombre del promotor del GP en coordinación con la dirección de F1, y gestión de servicio de transporte lanzadera gratuito. PBL publicado: 264.000 €; valor estimado con prórrogas declarado superior a 1 M€.">Servicios de acreditación y transporte lanzadera: gestión de espacios para medios de comunicación, sistema de acreditaciones de prensa acreditada actuando en nombre del promotor del GP en coordinación con la dirección de F1, y gestión de servicio de transporte lanzadera gratuito. PBL publicado: 264.000 €; valor estimado con prórrogas declarado superior a 1 M€.</td>
-              <td class="amount" data-val="264000.0">264.000 € (PBL publicado) — valor estimado con prórrogas superior a 1 M€ según declaraciones</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada a 8 de julio de 2026">Sin adjudicación publicada a 8 de julio de 2026</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
@@ -1779,159 +1327,15 @@
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-07-06">2026-07-06</td>
-              <td class="mono" data-val="2026-01-01">2026-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Mantenimiento y desmontaje de 11 pasarelas modulares (2026-2028). Enmiendas notificadas; adjudicación no publicada a 7 de julio de 2026.">Mantenimiento y desmontaje de 11 pasarelas modulares (2026-2028). Enmiendas notificadas; adjudicación no publicada a 7 de julio de 2026.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por adjudicar">Por adjudicar</td>
-              <td><a href="https://licitaciones2.ifema.es/licitaciones/26-024 — Enmiendas notificadas; adjudicación no publicada." target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-06">2026-07-06</td>
-              <td class="mono" data-val="2026-01-01">2026-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Expediente sin descripción oficial pública confirmada. Sin resolución publicada a 7 de julio de 2026.">Expediente sin descripción oficial pública confirmada. Sin resolución publicada a 7 de julio de 2026.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por determinar">Por determinar</td>
-              <td><a href="https://licitaciones2.ifema.es/licitaciones/26-010 — Sin adjudicación ni resolución publicada." target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-06">2026-07-06</td>
-              <td class="mono" data-val="2025-04-01">2025-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de acreditación y transporte lanzadera para el Gran Premio de Fórmula 1 de Madrid 2026: validación documental, coordinación con F1, control de duplicados y revocaciones, entrega de acreditaciones, estadísticas en tiempo real y soporte técnico">Servicios de acreditación y transporte lanzadera para el Gran Premio de Fórmula 1 de Madrid 2026: validación documental, coordinación con F1, control de duplicados y revocaciones, entrega de acreditaciones, estadísticas en tiempo real y soporte técnico</td>
-              <td class="amount" data-val="264000.0">264.000,00 € (PBL, IVA excluido). Valor estimado con prórrogas: superior a 1.000.000 €</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por adjudicar">Por adjudicar</td>
-              <td><a href="https://licitaciones2.ifema.es/licitaciones/25-187" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-06">2026-07-06</td>
-              <td class="mono" data-val="2025-04-01">2025-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Servicios profesionales técnicos: estrategia de imagen de marca, comunicación digital, redes sociales, generación de contenido, diseño, producción, cobertura presencial, campañas con influencers, VIP, Media Operations y Protocolo">Servicios profesionales técnicos: estrategia de imagen de marca, comunicación digital, redes sociales, generación de contenido, diseño, producción, cobertura presencial, campañas con influencers, VIP, Media Operations y Protocolo</td>
-              <td class="amount" data-val="261000.0">261.000,00 € (PBL, IVA excluido). Valor estimado con prórrogas: superior a 1.000.000 €</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Por adjudicar">Por adjudicar</td>
-              <td><a href="https://licitaciones2.ifema.es/licitaciones/25-140" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
               <td class="mono" data-val="2026-07-03">2026-07-03</td>
               <td class="mono" data-val="2026-07-02">2026-07-02</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
               <td class="mono" data-val="25/187">25/187</td>
               <td data-val="Atención a Invitados VIP para el Gran Premio de Fórmula 1 de Madrid: gestión de zonas mixtas de entrevistas (Media Pens), Sala de Conferencia de Prensa, coordinación de medios fotográficos acreditados durante los 3 días del GP, servicio integral de gestión de VIP y protocolo, y servicio de transporte lanzadera gratuito desde el MAC hasta el circuito de Madring.">Atención a Invitados VIP para el Gran Premio de Fórmula 1 de Madrid: gestión de zonas mixtas de entrevistas (Media Pens), Sala de Conferencia de Prensa, coordinación de medios fotográficos acreditados durante los 3 días del GP, servicio integral de gestión de VIP y protocolo, y servicio de transporte lanzadera gratuito desde el MAC hasta el circuito de Madring.</td>
-              <td class="amount" data-val="0.0">Presupuesto base de licitación no publicado en fuente consultada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
+              <td class="amount" data-val="0.0">Desistido; sustituido por el expediente 25/211</td>
+              <td data-val="desistido"><span class="badge badge-desistido">desistido</span></td>
               <td data-val="Pendiente de adjudicación">Pendiente de adjudicación</td>
               <td><a href="https://licitaciones2.ifema.es (expediente 25/187, consultado 3 julio 2026)" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2026-07-02">2026-07-02</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Programas de Servicios - Comunicación y Producción (múltiples lotes): contratación de embajadores del GP de España de F1, agencia creativa para material audiovisual y agencia de press clipping.">Programas de Servicios - Comunicación y Producción (múltiples lotes): contratación de embajadores del GP de España de F1, agencia creativa para material audiovisual y agencia de press clipping.</td>
-              <td class="amount" data-val="0.0">Presupuesto base de licitación no publicado en fuente consultada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación">Pendiente de adjudicación</td>
-              <td><a href="https://licitaciones2.ifema.es (expediente 25/140, consultado 3 julio 2026)" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2026-04-01">2026-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/024">26/024</td>
-              <td data-val="Mantenimiento y desmontaje de 11 pasarelas modulares del circuito de Madring (2026-2028)">Mantenimiento y desmontaje de 11 pasarelas modulares del circuito de Madring (2026-2028)</td>
-              <td class="amount" data-val="0.0">Importe no publicado; enmiendas notificadas a 3 de julio de 2026</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No publicado a 3 de julio de 2026">No publicado a 3 de julio de 2026</td>
-              <td><a href="https://licitaciones2.ifema.es/licitacion/26/024 — expediente identificado con enmiendas notificadas; adjudicación no localizada." target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2026-03-01">2026-03-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/010">26/010</td>
-              <td data-val="Prórroga de plazo solicitada en marzo de 2026 (objeto completo no publicado)">Prórroga de plazo solicitada en marzo de 2026 (objeto completo no publicado)</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No publicado a 3 de julio de 2026">No publicado a 3 de julio de 2026</td>
-              <td><a href="https://licitaciones2.ifema.es/licitacion/26/010 — expediente identificado; tramitación activa; resolución no localizada." target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2026-01-01">2026-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Objeto no publicado; expediente en fase de resolución opaca">Objeto no publicado; expediente en fase de resolución opaca</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No publicado a 3 de julio de 2026">No publicado a 3 de julio de 2026</td>
-              <td><a href="https://licitaciones2.ifema.es — expediente referenciado en informe anterior; resolución no localizada a fecha del informe." target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2025-04-08">2025-04-08</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de comunicación digital y redes sociales para la difusión del Gran Premio de España F1 2026, incluyendo publicidad, marketing y promoción. Valor estimado superior a 1 M€ con prórrogas.">Servicios de comunicación digital y redes sociales para la difusión del Gran Premio de España F1 2026, incluyendo publicidad, marketing y promoción. Valor estimado superior a 1 M€ con prórrogas.</td>
-              <td class="amount" data-val="264000.0">264.000,00 € (presupuesto base IVA excluido; valor estimado con prórrogas superior a 1.000.000 €)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de confirmar en fuente oficial">Pendiente de confirmar en fuente oficial</td>
-              <td><a href="https://licitaciones2.ifema.es (expediente 25/187 — adjudicación no localizada; PBL confirmado por fuentes secundarias)" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2025-02-01">2025-02-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Servicios de acreditación y transporte lanzadera para el Gran Premio de España de Fórmula 1 2026">Servicios de acreditación y transporte lanzadera para el Gran Premio de España de Fórmula 1 2026</td>
-              <td class="amount" data-val="264000.0">264.000,00 € (PBL declarado; valor estimado con prórrogas declarado superior a 1 M€ por fuentes secundarias)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No publicado a 3 de julio de 2026">No publicado a 3 de julio de 2026</td>
-              <td><a href="https://licitaciones2.ifema.es/licitacion/25/187 — expediente identificado; pliego técnico publicado; adjudicación no localizada a fecha del informe." target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-03">2026-07-03</td>
-              <td class="mono" data-val="2025-01-01">2025-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Servicios profesionales técnicos: simulador F1, contratación de embajadores, agencia creativa audiovisual, Media Operations (MAC, media center, TV pen, sala de prensa FIA), VIP Services y protocolo FIA/F1 (himno, parrilla, podio).">Servicios profesionales técnicos: simulador F1, contratación de embajadores, agencia creativa audiovisual, Media Operations (MAC, media center, TV pen, sala de prensa FIA), VIP Services y protocolo FIA/F1 (himno, parrilla, podio).</td>
-              <td class="amount" data-val="0.0">Importe no localizado en fuente oficial</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="Pendiente de confirmar en fuente oficial">Pendiente de confirmar en fuente oficial</td>
-              <td><a href="https://licitaciones2.ifema.es (expediente 25/140 — importe no publicado en fuente consultada)" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-02">2026-07-02</td>
-              <td class="mono" data-val="2026-06-26">2026-06-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="26/113">26/113</td>
-              <td data-val="Licitación 26/113: objeto exacto no publicado en fuentes accesibles al cierre del plazo (26 junio 2026); adjudicación no localizada">Licitación 26/113: objeto exacto no publicado en fuentes accesibles al cierre del plazo (26 junio 2026); adjudicación no localizada</td>
-              <td class="amount" data-val="0.0">Importe no localizado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es — referencia al expediente 26/113 procedente del informe anterior; adjudicación no confirmada" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
@@ -2178,23 +1582,11 @@
               <td class="mono" data-val="2026-06-24">2026-06-24</td>
               <td class="mono" data-val="2025-04-15">2025-04-15</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/187">25/187</td>
-              <td data-val="Gestion de prensa, acreditaciones, protocolo, hospitality y VIP.">Gestion de prensa, acreditaciones, protocolo, hospitality y VIP.</td>
-              <td class="amount" data-val="424000.0">424.000,00 € (PBL) / 2.332.000,00 € (VEC)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="">—</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-06-24">2026-06-24</td>
-              <td class="mono" data-val="2025-04-15">2025-04-15</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
               <td class="mono" data-val="24/226">24/226</td>
-              <td data-val="Construccion del circuito MADRING y reposicion de infraestructuras. UTE Acciona (60%) - Eiffage (40%).">Construccion del circuito MADRING y reposicion de infraestructuras. UTE Acciona (60%) - Eiffage (40%).</td>
-              <td class="amount" data-val="83206500.0">83.206.500,00 € (adjudicacion) + 2.304.868,93 € (modificacion prevista)</td>
+              <td data-val="Construcción del circuito MADRING y reposición de infraestructuras (adjudicación 83.206.500,01 € + modificación 2.304.868,93 €).">Construcción del circuito MADRING y reposición de infraestructuras (adjudicación 83.206.500,01 € + modificación 2.304.868,93 €).</td>
+              <td class="amount" data-val="85511368.94">85.511.368,94 € (adjudicación 83.206.500,01 € + modificación 2.304.868,93 €)</td>
               <td data-val="adjudicado"><span class="badge badge-adjudicado">adjudicado</span></td>
-              <td data-val="">—</td>
+              <td data-val="UTE Acciona (60%) - Eiffage (40%)">UTE Acciona (60%) - Eiffage (40%)</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
@@ -2217,18 +1609,6 @@
               <td class="mono" data-val="25/152">25/152</td>
               <td data-val="Produccion audiovisual integral del GP (TV, web, redes, sponsors, pantallas, drones, animaciones 3D).">Produccion audiovisual integral del GP (TV, web, redes, sponsors, pantallas, drones, animaciones 3D).</td>
               <td class="amount" data-val="236000.0">236.000,00 € (PBL) / ~1.200.000,00 € (VEC estimado)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="">—</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-06-24">2026-06-24</td>
-              <td class="mono" data-val="2025-03-01">2025-03-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="25/140">25/140</td>
-              <td data-val="Asistencia tecnica, economica y juridica para preparar licitaciones de Formula 1.">Asistencia tecnica, economica y juridica para preparar licitaciones de Formula 1.</td>
-              <td class="amount" data-val="390600.0">390.600,00 € (PBL) / 976.500,00 € (VEC)</td>
               <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
               <td data-val="">—</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
@@ -2265,7 +1645,7 @@
 
     <!-- ── Contratos menores ──────────────────────────── -->
     <section class="section">
-      <h2 class="section-title">📋 Contratos menores y otros (51)
+      <h2 class="section-title">📋 Contratos menores y otros (34)
         <button onclick="exportTable('contratosMenoresTable')" style="margin-left:auto;background:var(--surface);color:var(--amber);border:1px solid var(--edge);padding:.25rem .65rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">📥 CSV</button>
       </h2>
       <div class="table-wrap">
@@ -2284,111 +1664,63 @@
           <tbody>
             
             <tr>
-              <td class="mono" data-val="2026-08-17">2026-08-17</td>
-              <td class="mono" data-val="2025-01-01">2025-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos, lote 1">Servicios profesionales técnicos, lote 1</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial verificado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicatario publicado verificado">Sin adjudicatario publicado verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-09-03">2026-09-03</td>
+              <td data-val="Ayuntamiento de Madrid / Madrid Destino">Ayuntamiento de Madrid / Madrid Destino</td>
+              <td class="mono" data-val="ACUERDO-JG-28">ACUERDO-JG-28</td>
+              <td data-val="Aportación extraordinaria de 1,9 M€ a Madrid Destino para modificar el convenio de promoción internacional F1 (Destination Signage Package). BOAM 07/09/2026.">Aportación extraordinaria de 1,9 M€ a Madrid Destino para modificar el convenio de promoción internacional F1 (Destination Signage Package). BOAM 07/09/2026.</td>
+              <td class="amount" data-val="1900000.0">1.900.000,00 € (compromiso oficial acreditado, BOAM 07/09/2026)</td>
+              <td data-val="comprometido"><span class="badge badge-comprometido">comprometido</span></td>
+              <td data-val="Madrid Destino">Madrid Destino</td>
+              <td><a href="https://www.madrid.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-08-17">2026-08-17</td>
-              <td class="mono" data-val="2025-01-01">2025-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos, lote 2">Servicios profesionales técnicos, lote 2</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial verificado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicatario publicado verificado">Sin adjudicatario publicado verificado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-16">2026-08-16</td>
-              <td class="mono" data-val="2024-01-01">2024-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos, lote 1 (subexpediente de 25/140). Sin adjudicación publicada verificada.">Servicios profesionales técnicos, lote 1 (subexpediente de 25/140). Sin adjudicación publicada verificada.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No publicado">No publicado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-16">2026-08-16</td>
-              <td class="mono" data-val="2024-01-01">2024-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos, lote 2 (subexpediente de 25/140). Sin adjudicación publicada verificada.">Servicios profesionales técnicos, lote 2 (subexpediente de 25/140). Sin adjudicación publicada verificada.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No publicado">No publicado</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos, lote 1. Sin adjudicación publicada verificada a 10-08-2026. A 33 días del evento, el plazo operativo es materialmente crítico.">Servicios profesionales técnicos, lote 1. Sin adjudicación publicada verificada a 10-08-2026. A 33 días del evento, el plazo operativo es materialmente crítico.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-08-11">2026-08-11</td>
+              <td data-val="Comunidad de Madrid">Comunidad de Madrid</td>
+              <td class="mono" data-val="EG/2026/0000009265">EG/2026/0000009265</td>
+              <td data-val="Promoción de productos agroalimentarios madrileños durante el GP de F1 (encargo a TRAGSATEC).">Promoción de productos agroalimentarios madrileños durante el GP de F1 (encargo a TRAGSATEC).</td>
+              <td class="amount" data-val="167354.13">167.354,13 € (formalizado)</td>
+              <td data-val="ejecutado"><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td data-val="TRAGSATEC">TRAGSATEC</td>
               <td><a href="https://contrataciondelestado.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
-              <td class="mono" data-val="2026-08-10">2026-08-10</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-07-20">2026-07-20</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos, lote 2. Sin adjudicación publicada verificada a 10-08-2026. A 33 días del evento, el plazo operativo es materialmente crítico.">Servicios profesionales técnicos, lote 2. Sin adjudicación publicada verificada a 10-08-2026. A 33 días del evento, el plazo operativo es materialmente crítico.</td>
-              <td class="amount" data-val="0.0">Importe no publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://contrataciondelestado.es" target="_blank">🔗</a></td>
+              <td class="mono" data-val="PEND-BUGGIES">PEND-BUGGIES</td>
+              <td data-val="Alquiler de buggies eléctricos para el GP de F1.">Alquiler de buggies eléctricos para el GP de F1.</td>
+              <td class="amount" data-val="68090.0">68.090,00 € (detectado; pendiente de resolución/pliego directo)</td>
+              <td data-val="pendiente_confirmar"><span class="badge badge-pendiente_confirmar">pendiente confirmar</span></td>
+              <td data-val="Por identificar">Por identificar</td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-08-06">2026-08-06</td>
-              <td class="mono" data-val="2025-11-01">2025-11-01</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-07-17">2026-07-17</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos para el Gran Premio de España F1 2026 — Lote 1">Servicios profesionales técnicos para el Gran Premio de España F1 2026 — Lote 1</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial localizado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de verificación">Pendiente de verificación</td>
-              <td><a href="https://licitaciones2.ifema.es — expediente identificado en informe previo; adjudicación no publicada a 2026-08-07" target="_blank">🔗</a></td>
+              <td class="mono" data-val="PEND-SCOOTERS">PEND-SCOOTERS</td>
+              <td data-val="Alquiler de scooters eléctricos para el GP de F1.">Alquiler de scooters eléctricos para el GP de F1.</td>
+              <td class="amount" data-val="46104.0">46.104,00 € (detectado; pendiente de resolución/pliego directo)</td>
+              <td data-val="pendiente_confirmar"><span class="badge badge-pendiente_confirmar">pendiente confirmar</span></td>
+              <td data-val="Por identificar">Por identificar</td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-08-06">2026-08-06</td>
-              <td class="mono" data-val="2025-11-01">2025-11-01</td>
+              <td class="mono" data-val="2026-09-10">2026-09-10</td>
+              <td class="mono" data-val="2026-07-01">2026-07-01</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos para el Gran Premio de España F1 2026 — Lote 2">Servicios profesionales técnicos para el Gran Premio de España F1 2026 — Lote 2</td>
-              <td class="amount" data-val="0.0">Importe no publicado en documento oficial localizado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de verificación">Pendiente de verificación</td>
-              <td><a href="https://licitaciones2.ifema.es — expediente identificado en informe previo; adjudicación no publicada a 2026-08-07" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-08-06">2026-08-06</td>
-              <td class="mono" data-val="2025-06-01">2025-06-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026766">2000026766</td>
-              <td data-val="Modificación n.º 1 del contrato de construcción del trazado principal del circuito">Modificación n.º 1 del contrato de construcción del trazado principal del circuito</td>
-              <td class="amount" data-val="3010354.31">3.010.354,31 €</td>
-              <td data-val="en_ejecución"><span class="badge badge-en_ejecución">en ejecución</span></td>
-              <td data-val="Sin verificar en portal oficial">Sin verificar en portal oficial</td>
-              <td><a href="https://licitaciones2.ifema.es — importe identificado en informes previos; expediente con número real pendiente de verificación cruzada" target="_blank">🔗</a></td>
+              <td class="mono" data-val="PEND-CERRAMIENTOS">PEND-CERRAMIENTOS</td>
+              <td data-val="Cerramientos temporales y lona personalizada del GP de F1.">Cerramientos temporales y lona personalizada del GP de F1.</td>
+              <td class="amount" data-val="203911.0">203.911,00 € (detectado; pendiente de resolución/pliego directo)</td>
+              <td data-val="pendiente_confirmar"><span class="badge badge-pendiente_confirmar">pendiente confirmar</span></td>
+              <td data-val="Por identificar">Por identificar</td>
+              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
@@ -2404,114 +1736,6 @@
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-07-27">2026-07-27</td>
-              <td class="mono" data-val="2025-09-01">2025-09-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos, lote 1">Servicios profesionales técnicos, lote 1</td>
-              <td class="amount" data-val="0.0">Importe sin adjudicación publicada verificada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación verificada">Sin adjudicación verificada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-27">2026-07-27</td>
-              <td class="mono" data-val="2025-09-01">2025-09-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos, lote 2">Servicios profesionales técnicos, lote 2</td>
-              <td class="amount" data-val="0.0">Importe sin adjudicación publicada verificada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación verificada">Sin adjudicación verificada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos, lote 1">Servicios profesionales técnicos, lote 1</td>
-              <td class="amount" data-val="0.0">Importe no publicado — sin adjudicación verificada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No adjudicado — pendiente de verificación">No adjudicado — pendiente de verificación</td>
-              <td><a href="Referencia de informe anterior — sin acto de adjudicación localizado en licitaciones2.ifema.es a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td class="mono" data-val="2026-07-26">2026-07-26</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos, lote 2">Servicios profesionales técnicos, lote 2</td>
-              <td class="amount" data-val="0.0">Importe no publicado — sin adjudicación verificada</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="No adjudicado — pendiente de verificación">No adjudicado — pendiente de verificación</td>
-              <td><a href="Referencia de informe anterior — sin acto de adjudicación localizado en licitaciones2.ifema.es a 26-VII-2026" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2026-04-01">2026-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos, lote 1">Servicios profesionales técnicos, lote 1</td>
-              <td class="amount" data-val="0.0">Sin importe publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada a 23-VII-2026">Sin adjudicación publicada a 23-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-23">2026-07-23</td>
-              <td class="mono" data-val="2026-04-01">2026-04-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos, lote 2">Servicios profesionales técnicos, lote 2</td>
-              <td class="amount" data-val="0.0">Sin importe publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada a 23-VII-2026">Sin adjudicación publicada a 23-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos — Lote 1 (dos lotes)">Servicios profesionales técnicos — Lote 1 (dos lotes)</td>
-              <td class="amount" data-val="0.0">Sin importe oficial publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-15">2026-07-15</td>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos — Lote 2 (dos lotes)">Servicios profesionales técnicos — Lote 2 (dos lotes)</td>
-              <td class="amount" data-val="0.0">Sin importe oficial publicado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-13">2026-07-13</td>
-              <td class="mono" data-val="2025-06-01">2025-06-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos — Lote 1: análisis de datos, analítica digital, registro de visitantes y ticketing">Servicios profesionales técnicos — Lote 1: análisis de datos, analítica digital, registro de visitantes y ticketing</td>
-              <td class="amount" data-val="264000.0">264.000 € (PBL publicado; valor estimado con prórrogas declarado superior a 1 M€)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación a 13-VII-2026">Pendiente de adjudicación a 13-VII-2026</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
               <td class="mono" data-val="2026-07-13">2026-07-13</td>
               <td class="mono" data-val="2025-06-01">2025-06-01</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
@@ -2524,48 +1748,12 @@
             </tr>
             
             <tr>
-              <td class="mono" data-val="2026-07-12">2026-07-12</td>
-              <td class="mono" data-val="2026-01-01">2026-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026784">2000026784</td>
-              <td data-val="Servicios profesionales técnicos — Lote 1 (simulador, embajadores, agencia creativa, press clipping)">Servicios profesionales técnicos — Lote 1 (simulador, embajadores, agencia creativa, press clipping)</td>
-              <td class="amount" data-val="264000.0">264.000 € (PBL publicado)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-12">2026-07-12</td>
-              <td class="mono" data-val="2026-01-01">2026-01-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos — Lote 2">Servicios profesionales técnicos — Lote 2</td>
-              <td class="amount" data-val="0.0">Importe PBL no localizado en documento oficial verificado</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Pendiente de adjudicación publicada">Pendiente de adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
               <td class="mono" data-val="2026-07-10">2026-07-10</td>
               <td class="mono" data-val="2025-08-01">2025-08-01</td>
               <td data-val="IFEMA Madrid">IFEMA Madrid</td>
               <td class="mono" data-val="2000026784">2000026784</td>
               <td data-val="Servicios profesionales técnicos asociados al GP de F1 — Lote 1 (gestión de contratación y compras; alcance ampliado confirmado: simulador, embajadores, agencia creativa, press clipping)">Servicios profesionales técnicos asociados al GP de F1 — Lote 1 (gestión de contratación y compras; alcance ampliado confirmado: simulador, embajadores, agencia creativa, press clipping)</td>
               <td class="amount" data-val="264000.0">264.000 € (PBL lote 1; valor con prórrogas declarado superior a 1 M€ sin soporte documental)</td>
-              <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
-              <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
-              <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-07-10">2026-07-10</td>
-              <td class="mono" data-val="2025-08-01">2025-08-01</td>
-              <td data-val="IFEMA Madrid">IFEMA Madrid</td>
-              <td class="mono" data-val="2000026785">2000026785</td>
-              <td data-val="Servicios profesionales técnicos asociados al GP de F1 — Lote 2 (personal técnico adscrito al evento)">Servicios profesionales técnicos asociados al GP de F1 — Lote 2 (personal técnico adscrito al evento)</td>
-              <td class="amount" data-val="0.0">Importe no publicado; referencia interna IFEMA 2000026785</td>
               <td data-val="licitado"><span class="badge badge-licitado">licitado</span></td>
               <td data-val="Sin adjudicación publicada">Sin adjudicación publicada</td>
               <td><a href="https://licitaciones2.ifema.es" target="_blank">🔗</a></td>
@@ -2841,22 +2029,10 @@
               <td data-val="Comunidad de Madrid">Comunidad de Madrid</td>
               <td class="mono" data-val="FANZONE-SOL-2026">FANZONE-SOL-2026</td>
               <td data-val="Fan Zone Puerta del Sol.">Fan Zone Puerta del Sol.</td>
-              <td class="amount" data-val="121000.0">121.000,00 €</td>
-              <td data-val="ejecutado"><span class="badge badge-ejecutado">ejecutado</span></td>
+              <td class="amount" data-val="0.0">Liquidación 0,00 € (no se cuenta como gasto ejecutado)</td>
+              <td data-val="desistido"><span class="badge badge-desistido">desistido</span></td>
               <td data-val="">—</td>
               <td><a href="https://www.comunidad.madrid" target="_blank">🔗</a></td>
-            </tr>
-            
-            <tr>
-              <td class="mono" data-val="2026-06-24">2026-06-24</td>
-              <td class="mono" data-val="2025-09-30">2025-09-30</td>
-              <td data-val="IFEMA Madrid / Eiffage">IFEMA Madrid / Eiffage</td>
-              <td class="mono" data-val="PIT-BUILDING-2025">PIT-BUILDING-2025</td>
-              <td data-val="Pit Building: ampliacion pabellones 1 y 2 IFEMA (boxes, oficinas tecnicas, logistica, Paddock Club, areas VIP). Pendiente localizar expediente IFEMA completo.">Pit Building: ampliacion pabellones 1 y 2 IFEMA (boxes, oficinas tecnicas, logistica, Paddock Club, areas VIP). Pendiente localizar expediente IFEMA completo.</td>
-              <td class="amount" data-val="68100000.0">68.100.000,00 € (segun Eiffage y medios economicos)</td>
-              <td data-val="pendiente_confirmar"><span class="badge badge-pendiente_confirmar">pendiente confirmar</span></td>
-              <td data-val="">—</td>
-              <td><a href="https://cincodias.elpais.com/companias/2025-09-30/eiffage-construccion-levantara-el-pit-building-del-gran-premio-de-f1-de-espana-en-madrid.html" target="_blank">🔗</a></td>
             </tr>
             
             <tr>
@@ -2910,43 +2086,27 @@
           <ul class="risk-list">
             
             
-            <li data-icon="🔴">EXTREMO — Pruebas de Fórmula 3 del 24-25 de agosto de 2026: a menos de 96 horas desde la fecha de este informe, el circuito debe estar homologado operativamente. No consta publicación del expediente de organización, del certificado de homologación FIA Grado 1 definitivo ni del acta de finalización de gradas y vallas de seguridad en ningún portal oficial.</li>
+            <li data-icon="🔴">CRÍTICO — El canon a FOM/Liberty Media sigue sin publicarse oficialmente a 10-IX-2026. Retiramos la hipótesis de 48 M€/año; la única cifra en prensa (277 M€/10 años) no está acreditada.</li>
             
-            <li data-icon="🔴">EXTREMO — Gradas temporales para hasta 110.000 espectadores: instalación en curso sin expediente público con número real verificado, sin adjudicatario oficial publicado y sin porcentaje de instalación certificado a 20-08-2026. La tribuna La Monumental (45.000 asientos, inclinación 24%) no cuenta con certificado de seguridad estructural publicado.</li>
+            <li data-icon="🔴">CRÍTICO — El gasto de IFEMA se aproxima a 180 M€ (elDiario.es: casi 183 M€), no a los 100 M€ iniciales. Falta homogeneizar IVA, adjudicaciones y PBL.</li>
             
-            <li data-icon="🔴">EXTREMO — Vallas de seguridad del circuito: información contradictoria entre fuentes. Sin expediente público verificable ni cronograma oficial de terminación. Elemento imprescindible para la homologación operativa FIA previa a las pruebas de F3 del 24-25 de agosto.</li>
+            <li data-icon="🔴">ALTO — A un día del GP, los costes públicos operativos (policía, SAMUR, bomberos, Metro, Cercanías, EMT) están sin precio publicado; estimamos ≈2,6 M€, con 0 € confirmado.</li>
             
-            <li data-icon="🔴">EXTREMO — Discrepancia crítica no resuelta entre expediente 24/226 (Dragados S.A., 85.369.861,31 €) y contrato UTE Acciona-Eiffage (83.206.500,01 €): adjudicatarios diferentes, importes diferentes, alcances no aclarados a 20-08-2026. Impide determinar el coste real de la obra principal.</li>
+            <li data-icon="🔴">ALTO — Vacío en los contratos menores de IFEMA de 2026 (solo 2023-2025 publicados), justo antes del GP.</li>
             
-            <li data-icon="🔴">CRÍTICO — Expediente 25/140 en licitación abierta a 20-08-2026, a menos de 5 días de las pruebas de F3 y a 22 días del Gran Premio: el plazo para adjudicación, firma, movilización y prestación efectiva es materialmente insuficiente.</li>
+            <li data-icon="🔴">ALTO — Sigue sin conocerse el coste de la bandera gigante, el acto oficial, los buses vinilados, patrocinios institucionales y el contrato FOM completo.</li>
             
-            <li data-icon="🔴">CRÍTICO — Cinco expedientes de servicios operacionales sin adjudicación publicada verificada a 20-08-2026: 2000026784, 2000026785, 26/010, 26/024, 26/113.</li>
+            <li data-icon="🔴">ALTO — Según la Memoria de IFEMA (concesión 13 años), el proyecto arroja un VAN de -18 M€ y una TIR de -0,961%.</li>
             
-            <li data-icon="🔴">CRÍTICO — Tres frentes litigiosos activos simultáneos sin resolución publicada: (1) TSJM, recurso de Liberum Natura contra el Plan Especial; (2) Juzgado n.º 22 de Madrid, recurso de Liberum Natura contra la licencia de obras; (3) Tribunal Regional de Colonia, Dromo contra IFEMA-Tilke (reclamación mínima 6.000.000 € más derechos de explotación).</li>
+            <li data-icon="🔴">ALTO — Litigio Dromo-Tilke por la propiedad intelectual del trazado (6 M€, procedimiento penal en Colonia) sin resolución.</li>
             
-            <li data-icon="🔴">ALTO — Documento oficial de homologación FIA Grado 1 definitivo no publicado en portal oficial a 20-08-2026, pese a que la inspección favorable fue reportada por Madring el 23-06-2026.</li>
+            <li data-icon="🔴">MEDIO — Robo de 300 m de cableado de generadores a dos semanas del GP.</li>
             
-            <li data-icon="🔴">ALTO — Pit Building sin acta de recepción administrativa formal publicada a 20-08-2026.</li>
+            <li data-icon="🔴">MEDIO — Un estudio de ruido cifra en 14.000 las personas expuestas por encima del límite legal.</li>
             
-            <li data-icon="🔴">ALTO — Canon FOM/Liberty Media declarado en 48.000.000 €/año (480.000.000 € a diez años) sin soporte documental oficial publicado.</li>
+            <li data-icon="🔴">MEDIO — La pasarela de ganado sobre la M-11 (6-10 M€) no estaba prevista.</li>
             
-            <li data-icon="🔴">ALTO — Cifra de más de 130 millones de euros en gasto público acumulado citada en análisis externos con base en datos judiciales contradice el discurso oficial de coste cero para el erario.</li>
-            
-            <li data-icon="🔴">ALTO — Ausencia de expedientes reales verificados para los dos mayores contratos de construcción (trazado principal y Pit Building): opacidad estructural que impide la auditoría pública ordinaria.</li>
-            
-            <li data-icon="🔴">ALTO — Divergencia no resuelta en las cifras de impacto económico declarado: 450.000.000 € anuales frente a 4.500.000.000 € totales. Factor de diferencia de 10. Ninguna cifra cuenta con soporte documental oficial.</li>
-            
-            <li data-icon="🔴">ALTO — Ausencia total de cualquier comunicado oficial de IFEMA sobre el estado de instalación de gradas y homologación operativa en las 24 horas previas al plazo crítico de las pruebas de F3.</li>
-            
-            <li data-icon="🔴">MEDIO — Discrepancia persistente entre PBL publicado del expediente 26/113 (261.000 €) y valor estimado con prórrogas declarado (superior a 1.000.000 €): riesgo de fraccionamiento contractual no descartado.</li>
-            
-            <li data-icon="🔴">MEDIO — Divergencia no resuelta en el objeto contractual del expediente 25/187: servicios profesionales GP F1 (2026-2028) frente a sistema de acreditación de medios con transporte lanzadera.</li>
-            
-            <li data-icon="🔴">BAJO — Dependencia total de la línea 8 del Metro de Madrid y de Cercanías C1 (Valdebebas) para el traslado masivo de hasta 350.000 espectadores durante el fin de semana: sin plan de contingencia de transporte publicado.</li>
-            
-            <li data-icon="🔴">BAJO — Paralelismo con el modelo financiero del GP de Valencia (2008-2012): mismo esquema de financiación mixta, discurso de coste cero para el erario, crecimiento de contratos auxiliares y elevado canon. El modelo valenciano generó una deuda pública superior a 150.000.000 €.</li>
-            
-            <li data-icon="🔴">BAJO — Declaraciones institucionales del alcalde Almeida y del Consejero de Presidencia de la Comunidad de Madrid del 17 de agosto de 2026 afirman avance adecuado pero no resuelven ninguna discrepancia documental ni acreditan finalización física de los elementos pendientes.</li>
+            <li data-icon="🔴">BAJO — Paralelismo con Valencia reforzado: mismo patrón de financiación mixta, canon elevado y opacidad que derivó en una deuda pública superior a 150 M€.</li>
             
             
           </ul>
@@ -2957,79 +2117,25 @@
           <ul class="risk-list">
             
             
-            <li data-icon="❓">Resolución de la discrepancia crítica entre expediente 24/226 (Dragados S.A., 85.369.861,31 €) y contrato UTE Acciona-Eiffage (83.206.500,01 €): adjudicatarios diferentes, importes diferentes, alcances no aclarados públicamente a 20-08-2026.</li>
+            <li data-icon="❓">Número de expediente verificado del contrato de construcción (UTE Acciona-Eiffage): el portal muestra 24/226 y 25/052 duplicados; confirmar cuál es el oficial.</li>
             
-            <li data-icon="❓">Número de expediente oficial verificado del contrato de construcción del trazado principal (UTE Acciona-Eiffage): no localizado en portal público con número real.</li>
+            <li data-icon="❓">Expediente e IVA del Pit Building (68,1 M€): la fuente primaria de Eiffage no especifica si es con o sin IVA.</li>
             
-            <li data-icon="❓">Número de expediente oficial verificado del contrato del Pit Building (Eiffage Construcción, 68.000.000 € atribuidos): no localizado en ninguna plataforma oficial.</li>
+            <li data-icon="❓">Expediente e importe del contrato de gradas temporales (~98.000 plazas) y de vallas/barreras de seguridad.</li>
             
-            <li data-icon="❓">Expediente público con número real, adjudicatario e importe del contrato de gradas temporales (110.000 espectadores, tribuna La Monumental incluida): instalación en curso sin datos oficiales a 20-08-2026.</li>
+            <li data-icon="❓">Canon anual a FOM/Liberty Media: oficialmente desconocido.</li>
             
-            <li data-icon="❓">Expediente público con número real, adjudicatario e importe del contrato de vallas y elementos de seguridad vial del circuito.</li>
+            <li data-icon="❓">Aportación de la Comunidad (1,9 M€) e IFEMA (1,2-0,7 M€) del Destination Signage Package: pendientes de documento primario.</li>
             
-            <li data-icon="❓">Adjudicación oficial, adjudicatario e importe del expediente 2000026784 (servicios profesionales técnicos, lote 1).</li>
+            <li data-icon="❓">Adjudicación de 25/211 (524.000 € PBL) y 24/047 R (874.500 € PBL anual).</li>
             
-            <li data-icon="❓">Adjudicación oficial, adjudicatario e importe del expediente 2000026785 (servicios profesionales técnicos, lote 2).</li>
+            <li data-icon="❓">Coste extraordinario de seguridad, emergencias y transporte: solicitar por Transparencia el coste imputado.</li>
             
-            <li data-icon="❓">Adjudicación oficial, adjudicatario e importe del expediente 26/010 (servicios VIP, protocolo y media operations).</li>
+            <li data-icon="❓">Coste de SUMMA 112, DGT, AENA/ENAIRE, Ejército del Aire, helicópteros y antidrones.</li>
             
-            <li data-icon="❓">Adjudicación oficial e importe definitivo del expediente 26/024 (pasarelas modulares T9-T10): erratas no corregidas, sin importe publicado verificado.</li>
+            <li data-icon="❓">Importe y expediente de la pasarela de ganado sobre la M-11 (6-10 M€).</li>
             
-            <li data-icon="❓">Adjudicación oficial, adjudicatario e importe del expediente 26/113 (agencia de comunicación digital): discrepancia entre PBL (261.000 €) y valor estimado con prórrogas (superior a 1.000.000 €).</li>
-            
-            <li data-icon="❓">Adjudicación oficial, adjudicatario e importe del expediente 25/140 (simulador F1, embajadores, agencia creativa, press clipping): licitación ABIERTA a 20-08-2026, a menos de 5 días de las pruebas de F3.</li>
-            
-            <li data-icon="❓">Objeto contractual real y adjudicación del expediente 25/187: divergencia no resuelta entre descripción como servicios profesionales GP F1 y como sistema de acreditación de medios.</li>
-            
-            <li data-icon="❓">Nombre del adjudicatario del expediente 2252966 (ETT, 191.000 €): no publicado en portal oficial verificado.</li>
-            
-            <li data-icon="❓">Documento oficial de homologación FIA Grado 1 definitivo: inspección favorable reportada por Madring el 23-06-2026 pero certificado oficial no localizado en portal público a 20-08-2026.</li>
-            
-            <li data-icon="❓">Expediente de organización de las pruebas de Fórmula 3 del 24-25 de agosto de 2026: no localizado en plataforma oficial.</li>
-            
-            <li data-icon="❓">Acta de recepción administrativa formal del circuito y del Pit Building: no localizada en BOCM ni portal IFEMA a 20-08-2026.</li>
-            
-            <li data-icon="❓">Certificado de seguridad estructural de la tribuna La Monumental (45.000 asientos, inclinación 24%): no publicado en portal oficial.</li>
-            
-            <li data-icon="❓">Canon anual a FOM/Liberty Media: declarado en 48.000.000 €/año (480.000.000 € a diez años). Sin documento oficial publicado.</li>
-            
-            <li data-icon="❓">Documento del convenio IFEMA — FOM — Comunidad de Madrid — Ayuntamiento de Madrid: reparto de riesgos, avales y aportaciones públicas directas.</li>
-            
-            <li data-icon="❓">Estado de avance cuantificado de la instalación de gradas: porcentaje real instalado vs. total previsto a 20-08-2026.</li>
-            
-            <li data-icon="❓">Cronograma oficial de terminación de vallas de seguridad: no publicado a 20-08-2026.</li>
-            
-            <li data-icon="❓">Costes de seguridad, Policía Nacional, Policía Municipal y movilidad del Ayuntamiento de Madrid para el fin de semana del 11-13 de septiembre de 2026.</li>
-            
-            <li data-icon="❓">Costes de refuerzo de transporte público (EMT, Metro de Madrid línea 8, Cercanías C1) para el evento.</li>
-            
-            <li data-icon="❓">Costes de limpieza y gestión de residuos post-evento.</li>
-            
-            <li data-icon="❓">Costes de servicios sanitarios, protección civil y hospital de campaña.</li>
-            
-            <li data-icon="❓">Resolución del litigio Dromo contra IFEMA-Tilke ante el Tribunal Regional de Colonia: reclamación mínima 6.000.000 € más derechos de explotación.</li>
-            
-            <li data-icon="❓">Estado procesal del recurso de Liberum Natura contra el Plan Especial ante el TSJM.</li>
-            
-            <li data-icon="❓">Estado procesal del recurso de Liberum Natura ante el Juzgado n.º 22 de Madrid contra la licencia de obras.</li>
-            
-            <li data-icon="❓">Documento presupuestario oficial de origen de las cifras 142.302.881 € y 47.551.864 € citadas en procedimiento judicial.</li>
-            
-            <li data-icon="❓">Reconciliación entre el discurso oficial de coste cero para el erario y las cifras de gasto público (47.551.864 € atribuidos al Ayuntamiento en documentación judicial).</li>
-            
-            <li data-icon="❓">Expediente e importe del contrato de embajador oficial de Madring F1 con Carlos Sainz (Williams).</li>
-            
-            <li data-icon="❓">Costes de producción del acto de inauguración oficial del 16 de junio de 2026.</li>
-            
-            <li data-icon="❓">Expediente y costes del Filming Day de Ferrari del 9 de julio de 2026.</li>
-            
-            <li data-icon="❓">Costes de organización de las series de soporte F2 y F3 en el Gran Premio de España 2026.</li>
-            
-            <li data-icon="❓">Plan de contingencia de transporte publicado para hasta 350.000 espectadores durante el fin de semana del 11-13 de septiembre de 2026.</li>
-            
-            <li data-icon="❓">Soporte documental oficial del impacto económico declarado: fuentes secundarias citan cifras entre 450.000.000 € y 4.500.000.000 € sin sustento documental público.</li>
-            
-            <li data-icon="❓">Certificación independiente del cumplimiento de medidas de sostenibilidad declaradas (700.000 m³ de tierra reutilizados).</li>
+            <li data-icon="❓">Resolución del litigio Dromo-Tilke (6 M€).</li>
             
             
           </ul>
@@ -3059,57 +2165,64 @@
           <tbody>
             
             <tr>
-              <td>Ayuntamiento de Madrid</td>
-              <td>Policia Municipal: despliegue de seguridad durante el evento (3 dias)</td>
-              <td class="amount">1.500.000 - 3.000.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Estimacion basada en eventos comparables. Sin expediente especifico publicado.</td>
+              <td>Delegación del Gobierno / Interior</td>
+              <td>Policía Nacional + Guardia Civil (~1.500 agentes/día × 3 días)</td>
+              <td class="amount">900.000 - 2.000.000 € (central ≈1,40 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">Coste marginal estimado; no el coste económico completo.</td>
             </tr>
             
             <tr>
               <td>Ayuntamiento de Madrid</td>
-              <td>SAMUR / Proteccion Civil: servicios sanitarios y emergencias</td>
-              <td class="amount">800.000 - 1.200.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Coste del personal sanitario adicional y ambulancias.</td>
+              <td>Policía Municipal (>1.000 efectivos)</td>
+              <td class="amount">200.000 - 450.000 € (central ≈0,30 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">Coste extraordinario atribuible al GP.</td>
             </tr>
             
             <tr>
               <td>Ayuntamiento de Madrid</td>
-              <td>Movilidad y trafico: cortes de calles, desvios, señalizacion especial</td>
-              <td class="amount">500.000 - 1.000.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Incluye plan de movilidad, agentes de movilidad, vallas y conos.</td>
+              <td>SAMUR-Protección Civil (>250 efectivos + 36 ambulancias + PSA)</td>
+              <td class="amount">80.000 - 200.000 € (central ≈0,13 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">No incluye SUMMA 112.</td>
+            </tr>
+            
+            <tr>
+              <td>Ayuntamiento de Madrid</td>
+              <td>Bomberos Madrid (>60 efectivos)</td>
+              <td class="amount">25.000 - 65.000 € (central ≈0,04 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">No se dobla con el contrato IFEMA 26/012.</td>
+            </tr>
+            
+            <tr>
+              <td>Ayuntamiento de Madrid</td>
+              <td>Agentes de Movilidad (~60)</td>
+              <td class="amount">10.000 - 25.000 € (central ≈0,015 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">Regulación previa de 400-500 camiones.</td>
+            </tr>
+            
+            <tr>
+              <td>Metro de Madrid</td>
+              <td>Refuerzo L4/L5/L8 + seguridad</td>
+              <td class="amount">150.000 - 400.000 € (central ≈0,25 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">No se multiplica el coste ordinario por el titular '250%'.</td>
+            </tr>
+            
+            <tr>
+              <td>Cercanías (Renfe)</td>
+              <td>Frecuencias hasta 5 min + composiciones dobles</td>
+              <td class="amount">200.000 - 500.000 € (central ≈0,32 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">Obligación de servicio público estatal.</td>
             </tr>
             
             <tr>
               <td>EMT Madrid</td>
-              <td>Refuerzo de lineas de autobus + vinilado de vehiculos con imagen F1</td>
-              <td class="amount">300.000 - 600.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Autobuses vinilados avistados en Madrid. Coste no publicado.</td>
-            </tr>
-            
-            <tr>
-              <td>Ayuntamiento de Madrid</td>
-              <td>Limpieza viaria post-evento: refuerzo de barrido y recogida de residuos</td>
-              <td class="amount">400.000 - 800.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Estimacion para evento de 110.000 asistentes/dia.</td>
-            </tr>
-            
-            <tr>
-              <td>Ayuntamiento de Madrid</td>
-              <td>Adecuacion de zonas verdes y espacio publico colindante al circuito</td>
-              <td class="amount">200.000 - 500.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Posible partida de urbanizacion no incluida en contratos IFEMA.</td>
-            </tr>
-            
-            <tr>
-              <td>Comunidad de Madrid</td>
-              <td>Promocion turistica institucional asociada al GP</td>
-              <td class="amount">500.000 - 1.500.000 €</td>
-              <td style="font-size:.75rem;color:var(--muted);">Campanas institucionales de Turismo de Madrid. Sin desglose F1 especifico.</td>
+              <td>5 lanzaderas gratuitas, hasta 49 buses (~1.767 h-bus)</td>
+              <td class="amount">110.000 - 180.000 € (central ≈0,14 M€)</td>
+              <td style="font-size:.75rem;color:var(--muted);">Verificable en las cuentas de EMT.</td>
             </tr>
             
             <tr style="background:var(--surface);">
               <td colspan="2" style="font-weight:700;text-align:right;">Total estimado por edición</td>
-              <td class="amount" style="color:var(--amber);">4.200.000 - 8.600.000 € por edicion</td>
+              <td class="amount" style="color:var(--amber);">≈1.680.000 - 3.820.000 € (central ≈2,60 M€) por edición — ESTIMACIÓN, 0 € confirmado</td>
               <td style="font-size:.72rem;color:var(--amber);">No incluido en el coste confirmado</td>
             </tr>
           </tbody>
@@ -3178,8 +2291,8 @@
       <div class="valencia-cta">
         <div class="vc-icon">⚠️</div>
         <div class="vc-text">
-          <strong>78% de similitud de riesgo</strong> con el caso del circuito urbano de Valencia (2008-2012).<br>
-          <span style="font-size:.82rem;color:var(--muted);">El modelo de financiación y gestión del GP de Madrid replica en un 78% los factores de riesgo estructurales identificados en el GP de Valencia (2008-2012), que concluyó con una deuda pública superior a 150.000.000 €. Los elementos comunes incluyen: discurso oficial de coste cero para el erario mientras la documentación judicial acredita aportaciones públicas (47.551.864 € atribuidos al Ayuntamiento); canon elevado a FOM sin soporte documental publicado; opacidad en contratos de obra principal y auxiliares; y dependencia de proyecciones de impacto económico sin verificación independiente. La diferencia más relevante es que Madrid cuenta con IFEMA como operador ferial consolidado, lo que reduce el riesgo de gestión directa por una administración pública. Sin embargo, la ausencia de expedientes oficiales verificados para los dos mayores contratos de construcción y la falta de publicación del convenio entre administraciones elevan el riesgo de opacidad a niveles equivalentes al caso valenciano.</span>
+          <strong>80% de similitud de riesgo</strong> con el caso del circuito urbano de Valencia (2008-2012).<br>
+          <span style="font-size:.82rem;color:var(--muted);">El modelo de Madrid replica los factores estructurales de riesgo de Valencia. La diferencia es la infraestructura ferial permanente de IFEMA. Los datos de septiembre de 2026 refuerzan el paralelismo: gasto de IFEMA cercano a 180 M€, canon FOM sin publicar, VAN -18 M€ y TIR -0,961% según la Memoria de IFEMA, y ausencia de expedientes verificados para los mayores contratos (~151 M€). Similitud de riesgo: 80%.</span>
         </div>
         <a href="valencia.html" class="vc-link">Ver comparativa completa →</a>
       </div>
@@ -3192,27 +2305,27 @@
       <div class="sources-list">
         
         
+        <a class="source-pill" href="https://www.eiffage.es/proyectos/pit-building-formula-1-madrid" target="_blank">www.eiffage.es</a>
+        
         <a class="source-pill" href="https://licitaciones2.ifema.es" target="_blank">licitaciones2.ifema.es</a>
+        
+        <a class="source-pill" href="https://www.madrid.es" target="_blank">www.madrid.es</a>
         
         <a class="source-pill" href="https://contrataciondelestado.es" target="_blank">contrataciondelestado.es</a>
         
+        <a class="source-pill" href="https://www.eldiario.es/madrid/somos/quimera-cero-gasto-publico-formula-1-183-millones-ifema-coste-patrocinio-obras-colaterales_1_13495673.html" target="_blank">www.eldiario.es</a>
+        
+        <a class="source-pill" href="https://www.publico.es/politica/formula-1-costara-ano-319-millones-euros-arcas-publicas-madrilenas-estudio.html" target="_blank">www.publico.es</a>
+        
+        <a class="source-pill" href="https://www.infolibre.es/medioambiente/f1-llega-madrid-conozca-coste-real-impacto-arcas-publicas_1_2235619.html" target="_blank">www.infolibre.es</a>
+        
+        <a class="source-pill" href="https://www.epe.es/es/madrid/20260902/madring-gana-primera-carrera-reloj-pista-gradas-listas-133844881" target="_blank">www.epe.es</a>
+        
+        <a class="source-pill" href="https://revistascratch.com/formula1/noticia/la-fia-da-luz-verde-a-las-obras-de-madring-y-refuerza-el-gp-de-espana-2026-75482" target="_blank">revistascratch.com</a>
+        
+        <a class="source-pill" href="https://www.formula1.it/news/30934/1/scoppia-il-caso-madring-causa-milionaria-a-pochi-mesi-dal-gp-di-formula-1" target="_blank">www.formula1.it</a>
+        
         <a class="source-pill" href="https://madring.com" target="_blank">madring.com</a>
-        
-        <a class="source-pill" href="https://madring.com/circuito/construccion" target="_blank">madring.com</a>
-        
-        <a class="source-pill" href="https://boe.es" target="_blank">boe.es</a>
-        
-        <a class="source-pill" href="https://www.bocm.es" target="_blank">www.bocm.es</a>
-        
-        <a class="source-pill" href="https://transparencia.gob.es" target="_blank">transparencia.gob.es</a>
-        
-        <a class="source-pill" href="https://datos.madrid.es" target="_blank">datos.madrid.es</a>
-        
-        <a class="source-pill" href="https://datos.comunidad.madrid" target="_blank">datos.comunidad.madrid</a>
-        
-        <a class="source-pill" href="https://ted.europa.eu" target="_blank">ted.europa.eu</a>
-        
-        <a class="source-pill" href="https://madridinforma.eldiario.es" target="_blank">madridinforma.eldiario.es</a>
         
         
       </div>

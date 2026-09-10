@@ -307,7 +307,8 @@
     }
     .badge-licitado     { background: var(--amber-dim); color: var(--amber);  border: 1px solid rgba(245,158,11,.25); }
     .badge-adjudicado   { background: var(--blue-dim);  color: var(--blue);   border: 1px solid rgba(96,165,250,.25); }
-    .badge-en_ejecucion { background: rgba(168,85,247,.12); color: #C084FC; border: 1px solid rgba(168,85,247,.25); }
+    .badge-comprometido { background: var(--amber-dim); color: var(--amber);  border: 1px solid rgba(245,158,11,.4); }
+    .badge-en_ejecucion, .badge-en_ejecución { background: rgba(168,85,247,.12); color: #C084FC; border: 1px solid rgba(168,85,247,.25); }
     .badge-ejecutado    { background: var(--green-dim); color: var(--green);  border: 1px solid rgba(52,211,153,.25); }
     .badge-pendiente_confirmar, .badge-sin_confirmar { background: var(--red-dim); color: #F87171; border: 1px solid rgba(248,113,113,.25); }
 
@@ -456,11 +457,23 @@
         <div class="cost-number" id="costCounter" data-target="{{ coste_raw | int }}">{{ data.coste_acumulado_texto or 'Investigando...' }}</div>
       </div>
       <div class="cost-block" style="border-color:rgba(245,158,11,.4);background:linear-gradient(160deg,rgba(245,158,11,.06) 0%,transparent 60%);">
-        <div class="cost-label">Coste comprometido (+ licitaciones)</div>
+        <div class="cost-label">Mínimo comprometido</div>
         {% set compro_raw = data.get('coste_comprometido') or data.coste_acumulado_confirmado | float | default(0) %}
         <div class="cost-number" id="costCompro" data-target="{{ compro_raw | int }}" style="color:var(--amber);">{{ data.get('coste_comprometido_texto') or data.coste_acumulado_texto or 'Calculando...' }}</div>
       </div>
+      <div class="cost-block" style="border-color:rgba(96,165,250,.4);background:linear-gradient(160deg,rgba(96,165,250,.06) 0%,transparent 60%);">
+        <div class="cost-label">Servicios públicos extraordinarios (est.)</div>
+        {% set serv = data.estimacion_servicios_extraordinarios or {} %}
+        {% set serv_raw = serv.importe | float | default(0) %}
+        <div class="cost-number" style="color:var(--blue);">≈{{ (serv_raw / 1e6) | round(2) }} M€</div>
+        <div class="cost-sub">rango 1,68–3,82 M€ · <strong>0 € confirmado</strong></div>
+      </div>
     </div>
+    {% if data.coste_total_estimado_provisional %}
+    <div style="margin-top:1.1rem;">
+      <span class="increment-note" style="font-size:.85rem;">📊 {{ data.coste_total_estimado_provisional_texto or 'Estimación provisional ampliada' }}</span>
+    </div>
+    {% endif %}
     </div>
   </div>
 
