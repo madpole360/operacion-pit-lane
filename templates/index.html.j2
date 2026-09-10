@@ -468,6 +468,13 @@
         <div class="cost-number" style="color:var(--blue);">≈{{ (serv_raw / 1e6) | round(2) }} M€</div>
         <div class="cost-sub">rango 1,68–3,82 M€ · <strong>0 € confirmado</strong></div>
       </div>
+      <div class="cost-block" style="border-color:rgba(168,85,247,.4);background:linear-gradient(160deg,rgba(168,85,247,.06) 0%,transparent 60%);">
+        <div class="cost-label">Canon / derechos F1 (hipótesis)</div>
+        {% set canon = data.canon_fom or {} %}
+        {% set canon_raw = canon.total_10_anios | float | default(0) %}
+        <div class="cost-number" style="color:#C084FC;">≈{{ (canon_raw / 1e6) | round(0) | int }} M€</div>
+        <div class="cost-sub">10 ediciones · <strong>no confirmado</strong></div>
+      </div>
     </div>
     {% if data.coste_total_estimado_provisional %}
     <div style="margin-top:1.1rem;">
