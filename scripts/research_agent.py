@@ -276,30 +276,80 @@ def validate_report(data: dict) -> list:
 
 import re
 # Solo aceptar expedientes que coincidan con el formato real de IFEMA
-EXP_RE = re.compile(r"^\d{2}/\d{3,4}$")  # ej: 26/113, 25/043, 24/226
-EXP_CM_RE = re.compile(r"^\d{10}$")       # ej: 6200014240 (contratos menores)
+EXP_RE = re.compile(r"^\d{2}/\d{3,4}(?:\s*R)?$")  # ej: 26/113, 25/043, 24/047 R
+EXP_CM_RE = re.compile(r"^\d{10}$")               # ej: 6200014240 (contratos menores)
+
+# Prioridad de estado: mayor = más avanzado/definitivo. Se usa para NO regresionar
+# (p. ej. no convertir un contrato 'adjudicado' de nuevo a 'licitado').
+ESTADO_PRIORITY = {
+    "desistido": 0,
+    "pendiente_confirmar": 1,
+    "licitado": 2,
+    "comprometido": 2,
+    "en_ejecución": 3,
+    "en_ejecucion": 3,
+    "adjudicado": 4,
+    "ejecutado": 5,
+}
+
+
+def _exp_key(exp: str) -> str:
+    """Clave canónica de expediente (ignora mayúsculas y espacios repetidos)."""
+    return re.sub(r"\s+", " ", (exp or "").strip()).upper()
+
+
+def _update_contract(old: dict, new: dict) -> None:
+    """Actualiza `old` con la info de `new` SOLO si el estado avanza (o se mantiene).
+
+    Evita dos bugs del cron anterior:
+    1. Duplicar el mismo expediente cuando el agente devolvía fechas distintas.
+    2. Regresionar un contrato adjudicado a 'licitado' / 'Sin adjudicación'.
+    """
+    old_estado = old.get("estado", "")
+    new_estado = new.get("estado", "")
+    avanza = ESTADO_PRIORITY.get(new_estado, -1) >= ESTADO_PRIORITY.get(old_estado, -1)
+
+    if new_estado and avanza:
+        old["estado"] = new_estado
+    new_imp = new.get("importe", 0) or 0
+    if new_imp and avanza:
+        old["importe"] = new_imp
+    if avanza:
+        for f in ("adjudicatario", "organismo", "concepto", "importe_texto",
+                  "fuente", "nivel_confianza"):
+            val = new.get(f)
+            if val not in (None, ""):
+                old[f] = val
+
 
 def merge_contracts_db(existing: list, new_contracts: list) -> tuple:
-    """Fusiona contratos nuevos en la BD historica. Solo acepta expedientes con formato real."""
-    seen = set()
+    """Fusiona contratos nuevos en la BD, deduplicando por EXPEDIENTE.
+
+    Devuelve (lista_fusionada, nuevos). Si el expediente ya existe, se actualiza
+    la entrada existente (estado, importe, adjudicatario) en lugar de duplicarla.
+    """
+    index = {}
     for c in existing:
-        key = (c.get("expediente", "").strip(), c.get("organismo", ""), c.get("fecha", ""))
-        seen.add(key)
+        key = _exp_key(c.get("expediente", ""))
+        if key:
+            index[key] = c
 
     nuevos = []
     for c in new_contracts:
         exp = c.get("expediente", "").strip()
-        # SOLO aceptar formatos reales: NN/NNN o NNNNNNNNNN
+        # SOLO aceptar formatos reales: NN/NNN (opcional R) o NNNNNNNNNN
         if not (EXP_RE.match(exp) or EXP_CM_RE.match(exp)):
             continue
         concepto = c.get("concepto", "").strip()
         if len(concepto) < 15:
             continue
-        key = (exp, c.get("organismo", ""), c.get("fecha", ""))
-        if key not in seen:
-            seen.add(key)
+        key = _exp_key(exp)
+        if key in index:
+            _update_contract(index[key], c)
+        else:
             c["descubierto_el"] = TODAY
             existing.append(c)
+            index[key] = c
             nuevos.append(c)
 
     return existing, nuevos
@@ -526,19 +576,24 @@ def save_results(data: dict) -> dict:
     existing_contracts = load_contracts_db()
     if not existing_contracts and prev.get("contratos"):
         existing_contracts = prev["contratos"]
+    # Instantánea previa a la fusión (la fusión muta las entradas existentes in-place)
+    old_snapshot = [dict(c) for c in existing_contracts]
     merged_contracts, nuevos = merge_contracts_db(existing_contracts, data.get("contratos", []))
-    cambios = detect_changes(existing_contracts, data.get("contratos", []))
+    cambios = detect_changes(old_snapshot, data.get("contratos", []))
     save_contracts_db(merged_contracts)
 
-    # Recalcular costes desde los contratos limpios
+    # Recalcular costes desde los contratos limpios.
+    # Confirmado = adjudicaciones con soporte oficial (incluye contratos en ejecución).
+    # Comprometido = confirmado + aportaciones formalizadas (estado 'comprometido').
+    CONFIRMED_STATES = ("adjudicado", "ejecutado", "en_ejecución", "en_ejecucion")
     confirmado = 0
     comprometido = 0
     for c in merged_contracts:
         estado = c.get("estado", "")
         imp = c.get("importe", 0) or 0
-        if estado in ("adjudicado", "ejecutado"):
+        if estado in CONFIRMED_STATES:
             confirmado += imp
-        if estado in ("adjudicado", "ejecutado", "licitado"):
+        if estado in CONFIRMED_STATES or estado == "comprometido":
             comprometido += imp
 
     # Construir el informe final: preservar campos curados, actualizar solo lo nuevo
@@ -561,9 +616,9 @@ def save_results(data: dict) -> dict:
         "contratos": merged_contracts,
         # Costes: recalculados desde la BD limpia
         "coste_acumulado_confirmado": confirmado,
-        "coste_acumulado_texto": f"{confirmado/1e6:.1f} millones de euros (obra principal + modificación + asistencia tecnica + contratos menores). No incluye Pit Building, canon FOM ni licitaciones pendientes.",
+        "coste_acumulado_texto": f"{confirmado/1e6:.1f} M€ (adjudicaciones con soporte oficial). No incluye canon FOM.",
         "coste_comprometido": comprometido,
-        "coste_comprometido_texto": f"{comprometido/1e6:.1f} millones de euros (costes confirmados + PBL de licitaciones activas).",
+        "coste_comprometido_texto": f"{comprometido/1e6:.1f} M€ (mínimo de compromisos: confirmado + aportaciones formalizadas).",
         "incremento_respecto_anterior": confirmado - prev.get("coste_acumulado_confirmado", confirmado),
         "cambios_detectados": cambios,
         # Preservar campos curados que el agente no genera
