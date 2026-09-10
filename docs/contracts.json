@@ -822,5 +822,18 @@
     "estado": "pendiente_confirmar",
     "nivel_confianza": "muy_probable",
     "fuente": "https://licitaciones2.ifema.es"
+  },
+  {
+    "descubierto_el": "2026-09-10",
+    "fecha": "2026-07-24",
+    "organismo": "Ayuntamiento de Madrid",
+    "expediente": "300/2026/02102",
+    "adjudicatario": "Modern Depot, S.L.",
+    "concepto": "Merchandising para la prevención de la violencia sexual y la LGTBIfobia en el Gran Premio de Fórmula 1 de Madrid (puntos violeta y arcoíris).",
+    "importe": 11878.81,
+    "importe_texto": "11.878,81 € (adjudicación)",
+    "estado": "adjudicado",
+    "nivel_confianza": "confirmado",
+    "fuente": "Registro de Contratos Menores del Ayuntamiento de Madrid"
   }
 ]

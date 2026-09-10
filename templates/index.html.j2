@@ -811,6 +811,45 @@
     </section>
     {% endif %}
 
+    <!-- ── Promoción asociada (no sumada) ───────────────────────── -->
+    {% if data.promocion_asociada %}
+    <section class="section">
+      <h2 class="section-title">📣 Gasto promocional asociado (no sumado al coste confirmado)</h2>
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:1rem;">
+        Bolsas de gasto promocional público vinculadas a la F1 pero que <strong>no se suman</strong> al coste
+        confirmado: o bien no son exclusivamente imputables al GP, o bien están pendientes de fuente primaria.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Concepto</th><th>Importe / estimación</th><th>Tratamiento</th></tr></thead>
+          <tbody>
+            {% if data.promocion_asociada.destination_signage %}
+            <tr>
+              <td>{{ data.promocion_asociada.destination_signage.concepto }}</td>
+              <td class="amount">{{ data.promocion_asociada.destination_signage.total }}<br><span style="font-size:.7rem;color:var(--green);">{{ data.promocion_asociada.destination_signage.confirmado }}</span></td>
+              <td style="font-size:.75rem;color:var(--muted);">{{ data.promocion_asociada.destination_signage.nota }}</td>
+            </tr>
+            {% endif %}
+            {% if data.promocion_asociada.madrid_beats %}
+            <tr>
+              <td>{{ data.promocion_asociada.madrid_beats.concepto }}</td>
+              <td class="amount">{{ data.promocion_asociada.madrid_beats.total }}</td>
+              <td style="font-size:.75rem;color:var(--muted);">{{ data.promocion_asociada.madrid_beats.nota }}</td>
+            </tr>
+            {% endif %}
+            {% if data.promocion_asociada.activaciones_privadas %}
+            <tr>
+              <td>{{ data.promocion_asociada.activaciones_privadas.concepto }}</td>
+              <td class="amount" style="color:var(--green);">{{ data.promocion_asociada.activaciones_privadas.coste_publico }}</td>
+              <td style="font-size:.75rem;color:var(--muted);">{{ data.promocion_asociada.activaciones_privadas.nota }}</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+
     <!-- ── Proyeccion 10 anos ────────────────────────────────── -->
     {% if data.proyeccion_10_anios %}
     <section class="section">
